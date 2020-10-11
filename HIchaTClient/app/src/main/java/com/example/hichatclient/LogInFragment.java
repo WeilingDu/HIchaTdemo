@@ -20,10 +20,14 @@ import android.widget.Toast;
 
 import com.example.hichatclient.databinding.FragmentLogInBinding;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.LinkedHashMap;
 
 
 /**
@@ -77,7 +81,12 @@ public class LogInFragment extends Fragment {
                         DatagramSocket socket= new DatagramSocket();
                         // **********发送"用户名和密码"***********
                         InetAddress serverAddress = InetAddress.getByName("139.199.102.166");
-                        String str = userID + userPassword;
+                        JSONObject jsonObject=new JSONObject();
+                        jsonObject.put("status", "login");
+                        jsonObject.put("id", userID);
+                        jsonObject.put("password", userPassword);
+                        final String str = jsonObject.toString();
+                        //String str = userID + userPassword;
                         byte send_data[] = str.getBytes();
                         DatagramPacket send_packet = new DatagramPacket(send_data, send_data.length ,serverAddress ,9000);
                         socket.send(send_packet);
@@ -89,8 +98,10 @@ public class LogInFragment extends Fragment {
                         socket.receive(recieve_packet);
                         String result = new String(recieve_packet.getData(), recieve_packet.getOffset(), recieve_packet.getLength());
                         socket.close();
+                        JSONObject jsonObj = new JSONObject(result);
+                        //String token = (String) jsonObj.get("token");
                         System.out.println("udpData:" + result);
-                    } catch (IOException e) {
+                    } catch (IOException | JSONException e) {
                         e.printStackTrace();
                     }
                 }

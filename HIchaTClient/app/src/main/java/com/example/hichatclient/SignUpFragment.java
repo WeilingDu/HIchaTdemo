@@ -19,6 +19,9 @@ import android.widget.Toast;
 
 import com.example.hichatclient.databinding.FragmentSignUpBinding;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -79,7 +82,12 @@ public class SignUpFragment extends Fragment {
                         DatagramSocket socket= new DatagramSocket();
                         // **********发送"用户名和密码"***********
                         InetAddress serverAddress = InetAddress.getByName("139.199.102.166");
-                        String str = userName + userPassword;
+                        JSONObject jsonObject=new JSONObject();
+                        jsonObject.put("status", "register");
+                        jsonObject.put("name", userName);
+                        jsonObject.put("password", userPassword);
+                        final String str = jsonObject.toString();
+                        //String str = userName + userPassword;
                         byte send_data[] = str.getBytes();
                         DatagramPacket send_packet = new DatagramPacket(send_data, send_data.length ,serverAddress ,9000);
                         socket.send(send_packet);
@@ -91,9 +99,12 @@ public class SignUpFragment extends Fragment {
                         socket.receive(recieve_packet);
                         String result = new String(recieve_packet.getData(), recieve_packet.getOffset(), recieve_packet.getLength());
                         socket.close();
+                        JSONObject jsonObj = new JSONObject(result);
+                        String name = (String) jsonObj.get("name");
+                        //String userID = (String) jsonObj.get("id");
                         System.out.println("udpData:" + result);
-                        Toast.makeText(getActivity(), "注册成功！"+result, Toast.LENGTH_SHORT).show();
-                    } catch (IOException e) {
+                        Toast.makeText(getActivity(), "注册成功！"+name, Toast.LENGTH_SHORT).show();
+                    } catch (IOException | JSONException e) {
                         e.printStackTrace();
                     }
                 }

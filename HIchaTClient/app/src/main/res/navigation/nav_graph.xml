@@ -7,7 +7,11 @@
 
     <fragment
         android:id="@+id/logInFragment"
+<<<<<<< HEAD
         android:name="com.example.hichatclient.mainActivity.LogInFragment"
+=======
+        android:name="com.example.hichatclient.LogInFragment"
+>>>>>>> 0dc8da569ffe7518b77b8381b378569437e92ec7
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_log_in" >
         <action
@@ -16,7 +20,11 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
+<<<<<<< HEAD
         android:name="com.example.hichatclient.mainActivity.SignUpFragment"
+=======
+        android:name="com.example.hichatclient.SignUpFragment"
+>>>>>>> 0dc8da569ffe7518b77b8381b378569437e92ec7
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action

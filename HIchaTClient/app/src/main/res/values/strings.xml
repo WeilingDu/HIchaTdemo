@@ -11,7 +11,10 @@
     <string name="buttontextSignUp2">注册</string>
     <string name="buttontextLogIn2">返回登录</string>
     <string name="head_portrait">head portrait</string>
+<<<<<<< HEAD
     <string name="chat">聊天</string>
     <string name="contacts">通讯录</string>
     <string name="me">我</string>
+=======
+>>>>>>> 0dc8da569ffe7518b77b8381b378569437e92ec7
 </resources>

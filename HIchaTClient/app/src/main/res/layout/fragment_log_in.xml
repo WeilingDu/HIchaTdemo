@@ -6,7 +6,7 @@
     <data>
         <variable
             name="data"
-            type="com.example.hichatclient.LogInViewModel" />
+            type="com.example.hichatclient.viewModel.LogInViewModel" />
 
     </data>
 
@@ -14,7 +14,7 @@
         android:id="@+id/fragment_log_in"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".LogInFragment">
+        tools:context=".mainActivity.LogInFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -69,7 +69,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline" />
 
         <EditText
-            android:id="@+id/userPassword"
+            android:id="@+id/userPassword1"
             android:layout_width="320dp"
             android:layout_height="45dp"
             android:layout_marginStart="8dp"

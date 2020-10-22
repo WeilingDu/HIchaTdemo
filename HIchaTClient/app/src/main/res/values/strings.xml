@@ -9,5 +9,9 @@
     <string name="buttontextSignUp">还没有账号，先去注册 </string>
     <string name="hintPassword2">请再次输入密码</string>
     <string name="buttontextSignUp2">注册</string>
+    <string name="buttontextLogIn2">返回登录</string>
     <string name="head_portrait">head portrait</string>
+    <string name="chat">聊天</string>
+    <string name="contacts">通讯录</string>
+    <string name="me">我</string>
 </resources>

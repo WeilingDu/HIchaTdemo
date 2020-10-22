@@ -4,17 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="data"
+            type="com.example.hichatclient.viewModel.SignUpViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fragment_sign_up"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SignUpFragment">
+        app:layout_constraintBottom_toTopOf="@+id/guideline15"
+        app:layout_constraintTop_toTopOf="@+id/guideline15"
+        tools:context=".mainActivity.SignUpFragment">
 
         <EditText
-            android:id="@+id/userName"
+            android:id="@+id/userName1"
             android:layout_width="320dp"
             android:layout_height="45dp"
             android:layout_marginStart="8dp"
@@ -71,8 +75,15 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.7" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8" />
+
         <EditText
-            android:id="@+id/userPassWord1"
+            android:id="@+id/userPassword1"
             android:layout_width="320dp"
             android:layout_height="45dp"
             android:autofillHints=""
@@ -86,7 +97,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
         <EditText
-            android:id="@+id/editTextTextPassword4"
+            android:id="@+id/userPasswordCheck1"
             android:layout_width="320dp"
             android:layout_height="45dp"
             android:autofillHints=""
@@ -119,6 +130,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline16" />
+
+        <Button
+            android:id="@+id/buttonToLogIn"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:text="@string/buttontextLogIn2"
+            app:layout_constraintBottom_toTopOf="@+id/guideline6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline17" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

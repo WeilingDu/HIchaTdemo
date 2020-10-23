@@ -1,4 +1,4 @@
-package com.example.hichatclient.data;
+package com.example.hichatclient.data.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

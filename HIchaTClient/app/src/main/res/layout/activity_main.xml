@@ -4,11 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
     tools:context=".mainActivity.MainActivity">
-=======
-    tools:context=".MainActivity">
->>>>>>> 0dc8da569ffe7518b77b8381b378569437e92ec7
 
     <fragment
         android:id="@+id/fragment"

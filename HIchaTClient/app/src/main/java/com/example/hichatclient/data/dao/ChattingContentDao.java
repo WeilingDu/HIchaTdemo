@@ -1,9 +1,11 @@
-package com.example.hichatclient.data;
+package com.example.hichatclient.data.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.example.hichatclient.data.entity.ChattingContent;
 
 import java.util.List;
 

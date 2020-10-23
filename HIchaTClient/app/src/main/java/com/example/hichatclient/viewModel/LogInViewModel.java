@@ -7,7 +7,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
-import com.example.hichatclient.data.User;
+import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.dataResource.UserRepository;
 
 

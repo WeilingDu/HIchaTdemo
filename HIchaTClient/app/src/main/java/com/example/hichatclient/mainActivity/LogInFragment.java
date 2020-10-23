@@ -27,7 +27,7 @@ import android.widget.Toast;
 import com.example.hichatclient.R;
 import com.example.hichatclient.baseActivity.BaseActivity;
 import com.example.hichatclient.viewModel.LogInViewModel;
-import com.example.hichatclient.data.User;
+import com.example.hichatclient.data.entity.User;
 
 
 /**
@@ -106,23 +106,18 @@ public class LogInFragment extends Fragment {
             public void onClick(View v) {
                 String userID = editTextUserID.getText().toString().trim();
                 String userPassword = editTextUserPassword.getText().toString().trim();
-//                System.out.println("userID is: " + userID);
-//                System.out.println("userPassword is: " + userPassword);
                 User user;
                 user = logInViewModel.sendIDAndPassword(userID, userPassword);
-//                System.out.println(user.getUserToken());
-//                System.out.println(user.getUserName());
                 if (user == null) {
-//                    System.out.println("failed!");
                     Toast.makeText(getActivity(), "登录失败！", Toast.LENGTH_SHORT).show();
                 } else {
-//                    System.out.println("succeed!");
                     logInViewModel.insertUser(user);
                     Toast.makeText(getActivity(), "登录成功！", Toast.LENGTH_SHORT).show();
 //                    NavController navController = Navigation.findNavController(v);
 //                    navController.navigate(R.id.action_logInFragment_to_meFragment);
                     InputMethodManager imm = (InputMethodManager) requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
                     // 跳转至BaseActivity的MeFragment
                     Intent intent = new Intent();
                     intent.setClass(activity, BaseActivity.class);

@@ -16,8 +16,7 @@ import com.example.hichatclient.R;
 import com.example.hichatclient.viewModel.ChatsViewModel;
 
 public class ChatsFragment extends Fragment {
-
-    private ChatsViewModel mViewModel;
+    private ChatsViewModel chatsViewModel;
 
     public static ChatsFragment newInstance() {
         return new ChatsFragment();
@@ -32,7 +31,7 @@ public class ChatsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(ChatsViewModel.class);
+
         // TODO: Use the ViewModel
     }
 

@@ -1,4 +1,4 @@
-package com.example.hichatclient.data;
+package com.example.hichatclient.data.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -30,6 +30,7 @@ public class Friend {
         this.friendIP = friendIP;
         this.friendPort = friendPort;
     }
+
 
     public String getUserID() {
         return userID;

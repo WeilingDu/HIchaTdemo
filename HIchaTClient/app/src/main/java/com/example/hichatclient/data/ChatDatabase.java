@@ -6,6 +6,13 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.hichatclient.data.dao.ChattingContentDao;
+import com.example.hichatclient.data.dao.FriendDao;
+import com.example.hichatclient.data.dao.UserDao;
+import com.example.hichatclient.data.entity.ChattingContent;
+import com.example.hichatclient.data.entity.Friend;
+import com.example.hichatclient.data.entity.User;
+
 // singleton
 @Database(entities = {User.class, Friend.class, ChattingContent.class}, version = 1, exportSchema = false)
 public abstract class ChatDatabase extends RoomDatabase {

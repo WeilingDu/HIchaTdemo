@@ -36,7 +36,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-<<<<<<< HEAD
     def room_version = "2.2.5"
 
     implementation "androidx.room:room-runtime:$room_version"
@@ -50,6 +49,4 @@ dependencies {
 
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
-=======
->>>>>>> 0dc8da569ffe7518b77b8381b378569437e92ec7
 }

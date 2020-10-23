@@ -6,11 +6,7 @@
     <data>
         <variable
             name="data"
-<<<<<<< HEAD
             type="com.example.hichatclient.viewModel.SignUpViewModel" />
-=======
-            type="com.example.hichatclient.SignUpViewModel" />
->>>>>>> 0dc8da569ffe7518b77b8381b378569437e92ec7
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,17 +15,10 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/guideline15"
         app:layout_constraintTop_toTopOf="@+id/guideline15"
-<<<<<<< HEAD
         tools:context=".mainActivity.SignUpFragment">
 
         <EditText
             android:id="@+id/userName1"
-=======
-        tools:context=".SignUpFragment">
-
-        <EditText
-            android:id="@+id/userName"
->>>>>>> 0dc8da569ffe7518b77b8381b378569437e92ec7
             android:layout_width="320dp"
             android:layout_height="45dp"
             android:layout_marginStart="8dp"
@@ -94,11 +83,7 @@
             app:layout_constraintGuide_percent="0.8" />
 
         <EditText
-<<<<<<< HEAD
             android:id="@+id/userPassword1"
-=======
-            android:id="@+id/userPassword"
->>>>>>> 0dc8da569ffe7518b77b8381b378569437e92ec7
             android:layout_width="320dp"
             android:layout_height="45dp"
             android:autofillHints=""
@@ -112,11 +97,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
         <EditText
-<<<<<<< HEAD
             android:id="@+id/userPasswordCheck1"
-=======
-            android:id="@+id/userPasswordCheck"
->>>>>>> 0dc8da569ffe7518b77b8381b378569437e92ec7
             android:layout_width="320dp"
             android:layout_height="45dp"
             android:autofillHints=""

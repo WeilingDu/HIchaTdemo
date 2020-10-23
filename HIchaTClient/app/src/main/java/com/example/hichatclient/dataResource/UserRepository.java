@@ -3,8 +3,8 @@ package com.example.hichatclient.dataResource;
 import android.content.Context;
 
 import com.example.hichatclient.data.ChatDatabase;
-import com.example.hichatclient.data.User;
-import com.example.hichatclient.data.UserDao;
+import com.example.hichatclient.data.entity.User;
+import com.example.hichatclient.data.dao.UserDao;
 
 public class UserRepository {
     private UserDao userDao;

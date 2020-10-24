@@ -83,7 +83,7 @@
             app:layout_constraintGuide_percent="0.8" />
 
         <EditText
-            android:id="@+id/userPassword1"
+            android:id="@+id/userPasswordSign"
             android:layout_width="320dp"
             android:layout_height="45dp"
             android:autofillHints=""

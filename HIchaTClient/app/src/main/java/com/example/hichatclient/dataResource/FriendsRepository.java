@@ -21,7 +21,7 @@ public class FriendsRepository {
 
 
     // 从服务器获取好友列表，在Base Activity中执行
-    public List<Friend> getUserFriendsFromServer(String userID, String token){
+    public List<Friend> getUserFriendsFromServer(String userID, String userShortToken, String userLongToken){
         List<Friend> friends = new ArrayList<>();
         Friend friend1 = new Friend("1", "11", "a", "123", "123", "123");
         Friend friend2 = new Friend("1", "22", "b", "123", "123", "123");
@@ -61,6 +61,11 @@ public class FriendsRepository {
         LiveData<List<Friend>> friends;
         friends = friendDao.getAllUserFriend(userID);
         return friends;
+    }
+
+    // 从数据库中搜索好友
+    public LiveData<List<Friend>> findFriendsWithPatten(String patten){
+        return friendDao.findFriendsWithPatten( " %" + patten + "%");  // 加上通配符，模糊匹配
     }
 
 

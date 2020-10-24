@@ -14,10 +14,23 @@
         android:id="@+id/contactsFragment"
         android:name="com.example.hichatclient.baseActivity.ContactsFragment"
         android:label="通讯录"
-        tools:layout="@layout/contacts_fragment" />
+        tools:layout="@layout/contacts_fragment" >
+        <action
+            android:id="@+id/action_contactsFragment_to_addFriendFragment"
+            app:destination="@id/addFriendFragment" />
+    </fragment>
     <fragment
         android:id="@+id/meFragment"
         android:name="com.example.hichatclient.baseActivity.MeFragment"
         android:label="我"
         tools:layout="@layout/fragment_me" />
+    <fragment
+        android:id="@+id/addFriendFragment"
+        android:name="com.example.hichatclient.baseActivity.AddFriendFragment"
+        android:label="添加好友"
+        tools:layout="@layout/fragment_add_friend">
+        <action
+            android:id="@+id/action_addFriendFragment_to_contactsFragment"
+            app:destination="@id/contactsFragment" />
+    </fragment>
 </navigation>

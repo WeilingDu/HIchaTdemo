@@ -1,6 +1,7 @@
 package com.example.hichatclient.baseActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -11,11 +12,18 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.hichatclient.R;
+import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.viewModel.BaseViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BaseActivity extends AppCompatActivity {
     private BaseViewModel baseViewModel;
+    private String userShortToken;
+    private String userLongToken;
+    private User user;
 
 
     @Override
@@ -36,26 +44,21 @@ public class BaseActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         assert bundle != null;
-        String userID;
-        String userName;
-        String userToken;
+        String userID, userShortToken, userLongToken;
         userID = bundle.getString("userID");
-        userName = bundle.getString("userName");
-        userToken = bundle.getString("userToken");
-        System.out.println(userID + userName + userToken);
-        baseViewModel.setUserID(userID);
-        baseViewModel.setUserName(userName);
-        baseViewModel.setUserToken(userToken);
-        baseViewModel.getUserFriendsFromServer(userID, userToken);  // 从服务器获取好友列表并存入数据库中
+        userShortToken = bundle.getString("userShortToken");
+        userLongToken = bundle.getString("userLongToken");
+        System.out.println("baseActivity-userID: " + userID);
+        System.out.println("baseActivity-userShortToken: " + userShortToken);
+        System.out.println("baseActivity-userLongToken: " + userLongToken);
+        baseViewModel.getUserFriendsFromServer(userID, userShortToken, userLongToken);  // 从服务器获取好友列表并存入数据库中
 
-        // 将BaseActivity中的userID、userName、userToken传给其他Fragment;
+
+        // 将BaseActivity中的userID传给其他Fragment;
         MeFragment meFragment = new MeFragment();
         ContactsFragment contactsFragment = new ContactsFragment();
-
         Bundle bundleMyInfo = new Bundle();
         bundleMyInfo.putString("userID", userID);
-        bundleMyInfo.putString("userName", userName);
-        bundleMyInfo.putString("userToken", userToken);
         meFragment.setArguments(bundle);
         contactsFragment.setArguments(bundle);
 

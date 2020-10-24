@@ -17,18 +17,36 @@ public class User {
     private String userName;
     @ColumnInfo(name = "user_profile")
     private String userProfile;
-    @ColumnInfo(name = "user_token")
-    private String userToken;
+    @ColumnInfo(name = "user_short_token")
+    private String userShortToken;
+    @ColumnInfo(name = "user_long_token")
+    private String userLongToken;
 
 
-    public User(String userID, String userPassword, String userName, String userProfile, String userToken) {
+    public User(String userID, String userPassword, String userName, String userProfile, String userShortToken, String userLongToken) {
         this.userID = userID;
         this.userPassword = userPassword;
         this.userName = userName;
         this.userProfile = userProfile;
-        this.userToken = userToken;
+        this.userShortToken = userShortToken;
+        this.userLongToken = userLongToken;
     }
 
+    public String getUserShortToken() {
+        return userShortToken;
+    }
+
+    public void setUserShortToken(String userShortToken) {
+        this.userShortToken = userShortToken;
+    }
+
+    public String getUserLongToken() {
+        return userLongToken;
+    }
+
+    public void setUserLongToken(String userLongToken) {
+        this.userLongToken = userLongToken;
+    }
 
     public int getId() {
         return id;
@@ -70,12 +88,5 @@ public class User {
         this.userProfile = userProfile;
     }
 
-    public String getUserToken() {
-        return userToken;
-    }
-
-    public void setUserToken(String userToken) {
-        this.userToken = userToken;
-    }
 
 }

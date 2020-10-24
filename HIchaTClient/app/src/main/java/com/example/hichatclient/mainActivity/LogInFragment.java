@@ -1,6 +1,5 @@
 package com.example.hichatclient.mainActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -19,7 +18,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -30,11 +28,7 @@ import com.example.hichatclient.viewModel.LogInViewModel;
 import com.example.hichatclient.data.entity.User;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LogInFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class LogInFragment extends Fragment {
     private Button buttonLogIn;
     private Button buttonToSignUp;
@@ -43,14 +37,7 @@ public class LogInFragment extends Fragment {
     private LogInViewModel logInViewModel;
     private FragmentActivity activity;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public LogInFragment() {
         // Required empty public constructor
@@ -75,9 +62,6 @@ public class LogInFragment extends Fragment {
         editTextUserPassword = activity.findViewById(R.id.userPassword1);
 
         buttonLogIn.setEnabled(false);
-        editTextUserID.requestFocus();
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(editTextUserID, 0);
 
         TextWatcher textWatcher = new TextWatcher() {
             @Override
@@ -113,17 +97,17 @@ public class LogInFragment extends Fragment {
                 } else {
                     logInViewModel.insertUser(user);
                     Toast.makeText(getActivity(), "登录成功！", Toast.LENGTH_SHORT).show();
-//                    NavController navController = Navigation.findNavController(v);
-//                    navController.navigate(R.id.action_logInFragment_to_meFragment);
-                    InputMethodManager imm = (InputMethodManager) requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
 
                     // 跳转至BaseActivity的MeFragment
                     Intent intent = new Intent();
                     intent.setClass(activity, BaseActivity.class);
                     intent.putExtra("userID", user.getUserID());
-                    intent.putExtra("userName", user.getUserName());
-                    intent.putExtra("userToken", user.getUserToken());
+                    intent.putExtra("userShortToken", user.getUserShortToken());
+                    intent.putExtra("userLongToken", user.getUserLongToken());
+                    System.out.println("mainActivity-userID: " + user.getUserID());
+                    System.out.println("mainActivity-userShortToken: " + user.getUserShortToken());
+                    System.out.println("mainActivity-userLongToke: " + user.getUserLongToken());
                     startActivity(intent);
                 }
             }

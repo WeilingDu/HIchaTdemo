@@ -15,5 +15,16 @@
     <string name="contacts">通讯录</string>
     <string name="me">我</string>
     <string name="add_friend">添加好友</string>
+    <string name="search1">搜索</string>
+    <string name="friendName">TextView</string>
+    <string name="friendprofile">friendProfile</string>
+    <string name="change">修改密码</string>
+    <string name="id">ID</string>
+    <string name="name">昵称</string>
+    <string name="profile">profile</string>
     <string name="search">搜索</string>
+    <string name="plzid">请输入用户ID</string>
+    <string name="head">head</string>
+    <string name="add">add</string>
+    <string name="addf">添加好友</string>
 </resources>

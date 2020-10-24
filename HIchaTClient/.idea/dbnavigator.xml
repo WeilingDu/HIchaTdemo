@@ -24,24 +24,21 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="c7fb11dc-c768-436f-a7d0-f33e3788dfd2">
+      <connection connection-id="df71113b-7e30-4cb5-b118-ce5de8b9ef7c">
         <schema name="main" object-types="table, index, view, constraint, column, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="c7fb11dc-c768-436f-a7d0-f33e3788dfd2">
-      <console name="user" type="STANDARD" schema="main" session="Main"><![CDATA[select * from "User"]]></console>
+    <connection id="df71113b-7e30-4cb5-b118-ce5de8b9ef7c">
+      <console name="chat" type="STANDARD" schema="main" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="c7fb11dc-c768-436f-a7d0-f33e3788dfd2" />
-  </component>
-  <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="c7fb11dc-c768-436f-a7d0-f33e3788dfd2" dataset="main.User" active-filter-id="" />
+    <connection id="df71113b-7e30-4cb5-b118-ce5de8b9ef7c" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -66,9 +63,9 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="c7fb11dc-c768-436f-a7d0-f33e3788dfd2" active="true">
+      <connection id="df71113b-7e30-4cb5-b118-ce5de8b9ef7c" active="true">
         <database>
-          <name value="user" />
+          <name value="chat" />
           <description value="" />
           <database-type value="SQLITE" />
           <config-type value="BASIC" />
@@ -82,8 +79,6 @@
           <database value="database" />
           <files>
             <file path="$USER_HOME$/Desktop/chat_database" schema="main" />
-            <file path="$USER_HOME$/Desktop/chat_database-shm" schema="" />
-            <file path="$USER_HOME$/Desktop/chat_database-wal" schema="" />
           </files>
           <type value="NONE" />
           <user value="" />

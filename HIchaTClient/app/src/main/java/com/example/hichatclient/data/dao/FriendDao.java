@@ -25,4 +25,9 @@ public interface FriendDao {
     @Query("SELECT * FROM Friend Where user_id LIKE :userID")
     LiveData<List<Friend>> getAllUserFriend(String userID);
 
+
+    @Query("SELECT * FROM Friend Where friend_name LIKE :patten")
+    LiveData<List<Friend>> findFriendsWithPatten(String patten);
+
+
 }

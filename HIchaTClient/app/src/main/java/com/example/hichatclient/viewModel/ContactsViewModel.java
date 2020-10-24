@@ -53,4 +53,8 @@ public class ContactsViewModel extends AndroidViewModel {
         return allUserFriendsLive;
     }
 
+    public LiveData<List<Friend>> findFriendsWithPatten(String patten){
+        return friendsRepository.findFriendsWithPatten(patten);
+    }
+
 }

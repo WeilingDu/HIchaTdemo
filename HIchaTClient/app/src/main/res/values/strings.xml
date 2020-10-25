@@ -27,4 +27,7 @@
     <string name="head">head</string>
     <string name="add">add</string>
     <string name="addf">添加好友</string>
+    <string name="name1">原昵称</string>
+    <string name="name2">新昵称</string>
+    <string name="plzname">请输入新昵称</string>
 </resources>

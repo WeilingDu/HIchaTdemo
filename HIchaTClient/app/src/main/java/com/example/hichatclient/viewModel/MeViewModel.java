@@ -11,6 +11,8 @@ import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.dataResource.MeRepository;
 import com.example.hichatclient.dataResource.UserRepository;
 
+import java.util.List;
+
 public class MeViewModel extends AndroidViewModel {
     private String userID;
     private MeRepository meRepository;
@@ -29,7 +31,7 @@ public class MeViewModel extends AndroidViewModel {
         this.userID = userID;
     }
 
-    public LiveData<User> getUserInfo(String userID){
+    public LiveData<List<User>> getUserInfo(String userID){
         return meRepository.getUserInfo(userID);
     }
 

@@ -27,6 +27,7 @@ import com.example.hichatclient.baseActivity.BaseActivity;
 import com.example.hichatclient.viewModel.LogInViewModel;
 import com.example.hichatclient.data.entity.User;
 
+import java.io.IOException;
 
 
 public class LogInFragment extends Fragment {
@@ -90,8 +91,13 @@ public class LogInFragment extends Fragment {
             public void onClick(View v) {
                 String userID = editTextUserID.getText().toString().trim();
                 String userPassword = editTextUserPassword.getText().toString().trim();
-                User user;
-                user = logInViewModel.sendIDAndPassword(userID, userPassword);
+                User user = new User();
+                try {
+                    user = logInViewModel.sendIDAndPassword(userID, userPassword);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                //user = logInViewModel.sendIDAndPasswordTest(userID, userPassword); // 用于本地测试
                 if (user == null) {
                     Toast.makeText(getActivity(), "登录失败！", Toast.LENGTH_SHORT).show();
                 } else {
@@ -110,6 +116,7 @@ public class LogInFragment extends Fragment {
                     System.out.println("mainActivity-userLongToke: " + user.getUserLongToken());
                     startActivity(intent);
                 }
+
             }
         });
 

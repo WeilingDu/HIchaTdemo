@@ -14,7 +14,6 @@ import java.util.List;
 
 public class BaseViewModel extends AndroidViewModel {
     private FriendsRepository friendsRepository;
-    private UserRepository userRepository;
     private String userID;
 
     public String getUserID() {
@@ -26,14 +25,11 @@ public class BaseViewModel extends AndroidViewModel {
     }
 
 
-    public List<String> getTokens(String userID){
-        return userRepository.getUserTokens(userID);
-    }
+
 
     public BaseViewModel(@NonNull Application application) {
         super(application);
         friendsRepository = new FriendsRepository(application);
-        userRepository = new UserRepository(application);
     }
 
 

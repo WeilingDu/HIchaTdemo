@@ -32,6 +32,10 @@ public class User {
         this.userLongToken = userLongToken;
     }
 
+    public User() {
+
+    }
+
     public String getUserShortToken() {
         return userShortToken;
     }

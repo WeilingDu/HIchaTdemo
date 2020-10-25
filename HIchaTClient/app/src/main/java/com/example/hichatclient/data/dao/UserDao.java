@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.data.entity.User;
@@ -17,12 +18,16 @@ public interface UserDao {
     void insertUser(User... users);
 
     @Delete
-    void deleteFriend(Friend... friends);
+    void deleteUser(User... users);
+
+    @Update
+    void updateUser(User... users);
 
     @Query("SELECT * FROM User Where user_id LIKE :userID")
-    LiveData<List<User>> getUserTokens(String userID);
+    LiveData<List<User>> getUserInfo(String userID);
+
 
     @Query("SELECT * FROM User Where user_id LIKE :userID")
-    LiveData<User> getUserInfo(String userID);
+    User getUserByUserID(String userID);
 
 }

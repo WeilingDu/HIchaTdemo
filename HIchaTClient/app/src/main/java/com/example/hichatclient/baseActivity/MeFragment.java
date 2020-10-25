@@ -7,9 +7,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +24,9 @@ import com.example.hichatclient.R;
 import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.viewModel.MeViewModel;
 
+import java.util.List;
+import java.util.Objects;
+
 public class MeFragment extends Fragment {
     private MeViewModel meViewModel;
     private FragmentActivity activity;
@@ -28,6 +34,8 @@ public class MeFragment extends Fragment {
     private TextView textViewUserID;
     private TextView textViewUserName;
     private Button buttonChangePassword;
+    private LiveData<List<User>> users;
+    private User user;
 
     public static MeFragment newInstance() {
         return new MeFragment();
@@ -60,14 +68,31 @@ public class MeFragment extends Fragment {
         }
 
         // 从数据库中获取用户信息
-//        userInfo = meViewModel.getUserInfo(meViewModel.getUserID());
-//        userInfo.observe(activity, new Observer<User>() {
-//            @Override
-//            public void onChanged(User user) {
-//                textViewUserID.setText(user.getId());
-//                textViewUserName.setText(user.getUserName());
-//            }
-//        });
+        users = meViewModel.getUserInfo(meViewModel.getUserID());
+        users.observe(getViewLifecycleOwner(), new Observer<List<User>>() {
+            @Override
+            public void onChanged(List<User> users) {
+                user = users.get(users.size()-1);
+                textViewUserID.setText(user.getUserID());
+                textViewUserName.setText(user.getUserName());
+            }
+        });
+
+        textViewUserName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = Navigation.findNavController(v);
+                Bundle bundle = new Bundle();
+                bundle.putString("userID", user.getUserID());
+                bundle.putString("userName", user.getUserName());
+                bundle.putString("userShortToken", user.getUserShortToken());
+                navController.navigate(R.id.action_meFragment_to_changNameFragment, bundle);
+            }
+        });
+
+
+
+
 
     }
 

@@ -7,6 +7,8 @@ import androidx.lifecycle.AndroidViewModel;
 
 import com.example.hichatclient.dataResource.UserRepository;
 
+import java.io.IOException;
+
 public class SignUpViewModel extends AndroidViewModel {
     private UserRepository userRepository;
 
@@ -16,7 +18,8 @@ public class SignUpViewModel extends AndroidViewModel {
         userRepository = new UserRepository(application);
     }
 
-    public String signUp(String userName, String userPassword){
+    public String signUp(String userName, String userPassword) throws InterruptedException {
+        System.out.println("viewModel" + userName + userPassword);
         return userRepository.signUp(userName, userPassword);
     }
 }

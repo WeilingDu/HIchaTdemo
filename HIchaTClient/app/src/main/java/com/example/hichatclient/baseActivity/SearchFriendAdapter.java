@@ -45,7 +45,6 @@ public class SearchFriendAdapter extends RecyclerView.Adapter<SearchFriendAdapte
         holder.textViewSearchID.setText(friend.getResultID());
         holder.buttonAdd.setTag(position);
 
-
     }
 
     @Override

@@ -38,6 +38,8 @@ public class ContactsFragment extends Fragment {
     private RecyclerView recyclerView;
     private FriendAdapter friendAdapter;
     private Button button;
+    private String userID;
+    private String userShortToken;
 
     public ContactsFragment() {
         setHasOptionsMenu(true);  // 强制顶部工具条显示
@@ -76,8 +78,8 @@ public class ContactsFragment extends Fragment {
         // 获取BaseActivity传递过来的参数
         if (isAdded()){
             assert getArguments() != null;
-            String userID = activity.getIntent().getStringExtra("userID");
-            contactsViewModel.setUserID(userID);
+            userID = activity.getIntent().getStringExtra("userID");
+            userShortToken = activity.getIntent().getStringExtra("userShortToken");
         }
 
 
@@ -86,14 +88,14 @@ public class ContactsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(activity));
         recyclerView.setAdapter(friendAdapter);
 
-        String userID;
-        userID = contactsViewModel.getUserID();
 
         contactsViewModel.getUserFriendsFromSQL(userID).observe(activity, new Observer<List<Friend>>() {
             @Override
             public void onChanged(List<Friend> friends) {
                 int temp = friendAdapter.getItemCount();
                 friendAdapter.setAllFriends(friends);
+                friendAdapter.setUserID(userID);
+                friendAdapter.setUserShortToken(userShortToken);
                 if(temp != friends.size()){
                     friendAdapter.notifyDataSetChanged();
                 }

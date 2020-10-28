@@ -53,5 +53,9 @@
         android:id="@+id/changePasswordFragment"
         android:name="com.example.hichatclient.baseActivity.ChangePasswordFragment"
         android:label="修改密码"
-        tools:layout="@layout/change_password_fragment" />
+        tools:layout="@layout/change_password_fragment" >
+        <action
+            android:id="@+id/action_changePasswordFragment_to_meFragment"
+            app:destination="@id/meFragment" />
+    </fragment>
 </navigation>

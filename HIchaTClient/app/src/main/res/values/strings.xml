@@ -30,4 +30,10 @@
     <string name="name1">原昵称</string>
     <string name="name2">新昵称</string>
     <string name="plzname">请输入新昵称</string>
+    <string name="change1">确认修改</string>
+    <string name="inputOld">请输入旧密码</string>
+    <string name="inputNew">请输入新密码</string>
+    <string name="inputNew2">请再次输入新密码</string>
+    <string name="send3">发送</string>
+    <string name="plzinput">请输入...</string>
 </resources>

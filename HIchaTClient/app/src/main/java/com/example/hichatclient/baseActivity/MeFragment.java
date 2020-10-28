@@ -90,6 +90,18 @@ public class MeFragment extends Fragment {
             }
         });
 
+        buttonChangePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = Navigation.findNavController(v);
+                Bundle bundle = new Bundle();
+                bundle.putString("userID", user.getUserID());
+                bundle.putString("userPassword", user.getUserPassword());
+                bundle.putString("userShortToken", user.getUserShortToken());
+                navController.navigate(R.id.action_meFragment_to_changePasswordFragment, bundle);
+            }
+        });
+
 
 
 

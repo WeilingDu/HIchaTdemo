@@ -1,5 +1,6 @@
 package com.example.hichatclient.baseActivity;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hichatclient.R;
+import com.example.hichatclient.chatActivity.ChatActivity;
 import com.example.hichatclient.data.entity.Friend;
 
 import java.util.ArrayList;
@@ -18,6 +20,16 @@ import java.util.List;
 
 public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendViewHolder> {
     List<Friend> allFriends = new ArrayList<>();
+    private String userID;
+    private String userShortToken;
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public void setUserShortToken(String userShortToken) {
+        this.userShortToken = userShortToken;
+    }
 
     public void setAllFriends(List<Friend> allFriends) {
         this.allFriends = allFriends;
@@ -33,13 +45,18 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FriendViewHolder holder, int position) {
-        Friend friend = allFriends.get(position);
+    public void onBindViewHolder(@NonNull final FriendViewHolder holder, int position) {
+        final Friend friend = allFriends.get(position);
         holder.textViewFriendName.setText(friend.getFriendName());
         holder.imageViewFriendImage.setImageAlpha(1);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(holder.itemView.getContext(), ChatActivity.class);
+                intent.putExtra("friendID", friend.getFriendID());
+                intent.putExtra("userID", userID);
+                intent.putExtra("userShortToken", userShortToken);
+                holder.itemView.getContext().startActivity(intent);
 
             }
         });

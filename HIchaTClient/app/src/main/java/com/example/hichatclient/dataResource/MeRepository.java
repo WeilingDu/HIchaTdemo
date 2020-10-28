@@ -24,12 +24,17 @@ public class MeRepository {
     }
 
     // 向服务器发送更新用户昵称的请求
-    public int updataUserNameToServer(String userShortToken, String userNewName){
+    public int updateUserNameToServer(String userShortToken, String userNewName){
         int flag = 1;
 
         return flag;
     }
 
+    // 向服务器发送更新用户密码的请求
+    public int updateUserPasswordToServer(String userShortToken, String userNewPassword){
+        int flag = 1;
+        return flag;
+    }
 
     // 更新数据库中的用户信息
     public void updateUserInfoInSQL(User user){

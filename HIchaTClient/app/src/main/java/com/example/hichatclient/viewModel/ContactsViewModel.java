@@ -16,8 +16,7 @@ public class ContactsViewModel extends AndroidViewModel {
     private FriendsRepository friendsRepository;
     private LiveData<List<Friend>> allUserFriendsLive;
     private String userID;
-    private String userName;
-    private String userToken;
+    private String userShortToken;
 
     public String getUserID() {
         return userID;
@@ -27,20 +26,13 @@ public class ContactsViewModel extends AndroidViewModel {
         this.userID = userID;
     }
 
-    public String getUserName() {
-        return userName;
+
+    public String getUserShortToken() {
+        return userShortToken;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserToken() {
-        return userToken;
-    }
-
-    public void setUserToken(String userToken) {
-        this.userToken = userToken;
+    public void setUserShortToken(String userShortToken) {
+        this.userShortToken = userShortToken;
     }
 
     public ContactsViewModel(@NonNull Application application) {

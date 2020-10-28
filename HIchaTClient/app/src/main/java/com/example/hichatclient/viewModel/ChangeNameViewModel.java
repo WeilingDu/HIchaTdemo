@@ -19,11 +19,10 @@ public class ChangeNameViewModel extends AndroidViewModel {
     }
 
     public int updateUserNameToServer(String shortToken, String userNewName){
-        return meRepository.updataUserNameToServer(shortToken, userNewName);
+        return meRepository.updateUserNameToServer(shortToken, userNewName);
     }
 
     public void updateUserInfoInSQL(User user){
-        System.out.println("viewMoedel_changeName");
         meRepository.updateUserInfoInSQL(user);
     }
 

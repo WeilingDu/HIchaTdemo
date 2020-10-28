@@ -91,19 +91,19 @@ public class ChangeNameFragment extends Fragment {
                 userNewName = editTextUserNewName.getText().toString().trim();
                 int flag = changeNameViewModel.updateUserNameToServer(userShortToken, userNewName);
                 if(flag == 1){
-                    User user = new User();
+
                     try {
+                        User user;
                         user = changeNameViewModel.getUserInfoByUserID(userID);
-                        System.out.println(user.getUserID() + user.getUserName());
+                        user.setUserName(userNewName);
+                        changeNameViewModel.updateUserInfoInSQL(user);
+                        Toast.makeText(getActivity(), "修改成功！", Toast.LENGTH_SHORT).show();
+                        NavController navController = Navigation.findNavController(v);
+                        navController.navigate(R.id.action_changeNameFragment_to_meFragment);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    user.setUserName(userNewName);
-                    System.out.println(user.getUserName());
-                    changeNameViewModel.updateUserInfoInSQL(user);
-                    Toast.makeText(getActivity(), "修改成功！", Toast.LENGTH_SHORT).show();
-                    NavController navController = Navigation.findNavController(v);
-                    navController.navigate(R.id.action_changeNameFragment_to_meFragment);
+
                 } else {
                     Toast.makeText(getActivity(), "修改失败！", Toast.LENGTH_SHORT).show();
                 }

@@ -59,6 +59,7 @@ public class BaseActivity extends AppCompatActivity {
         ContactsFragment contactsFragment = new ContactsFragment();
         Bundle bundleMyInfo = new Bundle();
         bundleMyInfo.putString("userID", userID);
+        bundleMyInfo.putString("userShortToken", userShortToken);
         meFragment.setArguments(bundle);
         contactsFragment.setArguments(bundle);
 

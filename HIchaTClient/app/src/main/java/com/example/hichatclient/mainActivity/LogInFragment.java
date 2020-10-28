@@ -91,31 +91,32 @@ public class LogInFragment extends Fragment {
             public void onClick(View v) {
                 String userID = editTextUserID.getText().toString().trim();
                 String userPassword = editTextUserPassword.getText().toString().trim();
-                User user = new User();
                 try {
+                    User user;
                     user = logInViewModel.sendIDAndPassword(userID, userPassword);
+                    //user = logInViewModel.sendIDAndPasswordTest(userID, userPassword); // 用于本地测试
+                    if (user == null) {
+                        Toast.makeText(getActivity(), "登录失败！", Toast.LENGTH_SHORT).show();
+                    } else {
+                        logInViewModel.insertUser(user);
+                        Toast.makeText(getActivity(), "登录成功！", Toast.LENGTH_SHORT).show();
+
+
+                        // 跳转至BaseActivity的MeFragment
+                        Intent intent = new Intent();
+                        intent.setClass(activity, BaseActivity.class);
+                        intent.putExtra("userID", user.getUserID());
+                        intent.putExtra("userShortToken", user.getUserShortToken());
+                        intent.putExtra("userLongToken", user.getUserLongToken());
+                        System.out.println("mainActivity-userID: " + user.getUserID());
+                        System.out.println("mainActivity-userShortToken: " + user.getUserShortToken());
+                        System.out.println("mainActivity-userLongToke: " + user.getUserLongToken());
+                        startActivity(intent);
+                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                //user = logInViewModel.sendIDAndPasswordTest(userID, userPassword); // 用于本地测试
-                if (user == null) {
-                    Toast.makeText(getActivity(), "登录失败！", Toast.LENGTH_SHORT).show();
-                } else {
-                    logInViewModel.insertUser(user);
-                    Toast.makeText(getActivity(), "登录成功！", Toast.LENGTH_SHORT).show();
 
-
-                    // 跳转至BaseActivity的MeFragment
-                    Intent intent = new Intent();
-                    intent.setClass(activity, BaseActivity.class);
-                    intent.putExtra("userID", user.getUserID());
-                    intent.putExtra("userShortToken", user.getUserShortToken());
-                    intent.putExtra("userLongToken", user.getUserLongToken());
-                    System.out.println("mainActivity-userID: " + user.getUserID());
-                    System.out.println("mainActivity-userShortToken: " + user.getUserShortToken());
-                    System.out.println("mainActivity-userLongToke: " + user.getUserLongToken());
-                    startActivity(intent);
-                }
 
             }
         });

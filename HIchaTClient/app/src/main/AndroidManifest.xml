@@ -11,10 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".chatActivity.ChatActivity"></activity>
+        <activity android:name=".chatActivity.FriendInfoActivity" />
+
         <service
             android:name=".service.HeartbeatService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <activity android:name=".baseActivity.BaseActivity" />
         <activity android:name=".mainActivity.MainActivity">

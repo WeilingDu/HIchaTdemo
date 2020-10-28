@@ -13,19 +13,19 @@ public class ChattingContent {
     private String userID;
     @ColumnInfo(name = "friend_id")
     private String friendID;
-    @ColumnInfo(name = "send_person")
-    private String sendPerson;
-    @ColumnInfo(name = "send_time")
-    private String sendTime;
-    @ColumnInfo(name = "send_content")
-    private String sendContent;
+    @ColumnInfo(name = "msg_type")
+    private String msgType;
+    @ColumnInfo(name = "msg_time")
+    private String msgTime;
+    @ColumnInfo(name = "msg_content")
+    private String msgContent;
 
-    public ChattingContent(String userID, String friendID, String sendPerson, String sendTime, String sendContent) {
+    public ChattingContent(String userID, String friendID, String msgType, String msgTime, String msgContent) {
         this.userID = userID;
         this.friendID = friendID;
-        this.sendPerson = sendPerson;
-        this.sendTime = sendTime;
-        this.sendContent = sendContent;
+        this.msgType = msgType;
+        this.msgTime = msgTime;
+        this.msgContent = msgContent;
     }
 
     public int getId() {
@@ -52,27 +52,27 @@ public class ChattingContent {
         this.friendID = friendID;
     }
 
-    public String getSendPerson() {
-        return sendPerson;
+    public String getMsgType() {
+        return msgType;
     }
 
-    public void setSendPerson(String sendPerson) {
-        this.sendPerson = sendPerson;
+    public void setMsgType(String msgType) {
+        this.msgType = msgType;
     }
 
-    public String getSendTime() {
-        return sendTime;
+    public String getMsgTime() {
+        return msgTime;
     }
 
-    public void setSendTime(String sendTime) {
-        this.sendTime = sendTime;
+    public void setMsgTime(String sendTime) {
+        this.msgTime = sendTime;
     }
 
-    public String getSendContent() {
-        return sendContent;
+    public String getMsgContent() {
+        return msgContent;
     }
 
-    public void setSendContent(String sendContent) {
-        this.sendContent = sendContent;
+    public void setMsgContent(String sendContent) {
+        this.msgContent = sendContent;
     }
 }

@@ -1,30 +1,24 @@
 package com.example.hichatclient.baseActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.hichatclient.R;
-import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.viewModel.BaseViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BaseActivity extends AppCompatActivity {
     private BaseViewModel baseViewModel;
-    private String userShortToken;
-    private String userLongToken;
-    private User user;
+    private SharedPreferences sharedPreferences;
 
 
     @Override
@@ -41,40 +35,24 @@ public class BaseActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, configuration);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
-        // 获取MainActivity传来的参数
-        Intent intent = this.getIntent();
-        Bundle bundle = intent.getExtras();
-        assert bundle != null;
-        final String userID, userShortToken, userLongToken;
-        userID = bundle.getString("userID");
-        userShortToken = bundle.getString("userShortToken");
-        userLongToken = bundle.getString("userLongToken");
-        System.out.println("baseActivity-userID: " + userID);
-        System.out.println("baseActivity-userShortToken: " + userShortToken);
-        System.out.println("baseActivity-userLongToken: " + userLongToken);
+        // 获取Share Preferences中的数据
+        sharedPreferences = getSharedPreferences("MY_DATA", MODE_PRIVATE);
+        final String userID = sharedPreferences.getString("userID", "fail");
+        final String userShortToken = sharedPreferences.getString("userShortToken", "fail");
+
+
+        // 从服务器获取好友列表并存入数据库中
         new Thread(new Runnable(){
             @Override
             public void run() {
                 try {
-                    baseViewModel.getUserFriendsFromServer(userID, userShortToken, userLongToken);  // 从服务器获取好友列表并存入数据库中
+                    baseViewModel.getUserFriendsFromServer(userID, userShortToken);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
 
-
-
-
-
-        // 将BaseActivity中的userID传给其他Fragment;
-        MeFragment meFragment = new MeFragment();
-        ContactsFragment contactsFragment = new ContactsFragment();
-        Bundle bundleMyInfo = new Bundle();
-        bundleMyInfo.putString("userID", userID);
-        bundleMyInfo.putString("userShortToken", userShortToken);
-        meFragment.setArguments(bundle);
-        contactsFragment.setArguments(bundle);
 
     }
 }

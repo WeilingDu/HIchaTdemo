@@ -3,6 +3,8 @@ package com.example.hichatclient.baseActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -27,14 +29,14 @@ import com.example.hichatclient.viewModel.ChangeNameViewModel;
 
 public class ChangeNameFragment extends Fragment {
     private ChangeNameViewModel changeNameViewModel;
-    private String userID;
-    private String userName;
-    private String userNewName;
-    private String userShortToken;
     private TextView textViewUserName;
     private EditText editTextUserNewName;
     private Button buttonChangeName;
     private FragmentActivity activity;
+    private SharedPreferences sharedPreferences;
+
+    private String userName;
+    private String userNewName;
 
     public static ChangeNameFragment newInstance() {
         return new ChangeNameFragment();
@@ -58,9 +60,12 @@ public class ChangeNameFragment extends Fragment {
 
         // 获取MeFragment传来的参数
         assert getArguments() != null;
-        userID = getArguments().getString("userID");
         userName = getArguments().getString("userName");
-        userShortToken = getArguments().getString("userShortToken");
+
+        // 获取Share Preferences中的数据
+        sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
+        final String userID = sharedPreferences.getString("userID", "fail");
+        final String userShortToken = sharedPreferences.getString("userShortToken", "fail");
 
 
         buttonChangeName.setEnabled(false);
@@ -91,7 +96,6 @@ public class ChangeNameFragment extends Fragment {
                 userNewName = editTextUserNewName.getText().toString().trim();
                 int flag = changeNameViewModel.updateUserNameToServer(userShortToken, userNewName);
                 if(flag == 1){
-
                     try {
                         User user;
                         user = changeNameViewModel.getUserInfoByUserID(userID);

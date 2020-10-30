@@ -28,7 +28,7 @@ public class LogInViewModel extends AndroidViewModel {
         return userRepository.sendIDAndLogIn(userID, userPassword);
     }
 
-    public void insertUser(User user){
+    public void insertUser(User user) throws InterruptedException {
         userRepository.insertUser(user);
     }
 

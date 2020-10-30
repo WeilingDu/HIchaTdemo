@@ -1,6 +1,8 @@
 package com.example.hichatclient.baseActivity;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -31,13 +33,13 @@ import java.util.Objects;
 public class MeFragment extends Fragment {
     private MeViewModel meViewModel;
     private FragmentActivity activity;
-    private String userID;
     private TextView textViewUserID;
     private TextView textViewUserName;
     private Button buttonChangePassword;
     private ImageView imageViewProfile;
     private LiveData<List<User>> users;
     private User user;
+    private SharedPreferences sharedPreferences;
 
     public static MeFragment newInstance() {
         return new MeFragment();
@@ -54,7 +56,6 @@ public class MeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         // TODO: Use the ViewModel
-
         activity = requireActivity();
         meViewModel = new ViewModelProvider(activity).get(MeViewModel.class);
 
@@ -64,15 +65,13 @@ public class MeFragment extends Fragment {
         imageViewProfile = activity.findViewById(R.id.imageViewProfile);
         imageViewProfile.setImageResource(R.drawable.profile);
 
-        // 获取BaseActivity传递过来的参数
-        if (isAdded()){
-            assert getArguments() != null;
-            userID = activity.getIntent().getStringExtra("userID");
-            meViewModel.setUserID(userID);
-        }
+
+        // 获取Share Preferences中的数据
+        sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
+        final String userID = sharedPreferences.getString("userID", "fail");
 
         // 从数据库中获取用户信息
-        users = meViewModel.getUserInfo(meViewModel.getUserID());
+        users = meViewModel.getUserInfo(userID);
         users.observe(getViewLifecycleOwner(), new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
@@ -87,9 +86,7 @@ public class MeFragment extends Fragment {
             public void onClick(View v) {
                 NavController navController = Navigation.findNavController(v);
                 Bundle bundle = new Bundle();
-                bundle.putString("userID", user.getUserID());
                 bundle.putString("userName", user.getUserName());
-                bundle.putString("userShortToken", user.getUserShortToken());
                 navController.navigate(R.id.action_meFragment_to_changNameFragment, bundle);
             }
         });
@@ -98,11 +95,7 @@ public class MeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 NavController navController = Navigation.findNavController(v);
-                Bundle bundle = new Bundle();
-                bundle.putString("userID", user.getUserID());
-                bundle.putString("userPassword", user.getUserPassword());
-                bundle.putString("userShortToken", user.getUserShortToken());
-                navController.navigate(R.id.action_meFragment_to_changePasswordFragment, bundle);
+                navController.navigate(R.id.action_meFragment_to_changePasswordFragment);
             }
         });
 

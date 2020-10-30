@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -38,8 +40,7 @@ public class ContactsFragment extends Fragment {
     private RecyclerView recyclerView;
     private FriendAdapter friendAdapter;
     private Button button;
-    private String userID;
-    private String userShortToken;
+    private SharedPreferences sharedPreferences;
 
     public ContactsFragment() {
         setHasOptionsMenu(true);  // 强制顶部工具条显示
@@ -75,12 +76,10 @@ public class ContactsFragment extends Fragment {
         // contactsViewModel只在这个Fragment的生命周期中存活
         contactsViewModel = new ViewModelProvider(this).get(ContactsViewModel.class);
 
-        // 获取BaseActivity传递过来的参数
-        if (isAdded()){
-            assert getArguments() != null;
-            userID = activity.getIntent().getStringExtra("userID");
-            userShortToken = activity.getIntent().getStringExtra("userShortToken");
-        }
+        // 获取Share Preferences中的数据
+        sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
+        final String userID = sharedPreferences.getString("userID", "fail");
+        final String userShortToken = sharedPreferences.getString("userShortToken", "fail");
 
 
         recyclerView = activity.findViewById(R.id.recyclerFriends);

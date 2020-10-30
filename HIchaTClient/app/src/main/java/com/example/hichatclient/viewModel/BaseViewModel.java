@@ -34,7 +34,7 @@ public class BaseViewModel extends AndroidViewModel {
     }
 
 
-    public void getUserFriendsFromServer(String userID, String userShortToken, String userLongToken) throws IOException {
-        friendsRepository.getUserFriendsFromServer(userID, userShortToken, userLongToken);
+    public void getUserFriendsFromServer(String userID, String userShortToken) throws IOException {
+        friendsRepository.getUserFriendsFromServer(userID, userShortToken);
     }
 }

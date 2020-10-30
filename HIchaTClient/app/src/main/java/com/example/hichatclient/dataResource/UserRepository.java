@@ -362,16 +362,25 @@ public class UserRepository {
 
 
 
-    // 向数据库库添加登录成功的用户信息
-    public void insertUser(User user){
-        new insertUserThread(userDao, user).start();
+    // 向数据库添加登录成功的用户信息
+    public void insertUser(User user) throws InterruptedException {
+        GetUserInfoByUserIDThread getUserInfoByUserIDThread = new GetUserInfoByUserIDThread(userDao, user.getUserID());
+        getUserInfoByUserIDThread.start();
+        getUserInfoByUserIDThread.join();
+        if (getUserInfoByUserIDThread.user != null){
+            UpdateUserInfoSQLThread updateUserInfoSQLThread = new UpdateUserInfoSQLThread(userDao, user);
+            updateUserInfoSQLThread.start();
+        } else {
+            InsertUserThread insertUserThread = new InsertUserThread(userDao, user);
+            insertUserThread.start();
+        }
     }
 
-    static class insertUserThread extends Thread {
+    static class InsertUserThread extends Thread {
         UserDao userDao;
         User user;
 
-        public insertUserThread(UserDao userDao, User user) {
+        public InsertUserThread(UserDao userDao, User user) {
             this.userDao = userDao;
             this.user = user;
         }
@@ -380,8 +389,41 @@ public class UserRepository {
         public void run() {
             super.run();
             userDao.insertUser(user);
-            System.out.println("reposi");
         }
     }
+
+    static class UpdateUserInfoSQLThread extends Thread {
+        UserDao userDao;
+        User user;
+
+        public UpdateUserInfoSQLThread(UserDao userDao, User user){
+            this.userDao = userDao;
+            this.user = user;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            userDao.updateUser(user);
+        }
+    }
+
+    static class GetUserInfoByUserIDThread extends Thread {
+        UserDao userDao;
+        String userID;
+        User user = null;
+        public GetUserInfoByUserIDThread(UserDao userDao, String userID){
+            this.userDao = userDao;
+            this.userID = userID;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            user = userDao.getUserByUserID(userID);
+        }
+    }
+
+
 
 }

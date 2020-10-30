@@ -1,6 +1,8 @@
 package com.example.hichatclient.mainActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 
@@ -37,6 +39,7 @@ public class LogInFragment extends Fragment {
     private EditText editTextUserPassword;
     private LogInViewModel logInViewModel;
     private FragmentActivity activity;
+    private SharedPreferences sharedPreferences;
 
 
 
@@ -52,7 +55,7 @@ public class LogInFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated(@Nullable final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         activity = requireActivity();
         logInViewModel = new ViewModelProvider(activity).get(LogInViewModel.class);
@@ -101,16 +104,16 @@ public class LogInFragment extends Fragment {
                         logInViewModel.insertUser(user);
                         Toast.makeText(getActivity(), "登录成功！", Toast.LENGTH_SHORT).show();
 
+                        // 将用户的ID和short token都存到share preferences里面
+                        sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("userID", user.getUserID());
+                        editor.putString("userShortToken", user.getUserShortToken());
+                        editor.apply();
 
                         // 跳转至BaseActivity的MeFragment
                         Intent intent = new Intent();
                         intent.setClass(activity, BaseActivity.class);
-                        intent.putExtra("userID", user.getUserID());
-                        intent.putExtra("userShortToken", user.getUserShortToken());
-                        intent.putExtra("userLongToken", user.getUserLongToken());
-                        System.out.println("mainActivity-userID: " + user.getUserID());
-                        System.out.println("mainActivity-userShortToken: " + user.getUserShortToken());
-                        System.out.println("mainActivity-userLongToke: " + user.getUserLongToken());
                         startActivity(intent);
                     }
                 } catch (InterruptedException e) {

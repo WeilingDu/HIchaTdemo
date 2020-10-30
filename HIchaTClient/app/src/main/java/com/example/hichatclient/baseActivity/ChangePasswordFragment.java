@@ -4,7 +4,9 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,9 +31,8 @@ import com.example.hichatclient.viewModel.ChangePasswordViewModel;
 
 public class ChangePasswordFragment extends Fragment {
     private ChangePasswordViewModel changePasswordViewModel;
+    private SharedPreferences sharedPreferences;
     private FragmentActivity activity;
-    private String userID;
-    private String userShortToken;
     private String userOldPassword;
     private String userNewPassword;
     private String userNewPasswordCheck;
@@ -62,11 +63,11 @@ public class ChangePasswordFragment extends Fragment {
         editTextUserNewPasswordCheck = activity.findViewById(R.id.editTextNewPasswordCheck);
         buttonChangePassword = activity.findViewById(R.id.buttonChangePassword2);
 
-        // 获取MeFragment传来的参数
-        assert getArguments() != null;
-        userID = getArguments().getString("userID");
-        userOldPassword = getArguments().getString("userPassword");
-        userShortToken = getArguments().getString("userShortToken");
+
+        // 获取Share Preferences中的数据
+        sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
+        final String userID = sharedPreferences.getString("userID", "fail");
+        final String userShortToken = sharedPreferences.getString("userShortToken", "fail");
 
         buttonChangePassword.setEnabled(false);
         TextWatcher textWatcher = new TextWatcher() {

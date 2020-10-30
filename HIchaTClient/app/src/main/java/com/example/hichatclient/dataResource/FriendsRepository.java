@@ -40,7 +40,7 @@ public class FriendsRepository {
 
 
     // 从服务器获取好友列表，在Base Activity中执行
-    public List<Friend> getUserFriendsFromServer(String userID, String userShortToken, String userLongToken) throws IOException {
+    public List<Friend> getUserFriendsFromServer(String userID, String userShortToken) throws IOException {
         List<Friend> friends = new ArrayList<>();
         Socket socket = new Socket("49.234.105.69", 20001);
         System.out.println(socket.isConnected());

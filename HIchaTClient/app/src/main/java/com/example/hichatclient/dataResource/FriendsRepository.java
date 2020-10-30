@@ -4,10 +4,15 @@ import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.hichatclient.Test;
 import com.example.hichatclient.data.ChatDatabase;
 import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.data.dao.FriendDao;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,25 +24,101 @@ public class FriendsRepository {
         friendDao = chatDatabase.getFriendDao();
     }
 
+    public static final int PACKET_HEAD_LENGTH = 4;//从服务器接收的数据包头长度
+    //处理粘包、半包问题使用的数组合并函数
+    public static byte[] mergebyte(byte[] a, byte[] b, int begin, int end) {
+        byte[] add = new byte[a.length + end - begin];
+        int i = 0;
+        for (i = 0; i < a.length; i++) {
+            add[i] = a[i];
+        }
+        for (int k = begin; k < end; k++, i++) {
+            add[i] = b[k];
+        }
+        return add;
+    }
+
 
     // 从服务器获取好友列表，在Base Activity中执行
-    public List<Friend> getUserFriendsFromServer(String userID, String userShortToken, String userLongToken){
+    public List<Friend> getUserFriendsFromServer(String userID, String userShortToken, String userLongToken) throws IOException {
         List<Friend> friends = new ArrayList<>();
-        Friend friend1 = new Friend("10057", "10001", "Vincent", "123", "123", "123");
-        Friend friend2 = new Friend("10057", "10002", "Vivian", "123", "123", "123");
-        Friend friend3 = new Friend("10057", "10003", "Zonglin Wang", "123", "123", "123");
-        Friend friend4 = new Friend("10057", "10004", "Siyu Zhang", "123", "123", "123");
-        Friend friend5 = new Friend("10057", "10005", "Weiling Du", "123", "123", "123");
-        Friend friend6 = new Friend("10057", "10006", "Qinyi Xu", "123", "123", "123");
-        friends.add(friend1);
-        friends.add(friend2);
-        friends.add(friend3);
-        friends.add(friend4);
-        friends.add(friend5);
-        friends.add(friend6);
+        Socket socket = new Socket("49.234.105.69", 20001);
+        System.out.println(socket.isConnected());
+        //发送好友列表请求
+        Test.FriendList.Req.Builder friendListReq = Test.FriendList.Req.newBuilder();
+        friendListReq.setToken(userShortToken);
+        Test.ReqToServer.Builder reqToServer = Test.ReqToServer.newBuilder();
+        reqToServer.setFriendlistReq(friendListReq);
+        byte[] request = reqToServer.build().toByteArray();
+        byte[] len = new byte[4];
+        for (int i = 0;  i < 4;  i++)
+        {
+            len[3-i] = (byte)((request.length >> (8 * i)) & 0xFF);
+        }
+        byte[] send_data = new byte[request.length + len.length];
+        System.arraycopy(len, 0, send_data, 0, len.length);
+        System.arraycopy(request, 0, send_data, len.length, request.length);
+
+        OutputStream outputStream = socket.getOutputStream();
+        outputStream.write(send_data);
+        outputStream.flush();
+        //接收好友列表
+        while(socket.isConnected()){
+            InputStream is = socket.getInputStream();
+            byte[] bytes = new byte[0];
+            if (bytes.length < PACKET_HEAD_LENGTH) {
+                byte[] head = new byte[PACKET_HEAD_LENGTH - bytes.length];
+                int couter = is.read(head);
+                if (couter < 0) {
+                    continue;
+                }
+                bytes = mergebyte(bytes, head, 0, couter);
+                if (couter < PACKET_HEAD_LENGTH) {
+                    continue;
+                }
+            }
+            // 下面这个值请注意，一定要取4长度的字节子数组作为报文长度
+            byte[] temp = new byte[0];
+            temp = mergebyte(temp, bytes, 0, PACKET_HEAD_LENGTH);
+            int bodylength = 0; //包体长度
+            for(int i=0;i<temp.length;i++){
+                bodylength += (temp[i] & 0xff) << ((3-i)*8);
+            }
+            if (bytes.length - PACKET_HEAD_LENGTH < bodylength) {//不够一个包
+                byte[] body = new byte[bodylength + PACKET_HEAD_LENGTH - bytes.length];//剩下应该读的字节(凑一个包)
+                int couter = is.read(body);
+                if (couter < 0) {
+                    continue;
+                }
+                bytes = mergebyte(bytes, body, 0, couter);
+                if (couter < body.length) {
+                    continue;
+                }
+            }
+            byte[] body = new byte[0];
+            body = mergebyte(body, bytes, PACKET_HEAD_LENGTH, bytes.length);
+            Test.RspToClient response = Test.RspToClient.parseFrom(body);
+            Test.RspToClient.RspCase type = response.getRspCase();
+            switch (type) {
+                case FRIENDLIST_RES:
+                    int num = response.getFriendlistRes().getFriendListCount();
+                    for(int i = 0; i < num; i++)
+                    {
+                        Test.People friendi = response.getFriendlistRes().getFriendList(i);
+                        Friend friend = new Friend(userID, Integer.toString(friendi.getId()), friendi.getName(), "123", "123", "123");
+                        friends.add(friend);
+                    }
+                    break;
+                case ERROR:
+                    System.out.println("Fail!!!!");
+                    break;
+            }
+            break;
+        }
         insertFriends(friends); // 将用户的好友信息插入数据库
         return friends;
     }
+
 
     // 将从服务器获取的好友列表存入到数据库中
     public void insertFriends (List<Friend> friends){

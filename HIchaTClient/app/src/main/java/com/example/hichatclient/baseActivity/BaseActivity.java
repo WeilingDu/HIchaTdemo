@@ -16,6 +16,7 @@ import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.viewModel.BaseViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,14 +45,26 @@ public class BaseActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         assert bundle != null;
-        String userID, userShortToken, userLongToken;
+        final String userID, userShortToken, userLongToken;
         userID = bundle.getString("userID");
         userShortToken = bundle.getString("userShortToken");
         userLongToken = bundle.getString("userLongToken");
         System.out.println("baseActivity-userID: " + userID);
         System.out.println("baseActivity-userShortToken: " + userShortToken);
         System.out.println("baseActivity-userLongToken: " + userLongToken);
-        baseViewModel.getUserFriendsFromServer(userID, userShortToken, userLongToken);  // 从服务器获取好友列表并存入数据库中
+        new Thread(new Runnable(){
+            @Override
+            public void run() {
+                try {
+                    baseViewModel.getUserFriendsFromServer(userID, userShortToken, userLongToken);  // 从服务器获取好友列表并存入数据库中
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+
+
 
 
         // 将BaseActivity中的userID传给其他Fragment;

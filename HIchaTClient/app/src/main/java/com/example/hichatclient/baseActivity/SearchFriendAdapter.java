@@ -1,5 +1,7 @@
 package com.example.hichatclient.baseActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +22,7 @@ import com.example.hichatclient.dataResource.FriendsRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchFriendAdapter extends RecyclerView.Adapter<SearchFriendAdapter.SearchFriendViewHolder> implements View.OnClickListener{
+public class SearchFriendAdapter extends RecyclerView.Adapter<SearchFriendAdapter.SearchFriendViewHolder>{
 
     List<SearchResult> allSearchFriends = new ArrayList<>();
     AddFriendRepository addFriendRepository;
@@ -39,11 +41,25 @@ public class SearchFriendAdapter extends RecyclerView.Adapter<SearchFriendAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SearchFriendViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final SearchFriendViewHolder holder, int position) {
         final SearchResult friend = allSearchFriends.get(position);
         holder.textViewSearchName.setText(friend.getResultName());
         holder.textViewSearchID.setText(friend.getResultID());
         holder.buttonAdd.setTag(position);
+        holder.buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(holder.itemView.getContext(), "已发送好友请求！", Toast.LENGTH_SHORT).show();
+//                AlertDialog.Builder builder= new AlertDialog.Builder(holder.itemView.getContext());
+//                builder.setTitle("已发送好友请求！");
+//                builder.setNeutralButton("确认", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                    }
+//                });
+            }
+        });
 
     }
 
@@ -67,30 +83,30 @@ public class SearchFriendAdapter extends RecyclerView.Adapter<SearchFriendAdapte
     }
 
 
-    public enum ViewName{
-        ITEM,
-        PRACTISE
-    }
-
-    public interface OnItemClickListener{
-        void onItemClick(View v, ViewName viewName, int position);
-        void onItemLongClick(View v);
-    }
-
-
-    private OnItemClickListener mOnItemClickListener;
-
-    public void setOnItemClickListener(OnItemClickListener listener){
-        this.mOnItemClickListener = listener;
-    }
-
-    @Override
-    public void onClick(View v){
-        int position = (int) v.getTag();
-        if(mOnItemClickListener != null){
-            if (v.getId() == R.id.imageButton){
-                mOnItemClickListener.onItemClick(v, ViewName.PRACTISE, position);
-            }
-        }
-    }
+//    public enum ViewName{
+//        ITEM,
+//        PRACTISE
+//    }
+//
+//    public interface OnItemClickListener{
+//        void onItemClick(View v, ViewName viewName, int position);
+//        void onItemLongClick(View v);
+//    }
+//
+//
+//    private OnItemClickListener mOnItemClickListener;
+//
+//    public void setOnItemClickListener(OnItemClickListener listener){
+//        this.mOnItemClickListener = listener;
+//    }
+//
+//    @Override
+//    public void onClick(View v){
+//        int position = (int) v.getTag();
+//        if(mOnItemClickListener != null){
+//            if (v.getId() == R.id.imageButton){
+//                mOnItemClickListener.onItemClick(v, ViewName.PRACTISE, position);
+//            }
+//        }
+//    }
 }

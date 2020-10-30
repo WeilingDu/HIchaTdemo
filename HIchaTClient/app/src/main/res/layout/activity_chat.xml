@@ -20,14 +20,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline45"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.88" />
 
     <EditText
         android:id="@+id/editTextSendContent"
@@ -44,8 +44,8 @@
 
     <Button
         android:id="@+id/buttonSend2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="74dp"
+        android:layout_height="66dp"
         android:text="@string/send3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,12 +59,4 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.8" />
 
-    <TextView
-        android:id="@+id/textViewChatFriend"
-        android:layout_width="191dp"
-        android:layout_height="42dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline44"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

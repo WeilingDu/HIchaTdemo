@@ -24,5 +24,8 @@ public class ChatViewModel extends AndroidViewModel {
     }
 
 
+    public boolean sendMessageToServer(ChattingContent chattingContent,  String userShortToken){
+        return messageRepository.sendMessageToServer(chattingContent, userShortToken);
+    }
 
 }

@@ -48,7 +48,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
     public void onBindViewHolder(@NonNull final FriendViewHolder holder, int position) {
         final Friend friend = allFriends.get(position);
         holder.textViewFriendName.setText(friend.getFriendName());
-        holder.imageViewFriendImage.setImageAlpha(1);
+        holder.imageViewFriendImage.setImageResource(R.drawable.profile);;
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

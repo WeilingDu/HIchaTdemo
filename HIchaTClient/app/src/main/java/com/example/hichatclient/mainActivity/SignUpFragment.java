@@ -191,7 +191,7 @@ public class SignUpFragment extends Fragment {
 
         buttonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 String userName = editTextUserName.getText().toString().trim();
                 String userPassword = editTextUserPassword.getText().toString().trim();
                 String userPasswordCheck = editTextUserPasswordCheck.getText().toString().trim();
@@ -207,7 +207,7 @@ public class SignUpFragment extends Fragment {
                         builder.setPositiveButton("返回登录界面", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                NavController controller = Navigation.findNavController(activity, R.id.nav_graph);
+                                NavController controller = Navigation.findNavController(v);
                                 controller.navigate(R.id.action_signUpFragment_to_logInFragment);
                             }
                         });

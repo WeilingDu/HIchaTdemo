@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".chatActivity.ChatActivity"></activity>
+        <service
+            android:name=".service.ChatService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity android:name=".chatActivity.ChatActivity" />
         <activity android:name=".chatActivity.FriendInfoActivity" />
 
         <service
@@ -19,8 +24,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".baseActivity.BaseActivity" />
-        <activity android:name=".mainActivity.MainActivity">
+        <activity android:name=".baseActivity.BaseActivity" android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity android:name=".mainActivity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

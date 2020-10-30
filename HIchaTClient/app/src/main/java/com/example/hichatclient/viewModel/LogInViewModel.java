@@ -23,12 +23,12 @@ public class LogInViewModel extends AndroidViewModel {
     }
 
 
+
     public User sendIDAndPassword(String userID, String userPassword) throws InterruptedException {
         return userRepository.sendIDAndLogIn(userID, userPassword);
     }
 
     public void insertUser(User user){
-        System.out.println("viewModel");
         userRepository.insertUser(user);
     }
 

@@ -23,12 +23,12 @@ public class FriendsRepository {
     // 从服务器获取好友列表，在Base Activity中执行
     public List<Friend> getUserFriendsFromServer(String userID, String userShortToken, String userLongToken){
         List<Friend> friends = new ArrayList<>();
-        Friend friend1 = new Friend("10048", "10001", "Vincent", "123", "123", "123");
-        Friend friend2 = new Friend("10048", "10002", "Vivian", "123", "123", "123");
-        Friend friend3 = new Friend("10048", "10003", "Zonglin Wang", "123", "123", "123");
-        Friend friend4 = new Friend("10048", "10004", "Siyu Zhang", "123", "123", "123");
-        Friend friend5 = new Friend("10048", "10005", "Weiling Du", "123", "123", "123");
-        Friend friend6 = new Friend("10048", "10006", "Qinyi Xu", "123", "123", "123");
+        Friend friend1 = new Friend("10057", "10001", "Vincent", "123", "123", "123");
+        Friend friend2 = new Friend("10057", "10002", "Vivian", "123", "123", "123");
+        Friend friend3 = new Friend("10057", "10003", "Zonglin Wang", "123", "123", "123");
+        Friend friend4 = new Friend("10057", "10004", "Siyu Zhang", "123", "123", "123");
+        Friend friend5 = new Friend("10057", "10005", "Weiling Du", "123", "123", "123");
+        Friend friend6 = new Friend("10057", "10006", "Qinyi Xu", "123", "123", "123");
         friends.add(friend1);
         friends.add(friend2);
         friends.add(friend3);

@@ -16,10 +16,10 @@ public class AddFriendRepository {
 
     public List<SearchResult> searchPeopleFromID (String personID){
         List<SearchResult> results= new ArrayList<>();
-        SearchResult result1 = new SearchResult("123", "jane");
-        SearchResult result2 = new SearchResult("111", "jack");
+        SearchResult result1 = new SearchResult("10032", "Jane");
+        //SearchResult result2 = new SearchResult("10031", "jack");
         results.add(result1);
-        results.add(result2);
+        //results.add(result2);
         System.out.println("reposi");
         return results;
     }

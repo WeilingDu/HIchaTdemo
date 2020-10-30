@@ -19,7 +19,6 @@ public class SignUpViewModel extends AndroidViewModel {
     }
 
     public String signUp(String userName, String userPassword) throws InterruptedException {
-        System.out.println("viewModel" + userName + userPassword);
         return userRepository.signUp(userName, userPassword);
     }
 }

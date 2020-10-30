@@ -54,14 +54,14 @@ public final class Test {
      * <code>optional uint32 id = 1;</code>
      */
     private void setId(int value) {
-
+      
       id_ = value;
     }
     /**
      * <code>optional uint32 id = 1;</code>
      */
     private void clearId() {
-
+      
       id_ = 0;
     }
 
@@ -88,14 +88,14 @@ public final class Test {
       if (value == null) {
     throw new NullPointerException();
   }
-
+  
       name_ = value;
     }
     /**
      * <code>optional string name = 2;</code>
      */
     private void clearName() {
-
+      
       name_ = getDefaultInstance().getName();
     }
     /**
@@ -107,7 +107,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+      
       name_ = value.toStringUtf8();
     }
 
@@ -126,14 +126,14 @@ public final class Test {
       if (value == null) {
     throw new NullPointerException();
   }
-
+  
       headpic_ = value;
     }
     /**
      * <code>optional bytes headpic = 3;</code>
      */
     private void clearHeadpic() {
-
+      
       headpic_ = getDefaultInstance().getHeadpic();
     }
 
@@ -171,60 +171,60 @@ public final class Test {
       return size;
     }
 
-    public static Test.People parseFrom(
+    public static People parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.People parseFrom(
+    public static People parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.People parseFrom(byte[] data)
+    public static People parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.People parseFrom(
+    public static People parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.People parseFrom(java.io.InputStream input)
+    public static People parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.People parseFrom(
+    public static People parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.People parseDelimitedFrom(java.io.InputStream input)
+    public static People parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static Test.People parseDelimitedFrom(
+    public static People parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.People parseFrom(
+    public static People parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.People parseFrom(
+    public static People parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -235,7 +235,7 @@ public final class Test {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Test.People prototype) {
+    public static Builder newBuilder(People prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
@@ -246,7 +246,7 @@ public final class Test {
         com.google.protobuf.GeneratedMessageLite.Builder<
           People, Builder> implements
         // @@protoc_insertion_point(builder_implements:People)
-        Test.PeopleOrBuilder {
+        PeopleOrBuilder {
       // Construct using Test.People.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
@@ -346,7 +346,7 @@ public final class Test {
         Object arg0, Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new Test.People();
+          return new People();
         }
         case IS_INITIALIZED: {
           return DEFAULT_INSTANCE;
@@ -359,7 +359,7 @@ public final class Test {
         }
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
-          Test.People other = (Test.People) arg1;
+          People other = (People) arg1;
           id_ = visitor.visitInt(id_ != 0, id_,
               other.id_ != 0, other.id_);
           name_ = visitor.visitString(!name_.isEmpty(), name_,
@@ -421,7 +421,7 @@ public final class Test {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          if (PARSER == null) {    synchronized (Test.People.class) {
+          if (PARSER == null) {    synchronized (People.class) {
               if (PARSER == null) {
                 PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
               }
@@ -435,13 +435,13 @@ public final class Test {
 
 
     // @@protoc_insertion_point(class_scope:People)
-    private static final Test.People DEFAULT_INSTANCE;
+    private static final People DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new People();
       DEFAULT_INSTANCE.makeImmutable();
     }
 
-    public static Test.People getDefaultInstance() {
+    public static People getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -528,14 +528,14 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         aShortToken_ = value;
       }
       /**
        * <code>optional string A_short_token = 1;</code>
        */
       private void clearAShortToken() {
-
+        
         aShortToken_ = getDefaultInstance().getAShortToken();
       }
       /**
@@ -547,7 +547,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         aShortToken_ = value.toStringUtf8();
       }
 
@@ -563,14 +563,14 @@ public final class Test {
        * <code>optional uint32 B_id = 2;</code>
        */
       private void setBId(int value) {
-
+        
         bId_ = value;
       }
       /**
        * <code>optional uint32 B_id = 2;</code>
        */
       private void clearBId() {
-
+        
         bId_ = 0;
       }
 
@@ -586,14 +586,14 @@ public final class Test {
        * <code>optional uint64 A_time = 3;</code>
        */
       private void setATime(long value) {
-
+        
         aTime_ = value;
       }
       /**
        * <code>optional uint64 A_time = 3;</code>
        */
       private void clearATime() {
-
+        
         aTime_ = 0L;
       }
 
@@ -631,60 +631,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.AddFriend.AToServer parseFrom(
+      public static AToServer parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.AddFriend.AToServer parseFrom(
+      public static AToServer parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.AddFriend.AToServer parseFrom(byte[] data)
+      public static AToServer parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.AddFriend.AToServer parseFrom(
+      public static AToServer parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.AddFriend.AToServer parseFrom(java.io.InputStream input)
+      public static AToServer parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.AddFriend.AToServer parseFrom(
+      public static AToServer parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.AddFriend.AToServer parseDelimitedFrom(java.io.InputStream input)
+      public static AToServer parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.AddFriend.AToServer parseDelimitedFrom(
+      public static AToServer parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.AddFriend.AToServer parseFrom(
+      public static AToServer parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.AddFriend.AToServer parseFrom(
+      public static AToServer parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -695,7 +695,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.AddFriend.AToServer prototype) {
+      public static Builder newBuilder(AToServer prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -710,7 +710,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             AToServer, Builder> implements
           // @@protoc_insertion_point(builder_implements:AddFriend.AToServer)
-          Test.AddFriend.AToServerOrBuilder {
+          AToServerOrBuilder {
         // Construct using Test.AddFriend.AToServer.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -810,7 +810,7 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.AddFriend.AToServer();
+            return new AToServer();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
@@ -823,7 +823,7 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.AddFriend.AToServer other = (Test.AddFriend.AToServer) arg1;
+            AToServer other = (AToServer) arg1;
             aShortToken_ = visitor.visitString(!aShortToken_.isEmpty(), aShortToken_,
                 !other.aShortToken_.isEmpty(), other.aShortToken_);
             bId_ = visitor.visitInt(bId_ != 0, bId_,
@@ -885,7 +885,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.AddFriend.AToServer.class) {
+            if (PARSER == null) {    synchronized (AToServer.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -899,13 +899,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:AddFriend.AToServer)
-      private static final Test.AddFriend.AToServer DEFAULT_INSTANCE;
+      private static final AToServer DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new AToServer();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.AddFriend.AToServer getDefaultInstance() {
+      public static AToServer getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -927,7 +927,7 @@ public final class Test {
       /**
        * <code>optional .People A_info = 1;</code>
        */
-      Test.People getAInfo();
+      People getAInfo();
 
       /**
        * <code>optional uint64 A_time = 2;</code>
@@ -945,7 +945,7 @@ public final class Test {
       private ServerRelayToB() {
       }
       public static final int A_INFO_FIELD_NUMBER = 1;
-      private Test.People aInfo_;
+      private People aInfo_;
       /**
        * <code>optional .People A_info = 1;</code>
        */
@@ -955,45 +955,45 @@ public final class Test {
       /**
        * <code>optional .People A_info = 1;</code>
        */
-      public Test.People getAInfo() {
-        return aInfo_ == null ? Test.People.getDefaultInstance() : aInfo_;
+      public People getAInfo() {
+        return aInfo_ == null ? People.getDefaultInstance() : aInfo_;
       }
       /**
        * <code>optional .People A_info = 1;</code>
        */
-      private void setAInfo(Test.People value) {
+      private void setAInfo(People value) {
         if (value == null) {
           throw new NullPointerException();
         }
         aInfo_ = value;
-
+        
         }
       /**
        * <code>optional .People A_info = 1;</code>
        */
       private void setAInfo(
-          Test.People.Builder builderForValue) {
+          People.Builder builderForValue) {
         aInfo_ = builderForValue.build();
-
+        
       }
       /**
        * <code>optional .People A_info = 1;</code>
        */
-      private void mergeAInfo(Test.People value) {
+      private void mergeAInfo(People value) {
         if (aInfo_ != null &&
-            aInfo_ != Test.People.getDefaultInstance()) {
+            aInfo_ != People.getDefaultInstance()) {
           aInfo_ =
-            Test.People.newBuilder(aInfo_).mergeFrom(value).buildPartial();
+            People.newBuilder(aInfo_).mergeFrom(value).buildPartial();
         } else {
           aInfo_ = value;
         }
-
+        
       }
       /**
        * <code>optional .People A_info = 1;</code>
        */
       private void clearAInfo() {  aInfo_ = null;
-
+        
       }
 
       public static final int A_TIME_FIELD_NUMBER = 2;
@@ -1008,14 +1008,14 @@ public final class Test {
        * <code>optional uint64 A_time = 2;</code>
        */
       private void setATime(long value) {
-
+        
         aTime_ = value;
       }
       /**
        * <code>optional uint64 A_time = 2;</code>
        */
       private void clearATime() {
-
+        
         aTime_ = 0L;
       }
 
@@ -1046,60 +1046,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.AddFriend.ServerRelayToB parseFrom(
+      public static ServerRelayToB parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.AddFriend.ServerRelayToB parseFrom(
+      public static ServerRelayToB parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.AddFriend.ServerRelayToB parseFrom(byte[] data)
+      public static ServerRelayToB parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.AddFriend.ServerRelayToB parseFrom(
+      public static ServerRelayToB parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.AddFriend.ServerRelayToB parseFrom(java.io.InputStream input)
+      public static ServerRelayToB parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.AddFriend.ServerRelayToB parseFrom(
+      public static ServerRelayToB parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.AddFriend.ServerRelayToB parseDelimitedFrom(java.io.InputStream input)
+      public static ServerRelayToB parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.AddFriend.ServerRelayToB parseDelimitedFrom(
+      public static ServerRelayToB parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.AddFriend.ServerRelayToB parseFrom(
+      public static ServerRelayToB parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.AddFriend.ServerRelayToB parseFrom(
+      public static ServerRelayToB parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -1110,7 +1110,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.AddFriend.ServerRelayToB prototype) {
+      public static Builder newBuilder(ServerRelayToB prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -1121,7 +1121,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             ServerRelayToB, Builder> implements
           // @@protoc_insertion_point(builder_implements:AddFriend.ServerRelayToB)
-          Test.AddFriend.ServerRelayToBOrBuilder {
+          ServerRelayToBOrBuilder {
         // Construct using Test.AddFriend.ServerRelayToB.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -1137,13 +1137,13 @@ public final class Test {
         /**
          * <code>optional .People A_info = 1;</code>
          */
-        public Test.People getAInfo() {
+        public People getAInfo() {
           return instance.getAInfo();
         }
         /**
          * <code>optional .People A_info = 1;</code>
          */
-        public Builder setAInfo(Test.People value) {
+        public Builder setAInfo(People value) {
           copyOnWrite();
           instance.setAInfo(value);
           return this;
@@ -1152,7 +1152,7 @@ public final class Test {
          * <code>optional .People A_info = 1;</code>
          */
         public Builder setAInfo(
-            Test.People.Builder builderForValue) {
+            People.Builder builderForValue) {
           copyOnWrite();
           instance.setAInfo(builderForValue);
           return this;
@@ -1160,7 +1160,7 @@ public final class Test {
         /**
          * <code>optional .People A_info = 1;</code>
          */
-        public Builder mergeAInfo(Test.People value) {
+        public Builder mergeAInfo(People value) {
           copyOnWrite();
           instance.mergeAInfo(value);
           return this;
@@ -1203,7 +1203,7 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.AddFriend.ServerRelayToB();
+            return new ServerRelayToB();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
@@ -1216,7 +1216,7 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.AddFriend.ServerRelayToB other = (Test.AddFriend.ServerRelayToB) arg1;
+            ServerRelayToB other = (ServerRelayToB) arg1;
             aInfo_ = visitor.visitMessage(aInfo_, other.aInfo_);
             aTime_ = visitor.visitLong(aTime_ != 0L, aTime_,
                 other.aTime_ != 0L, other.aTime_);
@@ -1245,11 +1245,11 @@ public final class Test {
                     break;
                   }
                   case 10: {
-                    Test.People.Builder subBuilder = null;
+                    People.Builder subBuilder = null;
                     if (aInfo_ != null) {
                       subBuilder = aInfo_.toBuilder();
                     }
-                    aInfo_ = input.readMessage(Test.People.parser(), extensionRegistry);
+                    aInfo_ = input.readMessage(People.parser(), extensionRegistry);
                     if (subBuilder != null) {
                       subBuilder.mergeFrom(aInfo_);
                       aInfo_ = subBuilder.buildPartial();
@@ -1277,7 +1277,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.AddFriend.ServerRelayToB.class) {
+            if (PARSER == null) {    synchronized (ServerRelayToB.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -1291,13 +1291,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:AddFriend.ServerRelayToB)
-      private static final Test.AddFriend.ServerRelayToB DEFAULT_INSTANCE;
+      private static final ServerRelayToB DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new ServerRelayToB();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.AddFriend.ServerRelayToB getDefaultInstance() {
+      public static ServerRelayToB getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -1355,14 +1355,14 @@ public final class Test {
        * <code>optional uint32 A_id = 1;</code>
        */
       private void setAId(int value) {
-
+        
         aId_ = value;
       }
       /**
        * <code>optional uint32 A_id = 1;</code>
        */
       private void clearAId() {
-
+        
         aId_ = 0;
       }
 
@@ -1378,14 +1378,14 @@ public final class Test {
        * <code>optional bool refuse = 2;</code>
        */
       private void setRefuse(boolean value) {
-
+        
         refuse_ = value;
       }
       /**
        * <code>optional bool refuse = 2;</code>
        */
       private void clearRefuse() {
-
+        
         refuse_ = false;
       }
 
@@ -1412,14 +1412,14 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         bShortToken_ = value;
       }
       /**
        * <code>optional string B_short_token = 3;</code>
        */
       private void clearBShortToken() {
-
+        
         bShortToken_ = getDefaultInstance().getBShortToken();
       }
       /**
@@ -1431,7 +1431,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         bShortToken_ = value.toStringUtf8();
       }
 
@@ -1469,60 +1469,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.AddFriend.BToServer parseFrom(
+      public static BToServer parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.AddFriend.BToServer parseFrom(
+      public static BToServer parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.AddFriend.BToServer parseFrom(byte[] data)
+      public static BToServer parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.AddFriend.BToServer parseFrom(
+      public static BToServer parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.AddFriend.BToServer parseFrom(java.io.InputStream input)
+      public static BToServer parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.AddFriend.BToServer parseFrom(
+      public static BToServer parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.AddFriend.BToServer parseDelimitedFrom(java.io.InputStream input)
+      public static BToServer parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.AddFriend.BToServer parseDelimitedFrom(
+      public static BToServer parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.AddFriend.BToServer parseFrom(
+      public static BToServer parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.AddFriend.BToServer parseFrom(
+      public static BToServer parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -1533,7 +1533,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.AddFriend.BToServer prototype) {
+      public static Builder newBuilder(BToServer prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -1544,7 +1544,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             BToServer, Builder> implements
           // @@protoc_insertion_point(builder_implements:AddFriend.BToServer)
-          Test.AddFriend.BToServerOrBuilder {
+          BToServerOrBuilder {
         // Construct using Test.AddFriend.BToServer.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -1644,7 +1644,7 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.AddFriend.BToServer();
+            return new BToServer();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
@@ -1657,7 +1657,7 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.AddFriend.BToServer other = (Test.AddFriend.BToServer) arg1;
+            BToServer other = (BToServer) arg1;
             aId_ = visitor.visitInt(aId_ != 0, aId_,
                 other.aId_ != 0, other.aId_);
             refuse_ = visitor.visitBoolean(refuse_ != false, refuse_,
@@ -1719,7 +1719,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.AddFriend.BToServer.class) {
+            if (PARSER == null) {    synchronized (BToServer.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -1733,13 +1733,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:AddFriend.BToServer)
-      private static final Test.AddFriend.BToServer DEFAULT_INSTANCE;
+      private static final BToServer DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new BToServer();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.AddFriend.BToServer getDefaultInstance() {
+      public static BToServer getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -1786,14 +1786,14 @@ public final class Test {
        * <code>optional uint32 B_id = 1;</code>
        */
       private void setBId(int value) {
-
+        
         bId_ = value;
       }
       /**
        * <code>optional uint32 B_id = 1;</code>
        */
       private void clearBId() {
-
+        
         bId_ = 0;
       }
 
@@ -1809,14 +1809,14 @@ public final class Test {
        * <code>optional bool refuse = 2;</code>
        */
       private void setRefuse(boolean value) {
-
+        
         refuse_ = value;
       }
       /**
        * <code>optional bool refuse = 2;</code>
        */
       private void clearRefuse() {
-
+        
         refuse_ = false;
       }
 
@@ -1847,60 +1847,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.AddFriend.ServerRspToA parseFrom(
+      public static ServerRspToA parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.AddFriend.ServerRspToA parseFrom(
+      public static ServerRspToA parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.AddFriend.ServerRspToA parseFrom(byte[] data)
+      public static ServerRspToA parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.AddFriend.ServerRspToA parseFrom(
+      public static ServerRspToA parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.AddFriend.ServerRspToA parseFrom(java.io.InputStream input)
+      public static ServerRspToA parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.AddFriend.ServerRspToA parseFrom(
+      public static ServerRspToA parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.AddFriend.ServerRspToA parseDelimitedFrom(java.io.InputStream input)
+      public static ServerRspToA parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.AddFriend.ServerRspToA parseDelimitedFrom(
+      public static ServerRspToA parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.AddFriend.ServerRspToA parseFrom(
+      public static ServerRspToA parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.AddFriend.ServerRspToA parseFrom(
+      public static ServerRspToA parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -1911,7 +1911,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.AddFriend.ServerRspToA prototype) {
+      public static Builder newBuilder(ServerRspToA prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -1922,7 +1922,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             ServerRspToA, Builder> implements
           // @@protoc_insertion_point(builder_implements:AddFriend.ServerRspToA)
-          Test.AddFriend.ServerRspToAOrBuilder {
+          ServerRspToAOrBuilder {
         // Construct using Test.AddFriend.ServerRspToA.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -1982,7 +1982,7 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.AddFriend.ServerRspToA();
+            return new ServerRspToA();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
@@ -1995,7 +1995,7 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.AddFriend.ServerRspToA other = (Test.AddFriend.ServerRspToA) arg1;
+            ServerRspToA other = (ServerRspToA) arg1;
             bId_ = visitor.visitInt(bId_ != 0, bId_,
                 other.bId_ != 0, other.bId_);
             refuse_ = visitor.visitBoolean(refuse_ != false, refuse_,
@@ -2049,7 +2049,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.AddFriend.ServerRspToA.class) {
+            if (PARSER == null) {    synchronized (ServerRspToA.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -2063,13 +2063,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:AddFriend.ServerRspToA)
-      private static final Test.AddFriend.ServerRspToA DEFAULT_INSTANCE;
+      private static final ServerRspToA DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new ServerRspToA();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.AddFriend.ServerRspToA getDefaultInstance() {
+      public static ServerRspToA getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -2093,60 +2093,60 @@ public final class Test {
       return size;
     }
 
-    public static Test.AddFriend parseFrom(
+    public static AddFriend parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.AddFriend parseFrom(
+    public static AddFriend parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.AddFriend parseFrom(byte[] data)
+    public static AddFriend parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.AddFriend parseFrom(
+    public static AddFriend parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.AddFriend parseFrom(java.io.InputStream input)
+    public static AddFriend parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.AddFriend parseFrom(
+    public static AddFriend parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.AddFriend parseDelimitedFrom(java.io.InputStream input)
+    public static AddFriend parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static Test.AddFriend parseDelimitedFrom(
+    public static AddFriend parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.AddFriend parseFrom(
+    public static AddFriend parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.AddFriend parseFrom(
+    public static AddFriend parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2157,7 +2157,7 @@ public final class Test {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Test.AddFriend prototype) {
+    public static Builder newBuilder(AddFriend prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
@@ -2168,7 +2168,7 @@ public final class Test {
         com.google.protobuf.GeneratedMessageLite.Builder<
           AddFriend, Builder> implements
         // @@protoc_insertion_point(builder_implements:AddFriend)
-        Test.AddFriendOrBuilder {
+        AddFriendOrBuilder {
       // Construct using Test.AddFriend.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
@@ -2182,7 +2182,7 @@ public final class Test {
         Object arg0, Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new Test.AddFriend();
+          return new AddFriend();
         }
         case IS_INITIALIZED: {
           return DEFAULT_INSTANCE;
@@ -2195,7 +2195,7 @@ public final class Test {
         }
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
-          Test.AddFriend other = (Test.AddFriend) arg1;
+          AddFriend other = (AddFriend) arg1;
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -2235,7 +2235,7 @@ public final class Test {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          if (PARSER == null) {    synchronized (Test.AddFriend.class) {
+          if (PARSER == null) {    synchronized (AddFriend.class) {
               if (PARSER == null) {
                 PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
               }
@@ -2249,13 +2249,13 @@ public final class Test {
 
 
     // @@protoc_insertion_point(class_scope:AddFriend)
-    private static final Test.AddFriend DEFAULT_INSTANCE;
+    private static final AddFriend DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new AddFriend();
       DEFAULT_INSTANCE.makeImmutable();
     }
 
-    public static Test.AddFriend getDefaultInstance() {
+    public static AddFriend getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2345,14 +2345,14 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         name_ = value;
       }
       /**
        * <code>optional string name = 1;</code>
        */
       private void clearName() {
-
+        
         name_ = getDefaultInstance().getName();
       }
       /**
@@ -2364,7 +2364,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         name_ = value.toStringUtf8();
       }
 
@@ -2391,14 +2391,14 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         password_ = value;
       }
       /**
        * <code>optional string password = 2;</code>
        */
       private void clearPassword() {
-
+        
         password_ = getDefaultInstance().getPassword();
       }
       /**
@@ -2410,7 +2410,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         password_ = value.toStringUtf8();
       }
 
@@ -2429,14 +2429,14 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         headpic_ = value;
       }
       /**
        * <code>optional bytes headpic = 3;</code>
        */
       private void clearHeadpic() {
-
+        
         headpic_ = getDefaultInstance().getHeadpic();
       }
 
@@ -2474,60 +2474,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.Register.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.Register.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.Register.Req parseFrom(byte[] data)
+      public static Req parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.Register.Req parseFrom(
+      public static Req parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.Register.Req parseFrom(java.io.InputStream input)
+      public static Req parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.Register.Req parseFrom(
+      public static Req parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.Register.Req parseDelimitedFrom(java.io.InputStream input)
+      public static Req parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.Register.Req parseDelimitedFrom(
+      public static Req parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.Register.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.Register.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -2538,7 +2538,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.Register.Req prototype) {
+      public static Builder newBuilder(Req prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -2549,7 +2549,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             Req, Builder> implements
           // @@protoc_insertion_point(builder_implements:Register.Req)
-          Test.Register.ReqOrBuilder {
+          ReqOrBuilder {
         // Construct using Test.Register.Req.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -2666,7 +2666,7 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.Register.Req();
+            return new Req();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
@@ -2679,7 +2679,7 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.Register.Req other = (Test.Register.Req) arg1;
+            Req other = (Req) arg1;
             name_ = visitor.visitString(!name_.isEmpty(), name_,
                 !other.name_.isEmpty(), other.name_);
             password_ = visitor.visitString(!password_.isEmpty(), password_,
@@ -2742,7 +2742,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.Register.Req.class) {
+            if (PARSER == null) {    synchronized (Req.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -2756,13 +2756,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:Register.Req)
-      private static final Test.Register.Req DEFAULT_INSTANCE;
+      private static final Req DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new Req();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.Register.Req getDefaultInstance() {
+      public static Req getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -2804,14 +2804,14 @@ public final class Test {
        * <code>optional uint32 id = 1;</code>
        */
       private void setId(int value) {
-
+        
         id_ = value;
       }
       /**
        * <code>optional uint32 id = 1;</code>
        */
       private void clearId() {
-
+        
         id_ = 0;
       }
 
@@ -2835,60 +2835,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.Register.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.Register.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.Register.Res parseFrom(byte[] data)
+      public static Res parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.Register.Res parseFrom(
+      public static Res parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.Register.Res parseFrom(java.io.InputStream input)
+      public static Res parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.Register.Res parseFrom(
+      public static Res parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.Register.Res parseDelimitedFrom(java.io.InputStream input)
+      public static Res parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.Register.Res parseDelimitedFrom(
+      public static Res parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.Register.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.Register.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -2899,7 +2899,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.Register.Res prototype) {
+      public static Builder newBuilder(Res prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -2910,7 +2910,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             Res, Builder> implements
           // @@protoc_insertion_point(builder_implements:Register.Res)
-          Test.Register.ResOrBuilder {
+          ResOrBuilder {
         // Construct using Test.Register.Res.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -2947,7 +2947,7 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.Register.Res();
+            return new Res();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
@@ -2960,7 +2960,7 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.Register.Res other = (Test.Register.Res) arg1;
+            Res other = (Res) arg1;
             id_ = visitor.visitInt(id_ != 0, id_,
                 other.id_ != 0, other.id_);
             if (visitor == MergeFromVisitor
@@ -3007,7 +3007,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.Register.Res.class) {
+            if (PARSER == null) {    synchronized (Res.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -3021,13 +3021,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:Register.Res)
-      private static final Test.Register.Res DEFAULT_INSTANCE;
+      private static final Res DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new Res();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.Register.Res getDefaultInstance() {
+      public static Res getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -3051,60 +3051,60 @@ public final class Test {
       return size;
     }
 
-    public static Test.Register parseFrom(
+    public static Register parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.Register parseFrom(
+    public static Register parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.Register parseFrom(byte[] data)
+    public static Register parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.Register parseFrom(
+    public static Register parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.Register parseFrom(java.io.InputStream input)
+    public static Register parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.Register parseFrom(
+    public static Register parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.Register parseDelimitedFrom(java.io.InputStream input)
+    public static Register parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static Test.Register parseDelimitedFrom(
+    public static Register parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.Register parseFrom(
+    public static Register parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.Register parseFrom(
+    public static Register parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3115,7 +3115,7 @@ public final class Test {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Test.Register prototype) {
+    public static Builder newBuilder(Register prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
@@ -3126,7 +3126,7 @@ public final class Test {
         com.google.protobuf.GeneratedMessageLite.Builder<
           Register, Builder> implements
         // @@protoc_insertion_point(builder_implements:Register)
-        Test.RegisterOrBuilder {
+        RegisterOrBuilder {
       // Construct using Test.Register.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
@@ -3140,7 +3140,7 @@ public final class Test {
         Object arg0, Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new Test.Register();
+          return new Register();
         }
         case IS_INITIALIZED: {
           return DEFAULT_INSTANCE;
@@ -3153,7 +3153,7 @@ public final class Test {
         }
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
-          Test.Register other = (Test.Register) arg1;
+          Register other = (Register) arg1;
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -3193,7 +3193,7 @@ public final class Test {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          if (PARSER == null) {    synchronized (Test.Register.class) {
+          if (PARSER == null) {    synchronized (Register.class) {
               if (PARSER == null) {
                 PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
               }
@@ -3207,13 +3207,13 @@ public final class Test {
 
 
     // @@protoc_insertion_point(class_scope:Register)
-    private static final Test.Register DEFAULT_INSTANCE;
+    private static final Register DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new Register();
       DEFAULT_INSTANCE.makeImmutable();
     }
 
-    public static Test.Register getDefaultInstance() {
+    public static Register getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3290,14 +3290,14 @@ public final class Test {
        * <code>optional uint32 id = 1;</code>
        */
       private void setId(int value) {
-
+        
         id_ = value;
       }
       /**
        * <code>optional uint32 id = 1;</code>
        */
       private void clearId() {
-
+        
         id_ = 0;
       }
 
@@ -3324,14 +3324,14 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         password_ = value;
       }
       /**
        * <code>optional string password = 2;</code>
        */
       private void clearPassword() {
-
+        
         password_ = getDefaultInstance().getPassword();
       }
       /**
@@ -3343,7 +3343,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         password_ = value.toStringUtf8();
       }
 
@@ -3359,14 +3359,14 @@ public final class Test {
        * <code>optional uint32 in_ip = 3;</code>
        */
       private void setInIp(int value) {
-
+        
         inIp_ = value;
       }
       /**
        * <code>optional uint32 in_ip = 3;</code>
        */
       private void clearInIp() {
-
+        
         inIp_ = 0;
       }
 
@@ -3382,14 +3382,14 @@ public final class Test {
        * <code>optional uint32 in_port = 4;</code>
        */
       private void setInPort(int value) {
-
+        
         inPort_ = value;
       }
       /**
        * <code>optional uint32 in_port = 4;</code>
        */
       private void clearInPort() {
-
+        
         inPort_ = 0;
       }
 
@@ -3434,60 +3434,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.Login.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.Login.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.Login.Req parseFrom(byte[] data)
+      public static Req parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.Login.Req parseFrom(
+      public static Req parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.Login.Req parseFrom(java.io.InputStream input)
+      public static Req parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.Login.Req parseFrom(
+      public static Req parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.Login.Req parseDelimitedFrom(java.io.InputStream input)
+      public static Req parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.Login.Req parseDelimitedFrom(
+      public static Req parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.Login.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.Login.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -3498,7 +3498,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.Login.Req prototype) {
+      public static Builder newBuilder(Req prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -3509,7 +3509,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             Req, Builder> implements
           // @@protoc_insertion_point(builder_implements:Login.Req)
-          Test.Login.ReqOrBuilder {
+          ReqOrBuilder {
         // Construct using Test.Login.Req.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -3632,7 +3632,7 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.Login.Req();
+            return new Req();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
@@ -3645,7 +3645,7 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.Login.Req other = (Test.Login.Req) arg1;
+            Req other = (Req) arg1;
             id_ = visitor.visitInt(id_ != 0, id_,
                 other.id_ != 0, other.id_);
             password_ = visitor.visitString(!password_.isEmpty(), password_,
@@ -3714,7 +3714,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.Login.Req.class) {
+            if (PARSER == null) {    synchronized (Req.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -3728,13 +3728,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:Login.Req)
-      private static final Test.Login.Req DEFAULT_INSTANCE;
+      private static final Req DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new Req();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.Login.Req getDefaultInstance() {
+      public static Req getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -3765,52 +3765,30 @@ public final class Test {
       com.google.protobuf.ByteString getHeadpic();
 
       /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      java.util.List<People>
-          getFriendList();
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      Test.People getFriend(int index);
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      int getFriendCount();
-
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      java.util.List<People>
-          getUsersWaitForAddList();
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      Test.People getUsersWaitForAdd(int index);
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      int getUsersWaitForAddCount();
-
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      java.util.List<Res.RequestFromSelf>
-          getAddFriendReqList();
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      Test.Login.Res.RequestFromSelf getAddFriendReq(int index);
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      int getAddFriendReqCount();
-
-      /**
+       * <pre>
+       * //repeated People friend=3;
+       * repeated People users_wait_for_add=4;
+       * message RequestFromSelf{
+       *     People obj_user = 1;
+       *     bool refuse = 2;
+       * }
+       * repeated RequestFromSelf add_friend_req=5;
+       * </pre>
+       *
        * <code>optional string short_token = 6;</code>
        */
       String getShortToken();
       /**
+       * <pre>
+       * //repeated People friend=3;
+       * repeated People users_wait_for_add=4;
+       * message RequestFromSelf{
+       *     People obj_user = 1;
+       *     bool refuse = 2;
+       * }
+       * repeated RequestFromSelf add_friend_req=5;
+       * </pre>
+       *
        * <code>optional string short_token = 6;</code>
        */
       com.google.protobuf.ByteString
@@ -3842,405 +3820,9 @@ public final class Test {
       private Res() {
         name_ = "";
         headpic_ = com.google.protobuf.ByteString.EMPTY;
-        friend_ = emptyProtobufList();
-        usersWaitForAdd_ = emptyProtobufList();
-        addFriendReq_ = emptyProtobufList();
         shortToken_ = "";
         longToken_ = "";
       }
-      public interface RequestFromSelfOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:Login.Res.RequestFromSelf)
-          com.google.protobuf.MessageLiteOrBuilder {
-
-        /**
-         * <code>optional .People obj_user = 1;</code>
-         */
-        boolean hasObjUser();
-        /**
-         * <code>optional .People obj_user = 1;</code>
-         */
-        Test.People getObjUser();
-
-        /**
-         * <code>optional bool refuse = 2;</code>
-         */
-        boolean getRefuse();
-      }
-      /**
-       * Protobuf type {@code Login.Res.RequestFromSelf}
-       */
-      public  static final class RequestFromSelf extends
-          com.google.protobuf.GeneratedMessageLite<
-              RequestFromSelf, RequestFromSelf.Builder> implements
-          // @@protoc_insertion_point(message_implements:Login.Res.RequestFromSelf)
-          RequestFromSelfOrBuilder {
-        private RequestFromSelf() {
-        }
-        public static final int OBJ_USER_FIELD_NUMBER = 1;
-        private Test.People objUser_;
-        /**
-         * <code>optional .People obj_user = 1;</code>
-         */
-        public boolean hasObjUser() {
-          return objUser_ != null;
-        }
-        /**
-         * <code>optional .People obj_user = 1;</code>
-         */
-        public Test.People getObjUser() {
-          return objUser_ == null ? Test.People.getDefaultInstance() : objUser_;
-        }
-        /**
-         * <code>optional .People obj_user = 1;</code>
-         */
-        private void setObjUser(Test.People value) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          objUser_ = value;
-
-          }
-        /**
-         * <code>optional .People obj_user = 1;</code>
-         */
-        private void setObjUser(
-            Test.People.Builder builderForValue) {
-          objUser_ = builderForValue.build();
-
-        }
-        /**
-         * <code>optional .People obj_user = 1;</code>
-         */
-        private void mergeObjUser(Test.People value) {
-          if (objUser_ != null &&
-              objUser_ != Test.People.getDefaultInstance()) {
-            objUser_ =
-              Test.People.newBuilder(objUser_).mergeFrom(value).buildPartial();
-          } else {
-            objUser_ = value;
-          }
-
-        }
-        /**
-         * <code>optional .People obj_user = 1;</code>
-         */
-        private void clearObjUser() {  objUser_ = null;
-
-        }
-
-        public static final int REFUSE_FIELD_NUMBER = 2;
-        private boolean refuse_;
-        /**
-         * <code>optional bool refuse = 2;</code>
-         */
-        public boolean getRefuse() {
-          return refuse_;
-        }
-        /**
-         * <code>optional bool refuse = 2;</code>
-         */
-        private void setRefuse(boolean value) {
-
-          refuse_ = value;
-        }
-        /**
-         * <code>optional bool refuse = 2;</code>
-         */
-        private void clearRefuse() {
-
-          refuse_ = false;
-        }
-
-        public void writeTo(com.google.protobuf.CodedOutputStream output)
-                            throws java.io.IOException {
-          if (objUser_ != null) {
-            output.writeMessage(1, getObjUser());
-          }
-          if (refuse_ != false) {
-            output.writeBool(2, refuse_);
-          }
-        }
-
-        public int getSerializedSize() {
-          int size = memoizedSerializedSize;
-          if (size != -1) return size;
-
-          size = 0;
-          if (objUser_ != null) {
-            size += com.google.protobuf.CodedOutputStream
-              .computeMessageSize(1, getObjUser());
-          }
-          if (refuse_ != false) {
-            size += com.google.protobuf.CodedOutputStream
-              .computeBoolSize(2, refuse_);
-          }
-          memoizedSerializedSize = size;
-          return size;
-        }
-
-        public static Test.Login.Res.RequestFromSelf parseFrom(
-            com.google.protobuf.ByteString data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, data);
-        }
-        public static Test.Login.Res.RequestFromSelf parseFrom(
-            com.google.protobuf.ByteString data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, data, extensionRegistry);
-        }
-        public static Test.Login.Res.RequestFromSelf parseFrom(byte[] data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, data);
-        }
-        public static Test.Login.Res.RequestFromSelf parseFrom(
-            byte[] data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, data, extensionRegistry);
-        }
-        public static Test.Login.Res.RequestFromSelf parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, input);
-        }
-        public static Test.Login.Res.RequestFromSelf parseFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, input, extensionRegistry);
-        }
-        public static Test.Login.Res.RequestFromSelf parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
-          return parseDelimitedFrom(DEFAULT_INSTANCE, input);
-        }
-        public static Test.Login.Res.RequestFromSelf parseDelimitedFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
-        }
-        public static Test.Login.Res.RequestFromSelf parseFrom(
-            com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, input);
-        }
-        public static Test.Login.Res.RequestFromSelf parseFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, input, extensionRegistry);
-        }
-
-        public static Builder newBuilder() {
-          return DEFAULT_INSTANCE.toBuilder();
-        }
-        public static Builder newBuilder(Test.Login.Res.RequestFromSelf prototype) {
-          return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-        }
-
-        /**
-         * Protobuf type {@code Login.Res.RequestFromSelf}
-         */
-        public static final class Builder extends
-            com.google.protobuf.GeneratedMessageLite.Builder<
-              RequestFromSelf, Builder> implements
-            // @@protoc_insertion_point(builder_implements:Login.Res.RequestFromSelf)
-            Test.Login.Res.RequestFromSelfOrBuilder {
-          // Construct using Test.Login.Res.RequestFromSelf.newBuilder()
-          private Builder() {
-            super(DEFAULT_INSTANCE);
-          }
-
-
-          /**
-           * <code>optional .People obj_user = 1;</code>
-           */
-          public boolean hasObjUser() {
-            return instance.hasObjUser();
-          }
-          /**
-           * <code>optional .People obj_user = 1;</code>
-           */
-          public Test.People getObjUser() {
-            return instance.getObjUser();
-          }
-          /**
-           * <code>optional .People obj_user = 1;</code>
-           */
-          public Builder setObjUser(Test.People value) {
-            copyOnWrite();
-            instance.setObjUser(value);
-            return this;
-            }
-          /**
-           * <code>optional .People obj_user = 1;</code>
-           */
-          public Builder setObjUser(
-              Test.People.Builder builderForValue) {
-            copyOnWrite();
-            instance.setObjUser(builderForValue);
-            return this;
-          }
-          /**
-           * <code>optional .People obj_user = 1;</code>
-           */
-          public Builder mergeObjUser(Test.People value) {
-            copyOnWrite();
-            instance.mergeObjUser(value);
-            return this;
-          }
-          /**
-           * <code>optional .People obj_user = 1;</code>
-           */
-          public Builder clearObjUser() {  copyOnWrite();
-            instance.clearObjUser();
-            return this;
-          }
-
-          /**
-           * <code>optional bool refuse = 2;</code>
-           */
-          public boolean getRefuse() {
-            return instance.getRefuse();
-          }
-          /**
-           * <code>optional bool refuse = 2;</code>
-           */
-          public Builder setRefuse(boolean value) {
-            copyOnWrite();
-            instance.setRefuse(value);
-            return this;
-          }
-          /**
-           * <code>optional bool refuse = 2;</code>
-           */
-          public Builder clearRefuse() {
-            copyOnWrite();
-            instance.clearRefuse();
-            return this;
-          }
-
-          // @@protoc_insertion_point(builder_scope:Login.Res.RequestFromSelf)
-        }
-        protected final Object dynamicMethod(
-            MethodToInvoke method,
-            Object arg0, Object arg1) {
-          switch (method) {
-            case NEW_MUTABLE_INSTANCE: {
-              return new Test.Login.Res.RequestFromSelf();
-            }
-            case IS_INITIALIZED: {
-              return DEFAULT_INSTANCE;
-            }
-            case MAKE_IMMUTABLE: {
-              return null;
-            }
-            case NEW_BUILDER: {
-              return new Builder();
-            }
-            case VISIT: {
-              Visitor visitor = (Visitor) arg0;
-              Test.Login.Res.RequestFromSelf other = (Test.Login.Res.RequestFromSelf) arg1;
-              objUser_ = visitor.visitMessage(objUser_, other.objUser_);
-              refuse_ = visitor.visitBoolean(refuse_ != false, refuse_,
-                  other.refuse_ != false, other.refuse_);
-              if (visitor == MergeFromVisitor
-                  .INSTANCE) {
-              }
-              return this;
-            }
-            case MERGE_FROM_STREAM: {
-              com.google.protobuf.CodedInputStream input =
-                  (com.google.protobuf.CodedInputStream) arg0;
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry =
-                  (com.google.protobuf.ExtensionRegistryLite) arg1;
-              try {
-                boolean done = false;
-                while (!done) {
-                  int tag = input.readTag();
-                  switch (tag) {
-                    case 0:
-                      done = true;
-                      break;
-                    default: {
-                      if (!input.skipField(tag)) {
-                        done = true;
-                      }
-                      break;
-                    }
-                    case 10: {
-                      Test.People.Builder subBuilder = null;
-                      if (objUser_ != null) {
-                        subBuilder = objUser_.toBuilder();
-                      }
-                      objUser_ = input.readMessage(Test.People.parser(), extensionRegistry);
-                      if (subBuilder != null) {
-                        subBuilder.mergeFrom(objUser_);
-                        objUser_ = subBuilder.buildPartial();
-                      }
-
-                      break;
-                    }
-                    case 16: {
-
-                      refuse_ = input.readBool();
-                      break;
-                    }
-                  }
-                }
-              } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw new RuntimeException(e.setUnfinishedMessage(this));
-              } catch (java.io.IOException e) {
-                throw new RuntimeException(
-                    new com.google.protobuf.InvalidProtocolBufferException(
-                        e.getMessage()).setUnfinishedMessage(this));
-              } finally {
-              }
-            }
-            case GET_DEFAULT_INSTANCE: {
-              return DEFAULT_INSTANCE;
-            }
-            case GET_PARSER: {
-              if (PARSER == null) {    synchronized (Test.Login.Res.RequestFromSelf.class) {
-                  if (PARSER == null) {
-                    PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
-                  }
-                }
-              }
-              return PARSER;
-            }
-          }
-          throw new UnsupportedOperationException();
-        }
-
-
-        // @@protoc_insertion_point(class_scope:Login.Res.RequestFromSelf)
-        private static final Test.Login.Res.RequestFromSelf DEFAULT_INSTANCE;
-        static {
-          DEFAULT_INSTANCE = new RequestFromSelf();
-          DEFAULT_INSTANCE.makeImmutable();
-        }
-
-        public static Test.Login.Res.RequestFromSelf getDefaultInstance() {
-          return DEFAULT_INSTANCE;
-        }
-
-        private static volatile com.google.protobuf.Parser<RequestFromSelf> PARSER;
-
-        public static com.google.protobuf.Parser<RequestFromSelf> parser() {
-          return DEFAULT_INSTANCE.getParserForType();
-        }
-      }
-
-      private int bitField0_;
       public static final int NAME_FIELD_NUMBER = 1;
       private String name_;
       /**
@@ -4264,14 +3846,14 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         name_ = value;
       }
       /**
        * <code>optional string name = 1;</code>
        */
       private void clearName() {
-
+        
         name_ = getDefaultInstance().getName();
       }
       /**
@@ -4283,7 +3865,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         name_ = value.toStringUtf8();
       }
 
@@ -4302,386 +3884,46 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         headpic_ = value;
       }
       /**
        * <code>optional bytes headpic = 2;</code>
        */
       private void clearHeadpic() {
-
+        
         headpic_ = getDefaultInstance().getHeadpic();
-      }
-
-      public static final int FRIEND_FIELD_NUMBER = 3;
-      private com.google.protobuf.Internal.ProtobufList<People> friend_;
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      public java.util.List<People> getFriendList() {
-        return friend_;
-      }
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      public java.util.List<? extends PeopleOrBuilder>
-          getFriendOrBuilderList() {
-        return friend_;
-      }
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      public int getFriendCount() {
-        return friend_.size();
-      }
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      public Test.People getFriend(int index) {
-        return friend_.get(index);
-      }
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      public Test.PeopleOrBuilder getFriendOrBuilder(
-          int index) {
-        return friend_.get(index);
-      }
-      private void ensureFriendIsMutable() {
-        if (!friend_.isModifiable()) {
-          friend_ =
-              com.google.protobuf.GeneratedMessageLite.mutableCopy(friend_);
-         }
-      }
-
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      private void setFriend(
-          int index, Test.People value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureFriendIsMutable();
-        friend_.set(index, value);
-      }
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      private void setFriend(
-          int index, Test.People.Builder builderForValue) {
-        ensureFriendIsMutable();
-        friend_.set(index, builderForValue.build());
-      }
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      private void addFriend(Test.People value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureFriendIsMutable();
-        friend_.add(value);
-      }
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      private void addFriend(
-          int index, Test.People value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureFriendIsMutable();
-        friend_.add(index, value);
-      }
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      private void addFriend(
-          Test.People.Builder builderForValue) {
-        ensureFriendIsMutable();
-        friend_.add(builderForValue.build());
-      }
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      private void addFriend(
-          int index, Test.People.Builder builderForValue) {
-        ensureFriendIsMutable();
-        friend_.add(index, builderForValue.build());
-      }
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      private void addAllFriend(
-          Iterable<? extends People> values) {
-        ensureFriendIsMutable();
-        com.google.protobuf.AbstractMessageLite.addAll(
-            values, friend_);
-      }
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      private void clearFriend() {
-        friend_ = emptyProtobufList();
-      }
-      /**
-       * <code>repeated .People friend = 3;</code>
-       */
-      private void removeFriend(int index) {
-        ensureFriendIsMutable();
-        friend_.remove(index);
-      }
-
-      public static final int USERS_WAIT_FOR_ADD_FIELD_NUMBER = 4;
-      private com.google.protobuf.Internal.ProtobufList<People> usersWaitForAdd_;
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      public java.util.List<People> getUsersWaitForAddList() {
-        return usersWaitForAdd_;
-      }
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      public java.util.List<? extends PeopleOrBuilder>
-          getUsersWaitForAddOrBuilderList() {
-        return usersWaitForAdd_;
-      }
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      public int getUsersWaitForAddCount() {
-        return usersWaitForAdd_.size();
-      }
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      public Test.People getUsersWaitForAdd(int index) {
-        return usersWaitForAdd_.get(index);
-      }
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      public Test.PeopleOrBuilder getUsersWaitForAddOrBuilder(
-          int index) {
-        return usersWaitForAdd_.get(index);
-      }
-      private void ensureUsersWaitForAddIsMutable() {
-        if (!usersWaitForAdd_.isModifiable()) {
-          usersWaitForAdd_ =
-              com.google.protobuf.GeneratedMessageLite.mutableCopy(usersWaitForAdd_);
-         }
-      }
-
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      private void setUsersWaitForAdd(
-          int index, Test.People value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureUsersWaitForAddIsMutable();
-        usersWaitForAdd_.set(index, value);
-      }
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      private void setUsersWaitForAdd(
-          int index, Test.People.Builder builderForValue) {
-        ensureUsersWaitForAddIsMutable();
-        usersWaitForAdd_.set(index, builderForValue.build());
-      }
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      private void addUsersWaitForAdd(Test.People value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureUsersWaitForAddIsMutable();
-        usersWaitForAdd_.add(value);
-      }
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      private void addUsersWaitForAdd(
-          int index, Test.People value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureUsersWaitForAddIsMutable();
-        usersWaitForAdd_.add(index, value);
-      }
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      private void addUsersWaitForAdd(
-          Test.People.Builder builderForValue) {
-        ensureUsersWaitForAddIsMutable();
-        usersWaitForAdd_.add(builderForValue.build());
-      }
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      private void addUsersWaitForAdd(
-          int index, Test.People.Builder builderForValue) {
-        ensureUsersWaitForAddIsMutable();
-        usersWaitForAdd_.add(index, builderForValue.build());
-      }
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      private void addAllUsersWaitForAdd(
-          Iterable<? extends People> values) {
-        ensureUsersWaitForAddIsMutable();
-        com.google.protobuf.AbstractMessageLite.addAll(
-            values, usersWaitForAdd_);
-      }
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      private void clearUsersWaitForAdd() {
-        usersWaitForAdd_ = emptyProtobufList();
-      }
-      /**
-       * <code>repeated .People users_wait_for_add = 4;</code>
-       */
-      private void removeUsersWaitForAdd(int index) {
-        ensureUsersWaitForAddIsMutable();
-        usersWaitForAdd_.remove(index);
-      }
-
-      public static final int ADD_FRIEND_REQ_FIELD_NUMBER = 5;
-      private com.google.protobuf.Internal.ProtobufList<RequestFromSelf> addFriendReq_;
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      public java.util.List<RequestFromSelf> getAddFriendReqList() {
-        return addFriendReq_;
-      }
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      public java.util.List<? extends RequestFromSelfOrBuilder>
-          getAddFriendReqOrBuilderList() {
-        return addFriendReq_;
-      }
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      public int getAddFriendReqCount() {
-        return addFriendReq_.size();
-      }
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      public Test.Login.Res.RequestFromSelf getAddFriendReq(int index) {
-        return addFriendReq_.get(index);
-      }
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      public Test.Login.Res.RequestFromSelfOrBuilder getAddFriendReqOrBuilder(
-          int index) {
-        return addFriendReq_.get(index);
-      }
-      private void ensureAddFriendReqIsMutable() {
-        if (!addFriendReq_.isModifiable()) {
-          addFriendReq_ =
-              com.google.protobuf.GeneratedMessageLite.mutableCopy(addFriendReq_);
-         }
-      }
-
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      private void setAddFriendReq(
-          int index, Test.Login.Res.RequestFromSelf value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureAddFriendReqIsMutable();
-        addFriendReq_.set(index, value);
-      }
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      private void setAddFriendReq(
-          int index, Test.Login.Res.RequestFromSelf.Builder builderForValue) {
-        ensureAddFriendReqIsMutable();
-        addFriendReq_.set(index, builderForValue.build());
-      }
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      private void addAddFriendReq(Test.Login.Res.RequestFromSelf value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureAddFriendReqIsMutable();
-        addFriendReq_.add(value);
-      }
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      private void addAddFriendReq(
-          int index, Test.Login.Res.RequestFromSelf value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureAddFriendReqIsMutable();
-        addFriendReq_.add(index, value);
-      }
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      private void addAddFriendReq(
-          Test.Login.Res.RequestFromSelf.Builder builderForValue) {
-        ensureAddFriendReqIsMutable();
-        addFriendReq_.add(builderForValue.build());
-      }
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      private void addAddFriendReq(
-          int index, Test.Login.Res.RequestFromSelf.Builder builderForValue) {
-        ensureAddFriendReqIsMutable();
-        addFriendReq_.add(index, builderForValue.build());
-      }
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      private void addAllAddFriendReq(
-          Iterable<? extends RequestFromSelf> values) {
-        ensureAddFriendReqIsMutable();
-        com.google.protobuf.AbstractMessageLite.addAll(
-            values, addFriendReq_);
-      }
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      private void clearAddFriendReq() {
-        addFriendReq_ = emptyProtobufList();
-      }
-      /**
-       * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-       */
-      private void removeAddFriendReq(int index) {
-        ensureAddFriendReqIsMutable();
-        addFriendReq_.remove(index);
       }
 
       public static final int SHORT_TOKEN_FIELD_NUMBER = 6;
       private String shortToken_;
       /**
+       * <pre>
+       * //repeated People friend=3;
+       * repeated People users_wait_for_add=4;
+       * message RequestFromSelf{
+       *     People obj_user = 1;
+       *     bool refuse = 2;
+       * }
+       * repeated RequestFromSelf add_friend_req=5;
+       * </pre>
+       *
        * <code>optional string short_token = 6;</code>
        */
       public String getShortToken() {
         return shortToken_;
       }
       /**
+       * <pre>
+       * //repeated People friend=3;
+       * repeated People users_wait_for_add=4;
+       * message RequestFromSelf{
+       *     People obj_user = 1;
+       *     bool refuse = 2;
+       * }
+       * repeated RequestFromSelf add_friend_req=5;
+       * </pre>
+       *
        * <code>optional string short_token = 6;</code>
        */
       public com.google.protobuf.ByteString
@@ -4689,6 +3931,16 @@ public final class Test {
         return com.google.protobuf.ByteString.copyFromUtf8(shortToken_);
       }
       /**
+       * <pre>
+       * //repeated People friend=3;
+       * repeated People users_wait_for_add=4;
+       * message RequestFromSelf{
+       *     People obj_user = 1;
+       *     bool refuse = 2;
+       * }
+       * repeated RequestFromSelf add_friend_req=5;
+       * </pre>
+       *
        * <code>optional string short_token = 6;</code>
        */
       private void setShortToken(
@@ -4696,17 +3948,37 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         shortToken_ = value;
       }
       /**
+       * <pre>
+       * //repeated People friend=3;
+       * repeated People users_wait_for_add=4;
+       * message RequestFromSelf{
+       *     People obj_user = 1;
+       *     bool refuse = 2;
+       * }
+       * repeated RequestFromSelf add_friend_req=5;
+       * </pre>
+       *
        * <code>optional string short_token = 6;</code>
        */
       private void clearShortToken() {
-
+        
         shortToken_ = getDefaultInstance().getShortToken();
       }
       /**
+       * <pre>
+       * //repeated People friend=3;
+       * repeated People users_wait_for_add=4;
+       * message RequestFromSelf{
+       *     People obj_user = 1;
+       *     bool refuse = 2;
+       * }
+       * repeated RequestFromSelf add_friend_req=5;
+       * </pre>
+       *
        * <code>optional string short_token = 6;</code>
        */
       private void setShortTokenBytes(
@@ -4715,7 +3987,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         shortToken_ = value.toStringUtf8();
       }
 
@@ -4742,14 +4014,14 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         longToken_ = value;
       }
       /**
        * <code>optional string long_token = 7;</code>
        */
       private void clearLongToken() {
-
+        
         longToken_ = getDefaultInstance().getLongToken();
       }
       /**
@@ -4761,7 +4033,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         longToken_ = value.toStringUtf8();
       }
 
@@ -4777,14 +4049,14 @@ public final class Test {
        * <code>optional uint64 start_time = 8;</code>
        */
       private void setStartTime(long value) {
-
+        
         startTime_ = value;
       }
       /**
        * <code>optional uint64 start_time = 8;</code>
        */
       private void clearStartTime() {
-
+        
         startTime_ = 0L;
       }
 
@@ -4795,15 +4067,6 @@ public final class Test {
         }
         if (!headpic_.isEmpty()) {
           output.writeBytes(2, headpic_);
-        }
-        for (int i = 0; i < friend_.size(); i++) {
-          output.writeMessage(3, friend_.get(i));
-        }
-        for (int i = 0; i < usersWaitForAdd_.size(); i++) {
-          output.writeMessage(4, usersWaitForAdd_.get(i));
-        }
-        for (int i = 0; i < addFriendReq_.size(); i++) {
-          output.writeMessage(5, addFriendReq_.get(i));
         }
         if (!shortToken_.isEmpty()) {
           output.writeString(6, getShortToken());
@@ -4829,18 +4092,6 @@ public final class Test {
           size += com.google.protobuf.CodedOutputStream
             .computeBytesSize(2, headpic_);
         }
-        for (int i = 0; i < friend_.size(); i++) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(3, friend_.get(i));
-        }
-        for (int i = 0; i < usersWaitForAdd_.size(); i++) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(4, usersWaitForAdd_.get(i));
-        }
-        for (int i = 0; i < addFriendReq_.size(); i++) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(5, addFriendReq_.get(i));
-        }
         if (!shortToken_.isEmpty()) {
           size += com.google.protobuf.CodedOutputStream
             .computeStringSize(6, getShortToken());
@@ -4857,60 +4108,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.Login.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.Login.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.Login.Res parseFrom(byte[] data)
+      public static Res parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.Login.Res parseFrom(
+      public static Res parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.Login.Res parseFrom(java.io.InputStream input)
+      public static Res parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.Login.Res parseFrom(
+      public static Res parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.Login.Res parseDelimitedFrom(java.io.InputStream input)
+      public static Res parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.Login.Res parseDelimitedFrom(
+      public static Res parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.Login.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.Login.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -4921,7 +4172,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.Login.Res prototype) {
+      public static Builder newBuilder(Res prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -4932,7 +4183,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             Res, Builder> implements
           // @@protoc_insertion_point(builder_implements:Login.Res)
-          Test.Login.ResOrBuilder {
+          ResOrBuilder {
         // Construct using Test.Login.Res.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -5003,303 +4254,32 @@ public final class Test {
         }
 
         /**
-         * <code>repeated .People friend = 3;</code>
-         */
-        public java.util.List<People> getFriendList() {
-          return java.util.Collections.unmodifiableList(
-              instance.getFriendList());
-        }
-        /**
-         * <code>repeated .People friend = 3;</code>
-         */
-        public int getFriendCount() {
-          return instance.getFriendCount();
-        }/**
-         * <code>repeated .People friend = 3;</code>
-         */
-        public Test.People getFriend(int index) {
-          return instance.getFriend(index);
-        }
-        /**
-         * <code>repeated .People friend = 3;</code>
-         */
-        public Builder setFriend(
-            int index, Test.People value) {
-          copyOnWrite();
-          instance.setFriend(index, value);
-          return this;
-        }
-        /**
-         * <code>repeated .People friend = 3;</code>
-         */
-        public Builder setFriend(
-            int index, Test.People.Builder builderForValue) {
-          copyOnWrite();
-          instance.setFriend(index, builderForValue);
-          return this;
-        }
-        /**
-         * <code>repeated .People friend = 3;</code>
-         */
-        public Builder addFriend(Test.People value) {
-          copyOnWrite();
-          instance.addFriend(value);
-          return this;
-        }
-        /**
-         * <code>repeated .People friend = 3;</code>
-         */
-        public Builder addFriend(
-            int index, Test.People value) {
-          copyOnWrite();
-          instance.addFriend(index, value);
-          return this;
-        }
-        /**
-         * <code>repeated .People friend = 3;</code>
-         */
-        public Builder addFriend(
-            Test.People.Builder builderForValue) {
-          copyOnWrite();
-          instance.addFriend(builderForValue);
-          return this;
-        }
-        /**
-         * <code>repeated .People friend = 3;</code>
-         */
-        public Builder addFriend(
-            int index, Test.People.Builder builderForValue) {
-          copyOnWrite();
-          instance.addFriend(index, builderForValue);
-          return this;
-        }
-        /**
-         * <code>repeated .People friend = 3;</code>
-         */
-        public Builder addAllFriend(
-            Iterable<? extends People> values) {
-          copyOnWrite();
-          instance.addAllFriend(values);
-          return this;
-        }
-        /**
-         * <code>repeated .People friend = 3;</code>
-         */
-        public Builder clearFriend() {
-          copyOnWrite();
-          instance.clearFriend();
-          return this;
-        }
-        /**
-         * <code>repeated .People friend = 3;</code>
-         */
-        public Builder removeFriend(int index) {
-          copyOnWrite();
-          instance.removeFriend(index);
-          return this;
-        }
-
-        /**
-         * <code>repeated .People users_wait_for_add = 4;</code>
-         */
-        public java.util.List<People> getUsersWaitForAddList() {
-          return java.util.Collections.unmodifiableList(
-              instance.getUsersWaitForAddList());
-        }
-        /**
-         * <code>repeated .People users_wait_for_add = 4;</code>
-         */
-        public int getUsersWaitForAddCount() {
-          return instance.getUsersWaitForAddCount();
-        }/**
-         * <code>repeated .People users_wait_for_add = 4;</code>
-         */
-        public Test.People getUsersWaitForAdd(int index) {
-          return instance.getUsersWaitForAdd(index);
-        }
-        /**
-         * <code>repeated .People users_wait_for_add = 4;</code>
-         */
-        public Builder setUsersWaitForAdd(
-            int index, Test.People value) {
-          copyOnWrite();
-          instance.setUsersWaitForAdd(index, value);
-          return this;
-        }
-        /**
-         * <code>repeated .People users_wait_for_add = 4;</code>
-         */
-        public Builder setUsersWaitForAdd(
-            int index, Test.People.Builder builderForValue) {
-          copyOnWrite();
-          instance.setUsersWaitForAdd(index, builderForValue);
-          return this;
-        }
-        /**
-         * <code>repeated .People users_wait_for_add = 4;</code>
-         */
-        public Builder addUsersWaitForAdd(Test.People value) {
-          copyOnWrite();
-          instance.addUsersWaitForAdd(value);
-          return this;
-        }
-        /**
-         * <code>repeated .People users_wait_for_add = 4;</code>
-         */
-        public Builder addUsersWaitForAdd(
-            int index, Test.People value) {
-          copyOnWrite();
-          instance.addUsersWaitForAdd(index, value);
-          return this;
-        }
-        /**
-         * <code>repeated .People users_wait_for_add = 4;</code>
-         */
-        public Builder addUsersWaitForAdd(
-            Test.People.Builder builderForValue) {
-          copyOnWrite();
-          instance.addUsersWaitForAdd(builderForValue);
-          return this;
-        }
-        /**
-         * <code>repeated .People users_wait_for_add = 4;</code>
-         */
-        public Builder addUsersWaitForAdd(
-            int index, Test.People.Builder builderForValue) {
-          copyOnWrite();
-          instance.addUsersWaitForAdd(index, builderForValue);
-          return this;
-        }
-        /**
-         * <code>repeated .People users_wait_for_add = 4;</code>
-         */
-        public Builder addAllUsersWaitForAdd(
-            Iterable<? extends People> values) {
-          copyOnWrite();
-          instance.addAllUsersWaitForAdd(values);
-          return this;
-        }
-        /**
-         * <code>repeated .People users_wait_for_add = 4;</code>
-         */
-        public Builder clearUsersWaitForAdd() {
-          copyOnWrite();
-          instance.clearUsersWaitForAdd();
-          return this;
-        }
-        /**
-         * <code>repeated .People users_wait_for_add = 4;</code>
-         */
-        public Builder removeUsersWaitForAdd(int index) {
-          copyOnWrite();
-          instance.removeUsersWaitForAdd(index);
-          return this;
-        }
-
-        /**
-         * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-         */
-        public java.util.List<RequestFromSelf> getAddFriendReqList() {
-          return java.util.Collections.unmodifiableList(
-              instance.getAddFriendReqList());
-        }
-        /**
-         * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-         */
-        public int getAddFriendReqCount() {
-          return instance.getAddFriendReqCount();
-        }/**
-         * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-         */
-        public Test.Login.Res.RequestFromSelf getAddFriendReq(int index) {
-          return instance.getAddFriendReq(index);
-        }
-        /**
-         * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-         */
-        public Builder setAddFriendReq(
-            int index, Test.Login.Res.RequestFromSelf value) {
-          copyOnWrite();
-          instance.setAddFriendReq(index, value);
-          return this;
-        }
-        /**
-         * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-         */
-        public Builder setAddFriendReq(
-            int index, Test.Login.Res.RequestFromSelf.Builder builderForValue) {
-          copyOnWrite();
-          instance.setAddFriendReq(index, builderForValue);
-          return this;
-        }
-        /**
-         * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-         */
-        public Builder addAddFriendReq(Test.Login.Res.RequestFromSelf value) {
-          copyOnWrite();
-          instance.addAddFriendReq(value);
-          return this;
-        }
-        /**
-         * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-         */
-        public Builder addAddFriendReq(
-            int index, Test.Login.Res.RequestFromSelf value) {
-          copyOnWrite();
-          instance.addAddFriendReq(index, value);
-          return this;
-        }
-        /**
-         * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-         */
-        public Builder addAddFriendReq(
-            Test.Login.Res.RequestFromSelf.Builder builderForValue) {
-          copyOnWrite();
-          instance.addAddFriendReq(builderForValue);
-          return this;
-        }
-        /**
-         * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-         */
-        public Builder addAddFriendReq(
-            int index, Test.Login.Res.RequestFromSelf.Builder builderForValue) {
-          copyOnWrite();
-          instance.addAddFriendReq(index, builderForValue);
-          return this;
-        }
-        /**
-         * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-         */
-        public Builder addAllAddFriendReq(
-            Iterable<? extends RequestFromSelf> values) {
-          copyOnWrite();
-          instance.addAllAddFriendReq(values);
-          return this;
-        }
-        /**
-         * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-         */
-        public Builder clearAddFriendReq() {
-          copyOnWrite();
-          instance.clearAddFriendReq();
-          return this;
-        }
-        /**
-         * <code>repeated .Login.Res.RequestFromSelf add_friend_req = 5;</code>
-         */
-        public Builder removeAddFriendReq(int index) {
-          copyOnWrite();
-          instance.removeAddFriendReq(index);
-          return this;
-        }
-
-        /**
+         * <pre>
+         * //repeated People friend=3;
+         * repeated People users_wait_for_add=4;
+         * message RequestFromSelf{
+         *     People obj_user = 1;
+         *     bool refuse = 2;
+         * }
+         * repeated RequestFromSelf add_friend_req=5;
+         * </pre>
+         *
          * <code>optional string short_token = 6;</code>
          */
         public String getShortToken() {
           return instance.getShortToken();
         }
         /**
+         * <pre>
+         * //repeated People friend=3;
+         * repeated People users_wait_for_add=4;
+         * message RequestFromSelf{
+         *     People obj_user = 1;
+         *     bool refuse = 2;
+         * }
+         * repeated RequestFromSelf add_friend_req=5;
+         * </pre>
+         *
          * <code>optional string short_token = 6;</code>
          */
         public com.google.protobuf.ByteString
@@ -5307,6 +4287,16 @@ public final class Test {
           return instance.getShortTokenBytes();
         }
         /**
+         * <pre>
+         * //repeated People friend=3;
+         * repeated People users_wait_for_add=4;
+         * message RequestFromSelf{
+         *     People obj_user = 1;
+         *     bool refuse = 2;
+         * }
+         * repeated RequestFromSelf add_friend_req=5;
+         * </pre>
+         *
          * <code>optional string short_token = 6;</code>
          */
         public Builder setShortToken(
@@ -5316,6 +4306,16 @@ public final class Test {
           return this;
         }
         /**
+         * <pre>
+         * //repeated People friend=3;
+         * repeated People users_wait_for_add=4;
+         * message RequestFromSelf{
+         *     People obj_user = 1;
+         *     bool refuse = 2;
+         * }
+         * repeated RequestFromSelf add_friend_req=5;
+         * </pre>
+         *
          * <code>optional string short_token = 6;</code>
          */
         public Builder clearShortToken() {
@@ -5324,6 +4324,16 @@ public final class Test {
           return this;
         }
         /**
+         * <pre>
+         * //repeated People friend=3;
+         * repeated People users_wait_for_add=4;
+         * message RequestFromSelf{
+         *     People obj_user = 1;
+         *     bool refuse = 2;
+         * }
+         * repeated RequestFromSelf add_friend_req=5;
+         * </pre>
+         *
          * <code>optional string short_token = 6;</code>
          */
         public Builder setShortTokenBytes(
@@ -5403,15 +4413,12 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.Login.Res();
+            return new Res();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
           }
           case MAKE_IMMUTABLE: {
-            friend_.makeImmutable();
-            usersWaitForAdd_.makeImmutable();
-            addFriendReq_.makeImmutable();
             return null;
           }
           case NEW_BUILDER: {
@@ -5419,14 +4426,11 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.Login.Res other = (Test.Login.Res) arg1;
+            Res other = (Res) arg1;
             name_ = visitor.visitString(!name_.isEmpty(), name_,
                 !other.name_.isEmpty(), other.name_);
             headpic_ = visitor.visitByteString(headpic_ != com.google.protobuf.ByteString.EMPTY, headpic_,
                 other.headpic_ != com.google.protobuf.ByteString.EMPTY, other.headpic_);
-            friend_= visitor.visitList(friend_, other.friend_);
-            usersWaitForAdd_= visitor.visitList(usersWaitForAdd_, other.usersWaitForAdd_);
-            addFriendReq_= visitor.visitList(addFriendReq_, other.addFriendReq_);
             shortToken_ = visitor.visitString(!shortToken_.isEmpty(), shortToken_,
                 !other.shortToken_.isEmpty(), other.shortToken_);
             longToken_ = visitor.visitString(!longToken_.isEmpty(), longToken_,
@@ -5435,7 +4439,6 @@ public final class Test {
                 other.startTime_ != 0L, other.startTime_);
             if (visitor == MergeFromVisitor
                 .INSTANCE) {
-              bitField0_ |= other.bitField0_;
             }
             return this;
           }
@@ -5467,33 +4470,6 @@ public final class Test {
                   case 18: {
 
                     headpic_ = input.readBytes();
-                    break;
-                  }
-                  case 26: {
-                    if (!friend_.isModifiable()) {
-                      friend_ =
-                          com.google.protobuf.GeneratedMessageLite.mutableCopy(friend_);
-                    }
-                    friend_.add(
-                        input.readMessage(Test.People.parser(), extensionRegistry));
-                    break;
-                  }
-                  case 34: {
-                    if (!usersWaitForAdd_.isModifiable()) {
-                      usersWaitForAdd_ =
-                          com.google.protobuf.GeneratedMessageLite.mutableCopy(usersWaitForAdd_);
-                    }
-                    usersWaitForAdd_.add(
-                        input.readMessage(Test.People.parser(), extensionRegistry));
-                    break;
-                  }
-                  case 42: {
-                    if (!addFriendReq_.isModifiable()) {
-                      addFriendReq_ =
-                          com.google.protobuf.GeneratedMessageLite.mutableCopy(addFriendReq_);
-                    }
-                    addFriendReq_.add(
-                        input.readMessage(Test.Login.Res.RequestFromSelf.parser(), extensionRegistry));
                     break;
                   }
                   case 50: {
@@ -5528,7 +4504,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.Login.Res.class) {
+            if (PARSER == null) {    synchronized (Res.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -5542,13 +4518,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:Login.Res)
-      private static final Test.Login.Res DEFAULT_INSTANCE;
+      private static final Res DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new Res();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.Login.Res getDefaultInstance() {
+      public static Res getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -5572,60 +4548,60 @@ public final class Test {
       return size;
     }
 
-    public static Test.Login parseFrom(
+    public static Login parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.Login parseFrom(
+    public static Login parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.Login parseFrom(byte[] data)
+    public static Login parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.Login parseFrom(
+    public static Login parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.Login parseFrom(java.io.InputStream input)
+    public static Login parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.Login parseFrom(
+    public static Login parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.Login parseDelimitedFrom(java.io.InputStream input)
+    public static Login parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static Test.Login parseDelimitedFrom(
+    public static Login parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.Login parseFrom(
+    public static Login parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.Login parseFrom(
+    public static Login parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5636,7 +4612,7 @@ public final class Test {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Test.Login prototype) {
+    public static Builder newBuilder(Login prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
@@ -5647,7 +4623,7 @@ public final class Test {
         com.google.protobuf.GeneratedMessageLite.Builder<
           Login, Builder> implements
         // @@protoc_insertion_point(builder_implements:Login)
-        Test.LoginOrBuilder {
+        LoginOrBuilder {
       // Construct using Test.Login.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
@@ -5661,7 +4637,7 @@ public final class Test {
         Object arg0, Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new Test.Login();
+          return new Login();
         }
         case IS_INITIALIZED: {
           return DEFAULT_INSTANCE;
@@ -5674,7 +4650,7 @@ public final class Test {
         }
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
-          Test.Login other = (Test.Login) arg1;
+          Login other = (Login) arg1;
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -5714,7 +4690,7 @@ public final class Test {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          if (PARSER == null) {    synchronized (Test.Login.class) {
+          if (PARSER == null) {    synchronized (Login.class) {
               if (PARSER == null) {
                 PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
               }
@@ -5728,19 +4704,2385 @@ public final class Test {
 
 
     // @@protoc_insertion_point(class_scope:Login)
-    private static final Test.Login DEFAULT_INSTANCE;
+    private static final Login DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new Login();
       DEFAULT_INSTANCE.makeImmutable();
     }
 
-    public static Test.Login getDefaultInstance() {
+    public static Login getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static volatile com.google.protobuf.Parser<Login> PARSER;
 
     public static com.google.protobuf.Parser<Login> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface FriendListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:FriendList)
+      com.google.protobuf.MessageLiteOrBuilder {
+  }
+  /**
+   * Protobuf type {@code FriendList}
+   */
+  public  static final class FriendList extends
+      com.google.protobuf.GeneratedMessageLite<
+          FriendList, FriendList.Builder> implements
+      // @@protoc_insertion_point(message_implements:FriendList)
+      FriendListOrBuilder {
+    private FriendList() {
+    }
+    public interface ReqOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:FriendList.Req)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional string token = 1;</code>
+       */
+      String getToken();
+      /**
+       * <code>optional string token = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getTokenBytes();
+    }
+    /**
+     * Protobuf type {@code FriendList.Req}
+     */
+    public  static final class Req extends
+        com.google.protobuf.GeneratedMessageLite<
+            Req, Req.Builder> implements
+        // @@protoc_insertion_point(message_implements:FriendList.Req)
+        ReqOrBuilder {
+      private Req() {
+        token_ = "";
+      }
+      public static final int TOKEN_FIELD_NUMBER = 1;
+      private String token_;
+      /**
+       * <code>optional string token = 1;</code>
+       */
+      public String getToken() {
+        return token_;
+      }
+      /**
+       * <code>optional string token = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTokenBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(token_);
+      }
+      /**
+       * <code>optional string token = 1;</code>
+       */
+      private void setToken(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        token_ = value;
+      }
+      /**
+       * <code>optional string token = 1;</code>
+       */
+      private void clearToken() {
+        
+        token_ = getDefaultInstance().getToken();
+      }
+      /**
+       * <code>optional string token = 1;</code>
+       */
+      private void setTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        token_ = value.toStringUtf8();
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!token_.isEmpty()) {
+          output.writeString(1, getToken());
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!token_.isEmpty()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(1, getToken());
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static Req parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Req parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Req parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Req parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Req parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Req parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static Req parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(Req prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code FriendList.Req}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            Req, Builder> implements
+          // @@protoc_insertion_point(builder_implements:FriendList.Req)
+          ReqOrBuilder {
+        // Construct using Test.FriendList.Req.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional string token = 1;</code>
+         */
+        public String getToken() {
+          return instance.getToken();
+        }
+        /**
+         * <code>optional string token = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getTokenBytes() {
+          return instance.getTokenBytes();
+        }
+        /**
+         * <code>optional string token = 1;</code>
+         */
+        public Builder setToken(
+            String value) {
+          copyOnWrite();
+          instance.setToken(value);
+          return this;
+        }
+        /**
+         * <code>optional string token = 1;</code>
+         */
+        public Builder clearToken() {
+          copyOnWrite();
+          instance.clearToken();
+          return this;
+        }
+        /**
+         * <code>optional string token = 1;</code>
+         */
+        public Builder setTokenBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setTokenBytes(value);
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:FriendList.Req)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new Req();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            Req other = (Req) arg1;
+            token_ = visitor.visitString(!token_.isEmpty(), token_,
+                !other.token_.isEmpty(), other.token_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 10: {
+                    String s = input.readStringRequireUtf8();
+
+                    token_ = s;
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (Req.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:FriendList.Req)
+      private static final Req DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new Req();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static Req getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<Req> PARSER;
+
+      public static com.google.protobuf.Parser<Req> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public interface RspOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:FriendList.Rsp)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      java.util.List<People>
+          getFriendListList();
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      People getFriendList(int index);
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      int getFriendListCount();
+    }
+    /**
+     * Protobuf type {@code FriendList.Rsp}
+     */
+    public  static final class Rsp extends
+        com.google.protobuf.GeneratedMessageLite<
+            Rsp, Rsp.Builder> implements
+        // @@protoc_insertion_point(message_implements:FriendList.Rsp)
+        RspOrBuilder {
+      private Rsp() {
+        friendList_ = emptyProtobufList();
+      }
+      public static final int FRIEND_LIST_FIELD_NUMBER = 1;
+      private com.google.protobuf.Internal.ProtobufList<People> friendList_;
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      public java.util.List<People> getFriendListList() {
+        return friendList_;
+      }
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      public java.util.List<? extends PeopleOrBuilder>
+          getFriendListOrBuilderList() {
+        return friendList_;
+      }
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      public int getFriendListCount() {
+        return friendList_.size();
+      }
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      public People getFriendList(int index) {
+        return friendList_.get(index);
+      }
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      public PeopleOrBuilder getFriendListOrBuilder(
+          int index) {
+        return friendList_.get(index);
+      }
+      private void ensureFriendListIsMutable() {
+        if (!friendList_.isModifiable()) {
+          friendList_ =
+              com.google.protobuf.GeneratedMessageLite.mutableCopy(friendList_);
+         }
+      }
+
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      private void setFriendList(
+          int index, People value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureFriendListIsMutable();
+        friendList_.set(index, value);
+      }
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      private void setFriendList(
+          int index, People.Builder builderForValue) {
+        ensureFriendListIsMutable();
+        friendList_.set(index, builderForValue.build());
+      }
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      private void addFriendList(People value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureFriendListIsMutable();
+        friendList_.add(value);
+      }
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      private void addFriendList(
+          int index, People value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureFriendListIsMutable();
+        friendList_.add(index, value);
+      }
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      private void addFriendList(
+          People.Builder builderForValue) {
+        ensureFriendListIsMutable();
+        friendList_.add(builderForValue.build());
+      }
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      private void addFriendList(
+          int index, People.Builder builderForValue) {
+        ensureFriendListIsMutable();
+        friendList_.add(index, builderForValue.build());
+      }
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      private void addAllFriendList(
+          Iterable<? extends People> values) {
+        ensureFriendListIsMutable();
+        com.google.protobuf.AbstractMessageLite.addAll(
+            values, friendList_);
+      }
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      private void clearFriendList() {
+        friendList_ = emptyProtobufList();
+      }
+      /**
+       * <code>repeated .People friend_list = 1;</code>
+       */
+      private void removeFriendList(int index) {
+        ensureFriendListIsMutable();
+        friendList_.remove(index);
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        for (int i = 0; i < friendList_.size(); i++) {
+          output.writeMessage(1, friendList_.get(i));
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        for (int i = 0; i < friendList_.size(); i++) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(1, friendList_.get(i));
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static Rsp parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Rsp parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Rsp parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Rsp parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Rsp parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Rsp parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Rsp parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static Rsp parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Rsp parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Rsp parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(Rsp prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code FriendList.Rsp}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            Rsp, Builder> implements
+          // @@protoc_insertion_point(builder_implements:FriendList.Rsp)
+          RspOrBuilder {
+        // Construct using Test.FriendList.Rsp.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>repeated .People friend_list = 1;</code>
+         */
+        public java.util.List<People> getFriendListList() {
+          return java.util.Collections.unmodifiableList(
+              instance.getFriendListList());
+        }
+        /**
+         * <code>repeated .People friend_list = 1;</code>
+         */
+        public int getFriendListCount() {
+          return instance.getFriendListCount();
+        }/**
+         * <code>repeated .People friend_list = 1;</code>
+         */
+        public People getFriendList(int index) {
+          return instance.getFriendList(index);
+        }
+        /**
+         * <code>repeated .People friend_list = 1;</code>
+         */
+        public Builder setFriendList(
+            int index, People value) {
+          copyOnWrite();
+          instance.setFriendList(index, value);
+          return this;
+        }
+        /**
+         * <code>repeated .People friend_list = 1;</code>
+         */
+        public Builder setFriendList(
+            int index, People.Builder builderForValue) {
+          copyOnWrite();
+          instance.setFriendList(index, builderForValue);
+          return this;
+        }
+        /**
+         * <code>repeated .People friend_list = 1;</code>
+         */
+        public Builder addFriendList(People value) {
+          copyOnWrite();
+          instance.addFriendList(value);
+          return this;
+        }
+        /**
+         * <code>repeated .People friend_list = 1;</code>
+         */
+        public Builder addFriendList(
+            int index, People value) {
+          copyOnWrite();
+          instance.addFriendList(index, value);
+          return this;
+        }
+        /**
+         * <code>repeated .People friend_list = 1;</code>
+         */
+        public Builder addFriendList(
+            People.Builder builderForValue) {
+          copyOnWrite();
+          instance.addFriendList(builderForValue);
+          return this;
+        }
+        /**
+         * <code>repeated .People friend_list = 1;</code>
+         */
+        public Builder addFriendList(
+            int index, People.Builder builderForValue) {
+          copyOnWrite();
+          instance.addFriendList(index, builderForValue);
+          return this;
+        }
+        /**
+         * <code>repeated .People friend_list = 1;</code>
+         */
+        public Builder addAllFriendList(
+            Iterable<? extends People> values) {
+          copyOnWrite();
+          instance.addAllFriendList(values);
+          return this;
+        }
+        /**
+         * <code>repeated .People friend_list = 1;</code>
+         */
+        public Builder clearFriendList() {
+          copyOnWrite();
+          instance.clearFriendList();
+          return this;
+        }
+        /**
+         * <code>repeated .People friend_list = 1;</code>
+         */
+        public Builder removeFriendList(int index) {
+          copyOnWrite();
+          instance.removeFriendList(index);
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:FriendList.Rsp)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new Rsp();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            friendList_.makeImmutable();
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            Rsp other = (Rsp) arg1;
+            friendList_= visitor.visitList(friendList_, other.friendList_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 10: {
+                    if (!friendList_.isModifiable()) {
+                      friendList_ =
+                          com.google.protobuf.GeneratedMessageLite.mutableCopy(friendList_);
+                    }
+                    friendList_.add(
+                        input.readMessage(People.parser(), extensionRegistry));
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (Rsp.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:FriendList.Rsp)
+      private static final Rsp DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new Rsp();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static Rsp getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<Rsp> PARSER;
+
+      public static com.google.protobuf.Parser<Rsp> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static FriendList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static FriendList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static FriendList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static FriendList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static FriendList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static FriendList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static FriendList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static FriendList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static FriendList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static FriendList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(FriendList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code FriendList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          FriendList, Builder> implements
+        // @@protoc_insertion_point(builder_implements:FriendList)
+        FriendListOrBuilder {
+      // Construct using Test.FriendList.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:FriendList)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new FriendList();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          FriendList other = (FriendList) arg1;
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (FriendList.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:FriendList)
+    private static final FriendList DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new FriendList();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static FriendList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<FriendList> PARSER;
+
+    public static com.google.protobuf.Parser<FriendList> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface ChatRecordOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ChatRecord)
+      com.google.protobuf.MessageLiteOrBuilder {
+  }
+  /**
+   * Protobuf type {@code ChatRecord}
+   */
+  public  static final class ChatRecord extends
+      com.google.protobuf.GeneratedMessageLite<
+          ChatRecord, ChatRecord.Builder> implements
+      // @@protoc_insertion_point(message_implements:ChatRecord)
+      ChatRecordOrBuilder {
+    private ChatRecord() {
+    }
+    public interface ReqOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ChatRecord.Req)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      String getShortToken();
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getShortTokenBytes();
+    }
+    /**
+     * Protobuf type {@code ChatRecord.Req}
+     */
+    public  static final class Req extends
+        com.google.protobuf.GeneratedMessageLite<
+            Req, Req.Builder> implements
+        // @@protoc_insertion_point(message_implements:ChatRecord.Req)
+        ReqOrBuilder {
+      private Req() {
+        shortToken_ = "";
+      }
+      public static final int SHORT_TOKEN_FIELD_NUMBER = 1;
+      private String shortToken_;
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      public String getShortToken() {
+        return shortToken_;
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getShortTokenBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(shortToken_);
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void setShortToken(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        shortToken_ = value;
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void clearShortToken() {
+        
+        shortToken_ = getDefaultInstance().getShortToken();
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void setShortTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        shortToken_ = value.toStringUtf8();
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!shortToken_.isEmpty()) {
+          output.writeString(1, getShortToken());
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!shortToken_.isEmpty()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(1, getShortToken());
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static Req parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Req parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Req parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Req parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Req parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Req parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static Req parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(Req prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code ChatRecord.Req}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            Req, Builder> implements
+          // @@protoc_insertion_point(builder_implements:ChatRecord.Req)
+          ReqOrBuilder {
+        // Construct using Test.ChatRecord.Req.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public String getShortToken() {
+          return instance.getShortToken();
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getShortTokenBytes() {
+          return instance.getShortTokenBytes();
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder setShortToken(
+            String value) {
+          copyOnWrite();
+          instance.setShortToken(value);
+          return this;
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder clearShortToken() {
+          copyOnWrite();
+          instance.clearShortToken();
+          return this;
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder setShortTokenBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setShortTokenBytes(value);
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:ChatRecord.Req)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new Req();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            Req other = (Req) arg1;
+            shortToken_ = visitor.visitString(!shortToken_.isEmpty(), shortToken_,
+                !other.shortToken_.isEmpty(), other.shortToken_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 10: {
+                    String s = input.readStringRequireUtf8();
+
+                    shortToken_ = s;
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (Req.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:ChatRecord.Req)
+      private static final Req DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new Req();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static Req getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<Req> PARSER;
+
+      public static com.google.protobuf.Parser<Req> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public interface ResOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ChatRecord.Res)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      java.util.List<Res.Msg>
+          getMsgList();
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      Res.Msg getMsg(int index);
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      int getMsgCount();
+    }
+    /**
+     * Protobuf type {@code ChatRecord.Res}
+     */
+    public  static final class Res extends
+        com.google.protobuf.GeneratedMessageLite<
+            Res, Res.Builder> implements
+        // @@protoc_insertion_point(message_implements:ChatRecord.Res)
+        ResOrBuilder {
+      private Res() {
+        msg_ = emptyProtobufList();
+      }
+      public interface MsgOrBuilder extends
+          // @@protoc_insertion_point(interface_extends:ChatRecord.Res.Msg)
+          com.google.protobuf.MessageLiteOrBuilder {
+
+        /**
+         * <code>optional uint32 other_id = 1;</code>
+         */
+        int getOtherId();
+
+        /**
+         * <code>optional string content = 2;</code>
+         */
+        String getContent();
+        /**
+         * <code>optional string content = 2;</code>
+         */
+        com.google.protobuf.ByteString
+            getContentBytes();
+
+        /**
+         * <code>optional uint64 time = 3;</code>
+         */
+        long getTime();
+      }
+      /**
+       * Protobuf type {@code ChatRecord.Res.Msg}
+       */
+      public  static final class Msg extends
+          com.google.protobuf.GeneratedMessageLite<
+              Msg, Msg.Builder> implements
+          // @@protoc_insertion_point(message_implements:ChatRecord.Res.Msg)
+          MsgOrBuilder {
+        private Msg() {
+          content_ = "";
+        }
+        public static final int OTHER_ID_FIELD_NUMBER = 1;
+        private int otherId_;
+        /**
+         * <code>optional uint32 other_id = 1;</code>
+         */
+        public int getOtherId() {
+          return otherId_;
+        }
+        /**
+         * <code>optional uint32 other_id = 1;</code>
+         */
+        private void setOtherId(int value) {
+          
+          otherId_ = value;
+        }
+        /**
+         * <code>optional uint32 other_id = 1;</code>
+         */
+        private void clearOtherId() {
+          
+          otherId_ = 0;
+        }
+
+        public static final int CONTENT_FIELD_NUMBER = 2;
+        private String content_;
+        /**
+         * <code>optional string content = 2;</code>
+         */
+        public String getContent() {
+          return content_;
+        }
+        /**
+         * <code>optional string content = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getContentBytes() {
+          return com.google.protobuf.ByteString.copyFromUtf8(content_);
+        }
+        /**
+         * <code>optional string content = 2;</code>
+         */
+        private void setContent(
+            String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          content_ = value;
+        }
+        /**
+         * <code>optional string content = 2;</code>
+         */
+        private void clearContent() {
+          
+          content_ = getDefaultInstance().getContent();
+        }
+        /**
+         * <code>optional string content = 2;</code>
+         */
+        private void setContentBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          content_ = value.toStringUtf8();
+        }
+
+        public static final int TIME_FIELD_NUMBER = 3;
+        private long time_;
+        /**
+         * <code>optional uint64 time = 3;</code>
+         */
+        public long getTime() {
+          return time_;
+        }
+        /**
+         * <code>optional uint64 time = 3;</code>
+         */
+        private void setTime(long value) {
+          
+          time_ = value;
+        }
+        /**
+         * <code>optional uint64 time = 3;</code>
+         */
+        private void clearTime() {
+          
+          time_ = 0L;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                            throws java.io.IOException {
+          if (otherId_ != 0) {
+            output.writeUInt32(1, otherId_);
+          }
+          if (!content_.isEmpty()) {
+            output.writeString(2, getContent());
+          }
+          if (time_ != 0L) {
+            output.writeUInt64(3, time_);
+          }
+        }
+
+        public int getSerializedSize() {
+          int size = memoizedSerializedSize;
+          if (size != -1) return size;
+
+          size = 0;
+          if (otherId_ != 0) {
+            size += com.google.protobuf.CodedOutputStream
+              .computeUInt32Size(1, otherId_);
+          }
+          if (!content_.isEmpty()) {
+            size += com.google.protobuf.CodedOutputStream
+              .computeStringSize(2, getContent());
+          }
+          if (time_ != 0L) {
+            size += com.google.protobuf.CodedOutputStream
+              .computeUInt64Size(3, time_);
+          }
+          memoizedSerializedSize = size;
+          return size;
+        }
+
+        public static Msg parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data);
+        }
+        public static Msg parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data, extensionRegistry);
+        }
+        public static Msg parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data);
+        }
+        public static Msg parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data, extensionRegistry);
+        }
+        public static Msg parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input);
+        }
+        public static Msg parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+        public static Msg parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+        }
+        public static Msg parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+        public static Msg parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input);
+        }
+        public static Msg parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+          return DEFAULT_INSTANCE.toBuilder();
+        }
+        public static Builder newBuilder(Msg prototype) {
+          return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        /**
+         * Protobuf type {@code ChatRecord.Res.Msg}
+         */
+        public static final class Builder extends
+            com.google.protobuf.GeneratedMessageLite.Builder<
+              Msg, Builder> implements
+            // @@protoc_insertion_point(builder_implements:ChatRecord.Res.Msg)
+            MsgOrBuilder {
+          // Construct using Test.ChatRecord.Res.Msg.newBuilder()
+          private Builder() {
+            super(DEFAULT_INSTANCE);
+          }
+
+
+          /**
+           * <code>optional uint32 other_id = 1;</code>
+           */
+          public int getOtherId() {
+            return instance.getOtherId();
+          }
+          /**
+           * <code>optional uint32 other_id = 1;</code>
+           */
+          public Builder setOtherId(int value) {
+            copyOnWrite();
+            instance.setOtherId(value);
+            return this;
+          }
+          /**
+           * <code>optional uint32 other_id = 1;</code>
+           */
+          public Builder clearOtherId() {
+            copyOnWrite();
+            instance.clearOtherId();
+            return this;
+          }
+
+          /**
+           * <code>optional string content = 2;</code>
+           */
+          public String getContent() {
+            return instance.getContent();
+          }
+          /**
+           * <code>optional string content = 2;</code>
+           */
+          public com.google.protobuf.ByteString
+              getContentBytes() {
+            return instance.getContentBytes();
+          }
+          /**
+           * <code>optional string content = 2;</code>
+           */
+          public Builder setContent(
+              String value) {
+            copyOnWrite();
+            instance.setContent(value);
+            return this;
+          }
+          /**
+           * <code>optional string content = 2;</code>
+           */
+          public Builder clearContent() {
+            copyOnWrite();
+            instance.clearContent();
+            return this;
+          }
+          /**
+           * <code>optional string content = 2;</code>
+           */
+          public Builder setContentBytes(
+              com.google.protobuf.ByteString value) {
+            copyOnWrite();
+            instance.setContentBytes(value);
+            return this;
+          }
+
+          /**
+           * <code>optional uint64 time = 3;</code>
+           */
+          public long getTime() {
+            return instance.getTime();
+          }
+          /**
+           * <code>optional uint64 time = 3;</code>
+           */
+          public Builder setTime(long value) {
+            copyOnWrite();
+            instance.setTime(value);
+            return this;
+          }
+          /**
+           * <code>optional uint64 time = 3;</code>
+           */
+          public Builder clearTime() {
+            copyOnWrite();
+            instance.clearTime();
+            return this;
+          }
+
+          // @@protoc_insertion_point(builder_scope:ChatRecord.Res.Msg)
+        }
+        protected final Object dynamicMethod(
+            MethodToInvoke method,
+            Object arg0, Object arg1) {
+          switch (method) {
+            case NEW_MUTABLE_INSTANCE: {
+              return new Msg();
+            }
+            case IS_INITIALIZED: {
+              return DEFAULT_INSTANCE;
+            }
+            case MAKE_IMMUTABLE: {
+              return null;
+            }
+            case NEW_BUILDER: {
+              return new Builder();
+            }
+            case VISIT: {
+              Visitor visitor = (Visitor) arg0;
+              Msg other = (Msg) arg1;
+              otherId_ = visitor.visitInt(otherId_ != 0, otherId_,
+                  other.otherId_ != 0, other.otherId_);
+              content_ = visitor.visitString(!content_.isEmpty(), content_,
+                  !other.content_.isEmpty(), other.content_);
+              time_ = visitor.visitLong(time_ != 0L, time_,
+                  other.time_ != 0L, other.time_);
+              if (visitor == MergeFromVisitor
+                  .INSTANCE) {
+              }
+              return this;
+            }
+            case MERGE_FROM_STREAM: {
+              com.google.protobuf.CodedInputStream input =
+                  (com.google.protobuf.CodedInputStream) arg0;
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                  (com.google.protobuf.ExtensionRegistryLite) arg1;
+              try {
+                boolean done = false;
+                while (!done) {
+                  int tag = input.readTag();
+                  switch (tag) {
+                    case 0:
+                      done = true;
+                      break;
+                    default: {
+                      if (!input.skipField(tag)) {
+                        done = true;
+                      }
+                      break;
+                    }
+                    case 8: {
+
+                      otherId_ = input.readUInt32();
+                      break;
+                    }
+                    case 18: {
+                      String s = input.readStringRequireUtf8();
+
+                      content_ = s;
+                      break;
+                    }
+                    case 24: {
+
+                      time_ = input.readUInt64();
+                      break;
+                    }
+                  }
+                }
+              } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw new RuntimeException(e.setUnfinishedMessage(this));
+              } catch (java.io.IOException e) {
+                throw new RuntimeException(
+                    new com.google.protobuf.InvalidProtocolBufferException(
+                        e.getMessage()).setUnfinishedMessage(this));
+              } finally {
+              }
+            }
+            case GET_DEFAULT_INSTANCE: {
+              return DEFAULT_INSTANCE;
+            }
+            case GET_PARSER: {
+              if (PARSER == null) {    synchronized (Msg.class) {
+                  if (PARSER == null) {
+                    PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                  }
+                }
+              }
+              return PARSER;
+            }
+          }
+          throw new UnsupportedOperationException();
+        }
+
+
+        // @@protoc_insertion_point(class_scope:ChatRecord.Res.Msg)
+        private static final Msg DEFAULT_INSTANCE;
+        static {
+          DEFAULT_INSTANCE = new Msg();
+          DEFAULT_INSTANCE.makeImmutable();
+        }
+
+        public static Msg getDefaultInstance() {
+          return DEFAULT_INSTANCE;
+        }
+
+        private static volatile com.google.protobuf.Parser<Msg> PARSER;
+
+        public static com.google.protobuf.Parser<Msg> parser() {
+          return DEFAULT_INSTANCE.getParserForType();
+        }
+      }
+
+      public static final int MSG_FIELD_NUMBER = 1;
+      private com.google.protobuf.Internal.ProtobufList<Msg> msg_;
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      public java.util.List<Msg> getMsgList() {
+        return msg_;
+      }
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      public java.util.List<? extends MsgOrBuilder>
+          getMsgOrBuilderList() {
+        return msg_;
+      }
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      public int getMsgCount() {
+        return msg_.size();
+      }
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      public Msg getMsg(int index) {
+        return msg_.get(index);
+      }
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      public MsgOrBuilder getMsgOrBuilder(
+          int index) {
+        return msg_.get(index);
+      }
+      private void ensureMsgIsMutable() {
+        if (!msg_.isModifiable()) {
+          msg_ =
+              com.google.protobuf.GeneratedMessageLite.mutableCopy(msg_);
+         }
+      }
+
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      private void setMsg(
+          int index, Msg value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureMsgIsMutable();
+        msg_.set(index, value);
+      }
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      private void setMsg(
+          int index, Msg.Builder builderForValue) {
+        ensureMsgIsMutable();
+        msg_.set(index, builderForValue.build());
+      }
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      private void addMsg(Msg value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureMsgIsMutable();
+        msg_.add(value);
+      }
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      private void addMsg(
+          int index, Msg value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureMsgIsMutable();
+        msg_.add(index, value);
+      }
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      private void addMsg(
+          Msg.Builder builderForValue) {
+        ensureMsgIsMutable();
+        msg_.add(builderForValue.build());
+      }
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      private void addMsg(
+          int index, Msg.Builder builderForValue) {
+        ensureMsgIsMutable();
+        msg_.add(index, builderForValue.build());
+      }
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      private void addAllMsg(
+          Iterable<? extends Msg> values) {
+        ensureMsgIsMutable();
+        com.google.protobuf.AbstractMessageLite.addAll(
+            values, msg_);
+      }
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      private void clearMsg() {
+        msg_ = emptyProtobufList();
+      }
+      /**
+       * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+       */
+      private void removeMsg(int index) {
+        ensureMsgIsMutable();
+        msg_.remove(index);
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        for (int i = 0; i < msg_.size(); i++) {
+          output.writeMessage(1, msg_.get(i));
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        for (int i = 0; i < msg_.size(); i++) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(1, msg_.get(i));
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static Res parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Res parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Res parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Res parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Res parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Res parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Res parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static Res parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Res parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Res parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(Res prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code ChatRecord.Res}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            Res, Builder> implements
+          // @@protoc_insertion_point(builder_implements:ChatRecord.Res)
+          ResOrBuilder {
+        // Construct using Test.ChatRecord.Res.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+         */
+        public java.util.List<Msg> getMsgList() {
+          return java.util.Collections.unmodifiableList(
+              instance.getMsgList());
+        }
+        /**
+         * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+         */
+        public int getMsgCount() {
+          return instance.getMsgCount();
+        }/**
+         * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+         */
+        public Msg getMsg(int index) {
+          return instance.getMsg(index);
+        }
+        /**
+         * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+         */
+        public Builder setMsg(
+            int index, Msg value) {
+          copyOnWrite();
+          instance.setMsg(index, value);
+          return this;
+        }
+        /**
+         * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+         */
+        public Builder setMsg(
+            int index, Msg.Builder builderForValue) {
+          copyOnWrite();
+          instance.setMsg(index, builderForValue);
+          return this;
+        }
+        /**
+         * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+         */
+        public Builder addMsg(Msg value) {
+          copyOnWrite();
+          instance.addMsg(value);
+          return this;
+        }
+        /**
+         * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+         */
+        public Builder addMsg(
+            int index, Msg value) {
+          copyOnWrite();
+          instance.addMsg(index, value);
+          return this;
+        }
+        /**
+         * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+         */
+        public Builder addMsg(
+            Msg.Builder builderForValue) {
+          copyOnWrite();
+          instance.addMsg(builderForValue);
+          return this;
+        }
+        /**
+         * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+         */
+        public Builder addMsg(
+            int index, Msg.Builder builderForValue) {
+          copyOnWrite();
+          instance.addMsg(index, builderForValue);
+          return this;
+        }
+        /**
+         * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+         */
+        public Builder addAllMsg(
+            Iterable<? extends Msg> values) {
+          copyOnWrite();
+          instance.addAllMsg(values);
+          return this;
+        }
+        /**
+         * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+         */
+        public Builder clearMsg() {
+          copyOnWrite();
+          instance.clearMsg();
+          return this;
+        }
+        /**
+         * <code>repeated .ChatRecord.Res.Msg msg = 1;</code>
+         */
+        public Builder removeMsg(int index) {
+          copyOnWrite();
+          instance.removeMsg(index);
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:ChatRecord.Res)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new Res();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            msg_.makeImmutable();
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            Res other = (Res) arg1;
+            msg_= visitor.visitList(msg_, other.msg_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 10: {
+                    if (!msg_.isModifiable()) {
+                      msg_ =
+                          com.google.protobuf.GeneratedMessageLite.mutableCopy(msg_);
+                    }
+                    msg_.add(
+                        input.readMessage(Msg.parser(), extensionRegistry));
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (Res.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:ChatRecord.Res)
+      private static final Res DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new Res();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static Res getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<Res> PARSER;
+
+      public static com.google.protobuf.Parser<Res> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static ChatRecord parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static ChatRecord parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static ChatRecord parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static ChatRecord parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static ChatRecord parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static ChatRecord parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static ChatRecord parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static ChatRecord parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static ChatRecord parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static ChatRecord parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(ChatRecord prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code ChatRecord}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          ChatRecord, Builder> implements
+        // @@protoc_insertion_point(builder_implements:ChatRecord)
+        ChatRecordOrBuilder {
+      // Construct using Test.ChatRecord.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ChatRecord)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new ChatRecord();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          ChatRecord other = (ChatRecord) arg1;
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (ChatRecord.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:ChatRecord)
+    private static final ChatRecord DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new ChatRecord();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static ChatRecord getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<ChatRecord> PARSER;
+
+    public static com.google.protobuf.Parser<ChatRecord> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }
@@ -5817,14 +7159,14 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         shortToken_ = value;
       }
       /**
        * <code>optional string short_token = 1;</code>
        */
       private void clearShortToken() {
-
+        
         shortToken_ = getDefaultInstance().getShortToken();
       }
       /**
@@ -5836,7 +7178,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         shortToken_ = value.toStringUtf8();
       }
 
@@ -5852,14 +7194,14 @@ public final class Test {
        * <code>optional uint32 in_ip = 2;</code>
        */
       private void setInIp(int value) {
-
+        
         inIp_ = value;
       }
       /**
        * <code>optional uint32 in_ip = 2;</code>
        */
       private void clearInIp() {
-
+        
         inIp_ = 0;
       }
 
@@ -5875,14 +7217,14 @@ public final class Test {
        * <code>optional uint32 in_port = 3;</code>
        */
       private void setInPort(int value) {
-
+        
         inPort_ = value;
       }
       /**
        * <code>optional uint32 in_port = 3;</code>
        */
       private void clearInPort() {
-
+        
         inPort_ = 0;
       }
 
@@ -5920,60 +7262,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.HeartBeat.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.HeartBeat.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.HeartBeat.Req parseFrom(byte[] data)
+      public static Req parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.HeartBeat.Req parseFrom(
+      public static Req parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.HeartBeat.Req parseFrom(java.io.InputStream input)
+      public static Req parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.HeartBeat.Req parseFrom(
+      public static Req parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.HeartBeat.Req parseDelimitedFrom(java.io.InputStream input)
+      public static Req parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.HeartBeat.Req parseDelimitedFrom(
+      public static Req parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.HeartBeat.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.HeartBeat.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -5984,7 +7326,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.HeartBeat.Req prototype) {
+      public static Builder newBuilder(Req prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -5995,7 +7337,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             Req, Builder> implements
           // @@protoc_insertion_point(builder_implements:HeartBeat.Req)
-          Test.HeartBeat.ReqOrBuilder {
+          ReqOrBuilder {
         // Construct using Test.HeartBeat.Req.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -6095,7 +7437,7 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.HeartBeat.Req();
+            return new Req();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
@@ -6108,7 +7450,7 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.HeartBeat.Req other = (Test.HeartBeat.Req) arg1;
+            Req other = (Req) arg1;
             shortToken_ = visitor.visitString(!shortToken_.isEmpty(), shortToken_,
                 !other.shortToken_.isEmpty(), other.shortToken_);
             inIp_ = visitor.visitInt(inIp_ != 0, inIp_,
@@ -6170,7 +7512,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.HeartBeat.Req.class) {
+            if (PARSER == null) {    synchronized (Req.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -6184,13 +7526,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:HeartBeat.Req)
-      private static final Test.HeartBeat.Req DEFAULT_INSTANCE;
+      private static final Req DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new Req();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.HeartBeat.Req getDefaultInstance() {
+      public static Req getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -6232,14 +7574,14 @@ public final class Test {
        * <code>optional bool alive = 1;</code>
        */
       private void setAlive(boolean value) {
-
+        
         alive_ = value;
       }
       /**
        * <code>optional bool alive = 1;</code>
        */
       private void clearAlive() {
-
+        
         alive_ = false;
       }
 
@@ -6263,60 +7605,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.HeartBeat.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.HeartBeat.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.HeartBeat.Res parseFrom(byte[] data)
+      public static Res parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.HeartBeat.Res parseFrom(
+      public static Res parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.HeartBeat.Res parseFrom(java.io.InputStream input)
+      public static Res parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.HeartBeat.Res parseFrom(
+      public static Res parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.HeartBeat.Res parseDelimitedFrom(java.io.InputStream input)
+      public static Res parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.HeartBeat.Res parseDelimitedFrom(
+      public static Res parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.HeartBeat.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.HeartBeat.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -6327,7 +7669,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.HeartBeat.Res prototype) {
+      public static Builder newBuilder(Res prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -6338,7 +7680,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             Res, Builder> implements
           // @@protoc_insertion_point(builder_implements:HeartBeat.Res)
-          Test.HeartBeat.ResOrBuilder {
+          ResOrBuilder {
         // Construct using Test.HeartBeat.Res.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -6375,7 +7717,7 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.HeartBeat.Res();
+            return new Res();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
@@ -6388,7 +7730,7 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.HeartBeat.Res other = (Test.HeartBeat.Res) arg1;
+            Res other = (Res) arg1;
             alive_ = visitor.visitBoolean(alive_ != false, alive_,
                 other.alive_ != false, other.alive_);
             if (visitor == MergeFromVisitor
@@ -6435,7 +7777,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.HeartBeat.Res.class) {
+            if (PARSER == null) {    synchronized (Res.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -6449,13 +7791,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:HeartBeat.Res)
-      private static final Test.HeartBeat.Res DEFAULT_INSTANCE;
+      private static final Res DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new Res();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.HeartBeat.Res getDefaultInstance() {
+      public static Res getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -6479,60 +7821,60 @@ public final class Test {
       return size;
     }
 
-    public static Test.HeartBeat parseFrom(
+    public static HeartBeat parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.HeartBeat parseFrom(
+    public static HeartBeat parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.HeartBeat parseFrom(byte[] data)
+    public static HeartBeat parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.HeartBeat parseFrom(
+    public static HeartBeat parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.HeartBeat parseFrom(java.io.InputStream input)
+    public static HeartBeat parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.HeartBeat parseFrom(
+    public static HeartBeat parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.HeartBeat parseDelimitedFrom(java.io.InputStream input)
+    public static HeartBeat parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static Test.HeartBeat parseDelimitedFrom(
+    public static HeartBeat parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.HeartBeat parseFrom(
+    public static HeartBeat parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.HeartBeat parseFrom(
+    public static HeartBeat parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6543,7 +7885,7 @@ public final class Test {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Test.HeartBeat prototype) {
+    public static Builder newBuilder(HeartBeat prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
@@ -6554,7 +7896,7 @@ public final class Test {
         com.google.protobuf.GeneratedMessageLite.Builder<
           HeartBeat, Builder> implements
         // @@protoc_insertion_point(builder_implements:HeartBeat)
-        Test.HeartBeatOrBuilder {
+        HeartBeatOrBuilder {
       // Construct using Test.HeartBeat.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
@@ -6568,7 +7910,7 @@ public final class Test {
         Object arg0, Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new Test.HeartBeat();
+          return new HeartBeat();
         }
         case IS_INITIALIZED: {
           return DEFAULT_INSTANCE;
@@ -6581,7 +7923,7 @@ public final class Test {
         }
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
-          Test.HeartBeat other = (Test.HeartBeat) arg1;
+          HeartBeat other = (HeartBeat) arg1;
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -6621,7 +7963,7 @@ public final class Test {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          if (PARSER == null) {    synchronized (Test.HeartBeat.class) {
+          if (PARSER == null) {    synchronized (HeartBeat.class) {
               if (PARSER == null) {
                 PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
               }
@@ -6635,13 +7977,13 @@ public final class Test {
 
 
     // @@protoc_insertion_point(class_scope:HeartBeat)
-    private static final Test.HeartBeat DEFAULT_INSTANCE;
+    private static final HeartBeat DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new HeartBeat();
       DEFAULT_INSTANCE.makeImmutable();
     }
 
-    public static Test.HeartBeat getDefaultInstance() {
+    public static HeartBeat getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6714,14 +8056,14 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         longToken_ = value;
       }
       /**
        * <code>optional string long_token = 1;</code>
        */
       private void clearLongToken() {
-
+        
         longToken_ = getDefaultInstance().getLongToken();
       }
       /**
@@ -6733,7 +8075,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         longToken_ = value.toStringUtf8();
       }
 
@@ -6757,60 +8099,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.GetToken.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.GetToken.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.GetToken.Req parseFrom(byte[] data)
+      public static Req parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.GetToken.Req parseFrom(
+      public static Req parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.GetToken.Req parseFrom(java.io.InputStream input)
+      public static Req parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.GetToken.Req parseFrom(
+      public static Req parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.GetToken.Req parseDelimitedFrom(java.io.InputStream input)
+      public static Req parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.GetToken.Req parseDelimitedFrom(
+      public static Req parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.GetToken.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.GetToken.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -6821,7 +8163,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.GetToken.Req prototype) {
+      public static Builder newBuilder(Req prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -6832,7 +8174,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             Req, Builder> implements
           // @@protoc_insertion_point(builder_implements:GetToken.Req)
-          Test.GetToken.ReqOrBuilder {
+          ReqOrBuilder {
         // Construct using Test.GetToken.Req.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -6886,7 +8228,7 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.GetToken.Req();
+            return new Req();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
@@ -6899,7 +8241,7 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.GetToken.Req other = (Test.GetToken.Req) arg1;
+            Req other = (Req) arg1;
             longToken_ = visitor.visitString(!longToken_.isEmpty(), longToken_,
                 !other.longToken_.isEmpty(), other.longToken_);
             if (visitor == MergeFromVisitor
@@ -6947,7 +8289,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.GetToken.Req.class) {
+            if (PARSER == null) {    synchronized (Req.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -6961,13 +8303,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:GetToken.Req)
-      private static final Test.GetToken.Req DEFAULT_INSTANCE;
+      private static final Req DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new Req();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.GetToken.Req getDefaultInstance() {
+      public static Req getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -7031,14 +8373,14 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         shortToken_ = value;
       }
       /**
        * <code>optional string short_token = 1;</code>
        */
       private void clearShortToken() {
-
+        
         shortToken_ = getDefaultInstance().getShortToken();
       }
       /**
@@ -7050,7 +8392,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         shortToken_ = value.toStringUtf8();
       }
 
@@ -7066,14 +8408,14 @@ public final class Test {
        * <code>optional uint64 start_time = 2;</code>
        */
       private void setStartTime(long value) {
-
+        
         startTime_ = value;
       }
       /**
        * <code>optional uint64 start_time = 2;</code>
        */
       private void clearStartTime() {
-
+        
         startTime_ = 0L;
       }
 
@@ -7104,60 +8446,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.GetToken.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.GetToken.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.GetToken.Res parseFrom(byte[] data)
+      public static Res parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.GetToken.Res parseFrom(
+      public static Res parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.GetToken.Res parseFrom(java.io.InputStream input)
+      public static Res parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.GetToken.Res parseFrom(
+      public static Res parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.GetToken.Res parseDelimitedFrom(java.io.InputStream input)
+      public static Res parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.GetToken.Res parseDelimitedFrom(
+      public static Res parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.GetToken.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.GetToken.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -7168,7 +8510,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.GetToken.Res prototype) {
+      public static Builder newBuilder(Res prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -7179,7 +8521,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             Res, Builder> implements
           // @@protoc_insertion_point(builder_implements:GetToken.Res)
-          Test.GetToken.ResOrBuilder {
+          ResOrBuilder {
         // Construct using Test.GetToken.Res.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -7256,7 +8598,7 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.GetToken.Res();
+            return new Res();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
@@ -7269,7 +8611,7 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.GetToken.Res other = (Test.GetToken.Res) arg1;
+            Res other = (Res) arg1;
             shortToken_ = visitor.visitString(!shortToken_.isEmpty(), shortToken_,
                 !other.shortToken_.isEmpty(), other.shortToken_);
             startTime_ = visitor.visitLong(startTime_ != 0L, startTime_,
@@ -7324,7 +8666,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.GetToken.Res.class) {
+            if (PARSER == null) {    synchronized (Res.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -7338,13 +8680,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:GetToken.Res)
-      private static final Test.GetToken.Res DEFAULT_INSTANCE;
+      private static final Res DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new Res();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.GetToken.Res getDefaultInstance() {
+      public static Res getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -7368,60 +8710,60 @@ public final class Test {
       return size;
     }
 
-    public static Test.GetToken parseFrom(
+    public static GetToken parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.GetToken parseFrom(
+    public static GetToken parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.GetToken parseFrom(byte[] data)
+    public static GetToken parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.GetToken parseFrom(
+    public static GetToken parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.GetToken parseFrom(java.io.InputStream input)
+    public static GetToken parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.GetToken parseFrom(
+    public static GetToken parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.GetToken parseDelimitedFrom(java.io.InputStream input)
+    public static GetToken parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static Test.GetToken parseDelimitedFrom(
+    public static GetToken parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.GetToken parseFrom(
+    public static GetToken parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.GetToken parseFrom(
+    public static GetToken parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -7432,7 +8774,7 @@ public final class Test {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Test.GetToken prototype) {
+    public static Builder newBuilder(GetToken prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
@@ -7443,7 +8785,7 @@ public final class Test {
         com.google.protobuf.GeneratedMessageLite.Builder<
           GetToken, Builder> implements
         // @@protoc_insertion_point(builder_implements:GetToken)
-        Test.GetTokenOrBuilder {
+        GetTokenOrBuilder {
       // Construct using Test.GetToken.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
@@ -7457,7 +8799,7 @@ public final class Test {
         Object arg0, Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new Test.GetToken();
+          return new GetToken();
         }
         case IS_INITIALIZED: {
           return DEFAULT_INSTANCE;
@@ -7470,7 +8812,7 @@ public final class Test {
         }
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
-          Test.GetToken other = (Test.GetToken) arg1;
+          GetToken other = (GetToken) arg1;
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -7510,7 +8852,7 @@ public final class Test {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          if (PARSER == null) {    synchronized (Test.GetToken.class) {
+          if (PARSER == null) {    synchronized (GetToken.class) {
               if (PARSER == null) {
                 PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
               }
@@ -7524,13 +8866,13 @@ public final class Test {
 
 
     // @@protoc_insertion_point(class_scope:GetToken)
-    private static final Test.GetToken DEFAULT_INSTANCE;
+    private static final GetToken DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new GetToken();
       DEFAULT_INSTANCE.makeImmutable();
     }
 
-    public static Test.GetToken getDefaultInstance() {
+    public static GetToken getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7597,14 +8939,14 @@ public final class Test {
        * <code>optional uint32 obj_id = 1;</code>
        */
       private void setObjId(int value) {
-
+        
         objId_ = value;
       }
       /**
        * <code>optional uint32 obj_id = 1;</code>
        */
       private void clearObjId() {
-
+        
         objId_ = 0;
       }
 
@@ -7631,14 +8973,14 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         shortToken_ = value;
       }
       /**
        * <code>optional string short_token = 2;</code>
        */
       private void clearShortToken() {
-
+        
         shortToken_ = getDefaultInstance().getShortToken();
       }
       /**
@@ -7650,7 +8992,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         shortToken_ = value.toStringUtf8();
       }
 
@@ -7681,60 +9023,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.SearchUser.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.SearchUser.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.SearchUser.Req parseFrom(byte[] data)
+      public static Req parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.SearchUser.Req parseFrom(
+      public static Req parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.SearchUser.Req parseFrom(java.io.InputStream input)
+      public static Req parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.SearchUser.Req parseFrom(
+      public static Req parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.SearchUser.Req parseDelimitedFrom(java.io.InputStream input)
+      public static Req parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.SearchUser.Req parseDelimitedFrom(
+      public static Req parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.SearchUser.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.SearchUser.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -7745,7 +9087,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.SearchUser.Req prototype) {
+      public static Builder newBuilder(Req prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -7756,7 +9098,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             Req, Builder> implements
           // @@protoc_insertion_point(builder_implements:SearchUser.Req)
-          Test.SearchUser.ReqOrBuilder {
+          ReqOrBuilder {
         // Construct using Test.SearchUser.Req.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -7833,7 +9175,7 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.SearchUser.Req();
+            return new Req();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
@@ -7846,7 +9188,7 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.SearchUser.Req other = (Test.SearchUser.Req) arg1;
+            Req other = (Req) arg1;
             objId_ = visitor.visitInt(objId_ != 0, objId_,
                 other.objId_ != 0, other.objId_);
             shortToken_ = visitor.visitString(!shortToken_.isEmpty(), shortToken_,
@@ -7901,7 +9243,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.SearchUser.Req.class) {
+            if (PARSER == null) {    synchronized (Req.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -7915,13 +9257,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:SearchUser.Req)
-      private static final Test.SearchUser.Req DEFAULT_INSTANCE;
+      private static final Req DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new Req();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.SearchUser.Req getDefaultInstance() {
+      public static Req getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -7943,7 +9285,7 @@ public final class Test {
       /**
        * <code>optional .People user = 1;</code>
        */
-      Test.People getUser();
+      People getUser();
     }
     /**
      * Protobuf type {@code SearchUser.Res}
@@ -7956,7 +9298,7 @@ public final class Test {
       private Res() {
       }
       public static final int USER_FIELD_NUMBER = 1;
-      private Test.People user_;
+      private People user_;
       /**
        * <code>optional .People user = 1;</code>
        */
@@ -7966,45 +9308,45 @@ public final class Test {
       /**
        * <code>optional .People user = 1;</code>
        */
-      public Test.People getUser() {
-        return user_ == null ? Test.People.getDefaultInstance() : user_;
+      public People getUser() {
+        return user_ == null ? People.getDefaultInstance() : user_;
       }
       /**
        * <code>optional .People user = 1;</code>
        */
-      private void setUser(Test.People value) {
+      private void setUser(People value) {
         if (value == null) {
           throw new NullPointerException();
         }
         user_ = value;
-
+        
         }
       /**
        * <code>optional .People user = 1;</code>
        */
       private void setUser(
-          Test.People.Builder builderForValue) {
+          People.Builder builderForValue) {
         user_ = builderForValue.build();
-
+        
       }
       /**
        * <code>optional .People user = 1;</code>
        */
-      private void mergeUser(Test.People value) {
+      private void mergeUser(People value) {
         if (user_ != null &&
-            user_ != Test.People.getDefaultInstance()) {
+            user_ != People.getDefaultInstance()) {
           user_ =
-            Test.People.newBuilder(user_).mergeFrom(value).buildPartial();
+            People.newBuilder(user_).mergeFrom(value).buildPartial();
         } else {
           user_ = value;
         }
-
+        
       }
       /**
        * <code>optional .People user = 1;</code>
        */
       private void clearUser() {  user_ = null;
-
+        
       }
 
       public void writeTo(com.google.protobuf.CodedOutputStream output)
@@ -8027,60 +9369,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.SearchUser.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.SearchUser.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.SearchUser.Res parseFrom(byte[] data)
+      public static Res parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.SearchUser.Res parseFrom(
+      public static Res parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.SearchUser.Res parseFrom(java.io.InputStream input)
+      public static Res parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.SearchUser.Res parseFrom(
+      public static Res parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.SearchUser.Res parseDelimitedFrom(java.io.InputStream input)
+      public static Res parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.SearchUser.Res parseDelimitedFrom(
+      public static Res parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.SearchUser.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.SearchUser.Res parseFrom(
+      public static Res parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -8091,7 +9433,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.SearchUser.Res prototype) {
+      public static Builder newBuilder(Res prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -8102,7 +9444,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             Res, Builder> implements
           // @@protoc_insertion_point(builder_implements:SearchUser.Res)
-          Test.SearchUser.ResOrBuilder {
+          ResOrBuilder {
         // Construct using Test.SearchUser.Res.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -8118,13 +9460,13 @@ public final class Test {
         /**
          * <code>optional .People user = 1;</code>
          */
-        public Test.People getUser() {
+        public People getUser() {
           return instance.getUser();
         }
         /**
          * <code>optional .People user = 1;</code>
          */
-        public Builder setUser(Test.People value) {
+        public Builder setUser(People value) {
           copyOnWrite();
           instance.setUser(value);
           return this;
@@ -8133,7 +9475,7 @@ public final class Test {
          * <code>optional .People user = 1;</code>
          */
         public Builder setUser(
-            Test.People.Builder builderForValue) {
+            People.Builder builderForValue) {
           copyOnWrite();
           instance.setUser(builderForValue);
           return this;
@@ -8141,7 +9483,7 @@ public final class Test {
         /**
          * <code>optional .People user = 1;</code>
          */
-        public Builder mergeUser(Test.People value) {
+        public Builder mergeUser(People value) {
           copyOnWrite();
           instance.mergeUser(value);
           return this;
@@ -8161,7 +9503,7 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.SearchUser.Res();
+            return new Res();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
@@ -8174,7 +9516,7 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.SearchUser.Res other = (Test.SearchUser.Res) arg1;
+            Res other = (Res) arg1;
             user_ = visitor.visitMessage(user_, other.user_);
             if (visitor == MergeFromVisitor
                 .INSTANCE) {
@@ -8201,11 +9543,11 @@ public final class Test {
                     break;
                   }
                   case 10: {
-                    Test.People.Builder subBuilder = null;
+                    People.Builder subBuilder = null;
                     if (user_ != null) {
                       subBuilder = user_.toBuilder();
                     }
-                    user_ = input.readMessage(Test.People.parser(), extensionRegistry);
+                    user_ = input.readMessage(People.parser(), extensionRegistry);
                     if (subBuilder != null) {
                       subBuilder.mergeFrom(user_);
                       user_ = subBuilder.buildPartial();
@@ -8228,7 +9570,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.SearchUser.Res.class) {
+            if (PARSER == null) {    synchronized (Res.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -8242,13 +9584,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:SearchUser.Res)
-      private static final Test.SearchUser.Res DEFAULT_INSTANCE;
+      private static final Res DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new Res();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.SearchUser.Res getDefaultInstance() {
+      public static Res getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -8272,60 +9614,60 @@ public final class Test {
       return size;
     }
 
-    public static Test.SearchUser parseFrom(
+    public static SearchUser parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.SearchUser parseFrom(
+    public static SearchUser parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.SearchUser parseFrom(byte[] data)
+    public static SearchUser parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.SearchUser parseFrom(
+    public static SearchUser parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.SearchUser parseFrom(java.io.InputStream input)
+    public static SearchUser parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.SearchUser parseFrom(
+    public static SearchUser parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.SearchUser parseDelimitedFrom(java.io.InputStream input)
+    public static SearchUser parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static Test.SearchUser parseDelimitedFrom(
+    public static SearchUser parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.SearchUser parseFrom(
+    public static SearchUser parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.SearchUser parseFrom(
+    public static SearchUser parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -8336,7 +9678,7 @@ public final class Test {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Test.SearchUser prototype) {
+    public static Builder newBuilder(SearchUser prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
@@ -8347,7 +9689,7 @@ public final class Test {
         com.google.protobuf.GeneratedMessageLite.Builder<
           SearchUser, Builder> implements
         // @@protoc_insertion_point(builder_implements:SearchUser)
-        Test.SearchUserOrBuilder {
+        SearchUserOrBuilder {
       // Construct using Test.SearchUser.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
@@ -8361,7 +9703,7 @@ public final class Test {
         Object arg0, Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new Test.SearchUser();
+          return new SearchUser();
         }
         case IS_INITIALIZED: {
           return DEFAULT_INSTANCE;
@@ -8374,7 +9716,7 @@ public final class Test {
         }
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
-          Test.SearchUser other = (Test.SearchUser) arg1;
+          SearchUser other = (SearchUser) arg1;
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -8414,7 +9756,7 @@ public final class Test {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          if (PARSER == null) {    synchronized (Test.SearchUser.class) {
+          if (PARSER == null) {    synchronized (SearchUser.class) {
               if (PARSER == null) {
                 PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
               }
@@ -8428,13 +9770,13 @@ public final class Test {
 
 
     // @@protoc_insertion_point(class_scope:SearchUser)
-    private static final Test.SearchUser DEFAULT_INSTANCE;
+    private static final SearchUser DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new SearchUser();
       DEFAULT_INSTANCE.makeImmutable();
     }
 
-    public static Test.SearchUser getDefaultInstance() {
+    public static SearchUser getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -8536,14 +9878,14 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         shortToken_ = value;
       }
       /**
        * <code>optional string short_token = 1;</code>
        */
       private void clearShortToken() {
-
+        
         shortToken_ = getDefaultInstance().getShortToken();
       }
       /**
@@ -8555,7 +9897,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         shortToken_ = value.toStringUtf8();
       }
 
@@ -8571,14 +9913,14 @@ public final class Test {
        * <code>optional uint32 obj_id = 2;</code>
        */
       private void setObjId(int value) {
-
+        
         objId_ = value;
       }
       /**
        * <code>optional uint32 obj_id = 2;</code>
        */
       private void clearObjId() {
-
+        
         objId_ = 0;
       }
 
@@ -8594,14 +9936,14 @@ public final class Test {
        * <code>optional uint64 time = 3;</code>
        */
       private void setTime(long value) {
-
+        
         time_ = value;
       }
       /**
        * <code>optional uint64 time = 3;</code>
        */
       private void clearTime() {
-
+        
         time_ = 0L;
       }
 
@@ -8640,7 +9982,7 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         content_ = value;
       }
       /**
@@ -8651,7 +9993,7 @@ public final class Test {
        * <code>optional string content = 4;</code>
        */
       private void clearContent() {
-
+        
         content_ = getDefaultInstance().getContent();
       }
       /**
@@ -8667,7 +10009,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         content_ = value.toStringUtf8();
       }
 
@@ -8712,60 +10054,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.ChatWithServer.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.ChatWithServer.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.ChatWithServer.Req parseFrom(byte[] data)
+      public static Req parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.ChatWithServer.Req parseFrom(
+      public static Req parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.ChatWithServer.Req parseFrom(java.io.InputStream input)
+      public static Req parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.ChatWithServer.Req parseFrom(
+      public static Req parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.ChatWithServer.Req parseDelimitedFrom(java.io.InputStream input)
+      public static Req parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.ChatWithServer.Req parseDelimitedFrom(
+      public static Req parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.ChatWithServer.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.ChatWithServer.Req parseFrom(
+      public static Req parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -8776,7 +10118,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.ChatWithServer.Req prototype) {
+      public static Builder newBuilder(Req prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -8787,7 +10129,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             Req, Builder> implements
           // @@protoc_insertion_point(builder_implements:ChatWithServer.Req)
-          Test.ChatWithServer.ReqOrBuilder {
+          ReqOrBuilder {
         // Construct using Test.ChatWithServer.Req.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -8947,7 +10289,7 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.ChatWithServer.Req();
+            return new Req();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
@@ -8960,7 +10302,7 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.ChatWithServer.Req other = (Test.ChatWithServer.Req) arg1;
+            Req other = (Req) arg1;
             shortToken_ = visitor.visitString(!shortToken_.isEmpty(), shortToken_,
                 !other.shortToken_.isEmpty(), other.shortToken_);
             objId_ = visitor.visitInt(objId_ != 0, objId_,
@@ -9030,7 +10372,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.ChatWithServer.Req.class) {
+            if (PARSER == null) {    synchronized (Req.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -9044,13 +10386,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:ChatWithServer.Req)
-      private static final Test.ChatWithServer.Req DEFAULT_INSTANCE;
+      private static final Req DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new Req();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.ChatWithServer.Req getDefaultInstance() {
+      public static Req getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -9108,14 +10450,14 @@ public final class Test {
        * <code>optional uint32 src_id = 1;</code>
        */
       private void setSrcId(int value) {
-
+        
         srcId_ = value;
       }
       /**
        * <code>optional uint32 src_id = 1;</code>
        */
       private void clearSrcId() {
-
+        
         srcId_ = 0;
       }
 
@@ -9142,14 +10484,14 @@ public final class Test {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         content_ = value;
       }
       /**
        * <code>optional string content = 2;</code>
        */
       private void clearContent() {
-
+        
         content_ = getDefaultInstance().getContent();
       }
       /**
@@ -9161,7 +10503,7 @@ public final class Test {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         content_ = value.toStringUtf8();
       }
 
@@ -9177,14 +10519,14 @@ public final class Test {
        * <code>optional uint64 time = 3;</code>
        */
       private void setTime(long value) {
-
+        
         time_ = value;
       }
       /**
        * <code>optional uint64 time = 3;</code>
        */
       private void clearTime() {
-
+        
         time_ = 0L;
       }
 
@@ -9222,60 +10564,60 @@ public final class Test {
         return size;
       }
 
-      public static Test.ChatWithServer.Relay parseFrom(
+      public static Relay parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.ChatWithServer.Relay parseFrom(
+      public static Relay parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.ChatWithServer.Relay parseFrom(byte[] data)
+      public static Relay parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data);
       }
-      public static Test.ChatWithServer.Relay parseFrom(
+      public static Relay parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, data, extensionRegistry);
       }
-      public static Test.ChatWithServer.Relay parseFrom(java.io.InputStream input)
+      public static Relay parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.ChatWithServer.Relay parseFrom(
+      public static Relay parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.ChatWithServer.Relay parseDelimitedFrom(java.io.InputStream input)
+      public static Relay parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input);
       }
-      public static Test.ChatWithServer.Relay parseDelimitedFrom(
+      public static Relay parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
       }
-      public static Test.ChatWithServer.Relay parseFrom(
+      public static Relay parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageLite.parseFrom(
             DEFAULT_INSTANCE, input);
       }
-      public static Test.ChatWithServer.Relay parseFrom(
+      public static Relay parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -9286,7 +10628,7 @@ public final class Test {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Test.ChatWithServer.Relay prototype) {
+      public static Builder newBuilder(Relay prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
 
@@ -9297,7 +10639,7 @@ public final class Test {
           com.google.protobuf.GeneratedMessageLite.Builder<
             Relay, Builder> implements
           // @@protoc_insertion_point(builder_implements:ChatWithServer.Relay)
-          Test.ChatWithServer.RelayOrBuilder {
+          RelayOrBuilder {
         // Construct using Test.ChatWithServer.Relay.newBuilder()
         private Builder() {
           super(DEFAULT_INSTANCE);
@@ -9397,7 +10739,7 @@ public final class Test {
           Object arg0, Object arg1) {
         switch (method) {
           case NEW_MUTABLE_INSTANCE: {
-            return new Test.ChatWithServer.Relay();
+            return new Relay();
           }
           case IS_INITIALIZED: {
             return DEFAULT_INSTANCE;
@@ -9410,7 +10752,7 @@ public final class Test {
           }
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
-            Test.ChatWithServer.Relay other = (Test.ChatWithServer.Relay) arg1;
+            Relay other = (Relay) arg1;
             srcId_ = visitor.visitInt(srcId_ != 0, srcId_,
                 other.srcId_ != 0, other.srcId_);
             content_ = visitor.visitString(!content_.isEmpty(), content_,
@@ -9472,7 +10814,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case GET_PARSER: {
-            if (PARSER == null) {    synchronized (Test.ChatWithServer.Relay.class) {
+            if (PARSER == null) {    synchronized (Relay.class) {
                 if (PARSER == null) {
                   PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
                 }
@@ -9486,13 +10828,13 @@ public final class Test {
 
 
       // @@protoc_insertion_point(class_scope:ChatWithServer.Relay)
-      private static final Test.ChatWithServer.Relay DEFAULT_INSTANCE;
+      private static final Relay DEFAULT_INSTANCE;
       static {
         DEFAULT_INSTANCE = new Relay();
         DEFAULT_INSTANCE.makeImmutable();
       }
 
-      public static Test.ChatWithServer.Relay getDefaultInstance() {
+      public static Relay getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -9516,60 +10858,60 @@ public final class Test {
       return size;
     }
 
-    public static Test.ChatWithServer parseFrom(
+    public static ChatWithServer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.ChatWithServer parseFrom(
+    public static ChatWithServer parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.ChatWithServer parseFrom(byte[] data)
+    public static ChatWithServer parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.ChatWithServer parseFrom(
+    public static ChatWithServer parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.ChatWithServer parseFrom(java.io.InputStream input)
+    public static ChatWithServer parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.ChatWithServer parseFrom(
+    public static ChatWithServer parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.ChatWithServer parseDelimitedFrom(java.io.InputStream input)
+    public static ChatWithServer parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static Test.ChatWithServer parseDelimitedFrom(
+    public static ChatWithServer parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.ChatWithServer parseFrom(
+    public static ChatWithServer parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.ChatWithServer parseFrom(
+    public static ChatWithServer parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9580,7 +10922,7 @@ public final class Test {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Test.ChatWithServer prototype) {
+    public static Builder newBuilder(ChatWithServer prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
@@ -9591,7 +10933,7 @@ public final class Test {
         com.google.protobuf.GeneratedMessageLite.Builder<
           ChatWithServer, Builder> implements
         // @@protoc_insertion_point(builder_implements:ChatWithServer)
-        Test.ChatWithServerOrBuilder {
+        ChatWithServerOrBuilder {
       // Construct using Test.ChatWithServer.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
@@ -9605,7 +10947,7 @@ public final class Test {
         Object arg0, Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new Test.ChatWithServer();
+          return new ChatWithServer();
         }
         case IS_INITIALIZED: {
           return DEFAULT_INSTANCE;
@@ -9618,7 +10960,7 @@ public final class Test {
         }
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
-          Test.ChatWithServer other = (Test.ChatWithServer) arg1;
+          ChatWithServer other = (ChatWithServer) arg1;
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -9658,7 +11000,7 @@ public final class Test {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          if (PARSER == null) {    synchronized (Test.ChatWithServer.class) {
+          if (PARSER == null) {    synchronized (ChatWithServer.class) {
               if (PARSER == null) {
                 PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
               }
@@ -9672,19 +11014,4164 @@ public final class Test {
 
 
     // @@protoc_insertion_point(class_scope:ChatWithServer)
-    private static final Test.ChatWithServer DEFAULT_INSTANCE;
+    private static final ChatWithServer DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new ChatWithServer();
       DEFAULT_INSTANCE.makeImmutable();
     }
 
-    public static Test.ChatWithServer getDefaultInstance() {
+    public static ChatWithServer getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static volatile com.google.protobuf.Parser<ChatWithServer> PARSER;
 
     public static com.google.protobuf.Parser<ChatWithServer> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface AddFriendRequestFromOtherOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:AddFriendRequestFromOther)
+      com.google.protobuf.MessageLiteOrBuilder {
+  }
+  /**
+   * Protobuf type {@code AddFriendRequestFromOther}
+   */
+  public  static final class AddFriendRequestFromOther extends
+      com.google.protobuf.GeneratedMessageLite<
+          AddFriendRequestFromOther, AddFriendRequestFromOther.Builder> implements
+      // @@protoc_insertion_point(message_implements:AddFriendRequestFromOther)
+      AddFriendRequestFromOtherOrBuilder {
+    private AddFriendRequestFromOther() {
+    }
+    public interface ReqOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:AddFriendRequestFromOther.Req)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      String getShortToken();
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getShortTokenBytes();
+    }
+    /**
+     * Protobuf type {@code AddFriendRequestFromOther.Req}
+     */
+    public  static final class Req extends
+        com.google.protobuf.GeneratedMessageLite<
+            Req, Req.Builder> implements
+        // @@protoc_insertion_point(message_implements:AddFriendRequestFromOther.Req)
+        ReqOrBuilder {
+      private Req() {
+        shortToken_ = "";
+      }
+      public static final int SHORT_TOKEN_FIELD_NUMBER = 1;
+      private String shortToken_;
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      public String getShortToken() {
+        return shortToken_;
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getShortTokenBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(shortToken_);
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void setShortToken(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        shortToken_ = value;
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void clearShortToken() {
+        
+        shortToken_ = getDefaultInstance().getShortToken();
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void setShortTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        shortToken_ = value.toStringUtf8();
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!shortToken_.isEmpty()) {
+          output.writeString(1, getShortToken());
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!shortToken_.isEmpty()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(1, getShortToken());
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static Req parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Req parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Req parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Req parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Req parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Req parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static Req parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(Req prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code AddFriendRequestFromOther.Req}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            Req, Builder> implements
+          // @@protoc_insertion_point(builder_implements:AddFriendRequestFromOther.Req)
+          ReqOrBuilder {
+        // Construct using Test.AddFriendRequestFromOther.Req.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public String getShortToken() {
+          return instance.getShortToken();
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getShortTokenBytes() {
+          return instance.getShortTokenBytes();
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder setShortToken(
+            String value) {
+          copyOnWrite();
+          instance.setShortToken(value);
+          return this;
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder clearShortToken() {
+          copyOnWrite();
+          instance.clearShortToken();
+          return this;
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder setShortTokenBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setShortTokenBytes(value);
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:AddFriendRequestFromOther.Req)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new Req();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            Req other = (Req) arg1;
+            shortToken_ = visitor.visitString(!shortToken_.isEmpty(), shortToken_,
+                !other.shortToken_.isEmpty(), other.shortToken_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 10: {
+                    String s = input.readStringRequireUtf8();
+
+                    shortToken_ = s;
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (Req.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:AddFriendRequestFromOther.Req)
+      private static final Req DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new Req();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static Req getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<Req> PARSER;
+
+      public static com.google.protobuf.Parser<Req> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public interface RspOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:AddFriendRequestFromOther.Rsp)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      java.util.List<People>
+          getUserList();
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      People getUser(int index);
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      int getUserCount();
+    }
+    /**
+     * Protobuf type {@code AddFriendRequestFromOther.Rsp}
+     */
+    public  static final class Rsp extends
+        com.google.protobuf.GeneratedMessageLite<
+            Rsp, Rsp.Builder> implements
+        // @@protoc_insertion_point(message_implements:AddFriendRequestFromOther.Rsp)
+        RspOrBuilder {
+      private Rsp() {
+        user_ = emptyProtobufList();
+      }
+      public static final int USER_FIELD_NUMBER = 1;
+      private com.google.protobuf.Internal.ProtobufList<People> user_;
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      public java.util.List<People> getUserList() {
+        return user_;
+      }
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      public java.util.List<? extends PeopleOrBuilder>
+          getUserOrBuilderList() {
+        return user_;
+      }
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      public int getUserCount() {
+        return user_.size();
+      }
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      public People getUser(int index) {
+        return user_.get(index);
+      }
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      public PeopleOrBuilder getUserOrBuilder(
+          int index) {
+        return user_.get(index);
+      }
+      private void ensureUserIsMutable() {
+        if (!user_.isModifiable()) {
+          user_ =
+              com.google.protobuf.GeneratedMessageLite.mutableCopy(user_);
+         }
+      }
+
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      private void setUser(
+          int index, People value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureUserIsMutable();
+        user_.set(index, value);
+      }
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      private void setUser(
+          int index, People.Builder builderForValue) {
+        ensureUserIsMutable();
+        user_.set(index, builderForValue.build());
+      }
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      private void addUser(People value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureUserIsMutable();
+        user_.add(value);
+      }
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      private void addUser(
+          int index, People value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureUserIsMutable();
+        user_.add(index, value);
+      }
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      private void addUser(
+          People.Builder builderForValue) {
+        ensureUserIsMutable();
+        user_.add(builderForValue.build());
+      }
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      private void addUser(
+          int index, People.Builder builderForValue) {
+        ensureUserIsMutable();
+        user_.add(index, builderForValue.build());
+      }
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      private void addAllUser(
+          Iterable<? extends People> values) {
+        ensureUserIsMutable();
+        com.google.protobuf.AbstractMessageLite.addAll(
+            values, user_);
+      }
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      private void clearUser() {
+        user_ = emptyProtobufList();
+      }
+      /**
+       * <code>repeated .People user = 1;</code>
+       */
+      private void removeUser(int index) {
+        ensureUserIsMutable();
+        user_.remove(index);
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        for (int i = 0; i < user_.size(); i++) {
+          output.writeMessage(1, user_.get(i));
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        for (int i = 0; i < user_.size(); i++) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(1, user_.get(i));
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static Rsp parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Rsp parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Rsp parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Rsp parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Rsp parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Rsp parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Rsp parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static Rsp parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Rsp parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Rsp parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(Rsp prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code AddFriendRequestFromOther.Rsp}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            Rsp, Builder> implements
+          // @@protoc_insertion_point(builder_implements:AddFriendRequestFromOther.Rsp)
+          RspOrBuilder {
+        // Construct using Test.AddFriendRequestFromOther.Rsp.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>repeated .People user = 1;</code>
+         */
+        public java.util.List<People> getUserList() {
+          return java.util.Collections.unmodifiableList(
+              instance.getUserList());
+        }
+        /**
+         * <code>repeated .People user = 1;</code>
+         */
+        public int getUserCount() {
+          return instance.getUserCount();
+        }/**
+         * <code>repeated .People user = 1;</code>
+         */
+        public People getUser(int index) {
+          return instance.getUser(index);
+        }
+        /**
+         * <code>repeated .People user = 1;</code>
+         */
+        public Builder setUser(
+            int index, People value) {
+          copyOnWrite();
+          instance.setUser(index, value);
+          return this;
+        }
+        /**
+         * <code>repeated .People user = 1;</code>
+         */
+        public Builder setUser(
+            int index, People.Builder builderForValue) {
+          copyOnWrite();
+          instance.setUser(index, builderForValue);
+          return this;
+        }
+        /**
+         * <code>repeated .People user = 1;</code>
+         */
+        public Builder addUser(People value) {
+          copyOnWrite();
+          instance.addUser(value);
+          return this;
+        }
+        /**
+         * <code>repeated .People user = 1;</code>
+         */
+        public Builder addUser(
+            int index, People value) {
+          copyOnWrite();
+          instance.addUser(index, value);
+          return this;
+        }
+        /**
+         * <code>repeated .People user = 1;</code>
+         */
+        public Builder addUser(
+            People.Builder builderForValue) {
+          copyOnWrite();
+          instance.addUser(builderForValue);
+          return this;
+        }
+        /**
+         * <code>repeated .People user = 1;</code>
+         */
+        public Builder addUser(
+            int index, People.Builder builderForValue) {
+          copyOnWrite();
+          instance.addUser(index, builderForValue);
+          return this;
+        }
+        /**
+         * <code>repeated .People user = 1;</code>
+         */
+        public Builder addAllUser(
+            Iterable<? extends People> values) {
+          copyOnWrite();
+          instance.addAllUser(values);
+          return this;
+        }
+        /**
+         * <code>repeated .People user = 1;</code>
+         */
+        public Builder clearUser() {
+          copyOnWrite();
+          instance.clearUser();
+          return this;
+        }
+        /**
+         * <code>repeated .People user = 1;</code>
+         */
+        public Builder removeUser(int index) {
+          copyOnWrite();
+          instance.removeUser(index);
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:AddFriendRequestFromOther.Rsp)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new Rsp();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            user_.makeImmutable();
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            Rsp other = (Rsp) arg1;
+            user_= visitor.visitList(user_, other.user_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 10: {
+                    if (!user_.isModifiable()) {
+                      user_ =
+                          com.google.protobuf.GeneratedMessageLite.mutableCopy(user_);
+                    }
+                    user_.add(
+                        input.readMessage(People.parser(), extensionRegistry));
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (Rsp.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:AddFriendRequestFromOther.Rsp)
+      private static final Rsp DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new Rsp();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static Rsp getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<Rsp> PARSER;
+
+      public static com.google.protobuf.Parser<Rsp> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static AddFriendRequestFromOther parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static AddFriendRequestFromOther parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static AddFriendRequestFromOther parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static AddFriendRequestFromOther parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static AddFriendRequestFromOther parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static AddFriendRequestFromOther parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static AddFriendRequestFromOther parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static AddFriendRequestFromOther parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static AddFriendRequestFromOther parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static AddFriendRequestFromOther parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(AddFriendRequestFromOther prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code AddFriendRequestFromOther}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          AddFriendRequestFromOther, Builder> implements
+        // @@protoc_insertion_point(builder_implements:AddFriendRequestFromOther)
+        AddFriendRequestFromOtherOrBuilder {
+      // Construct using Test.AddFriendRequestFromOther.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:AddFriendRequestFromOther)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new AddFriendRequestFromOther();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          AddFriendRequestFromOther other = (AddFriendRequestFromOther) arg1;
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (AddFriendRequestFromOther.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:AddFriendRequestFromOther)
+    private static final AddFriendRequestFromOther DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new AddFriendRequestFromOther();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static AddFriendRequestFromOther getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<AddFriendRequestFromOther> PARSER;
+
+    public static com.google.protobuf.Parser<AddFriendRequestFromOther> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface AddFriendRequestFromSelfOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:AddFriendRequestFromSelf)
+      com.google.protobuf.MessageLiteOrBuilder {
+  }
+  /**
+   * Protobuf type {@code AddFriendRequestFromSelf}
+   */
+  public  static final class AddFriendRequestFromSelf extends
+      com.google.protobuf.GeneratedMessageLite<
+          AddFriendRequestFromSelf, AddFriendRequestFromSelf.Builder> implements
+      // @@protoc_insertion_point(message_implements:AddFriendRequestFromSelf)
+      AddFriendRequestFromSelfOrBuilder {
+    private AddFriendRequestFromSelf() {
+    }
+    public interface ReqOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:AddFriendRequestFromSelf.Req)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      String getShortToken();
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getShortTokenBytes();
+    }
+    /**
+     * Protobuf type {@code AddFriendRequestFromSelf.Req}
+     */
+    public  static final class Req extends
+        com.google.protobuf.GeneratedMessageLite<
+            Req, Req.Builder> implements
+        // @@protoc_insertion_point(message_implements:AddFriendRequestFromSelf.Req)
+        ReqOrBuilder {
+      private Req() {
+        shortToken_ = "";
+      }
+      public static final int SHORT_TOKEN_FIELD_NUMBER = 1;
+      private String shortToken_;
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      public String getShortToken() {
+        return shortToken_;
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getShortTokenBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(shortToken_);
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void setShortToken(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        shortToken_ = value;
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void clearShortToken() {
+        
+        shortToken_ = getDefaultInstance().getShortToken();
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void setShortTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        shortToken_ = value.toStringUtf8();
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!shortToken_.isEmpty()) {
+          output.writeString(1, getShortToken());
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!shortToken_.isEmpty()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(1, getShortToken());
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static Req parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Req parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Req parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Req parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Req parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Req parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static Req parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(Req prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code AddFriendRequestFromSelf.Req}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            Req, Builder> implements
+          // @@protoc_insertion_point(builder_implements:AddFriendRequestFromSelf.Req)
+          ReqOrBuilder {
+        // Construct using Test.AddFriendRequestFromSelf.Req.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public String getShortToken() {
+          return instance.getShortToken();
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getShortTokenBytes() {
+          return instance.getShortTokenBytes();
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder setShortToken(
+            String value) {
+          copyOnWrite();
+          instance.setShortToken(value);
+          return this;
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder clearShortToken() {
+          copyOnWrite();
+          instance.clearShortToken();
+          return this;
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder setShortTokenBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setShortTokenBytes(value);
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:AddFriendRequestFromSelf.Req)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new Req();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            Req other = (Req) arg1;
+            shortToken_ = visitor.visitString(!shortToken_.isEmpty(), shortToken_,
+                !other.shortToken_.isEmpty(), other.shortToken_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 10: {
+                    String s = input.readStringRequireUtf8();
+
+                    shortToken_ = s;
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (Req.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:AddFriendRequestFromSelf.Req)
+      private static final Req DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new Req();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static Req getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<Req> PARSER;
+
+      public static com.google.protobuf.Parser<Req> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public interface RspOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:AddFriendRequestFromSelf.Rsp)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      java.util.List<Rsp.RequestFromSelf>
+          getRequestsList();
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      Rsp.RequestFromSelf getRequests(int index);
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      int getRequestsCount();
+    }
+    /**
+     * Protobuf type {@code AddFriendRequestFromSelf.Rsp}
+     */
+    public  static final class Rsp extends
+        com.google.protobuf.GeneratedMessageLite<
+            Rsp, Rsp.Builder> implements
+        // @@protoc_insertion_point(message_implements:AddFriendRequestFromSelf.Rsp)
+        RspOrBuilder {
+      private Rsp() {
+        requests_ = emptyProtobufList();
+      }
+      public interface RequestFromSelfOrBuilder extends
+          // @@protoc_insertion_point(interface_extends:AddFriendRequestFromSelf.Rsp.RequestFromSelf)
+          com.google.protobuf.MessageLiteOrBuilder {
+
+        /**
+         * <code>optional .People obj_user = 1;</code>
+         */
+        boolean hasObjUser();
+        /**
+         * <code>optional .People obj_user = 1;</code>
+         */
+        People getObjUser();
+
+        /**
+         * <code>optional bool refuse = 2;</code>
+         */
+        boolean getRefuse();
+      }
+      /**
+       * Protobuf type {@code AddFriendRequestFromSelf.Rsp.RequestFromSelf}
+       */
+      public  static final class RequestFromSelf extends
+          com.google.protobuf.GeneratedMessageLite<
+              RequestFromSelf, RequestFromSelf.Builder> implements
+          // @@protoc_insertion_point(message_implements:AddFriendRequestFromSelf.Rsp.RequestFromSelf)
+          RequestFromSelfOrBuilder {
+        private RequestFromSelf() {
+        }
+        public static final int OBJ_USER_FIELD_NUMBER = 1;
+        private People objUser_;
+        /**
+         * <code>optional .People obj_user = 1;</code>
+         */
+        public boolean hasObjUser() {
+          return objUser_ != null;
+        }
+        /**
+         * <code>optional .People obj_user = 1;</code>
+         */
+        public People getObjUser() {
+          return objUser_ == null ? People.getDefaultInstance() : objUser_;
+        }
+        /**
+         * <code>optional .People obj_user = 1;</code>
+         */
+        private void setObjUser(People value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          objUser_ = value;
+          
+          }
+        /**
+         * <code>optional .People obj_user = 1;</code>
+         */
+        private void setObjUser(
+            People.Builder builderForValue) {
+          objUser_ = builderForValue.build();
+          
+        }
+        /**
+         * <code>optional .People obj_user = 1;</code>
+         */
+        private void mergeObjUser(People value) {
+          if (objUser_ != null &&
+              objUser_ != People.getDefaultInstance()) {
+            objUser_ =
+              People.newBuilder(objUser_).mergeFrom(value).buildPartial();
+          } else {
+            objUser_ = value;
+          }
+          
+        }
+        /**
+         * <code>optional .People obj_user = 1;</code>
+         */
+        private void clearObjUser() {  objUser_ = null;
+          
+        }
+
+        public static final int REFUSE_FIELD_NUMBER = 2;
+        private boolean refuse_;
+        /**
+         * <code>optional bool refuse = 2;</code>
+         */
+        public boolean getRefuse() {
+          return refuse_;
+        }
+        /**
+         * <code>optional bool refuse = 2;</code>
+         */
+        private void setRefuse(boolean value) {
+          
+          refuse_ = value;
+        }
+        /**
+         * <code>optional bool refuse = 2;</code>
+         */
+        private void clearRefuse() {
+          
+          refuse_ = false;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                            throws java.io.IOException {
+          if (objUser_ != null) {
+            output.writeMessage(1, getObjUser());
+          }
+          if (refuse_ != false) {
+            output.writeBool(2, refuse_);
+          }
+        }
+
+        public int getSerializedSize() {
+          int size = memoizedSerializedSize;
+          if (size != -1) return size;
+
+          size = 0;
+          if (objUser_ != null) {
+            size += com.google.protobuf.CodedOutputStream
+              .computeMessageSize(1, getObjUser());
+          }
+          if (refuse_ != false) {
+            size += com.google.protobuf.CodedOutputStream
+              .computeBoolSize(2, refuse_);
+          }
+          memoizedSerializedSize = size;
+          return size;
+        }
+
+        public static RequestFromSelf parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data);
+        }
+        public static RequestFromSelf parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data, extensionRegistry);
+        }
+        public static RequestFromSelf parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data);
+        }
+        public static RequestFromSelf parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data, extensionRegistry);
+        }
+        public static RequestFromSelf parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input);
+        }
+        public static RequestFromSelf parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+        public static RequestFromSelf parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+        }
+        public static RequestFromSelf parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+        public static RequestFromSelf parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input);
+        }
+        public static RequestFromSelf parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+          return DEFAULT_INSTANCE.toBuilder();
+        }
+        public static Builder newBuilder(RequestFromSelf prototype) {
+          return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        /**
+         * Protobuf type {@code AddFriendRequestFromSelf.Rsp.RequestFromSelf}
+         */
+        public static final class Builder extends
+            com.google.protobuf.GeneratedMessageLite.Builder<
+              RequestFromSelf, Builder> implements
+            // @@protoc_insertion_point(builder_implements:AddFriendRequestFromSelf.Rsp.RequestFromSelf)
+            RequestFromSelfOrBuilder {
+          // Construct using Test.AddFriendRequestFromSelf.Rsp.RequestFromSelf.newBuilder()
+          private Builder() {
+            super(DEFAULT_INSTANCE);
+          }
+
+
+          /**
+           * <code>optional .People obj_user = 1;</code>
+           */
+          public boolean hasObjUser() {
+            return instance.hasObjUser();
+          }
+          /**
+           * <code>optional .People obj_user = 1;</code>
+           */
+          public People getObjUser() {
+            return instance.getObjUser();
+          }
+          /**
+           * <code>optional .People obj_user = 1;</code>
+           */
+          public Builder setObjUser(People value) {
+            copyOnWrite();
+            instance.setObjUser(value);
+            return this;
+            }
+          /**
+           * <code>optional .People obj_user = 1;</code>
+           */
+          public Builder setObjUser(
+              People.Builder builderForValue) {
+            copyOnWrite();
+            instance.setObjUser(builderForValue);
+            return this;
+          }
+          /**
+           * <code>optional .People obj_user = 1;</code>
+           */
+          public Builder mergeObjUser(People value) {
+            copyOnWrite();
+            instance.mergeObjUser(value);
+            return this;
+          }
+          /**
+           * <code>optional .People obj_user = 1;</code>
+           */
+          public Builder clearObjUser() {  copyOnWrite();
+            instance.clearObjUser();
+            return this;
+          }
+
+          /**
+           * <code>optional bool refuse = 2;</code>
+           */
+          public boolean getRefuse() {
+            return instance.getRefuse();
+          }
+          /**
+           * <code>optional bool refuse = 2;</code>
+           */
+          public Builder setRefuse(boolean value) {
+            copyOnWrite();
+            instance.setRefuse(value);
+            return this;
+          }
+          /**
+           * <code>optional bool refuse = 2;</code>
+           */
+          public Builder clearRefuse() {
+            copyOnWrite();
+            instance.clearRefuse();
+            return this;
+          }
+
+          // @@protoc_insertion_point(builder_scope:AddFriendRequestFromSelf.Rsp.RequestFromSelf)
+        }
+        protected final Object dynamicMethod(
+            MethodToInvoke method,
+            Object arg0, Object arg1) {
+          switch (method) {
+            case NEW_MUTABLE_INSTANCE: {
+              return new RequestFromSelf();
+            }
+            case IS_INITIALIZED: {
+              return DEFAULT_INSTANCE;
+            }
+            case MAKE_IMMUTABLE: {
+              return null;
+            }
+            case NEW_BUILDER: {
+              return new Builder();
+            }
+            case VISIT: {
+              Visitor visitor = (Visitor) arg0;
+              RequestFromSelf other = (RequestFromSelf) arg1;
+              objUser_ = visitor.visitMessage(objUser_, other.objUser_);
+              refuse_ = visitor.visitBoolean(refuse_ != false, refuse_,
+                  other.refuse_ != false, other.refuse_);
+              if (visitor == MergeFromVisitor
+                  .INSTANCE) {
+              }
+              return this;
+            }
+            case MERGE_FROM_STREAM: {
+              com.google.protobuf.CodedInputStream input =
+                  (com.google.protobuf.CodedInputStream) arg0;
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                  (com.google.protobuf.ExtensionRegistryLite) arg1;
+              try {
+                boolean done = false;
+                while (!done) {
+                  int tag = input.readTag();
+                  switch (tag) {
+                    case 0:
+                      done = true;
+                      break;
+                    default: {
+                      if (!input.skipField(tag)) {
+                        done = true;
+                      }
+                      break;
+                    }
+                    case 10: {
+                      People.Builder subBuilder = null;
+                      if (objUser_ != null) {
+                        subBuilder = objUser_.toBuilder();
+                      }
+                      objUser_ = input.readMessage(People.parser(), extensionRegistry);
+                      if (subBuilder != null) {
+                        subBuilder.mergeFrom(objUser_);
+                        objUser_ = subBuilder.buildPartial();
+                      }
+
+                      break;
+                    }
+                    case 16: {
+
+                      refuse_ = input.readBool();
+                      break;
+                    }
+                  }
+                }
+              } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw new RuntimeException(e.setUnfinishedMessage(this));
+              } catch (java.io.IOException e) {
+                throw new RuntimeException(
+                    new com.google.protobuf.InvalidProtocolBufferException(
+                        e.getMessage()).setUnfinishedMessage(this));
+              } finally {
+              }
+            }
+            case GET_DEFAULT_INSTANCE: {
+              return DEFAULT_INSTANCE;
+            }
+            case GET_PARSER: {
+              if (PARSER == null) {    synchronized (RequestFromSelf.class) {
+                  if (PARSER == null) {
+                    PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                  }
+                }
+              }
+              return PARSER;
+            }
+          }
+          throw new UnsupportedOperationException();
+        }
+
+
+        // @@protoc_insertion_point(class_scope:AddFriendRequestFromSelf.Rsp.RequestFromSelf)
+        private static final RequestFromSelf DEFAULT_INSTANCE;
+        static {
+          DEFAULT_INSTANCE = new RequestFromSelf();
+          DEFAULT_INSTANCE.makeImmutable();
+        }
+
+        public static RequestFromSelf getDefaultInstance() {
+          return DEFAULT_INSTANCE;
+        }
+
+        private static volatile com.google.protobuf.Parser<RequestFromSelf> PARSER;
+
+        public static com.google.protobuf.Parser<RequestFromSelf> parser() {
+          return DEFAULT_INSTANCE.getParserForType();
+        }
+      }
+
+      public static final int REQUESTS_FIELD_NUMBER = 1;
+      private com.google.protobuf.Internal.ProtobufList<RequestFromSelf> requests_;
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      public java.util.List<RequestFromSelf> getRequestsList() {
+        return requests_;
+      }
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      public java.util.List<? extends RequestFromSelfOrBuilder>
+          getRequestsOrBuilderList() {
+        return requests_;
+      }
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      public int getRequestsCount() {
+        return requests_.size();
+      }
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      public RequestFromSelf getRequests(int index) {
+        return requests_.get(index);
+      }
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      public RequestFromSelfOrBuilder getRequestsOrBuilder(
+          int index) {
+        return requests_.get(index);
+      }
+      private void ensureRequestsIsMutable() {
+        if (!requests_.isModifiable()) {
+          requests_ =
+              com.google.protobuf.GeneratedMessageLite.mutableCopy(requests_);
+         }
+      }
+
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      private void setRequests(
+          int index, RequestFromSelf value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureRequestsIsMutable();
+        requests_.set(index, value);
+      }
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      private void setRequests(
+          int index, RequestFromSelf.Builder builderForValue) {
+        ensureRequestsIsMutable();
+        requests_.set(index, builderForValue.build());
+      }
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      private void addRequests(RequestFromSelf value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureRequestsIsMutable();
+        requests_.add(value);
+      }
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      private void addRequests(
+          int index, RequestFromSelf value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureRequestsIsMutable();
+        requests_.add(index, value);
+      }
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      private void addRequests(
+          RequestFromSelf.Builder builderForValue) {
+        ensureRequestsIsMutable();
+        requests_.add(builderForValue.build());
+      }
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      private void addRequests(
+          int index, RequestFromSelf.Builder builderForValue) {
+        ensureRequestsIsMutable();
+        requests_.add(index, builderForValue.build());
+      }
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      private void addAllRequests(
+          Iterable<? extends RequestFromSelf> values) {
+        ensureRequestsIsMutable();
+        com.google.protobuf.AbstractMessageLite.addAll(
+            values, requests_);
+      }
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      private void clearRequests() {
+        requests_ = emptyProtobufList();
+      }
+      /**
+       * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+       */
+      private void removeRequests(int index) {
+        ensureRequestsIsMutable();
+        requests_.remove(index);
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        for (int i = 0; i < requests_.size(); i++) {
+          output.writeMessage(1, requests_.get(i));
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        for (int i = 0; i < requests_.size(); i++) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(1, requests_.get(i));
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static Rsp parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Rsp parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Rsp parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Rsp parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Rsp parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Rsp parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Rsp parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static Rsp parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Rsp parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Rsp parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(Rsp prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code AddFriendRequestFromSelf.Rsp}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            Rsp, Builder> implements
+          // @@protoc_insertion_point(builder_implements:AddFriendRequestFromSelf.Rsp)
+          RspOrBuilder {
+        // Construct using Test.AddFriendRequestFromSelf.Rsp.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+         */
+        public java.util.List<RequestFromSelf> getRequestsList() {
+          return java.util.Collections.unmodifiableList(
+              instance.getRequestsList());
+        }
+        /**
+         * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+         */
+        public int getRequestsCount() {
+          return instance.getRequestsCount();
+        }/**
+         * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+         */
+        public RequestFromSelf getRequests(int index) {
+          return instance.getRequests(index);
+        }
+        /**
+         * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+         */
+        public Builder setRequests(
+            int index, RequestFromSelf value) {
+          copyOnWrite();
+          instance.setRequests(index, value);
+          return this;
+        }
+        /**
+         * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+         */
+        public Builder setRequests(
+            int index, RequestFromSelf.Builder builderForValue) {
+          copyOnWrite();
+          instance.setRequests(index, builderForValue);
+          return this;
+        }
+        /**
+         * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+         */
+        public Builder addRequests(RequestFromSelf value) {
+          copyOnWrite();
+          instance.addRequests(value);
+          return this;
+        }
+        /**
+         * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+         */
+        public Builder addRequests(
+            int index, RequestFromSelf value) {
+          copyOnWrite();
+          instance.addRequests(index, value);
+          return this;
+        }
+        /**
+         * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+         */
+        public Builder addRequests(
+            RequestFromSelf.Builder builderForValue) {
+          copyOnWrite();
+          instance.addRequests(builderForValue);
+          return this;
+        }
+        /**
+         * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+         */
+        public Builder addRequests(
+            int index, RequestFromSelf.Builder builderForValue) {
+          copyOnWrite();
+          instance.addRequests(index, builderForValue);
+          return this;
+        }
+        /**
+         * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+         */
+        public Builder addAllRequests(
+            Iterable<? extends RequestFromSelf> values) {
+          copyOnWrite();
+          instance.addAllRequests(values);
+          return this;
+        }
+        /**
+         * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+         */
+        public Builder clearRequests() {
+          copyOnWrite();
+          instance.clearRequests();
+          return this;
+        }
+        /**
+         * <code>repeated .AddFriendRequestFromSelf.Rsp.RequestFromSelf requests = 1;</code>
+         */
+        public Builder removeRequests(int index) {
+          copyOnWrite();
+          instance.removeRequests(index);
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:AddFriendRequestFromSelf.Rsp)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new Rsp();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            requests_.makeImmutable();
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            Rsp other = (Rsp) arg1;
+            requests_= visitor.visitList(requests_, other.requests_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 10: {
+                    if (!requests_.isModifiable()) {
+                      requests_ =
+                          com.google.protobuf.GeneratedMessageLite.mutableCopy(requests_);
+                    }
+                    requests_.add(
+                        input.readMessage(RequestFromSelf.parser(), extensionRegistry));
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (Rsp.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:AddFriendRequestFromSelf.Rsp)
+      private static final Rsp DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new Rsp();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static Rsp getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<Rsp> PARSER;
+
+      public static com.google.protobuf.Parser<Rsp> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static AddFriendRequestFromSelf parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static AddFriendRequestFromSelf parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static AddFriendRequestFromSelf parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static AddFriendRequestFromSelf parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static AddFriendRequestFromSelf parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static AddFriendRequestFromSelf parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static AddFriendRequestFromSelf parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static AddFriendRequestFromSelf parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static AddFriendRequestFromSelf parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static AddFriendRequestFromSelf parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(AddFriendRequestFromSelf prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code AddFriendRequestFromSelf}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          AddFriendRequestFromSelf, Builder> implements
+        // @@protoc_insertion_point(builder_implements:AddFriendRequestFromSelf)
+        AddFriendRequestFromSelfOrBuilder {
+      // Construct using Test.AddFriendRequestFromSelf.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:AddFriendRequestFromSelf)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new AddFriendRequestFromSelf();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          AddFriendRequestFromSelf other = (AddFriendRequestFromSelf) arg1;
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (AddFriendRequestFromSelf.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:AddFriendRequestFromSelf)
+    private static final AddFriendRequestFromSelf DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new AddFriendRequestFromSelf();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static AddFriendRequestFromSelf getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<AddFriendRequestFromSelf> PARSER;
+
+    public static com.google.protobuf.Parser<AddFriendRequestFromSelf> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface ChangePasswordOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ChangePassword)
+      com.google.protobuf.MessageLiteOrBuilder {
+  }
+  /**
+   * Protobuf type {@code ChangePassword}
+   */
+  public  static final class ChangePassword extends
+      com.google.protobuf.GeneratedMessageLite<
+          ChangePassword, ChangePassword.Builder> implements
+      // @@protoc_insertion_point(message_implements:ChangePassword)
+      ChangePasswordOrBuilder {
+    private ChangePassword() {
+    }
+    public interface ReqOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ChangePassword.Req)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      String getShortToken();
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getShortTokenBytes();
+
+      /**
+       * <code>optional string new_password = 2;</code>
+       */
+      String getNewPassword();
+      /**
+       * <code>optional string new_password = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getNewPasswordBytes();
+    }
+    /**
+     * Protobuf type {@code ChangePassword.Req}
+     */
+    public  static final class Req extends
+        com.google.protobuf.GeneratedMessageLite<
+            Req, Req.Builder> implements
+        // @@protoc_insertion_point(message_implements:ChangePassword.Req)
+        ReqOrBuilder {
+      private Req() {
+        shortToken_ = "";
+        newPassword_ = "";
+      }
+      public static final int SHORT_TOKEN_FIELD_NUMBER = 1;
+      private String shortToken_;
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      public String getShortToken() {
+        return shortToken_;
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getShortTokenBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(shortToken_);
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void setShortToken(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        shortToken_ = value;
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void clearShortToken() {
+        
+        shortToken_ = getDefaultInstance().getShortToken();
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void setShortTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        shortToken_ = value.toStringUtf8();
+      }
+
+      public static final int NEW_PASSWORD_FIELD_NUMBER = 2;
+      private String newPassword_;
+      /**
+       * <code>optional string new_password = 2;</code>
+       */
+      public String getNewPassword() {
+        return newPassword_;
+      }
+      /**
+       * <code>optional string new_password = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNewPasswordBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(newPassword_);
+      }
+      /**
+       * <code>optional string new_password = 2;</code>
+       */
+      private void setNewPassword(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        newPassword_ = value;
+      }
+      /**
+       * <code>optional string new_password = 2;</code>
+       */
+      private void clearNewPassword() {
+        
+        newPassword_ = getDefaultInstance().getNewPassword();
+      }
+      /**
+       * <code>optional string new_password = 2;</code>
+       */
+      private void setNewPasswordBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        newPassword_ = value.toStringUtf8();
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!shortToken_.isEmpty()) {
+          output.writeString(1, getShortToken());
+        }
+        if (!newPassword_.isEmpty()) {
+          output.writeString(2, getNewPassword());
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!shortToken_.isEmpty()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(1, getShortToken());
+        }
+        if (!newPassword_.isEmpty()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(2, getNewPassword());
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static Req parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Req parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Req parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Req parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Req parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Req parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static Req parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(Req prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code ChangePassword.Req}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            Req, Builder> implements
+          // @@protoc_insertion_point(builder_implements:ChangePassword.Req)
+          ReqOrBuilder {
+        // Construct using Test.ChangePassword.Req.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public String getShortToken() {
+          return instance.getShortToken();
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getShortTokenBytes() {
+          return instance.getShortTokenBytes();
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder setShortToken(
+            String value) {
+          copyOnWrite();
+          instance.setShortToken(value);
+          return this;
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder clearShortToken() {
+          copyOnWrite();
+          instance.clearShortToken();
+          return this;
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder setShortTokenBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setShortTokenBytes(value);
+          return this;
+        }
+
+        /**
+         * <code>optional string new_password = 2;</code>
+         */
+        public String getNewPassword() {
+          return instance.getNewPassword();
+        }
+        /**
+         * <code>optional string new_password = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getNewPasswordBytes() {
+          return instance.getNewPasswordBytes();
+        }
+        /**
+         * <code>optional string new_password = 2;</code>
+         */
+        public Builder setNewPassword(
+            String value) {
+          copyOnWrite();
+          instance.setNewPassword(value);
+          return this;
+        }
+        /**
+         * <code>optional string new_password = 2;</code>
+         */
+        public Builder clearNewPassword() {
+          copyOnWrite();
+          instance.clearNewPassword();
+          return this;
+        }
+        /**
+         * <code>optional string new_password = 2;</code>
+         */
+        public Builder setNewPasswordBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setNewPasswordBytes(value);
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:ChangePassword.Req)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new Req();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            Req other = (Req) arg1;
+            shortToken_ = visitor.visitString(!shortToken_.isEmpty(), shortToken_,
+                !other.shortToken_.isEmpty(), other.shortToken_);
+            newPassword_ = visitor.visitString(!newPassword_.isEmpty(), newPassword_,
+                !other.newPassword_.isEmpty(), other.newPassword_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 10: {
+                    String s = input.readStringRequireUtf8();
+
+                    shortToken_ = s;
+                    break;
+                  }
+                  case 18: {
+                    String s = input.readStringRequireUtf8();
+
+                    newPassword_ = s;
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (Req.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:ChangePassword.Req)
+      private static final Req DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new Req();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static Req getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<Req> PARSER;
+
+      public static com.google.protobuf.Parser<Req> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static ChangePassword parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static ChangePassword parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static ChangePassword parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static ChangePassword parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static ChangePassword parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static ChangePassword parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static ChangePassword parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static ChangePassword parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static ChangePassword parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static ChangePassword parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(ChangePassword prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code ChangePassword}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          ChangePassword, Builder> implements
+        // @@protoc_insertion_point(builder_implements:ChangePassword)
+        ChangePasswordOrBuilder {
+      // Construct using Test.ChangePassword.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ChangePassword)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new ChangePassword();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          ChangePassword other = (ChangePassword) arg1;
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (ChangePassword.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:ChangePassword)
+    private static final ChangePassword DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new ChangePassword();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static ChangePassword getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<ChangePassword> PARSER;
+
+    public static com.google.protobuf.Parser<ChangePassword> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface ChangeNameOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ChangeName)
+      com.google.protobuf.MessageLiteOrBuilder {
+  }
+  /**
+   * Protobuf type {@code ChangeName}
+   */
+  public  static final class ChangeName extends
+      com.google.protobuf.GeneratedMessageLite<
+          ChangeName, ChangeName.Builder> implements
+      // @@protoc_insertion_point(message_implements:ChangeName)
+      ChangeNameOrBuilder {
+    private ChangeName() {
+    }
+    public interface ReqOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ChangeName.Req)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      String getShortToken();
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getShortTokenBytes();
+
+      /**
+       * <code>optional string new_name = 2;</code>
+       */
+      String getNewName();
+      /**
+       * <code>optional string new_name = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getNewNameBytes();
+    }
+    /**
+     * Protobuf type {@code ChangeName.Req}
+     */
+    public  static final class Req extends
+        com.google.protobuf.GeneratedMessageLite<
+            Req, Req.Builder> implements
+        // @@protoc_insertion_point(message_implements:ChangeName.Req)
+        ReqOrBuilder {
+      private Req() {
+        shortToken_ = "";
+        newName_ = "";
+      }
+      public static final int SHORT_TOKEN_FIELD_NUMBER = 1;
+      private String shortToken_;
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      public String getShortToken() {
+        return shortToken_;
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getShortTokenBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(shortToken_);
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void setShortToken(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        shortToken_ = value;
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void clearShortToken() {
+        
+        shortToken_ = getDefaultInstance().getShortToken();
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void setShortTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        shortToken_ = value.toStringUtf8();
+      }
+
+      public static final int NEW_NAME_FIELD_NUMBER = 2;
+      private String newName_;
+      /**
+       * <code>optional string new_name = 2;</code>
+       */
+      public String getNewName() {
+        return newName_;
+      }
+      /**
+       * <code>optional string new_name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNewNameBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(newName_);
+      }
+      /**
+       * <code>optional string new_name = 2;</code>
+       */
+      private void setNewName(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        newName_ = value;
+      }
+      /**
+       * <code>optional string new_name = 2;</code>
+       */
+      private void clearNewName() {
+        
+        newName_ = getDefaultInstance().getNewName();
+      }
+      /**
+       * <code>optional string new_name = 2;</code>
+       */
+      private void setNewNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        newName_ = value.toStringUtf8();
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!shortToken_.isEmpty()) {
+          output.writeString(1, getShortToken());
+        }
+        if (!newName_.isEmpty()) {
+          output.writeString(2, getNewName());
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!shortToken_.isEmpty()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(1, getShortToken());
+        }
+        if (!newName_.isEmpty()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(2, getNewName());
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static Req parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Req parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Req parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Req parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Req parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Req parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static Req parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(Req prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code ChangeName.Req}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            Req, Builder> implements
+          // @@protoc_insertion_point(builder_implements:ChangeName.Req)
+          ReqOrBuilder {
+        // Construct using Test.ChangeName.Req.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public String getShortToken() {
+          return instance.getShortToken();
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getShortTokenBytes() {
+          return instance.getShortTokenBytes();
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder setShortToken(
+            String value) {
+          copyOnWrite();
+          instance.setShortToken(value);
+          return this;
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder clearShortToken() {
+          copyOnWrite();
+          instance.clearShortToken();
+          return this;
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder setShortTokenBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setShortTokenBytes(value);
+          return this;
+        }
+
+        /**
+         * <code>optional string new_name = 2;</code>
+         */
+        public String getNewName() {
+          return instance.getNewName();
+        }
+        /**
+         * <code>optional string new_name = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getNewNameBytes() {
+          return instance.getNewNameBytes();
+        }
+        /**
+         * <code>optional string new_name = 2;</code>
+         */
+        public Builder setNewName(
+            String value) {
+          copyOnWrite();
+          instance.setNewName(value);
+          return this;
+        }
+        /**
+         * <code>optional string new_name = 2;</code>
+         */
+        public Builder clearNewName() {
+          copyOnWrite();
+          instance.clearNewName();
+          return this;
+        }
+        /**
+         * <code>optional string new_name = 2;</code>
+         */
+        public Builder setNewNameBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setNewNameBytes(value);
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:ChangeName.Req)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new Req();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            Req other = (Req) arg1;
+            shortToken_ = visitor.visitString(!shortToken_.isEmpty(), shortToken_,
+                !other.shortToken_.isEmpty(), other.shortToken_);
+            newName_ = visitor.visitString(!newName_.isEmpty(), newName_,
+                !other.newName_.isEmpty(), other.newName_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 10: {
+                    String s = input.readStringRequireUtf8();
+
+                    shortToken_ = s;
+                    break;
+                  }
+                  case 18: {
+                    String s = input.readStringRequireUtf8();
+
+                    newName_ = s;
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (Req.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:ChangeName.Req)
+      private static final Req DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new Req();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static Req getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<Req> PARSER;
+
+      public static com.google.protobuf.Parser<Req> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static ChangeName parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static ChangeName parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static ChangeName parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static ChangeName parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static ChangeName parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static ChangeName parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static ChangeName parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static ChangeName parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static ChangeName parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static ChangeName parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(ChangeName prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code ChangeName}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          ChangeName, Builder> implements
+        // @@protoc_insertion_point(builder_implements:ChangeName)
+        ChangeNameOrBuilder {
+      // Construct using Test.ChangeName.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ChangeName)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new ChangeName();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          ChangeName other = (ChangeName) arg1;
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (ChangeName.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:ChangeName)
+    private static final ChangeName DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new ChangeName();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static ChangeName getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<ChangeName> PARSER;
+
+    public static com.google.protobuf.Parser<ChangeName> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface ChangeHeadpicOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ChangeHeadpic)
+      com.google.protobuf.MessageLiteOrBuilder {
+  }
+  /**
+   * Protobuf type {@code ChangeHeadpic}
+   */
+  public  static final class ChangeHeadpic extends
+      com.google.protobuf.GeneratedMessageLite<
+          ChangeHeadpic, ChangeHeadpic.Builder> implements
+      // @@protoc_insertion_point(message_implements:ChangeHeadpic)
+      ChangeHeadpicOrBuilder {
+    private ChangeHeadpic() {
+    }
+    public interface ReqOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ChangeHeadpic.Req)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      String getShortToken();
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getShortTokenBytes();
+
+      /**
+       * <code>optional bytes new_headpic = 2;</code>
+       */
+      com.google.protobuf.ByteString getNewHeadpic();
+    }
+    /**
+     * Protobuf type {@code ChangeHeadpic.Req}
+     */
+    public  static final class Req extends
+        com.google.protobuf.GeneratedMessageLite<
+            Req, Req.Builder> implements
+        // @@protoc_insertion_point(message_implements:ChangeHeadpic.Req)
+        ReqOrBuilder {
+      private Req() {
+        shortToken_ = "";
+        newHeadpic_ = com.google.protobuf.ByteString.EMPTY;
+      }
+      public static final int SHORT_TOKEN_FIELD_NUMBER = 1;
+      private String shortToken_;
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      public String getShortToken() {
+        return shortToken_;
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getShortTokenBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(shortToken_);
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void setShortToken(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        shortToken_ = value;
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void clearShortToken() {
+        
+        shortToken_ = getDefaultInstance().getShortToken();
+      }
+      /**
+       * <code>optional string short_token = 1;</code>
+       */
+      private void setShortTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        shortToken_ = value.toStringUtf8();
+      }
+
+      public static final int NEW_HEADPIC_FIELD_NUMBER = 2;
+      private com.google.protobuf.ByteString newHeadpic_;
+      /**
+       * <code>optional bytes new_headpic = 2;</code>
+       */
+      public com.google.protobuf.ByteString getNewHeadpic() {
+        return newHeadpic_;
+      }
+      /**
+       * <code>optional bytes new_headpic = 2;</code>
+       */
+      private void setNewHeadpic(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        newHeadpic_ = value;
+      }
+      /**
+       * <code>optional bytes new_headpic = 2;</code>
+       */
+      private void clearNewHeadpic() {
+        
+        newHeadpic_ = getDefaultInstance().getNewHeadpic();
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!shortToken_.isEmpty()) {
+          output.writeString(1, getShortToken());
+        }
+        if (!newHeadpic_.isEmpty()) {
+          output.writeBytes(2, newHeadpic_);
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!shortToken_.isEmpty()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(1, getShortToken());
+        }
+        if (!newHeadpic_.isEmpty()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBytesSize(2, newHeadpic_);
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static Req parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Req parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static Req parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static Req parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Req parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Req parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static Req parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static Req parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(Req prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code ChangeHeadpic.Req}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            Req, Builder> implements
+          // @@protoc_insertion_point(builder_implements:ChangeHeadpic.Req)
+          ReqOrBuilder {
+        // Construct using Test.ChangeHeadpic.Req.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public String getShortToken() {
+          return instance.getShortToken();
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getShortTokenBytes() {
+          return instance.getShortTokenBytes();
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder setShortToken(
+            String value) {
+          copyOnWrite();
+          instance.setShortToken(value);
+          return this;
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder clearShortToken() {
+          copyOnWrite();
+          instance.clearShortToken();
+          return this;
+        }
+        /**
+         * <code>optional string short_token = 1;</code>
+         */
+        public Builder setShortTokenBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setShortTokenBytes(value);
+          return this;
+        }
+
+        /**
+         * <code>optional bytes new_headpic = 2;</code>
+         */
+        public com.google.protobuf.ByteString getNewHeadpic() {
+          return instance.getNewHeadpic();
+        }
+        /**
+         * <code>optional bytes new_headpic = 2;</code>
+         */
+        public Builder setNewHeadpic(com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setNewHeadpic(value);
+          return this;
+        }
+        /**
+         * <code>optional bytes new_headpic = 2;</code>
+         */
+        public Builder clearNewHeadpic() {
+          copyOnWrite();
+          instance.clearNewHeadpic();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:ChangeHeadpic.Req)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new Req();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            Req other = (Req) arg1;
+            shortToken_ = visitor.visitString(!shortToken_.isEmpty(), shortToken_,
+                !other.shortToken_.isEmpty(), other.shortToken_);
+            newHeadpic_ = visitor.visitByteString(newHeadpic_ != com.google.protobuf.ByteString.EMPTY, newHeadpic_,
+                other.newHeadpic_ != com.google.protobuf.ByteString.EMPTY, other.newHeadpic_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 10: {
+                    String s = input.readStringRequireUtf8();
+
+                    shortToken_ = s;
+                    break;
+                  }
+                  case 18: {
+
+                    newHeadpic_ = input.readBytes();
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (Req.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:ChangeHeadpic.Req)
+      private static final Req DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new Req();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static Req getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<Req> PARSER;
+
+      public static com.google.protobuf.Parser<Req> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static ChangeHeadpic parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static ChangeHeadpic parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static ChangeHeadpic parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static ChangeHeadpic parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static ChangeHeadpic parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static ChangeHeadpic parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static ChangeHeadpic parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static ChangeHeadpic parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static ChangeHeadpic parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static ChangeHeadpic parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(ChangeHeadpic prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code ChangeHeadpic}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          ChangeHeadpic, Builder> implements
+        // @@protoc_insertion_point(builder_implements:ChangeHeadpic)
+        ChangeHeadpicOrBuilder {
+      // Construct using Test.ChangeHeadpic.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ChangeHeadpic)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new ChangeHeadpic();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          ChangeHeadpic other = (ChangeHeadpic) arg1;
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (ChangeHeadpic.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:ChangeHeadpic)
+    private static final ChangeHeadpic DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new ChangeHeadpic();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static ChangeHeadpic getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<ChangeHeadpic> PARSER;
+
+    public static com.google.protobuf.Parser<ChangeHeadpic> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }
@@ -9700,7 +15187,7 @@ public final class Test {
     /**
      * <code>optional .Error.Error_type error_type = 1;</code>
      */
-    Test.Error.Error_type getErrorType();
+    Error.Error_type getErrorType();
   }
   /**
    * Protobuf type {@code Error}
@@ -9765,6 +15252,22 @@ public final class Test {
        * <code>ID_OR_PSW_WRONG = 12;</code>
        */
       ID_OR_PSW_WRONG(12),
+      /**
+       * <code>UNKNOWN_FRIEND_ERR = 13;</code>
+       */
+      UNKNOWN_FRIEND_ERR(13),
+      /**
+       * <code>UNKNOWN_CHATREC_ERR = 14;</code>
+       */
+      UNKNOWN_CHATREC_ERR(14),
+      /**
+       * <code>UNKNOWN_CHANGE_ERR = 15;</code>
+       */
+      UNKNOWN_CHANGE_ERR(15),
+      /**
+       * <code>UNKNOWN_ADD_REQ_ERR = 16;</code>
+       */
+      UNKNOWN_ADD_REQ_ERR(16),
       UNRECOGNIZED(-1),
       ;
 
@@ -9816,6 +15319,22 @@ public final class Test {
        * <code>ID_OR_PSW_WRONG = 12;</code>
        */
       public static final int ID_OR_PSW_WRONG_VALUE = 12;
+      /**
+       * <code>UNKNOWN_FRIEND_ERR = 13;</code>
+       */
+      public static final int UNKNOWN_FRIEND_ERR_VALUE = 13;
+      /**
+       * <code>UNKNOWN_CHATREC_ERR = 14;</code>
+       */
+      public static final int UNKNOWN_CHATREC_ERR_VALUE = 14;
+      /**
+       * <code>UNKNOWN_CHANGE_ERR = 15;</code>
+       */
+      public static final int UNKNOWN_CHANGE_ERR_VALUE = 15;
+      /**
+       * <code>UNKNOWN_ADD_REQ_ERR = 16;</code>
+       */
+      public static final int UNKNOWN_ADD_REQ_ERR_VALUE = 16;
 
 
       public final int getNumber() {
@@ -9844,6 +15363,10 @@ public final class Test {
           case 10: return UNRECOGNIZE_TOKEN;
           case 11: return USER_NO_EXIST;
           case 12: return ID_OR_PSW_WRONG;
+          case 13: return UNKNOWN_FRIEND_ERR;
+          case 14: return UNKNOWN_CHATREC_ERR;
+          case 15: return UNKNOWN_CHANGE_ERR;
+          case 16: return UNKNOWN_ADD_REQ_ERR;
           default: return null;
         }
       }
@@ -9880,9 +15403,9 @@ public final class Test {
     /**
      * <code>optional .Error.Error_type error_type = 1;</code>
      */
-    public Test.Error.Error_type getErrorType() {
-      Test.Error.Error_type result = Test.Error.Error_type.forNumber(errorType_);
-      return result == null ? Test.Error.Error_type.UNRECOGNIZED : result;
+    public Error_type getErrorType() {
+      Error_type result = Error_type.forNumber(errorType_);
+      return result == null ? Error_type.UNRECOGNIZED : result;
     }
     /**
      * <code>optional .Error.Error_type error_type = 1;</code>
@@ -9893,24 +15416,24 @@ public final class Test {
     /**
      * <code>optional .Error.Error_type error_type = 1;</code>
      */
-    private void setErrorType(Test.Error.Error_type value) {
+    private void setErrorType(Error_type value) {
       if (value == null) {
         throw new NullPointerException();
       }
-
+      
       errorType_ = value.getNumber();
     }
     /**
      * <code>optional .Error.Error_type error_type = 1;</code>
      */
     private void clearErrorType() {
-
+      
       errorType_ = 0;
     }
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (errorType_ != Test.Error.Error_type.UNKNOWN_ERR.getNumber()) {
+      if (errorType_ != Error_type.UNKNOWN_ERR.getNumber()) {
         output.writeEnum(1, errorType_);
       }
     }
@@ -9920,7 +15443,7 @@ public final class Test {
       if (size != -1) return size;
 
       size = 0;
-      if (errorType_ != Test.Error.Error_type.UNKNOWN_ERR.getNumber()) {
+      if (errorType_ != Error_type.UNKNOWN_ERR.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, errorType_);
       }
@@ -9928,60 +15451,60 @@ public final class Test {
       return size;
     }
 
-    public static Test.Error parseFrom(
+    public static Error parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.Error parseFrom(
+    public static Error parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.Error parseFrom(byte[] data)
+    public static Error parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.Error parseFrom(
+    public static Error parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.Error parseFrom(java.io.InputStream input)
+    public static Error parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.Error parseFrom(
+    public static Error parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.Error parseDelimitedFrom(java.io.InputStream input)
+    public static Error parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static Test.Error parseDelimitedFrom(
+    public static Error parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.Error parseFrom(
+    public static Error parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.Error parseFrom(
+    public static Error parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9992,7 +15515,7 @@ public final class Test {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Test.Error prototype) {
+    public static Builder newBuilder(Error prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
@@ -10003,7 +15526,7 @@ public final class Test {
         com.google.protobuf.GeneratedMessageLite.Builder<
           Error, Builder> implements
         // @@protoc_insertion_point(builder_implements:Error)
-        Test.ErrorOrBuilder {
+        ErrorOrBuilder {
       // Construct using Test.Error.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
@@ -10027,13 +15550,13 @@ public final class Test {
       /**
        * <code>optional .Error.Error_type error_type = 1;</code>
        */
-      public Test.Error.Error_type getErrorType() {
+      public Error_type getErrorType() {
         return instance.getErrorType();
       }
       /**
        * <code>optional .Error.Error_type error_type = 1;</code>
        */
-      public Builder setErrorType(Test.Error.Error_type value) {
+      public Builder setErrorType(Error_type value) {
         copyOnWrite();
         instance.setErrorType(value);
         return this;
@@ -10054,7 +15577,7 @@ public final class Test {
         Object arg0, Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new Test.Error();
+          return new Error();
         }
         case IS_INITIALIZED: {
           return DEFAULT_INSTANCE;
@@ -10067,7 +15590,7 @@ public final class Test {
         }
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
-          Test.Error other = (Test.Error) arg1;
+          Error other = (Error) arg1;
           errorType_ = visitor.visitInt(errorType_ != 0, errorType_,    other.errorType_ != 0, other.errorType_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
@@ -10114,7 +15637,7 @@ public final class Test {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          if (PARSER == null) {    synchronized (Test.Error.class) {
+          if (PARSER == null) {    synchronized (Error.class) {
               if (PARSER == null) {
                 PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
               }
@@ -10128,13 +15651,13 @@ public final class Test {
 
 
     // @@protoc_insertion_point(class_scope:Error)
-    private static final Test.Error DEFAULT_INSTANCE;
+    private static final Error DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new Error();
       DEFAULT_INSTANCE.makeImmutable();
     }
 
-    public static Test.Error getDefaultInstance() {
+    public static Error getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -10152,44 +15675,79 @@ public final class Test {
     /**
      * <code>optional .AddFriend.AToServer add_friend_a_to_server = 1;</code>
      */
-    Test.AddFriend.AToServer getAddFriendAToServer();
+    AddFriend.AToServer getAddFriendAToServer();
 
     /**
      * <code>optional .AddFriend.BToServer add_friend_b_to_server = 2;</code>
      */
-    Test.AddFriend.BToServer getAddFriendBToServer();
+    AddFriend.BToServer getAddFriendBToServer();
 
     /**
      * <code>optional .ChatWithServer.Req chat_with_server_req = 3;</code>
      */
-    Test.ChatWithServer.Req getChatWithServerReq();
+    ChatWithServer.Req getChatWithServerReq();
 
     /**
      * <code>optional .GetToken.Req get_token_req = 4;</code>
      */
-    Test.GetToken.Req getGetTokenReq();
+    GetToken.Req getGetTokenReq();
 
     /**
      * <code>optional .HeartBeat.Req heart_beat_req = 5;</code>
      */
-    Test.HeartBeat.Req getHeartBeatReq();
+    HeartBeat.Req getHeartBeatReq();
 
     /**
      * <code>optional .Login.Req login_req = 6;</code>
      */
-    Test.Login.Req getLoginReq();
+    Login.Req getLoginReq();
 
     /**
      * <code>optional .Register.Req register_req = 7;</code>
      */
-    Test.Register.Req getRegisterReq();
+    Register.Req getRegisterReq();
 
     /**
      * <code>optional .SearchUser.Req search_user_req = 8;</code>
      */
-    Test.SearchUser.Req getSearchUserReq();
+    SearchUser.Req getSearchUserReq();
 
-    public Test.ReqToServer.ReqCase getReqCase();
+    /**
+     * <code>optional .FriendList.Req friendlist_req = 9;</code>
+     */
+    FriendList.Req getFriendlistReq();
+
+    /**
+     * <code>optional .ChatRecord.Req chat_record_req = 10;</code>
+     */
+    ChatRecord.Req getChatRecordReq();
+
+    /**
+     * <code>optional .ChangePassword.Req change_password_req = 11;</code>
+     */
+    ChangePassword.Req getChangePasswordReq();
+
+    /**
+     * <code>optional .ChangeName.Req change_name_req = 12;</code>
+     */
+    ChangeName.Req getChangeNameReq();
+
+    /**
+     * <code>optional .ChangeHeadpic.Req change_headpic_req = 13;</code>
+     */
+    ChangeHeadpic.Req getChangeHeadpicReq();
+
+    /**
+     * <code>optional .AddFriendRequestFromOther.Req add_friend_request_from_other_req = 14;</code>
+     */
+    AddFriendRequestFromOther.Req getAddFriendRequestFromOtherReq();
+
+    /**
+     * <code>optional .AddFriendRequestFromSelf.Req add_friend_request_from_self_req = 15;</code>
+     */
+    AddFriendRequestFromSelf.Req getAddFriendRequestFromSelfReq();
+
+    public ReqToServer.ReqCase getReqCase();
   }
   /**
    * Protobuf type {@code ReqToServer}
@@ -10213,6 +15771,13 @@ public final class Test {
       LOGIN_REQ(6),
       REGISTER_REQ(7),
       SEARCH_USER_REQ(8),
+      FRIENDLIST_REQ(9),
+      CHAT_RECORD_REQ(10),
+      CHANGE_PASSWORD_REQ(11),
+      CHANGE_NAME_REQ(12),
+      CHANGE_HEADPIC_REQ(13),
+      ADD_FRIEND_REQUEST_FROM_OTHER_REQ(14),
+      ADD_FRIEND_REQUEST_FROM_SELF_REQ(15),
       REQ_NOT_SET(0);
       private final int value;
       private ReqCase(int value) {
@@ -10236,6 +15801,13 @@ public final class Test {
           case 6: return LOGIN_REQ;
           case 7: return REGISTER_REQ;
           case 8: return SEARCH_USER_REQ;
+          case 9: return FRIENDLIST_REQ;
+          case 10: return CHAT_RECORD_REQ;
+          case 11: return CHANGE_PASSWORD_REQ;
+          case 12: return CHANGE_NAME_REQ;
+          case 13: return CHANGE_HEADPIC_REQ;
+          case 14: return ADD_FRIEND_REQUEST_FROM_OTHER_REQ;
+          case 15: return ADD_FRIEND_REQUEST_FROM_SELF_REQ;
           case 0: return REQ_NOT_SET;
           default: return null;
         }
@@ -10260,16 +15832,16 @@ public final class Test {
     /**
      * <code>optional .AddFriend.AToServer add_friend_a_to_server = 1;</code>
      */
-    public Test.AddFriend.AToServer getAddFriendAToServer() {
+    public AddFriend.AToServer getAddFriendAToServer() {
       if (reqCase_ == 1) {
-         return (Test.AddFriend.AToServer) req_;
+         return (AddFriend.AToServer) req_;
       }
-      return Test.AddFriend.AToServer.getDefaultInstance();
+      return AddFriend.AToServer.getDefaultInstance();
     }
     /**
      * <code>optional .AddFriend.AToServer add_friend_a_to_server = 1;</code>
      */
-    private void setAddFriendAToServer(Test.AddFriend.AToServer value) {
+    private void setAddFriendAToServer(AddFriend.AToServer value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -10280,17 +15852,17 @@ public final class Test {
      * <code>optional .AddFriend.AToServer add_friend_a_to_server = 1;</code>
      */
     private void setAddFriendAToServer(
-        Test.AddFriend.AToServer.Builder builderForValue) {
+        AddFriend.AToServer.Builder builderForValue) {
       req_ = builderForValue.build();
       reqCase_ = 1;
     }
     /**
      * <code>optional .AddFriend.AToServer add_friend_a_to_server = 1;</code>
      */
-    private void mergeAddFriendAToServer(Test.AddFriend.AToServer value) {
+    private void mergeAddFriendAToServer(AddFriend.AToServer value) {
       if (reqCase_ == 1 &&
-          req_ != Test.AddFriend.AToServer.getDefaultInstance()) {
-        req_ = Test.AddFriend.AToServer.newBuilder((Test.AddFriend.AToServer) req_)
+          req_ != AddFriend.AToServer.getDefaultInstance()) {
+        req_ = AddFriend.AToServer.newBuilder((AddFriend.AToServer) req_)
             .mergeFrom(value).buildPartial();
       } else {
         req_ = value;
@@ -10311,16 +15883,16 @@ public final class Test {
     /**
      * <code>optional .AddFriend.BToServer add_friend_b_to_server = 2;</code>
      */
-    public Test.AddFriend.BToServer getAddFriendBToServer() {
+    public AddFriend.BToServer getAddFriendBToServer() {
       if (reqCase_ == 2) {
-         return (Test.AddFriend.BToServer) req_;
+         return (AddFriend.BToServer) req_;
       }
-      return Test.AddFriend.BToServer.getDefaultInstance();
+      return AddFriend.BToServer.getDefaultInstance();
     }
     /**
      * <code>optional .AddFriend.BToServer add_friend_b_to_server = 2;</code>
      */
-    private void setAddFriendBToServer(Test.AddFriend.BToServer value) {
+    private void setAddFriendBToServer(AddFriend.BToServer value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -10331,17 +15903,17 @@ public final class Test {
      * <code>optional .AddFriend.BToServer add_friend_b_to_server = 2;</code>
      */
     private void setAddFriendBToServer(
-        Test.AddFriend.BToServer.Builder builderForValue) {
+        AddFriend.BToServer.Builder builderForValue) {
       req_ = builderForValue.build();
       reqCase_ = 2;
     }
     /**
      * <code>optional .AddFriend.BToServer add_friend_b_to_server = 2;</code>
      */
-    private void mergeAddFriendBToServer(Test.AddFriend.BToServer value) {
+    private void mergeAddFriendBToServer(AddFriend.BToServer value) {
       if (reqCase_ == 2 &&
-          req_ != Test.AddFriend.BToServer.getDefaultInstance()) {
-        req_ = Test.AddFriend.BToServer.newBuilder((Test.AddFriend.BToServer) req_)
+          req_ != AddFriend.BToServer.getDefaultInstance()) {
+        req_ = AddFriend.BToServer.newBuilder((AddFriend.BToServer) req_)
             .mergeFrom(value).buildPartial();
       } else {
         req_ = value;
@@ -10362,16 +15934,16 @@ public final class Test {
     /**
      * <code>optional .ChatWithServer.Req chat_with_server_req = 3;</code>
      */
-    public Test.ChatWithServer.Req getChatWithServerReq() {
+    public ChatWithServer.Req getChatWithServerReq() {
       if (reqCase_ == 3) {
-         return (Test.ChatWithServer.Req) req_;
+         return (ChatWithServer.Req) req_;
       }
-      return Test.ChatWithServer.Req.getDefaultInstance();
+      return ChatWithServer.Req.getDefaultInstance();
     }
     /**
      * <code>optional .ChatWithServer.Req chat_with_server_req = 3;</code>
      */
-    private void setChatWithServerReq(Test.ChatWithServer.Req value) {
+    private void setChatWithServerReq(ChatWithServer.Req value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -10382,17 +15954,17 @@ public final class Test {
      * <code>optional .ChatWithServer.Req chat_with_server_req = 3;</code>
      */
     private void setChatWithServerReq(
-        Test.ChatWithServer.Req.Builder builderForValue) {
+        ChatWithServer.Req.Builder builderForValue) {
       req_ = builderForValue.build();
       reqCase_ = 3;
     }
     /**
      * <code>optional .ChatWithServer.Req chat_with_server_req = 3;</code>
      */
-    private void mergeChatWithServerReq(Test.ChatWithServer.Req value) {
+    private void mergeChatWithServerReq(ChatWithServer.Req value) {
       if (reqCase_ == 3 &&
-          req_ != Test.ChatWithServer.Req.getDefaultInstance()) {
-        req_ = Test.ChatWithServer.Req.newBuilder((Test.ChatWithServer.Req) req_)
+          req_ != ChatWithServer.Req.getDefaultInstance()) {
+        req_ = ChatWithServer.Req.newBuilder((ChatWithServer.Req) req_)
             .mergeFrom(value).buildPartial();
       } else {
         req_ = value;
@@ -10413,16 +15985,16 @@ public final class Test {
     /**
      * <code>optional .GetToken.Req get_token_req = 4;</code>
      */
-    public Test.GetToken.Req getGetTokenReq() {
+    public GetToken.Req getGetTokenReq() {
       if (reqCase_ == 4) {
-         return (Test.GetToken.Req) req_;
+         return (GetToken.Req) req_;
       }
-      return Test.GetToken.Req.getDefaultInstance();
+      return GetToken.Req.getDefaultInstance();
     }
     /**
      * <code>optional .GetToken.Req get_token_req = 4;</code>
      */
-    private void setGetTokenReq(Test.GetToken.Req value) {
+    private void setGetTokenReq(GetToken.Req value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -10433,17 +16005,17 @@ public final class Test {
      * <code>optional .GetToken.Req get_token_req = 4;</code>
      */
     private void setGetTokenReq(
-        Test.GetToken.Req.Builder builderForValue) {
+        GetToken.Req.Builder builderForValue) {
       req_ = builderForValue.build();
       reqCase_ = 4;
     }
     /**
      * <code>optional .GetToken.Req get_token_req = 4;</code>
      */
-    private void mergeGetTokenReq(Test.GetToken.Req value) {
+    private void mergeGetTokenReq(GetToken.Req value) {
       if (reqCase_ == 4 &&
-          req_ != Test.GetToken.Req.getDefaultInstance()) {
-        req_ = Test.GetToken.Req.newBuilder((Test.GetToken.Req) req_)
+          req_ != GetToken.Req.getDefaultInstance()) {
+        req_ = GetToken.Req.newBuilder((GetToken.Req) req_)
             .mergeFrom(value).buildPartial();
       } else {
         req_ = value;
@@ -10464,16 +16036,16 @@ public final class Test {
     /**
      * <code>optional .HeartBeat.Req heart_beat_req = 5;</code>
      */
-    public Test.HeartBeat.Req getHeartBeatReq() {
+    public HeartBeat.Req getHeartBeatReq() {
       if (reqCase_ == 5) {
-         return (Test.HeartBeat.Req) req_;
+         return (HeartBeat.Req) req_;
       }
-      return Test.HeartBeat.Req.getDefaultInstance();
+      return HeartBeat.Req.getDefaultInstance();
     }
     /**
      * <code>optional .HeartBeat.Req heart_beat_req = 5;</code>
      */
-    private void setHeartBeatReq(Test.HeartBeat.Req value) {
+    private void setHeartBeatReq(HeartBeat.Req value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -10484,17 +16056,17 @@ public final class Test {
      * <code>optional .HeartBeat.Req heart_beat_req = 5;</code>
      */
     private void setHeartBeatReq(
-        Test.HeartBeat.Req.Builder builderForValue) {
+        HeartBeat.Req.Builder builderForValue) {
       req_ = builderForValue.build();
       reqCase_ = 5;
     }
     /**
      * <code>optional .HeartBeat.Req heart_beat_req = 5;</code>
      */
-    private void mergeHeartBeatReq(Test.HeartBeat.Req value) {
+    private void mergeHeartBeatReq(HeartBeat.Req value) {
       if (reqCase_ == 5 &&
-          req_ != Test.HeartBeat.Req.getDefaultInstance()) {
-        req_ = Test.HeartBeat.Req.newBuilder((Test.HeartBeat.Req) req_)
+          req_ != HeartBeat.Req.getDefaultInstance()) {
+        req_ = HeartBeat.Req.newBuilder((HeartBeat.Req) req_)
             .mergeFrom(value).buildPartial();
       } else {
         req_ = value;
@@ -10515,16 +16087,16 @@ public final class Test {
     /**
      * <code>optional .Login.Req login_req = 6;</code>
      */
-    public Test.Login.Req getLoginReq() {
+    public Login.Req getLoginReq() {
       if (reqCase_ == 6) {
-         return (Test.Login.Req) req_;
+         return (Login.Req) req_;
       }
-      return Test.Login.Req.getDefaultInstance();
+      return Login.Req.getDefaultInstance();
     }
     /**
      * <code>optional .Login.Req login_req = 6;</code>
      */
-    private void setLoginReq(Test.Login.Req value) {
+    private void setLoginReq(Login.Req value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -10535,17 +16107,17 @@ public final class Test {
      * <code>optional .Login.Req login_req = 6;</code>
      */
     private void setLoginReq(
-        Test.Login.Req.Builder builderForValue) {
+        Login.Req.Builder builderForValue) {
       req_ = builderForValue.build();
       reqCase_ = 6;
     }
     /**
      * <code>optional .Login.Req login_req = 6;</code>
      */
-    private void mergeLoginReq(Test.Login.Req value) {
+    private void mergeLoginReq(Login.Req value) {
       if (reqCase_ == 6 &&
-          req_ != Test.Login.Req.getDefaultInstance()) {
-        req_ = Test.Login.Req.newBuilder((Test.Login.Req) req_)
+          req_ != Login.Req.getDefaultInstance()) {
+        req_ = Login.Req.newBuilder((Login.Req) req_)
             .mergeFrom(value).buildPartial();
       } else {
         req_ = value;
@@ -10566,16 +16138,16 @@ public final class Test {
     /**
      * <code>optional .Register.Req register_req = 7;</code>
      */
-    public Test.Register.Req getRegisterReq() {
+    public Register.Req getRegisterReq() {
       if (reqCase_ == 7) {
-         return (Test.Register.Req) req_;
+         return (Register.Req) req_;
       }
-      return Test.Register.Req.getDefaultInstance();
+      return Register.Req.getDefaultInstance();
     }
     /**
      * <code>optional .Register.Req register_req = 7;</code>
      */
-    private void setRegisterReq(Test.Register.Req value) {
+    private void setRegisterReq(Register.Req value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -10586,17 +16158,17 @@ public final class Test {
      * <code>optional .Register.Req register_req = 7;</code>
      */
     private void setRegisterReq(
-        Test.Register.Req.Builder builderForValue) {
+        Register.Req.Builder builderForValue) {
       req_ = builderForValue.build();
       reqCase_ = 7;
     }
     /**
      * <code>optional .Register.Req register_req = 7;</code>
      */
-    private void mergeRegisterReq(Test.Register.Req value) {
+    private void mergeRegisterReq(Register.Req value) {
       if (reqCase_ == 7 &&
-          req_ != Test.Register.Req.getDefaultInstance()) {
-        req_ = Test.Register.Req.newBuilder((Test.Register.Req) req_)
+          req_ != Register.Req.getDefaultInstance()) {
+        req_ = Register.Req.newBuilder((Register.Req) req_)
             .mergeFrom(value).buildPartial();
       } else {
         req_ = value;
@@ -10617,16 +16189,16 @@ public final class Test {
     /**
      * <code>optional .SearchUser.Req search_user_req = 8;</code>
      */
-    public Test.SearchUser.Req getSearchUserReq() {
+    public SearchUser.Req getSearchUserReq() {
       if (reqCase_ == 8) {
-         return (Test.SearchUser.Req) req_;
+         return (SearchUser.Req) req_;
       }
-      return Test.SearchUser.Req.getDefaultInstance();
+      return SearchUser.Req.getDefaultInstance();
     }
     /**
      * <code>optional .SearchUser.Req search_user_req = 8;</code>
      */
-    private void setSearchUserReq(Test.SearchUser.Req value) {
+    private void setSearchUserReq(SearchUser.Req value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -10637,17 +16209,17 @@ public final class Test {
      * <code>optional .SearchUser.Req search_user_req = 8;</code>
      */
     private void setSearchUserReq(
-        Test.SearchUser.Req.Builder builderForValue) {
+        SearchUser.Req.Builder builderForValue) {
       req_ = builderForValue.build();
       reqCase_ = 8;
     }
     /**
      * <code>optional .SearchUser.Req search_user_req = 8;</code>
      */
-    private void mergeSearchUserReq(Test.SearchUser.Req value) {
+    private void mergeSearchUserReq(SearchUser.Req value) {
       if (reqCase_ == 8 &&
-          req_ != Test.SearchUser.Req.getDefaultInstance()) {
-        req_ = Test.SearchUser.Req.newBuilder((Test.SearchUser.Req) req_)
+          req_ != SearchUser.Req.getDefaultInstance()) {
+        req_ = SearchUser.Req.newBuilder((SearchUser.Req) req_)
             .mergeFrom(value).buildPartial();
       } else {
         req_ = value;
@@ -10664,31 +16236,409 @@ public final class Test {
       }
     }
 
+    public static final int FRIENDLIST_REQ_FIELD_NUMBER = 9;
+    /**
+     * <code>optional .FriendList.Req friendlist_req = 9;</code>
+     */
+    public FriendList.Req getFriendlistReq() {
+      if (reqCase_ == 9) {
+         return (FriendList.Req) req_;
+      }
+      return FriendList.Req.getDefaultInstance();
+    }
+    /**
+     * <code>optional .FriendList.Req friendlist_req = 9;</code>
+     */
+    private void setFriendlistReq(FriendList.Req value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      req_ = value;
+      reqCase_ = 9;
+    }
+    /**
+     * <code>optional .FriendList.Req friendlist_req = 9;</code>
+     */
+    private void setFriendlistReq(
+        FriendList.Req.Builder builderForValue) {
+      req_ = builderForValue.build();
+      reqCase_ = 9;
+    }
+    /**
+     * <code>optional .FriendList.Req friendlist_req = 9;</code>
+     */
+    private void mergeFriendlistReq(FriendList.Req value) {
+      if (reqCase_ == 9 &&
+          req_ != FriendList.Req.getDefaultInstance()) {
+        req_ = FriendList.Req.newBuilder((FriendList.Req) req_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        req_ = value;
+      }
+      reqCase_ = 9;
+    }
+    /**
+     * <code>optional .FriendList.Req friendlist_req = 9;</code>
+     */
+    private void clearFriendlistReq() {
+      if (reqCase_ == 9) {
+        reqCase_ = 0;
+        req_ = null;
+      }
+    }
+
+    public static final int CHAT_RECORD_REQ_FIELD_NUMBER = 10;
+    /**
+     * <code>optional .ChatRecord.Req chat_record_req = 10;</code>
+     */
+    public ChatRecord.Req getChatRecordReq() {
+      if (reqCase_ == 10) {
+         return (ChatRecord.Req) req_;
+      }
+      return ChatRecord.Req.getDefaultInstance();
+    }
+    /**
+     * <code>optional .ChatRecord.Req chat_record_req = 10;</code>
+     */
+    private void setChatRecordReq(ChatRecord.Req value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      req_ = value;
+      reqCase_ = 10;
+    }
+    /**
+     * <code>optional .ChatRecord.Req chat_record_req = 10;</code>
+     */
+    private void setChatRecordReq(
+        ChatRecord.Req.Builder builderForValue) {
+      req_ = builderForValue.build();
+      reqCase_ = 10;
+    }
+    /**
+     * <code>optional .ChatRecord.Req chat_record_req = 10;</code>
+     */
+    private void mergeChatRecordReq(ChatRecord.Req value) {
+      if (reqCase_ == 10 &&
+          req_ != ChatRecord.Req.getDefaultInstance()) {
+        req_ = ChatRecord.Req.newBuilder((ChatRecord.Req) req_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        req_ = value;
+      }
+      reqCase_ = 10;
+    }
+    /**
+     * <code>optional .ChatRecord.Req chat_record_req = 10;</code>
+     */
+    private void clearChatRecordReq() {
+      if (reqCase_ == 10) {
+        reqCase_ = 0;
+        req_ = null;
+      }
+    }
+
+    public static final int CHANGE_PASSWORD_REQ_FIELD_NUMBER = 11;
+    /**
+     * <code>optional .ChangePassword.Req change_password_req = 11;</code>
+     */
+    public ChangePassword.Req getChangePasswordReq() {
+      if (reqCase_ == 11) {
+         return (ChangePassword.Req) req_;
+      }
+      return ChangePassword.Req.getDefaultInstance();
+    }
+    /**
+     * <code>optional .ChangePassword.Req change_password_req = 11;</code>
+     */
+    private void setChangePasswordReq(ChangePassword.Req value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      req_ = value;
+      reqCase_ = 11;
+    }
+    /**
+     * <code>optional .ChangePassword.Req change_password_req = 11;</code>
+     */
+    private void setChangePasswordReq(
+        ChangePassword.Req.Builder builderForValue) {
+      req_ = builderForValue.build();
+      reqCase_ = 11;
+    }
+    /**
+     * <code>optional .ChangePassword.Req change_password_req = 11;</code>
+     */
+    private void mergeChangePasswordReq(ChangePassword.Req value) {
+      if (reqCase_ == 11 &&
+          req_ != ChangePassword.Req.getDefaultInstance()) {
+        req_ = ChangePassword.Req.newBuilder((ChangePassword.Req) req_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        req_ = value;
+      }
+      reqCase_ = 11;
+    }
+    /**
+     * <code>optional .ChangePassword.Req change_password_req = 11;</code>
+     */
+    private void clearChangePasswordReq() {
+      if (reqCase_ == 11) {
+        reqCase_ = 0;
+        req_ = null;
+      }
+    }
+
+    public static final int CHANGE_NAME_REQ_FIELD_NUMBER = 12;
+    /**
+     * <code>optional .ChangeName.Req change_name_req = 12;</code>
+     */
+    public ChangeName.Req getChangeNameReq() {
+      if (reqCase_ == 12) {
+         return (ChangeName.Req) req_;
+      }
+      return ChangeName.Req.getDefaultInstance();
+    }
+    /**
+     * <code>optional .ChangeName.Req change_name_req = 12;</code>
+     */
+    private void setChangeNameReq(ChangeName.Req value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      req_ = value;
+      reqCase_ = 12;
+    }
+    /**
+     * <code>optional .ChangeName.Req change_name_req = 12;</code>
+     */
+    private void setChangeNameReq(
+        ChangeName.Req.Builder builderForValue) {
+      req_ = builderForValue.build();
+      reqCase_ = 12;
+    }
+    /**
+     * <code>optional .ChangeName.Req change_name_req = 12;</code>
+     */
+    private void mergeChangeNameReq(ChangeName.Req value) {
+      if (reqCase_ == 12 &&
+          req_ != ChangeName.Req.getDefaultInstance()) {
+        req_ = ChangeName.Req.newBuilder((ChangeName.Req) req_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        req_ = value;
+      }
+      reqCase_ = 12;
+    }
+    /**
+     * <code>optional .ChangeName.Req change_name_req = 12;</code>
+     */
+    private void clearChangeNameReq() {
+      if (reqCase_ == 12) {
+        reqCase_ = 0;
+        req_ = null;
+      }
+    }
+
+    public static final int CHANGE_HEADPIC_REQ_FIELD_NUMBER = 13;
+    /**
+     * <code>optional .ChangeHeadpic.Req change_headpic_req = 13;</code>
+     */
+    public ChangeHeadpic.Req getChangeHeadpicReq() {
+      if (reqCase_ == 13) {
+         return (ChangeHeadpic.Req) req_;
+      }
+      return ChangeHeadpic.Req.getDefaultInstance();
+    }
+    /**
+     * <code>optional .ChangeHeadpic.Req change_headpic_req = 13;</code>
+     */
+    private void setChangeHeadpicReq(ChangeHeadpic.Req value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      req_ = value;
+      reqCase_ = 13;
+    }
+    /**
+     * <code>optional .ChangeHeadpic.Req change_headpic_req = 13;</code>
+     */
+    private void setChangeHeadpicReq(
+        ChangeHeadpic.Req.Builder builderForValue) {
+      req_ = builderForValue.build();
+      reqCase_ = 13;
+    }
+    /**
+     * <code>optional .ChangeHeadpic.Req change_headpic_req = 13;</code>
+     */
+    private void mergeChangeHeadpicReq(ChangeHeadpic.Req value) {
+      if (reqCase_ == 13 &&
+          req_ != ChangeHeadpic.Req.getDefaultInstance()) {
+        req_ = ChangeHeadpic.Req.newBuilder((ChangeHeadpic.Req) req_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        req_ = value;
+      }
+      reqCase_ = 13;
+    }
+    /**
+     * <code>optional .ChangeHeadpic.Req change_headpic_req = 13;</code>
+     */
+    private void clearChangeHeadpicReq() {
+      if (reqCase_ == 13) {
+        reqCase_ = 0;
+        req_ = null;
+      }
+    }
+
+    public static final int ADD_FRIEND_REQUEST_FROM_OTHER_REQ_FIELD_NUMBER = 14;
+    /**
+     * <code>optional .AddFriendRequestFromOther.Req add_friend_request_from_other_req = 14;</code>
+     */
+    public AddFriendRequestFromOther.Req getAddFriendRequestFromOtherReq() {
+      if (reqCase_ == 14) {
+         return (AddFriendRequestFromOther.Req) req_;
+      }
+      return AddFriendRequestFromOther.Req.getDefaultInstance();
+    }
+    /**
+     * <code>optional .AddFriendRequestFromOther.Req add_friend_request_from_other_req = 14;</code>
+     */
+    private void setAddFriendRequestFromOtherReq(AddFriendRequestFromOther.Req value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      req_ = value;
+      reqCase_ = 14;
+    }
+    /**
+     * <code>optional .AddFriendRequestFromOther.Req add_friend_request_from_other_req = 14;</code>
+     */
+    private void setAddFriendRequestFromOtherReq(
+        AddFriendRequestFromOther.Req.Builder builderForValue) {
+      req_ = builderForValue.build();
+      reqCase_ = 14;
+    }
+    /**
+     * <code>optional .AddFriendRequestFromOther.Req add_friend_request_from_other_req = 14;</code>
+     */
+    private void mergeAddFriendRequestFromOtherReq(AddFriendRequestFromOther.Req value) {
+      if (reqCase_ == 14 &&
+          req_ != AddFriendRequestFromOther.Req.getDefaultInstance()) {
+        req_ = AddFriendRequestFromOther.Req.newBuilder((AddFriendRequestFromOther.Req) req_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        req_ = value;
+      }
+      reqCase_ = 14;
+    }
+    /**
+     * <code>optional .AddFriendRequestFromOther.Req add_friend_request_from_other_req = 14;</code>
+     */
+    private void clearAddFriendRequestFromOtherReq() {
+      if (reqCase_ == 14) {
+        reqCase_ = 0;
+        req_ = null;
+      }
+    }
+
+    public static final int ADD_FRIEND_REQUEST_FROM_SELF_REQ_FIELD_NUMBER = 15;
+    /**
+     * <code>optional .AddFriendRequestFromSelf.Req add_friend_request_from_self_req = 15;</code>
+     */
+    public AddFriendRequestFromSelf.Req getAddFriendRequestFromSelfReq() {
+      if (reqCase_ == 15) {
+         return (AddFriendRequestFromSelf.Req) req_;
+      }
+      return AddFriendRequestFromSelf.Req.getDefaultInstance();
+    }
+    /**
+     * <code>optional .AddFriendRequestFromSelf.Req add_friend_request_from_self_req = 15;</code>
+     */
+    private void setAddFriendRequestFromSelfReq(AddFriendRequestFromSelf.Req value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      req_ = value;
+      reqCase_ = 15;
+    }
+    /**
+     * <code>optional .AddFriendRequestFromSelf.Req add_friend_request_from_self_req = 15;</code>
+     */
+    private void setAddFriendRequestFromSelfReq(
+        AddFriendRequestFromSelf.Req.Builder builderForValue) {
+      req_ = builderForValue.build();
+      reqCase_ = 15;
+    }
+    /**
+     * <code>optional .AddFriendRequestFromSelf.Req add_friend_request_from_self_req = 15;</code>
+     */
+    private void mergeAddFriendRequestFromSelfReq(AddFriendRequestFromSelf.Req value) {
+      if (reqCase_ == 15 &&
+          req_ != AddFriendRequestFromSelf.Req.getDefaultInstance()) {
+        req_ = AddFriendRequestFromSelf.Req.newBuilder((AddFriendRequestFromSelf.Req) req_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        req_ = value;
+      }
+      reqCase_ = 15;
+    }
+    /**
+     * <code>optional .AddFriendRequestFromSelf.Req add_friend_request_from_self_req = 15;</code>
+     */
+    private void clearAddFriendRequestFromSelfReq() {
+      if (reqCase_ == 15) {
+        reqCase_ = 0;
+        req_ = null;
+      }
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (reqCase_ == 1) {
-        output.writeMessage(1, (Test.AddFriend.AToServer) req_);
+        output.writeMessage(1, (AddFriend.AToServer) req_);
       }
       if (reqCase_ == 2) {
-        output.writeMessage(2, (Test.AddFriend.BToServer) req_);
+        output.writeMessage(2, (AddFriend.BToServer) req_);
       }
       if (reqCase_ == 3) {
-        output.writeMessage(3, (Test.ChatWithServer.Req) req_);
+        output.writeMessage(3, (ChatWithServer.Req) req_);
       }
       if (reqCase_ == 4) {
-        output.writeMessage(4, (Test.GetToken.Req) req_);
+        output.writeMessage(4, (GetToken.Req) req_);
       }
       if (reqCase_ == 5) {
-        output.writeMessage(5, (Test.HeartBeat.Req) req_);
+        output.writeMessage(5, (HeartBeat.Req) req_);
       }
       if (reqCase_ == 6) {
-        output.writeMessage(6, (Test.Login.Req) req_);
+        output.writeMessage(6, (Login.Req) req_);
       }
       if (reqCase_ == 7) {
-        output.writeMessage(7, (Test.Register.Req) req_);
+        output.writeMessage(7, (Register.Req) req_);
       }
       if (reqCase_ == 8) {
-        output.writeMessage(8, (Test.SearchUser.Req) req_);
+        output.writeMessage(8, (SearchUser.Req) req_);
+      }
+      if (reqCase_ == 9) {
+        output.writeMessage(9, (FriendList.Req) req_);
+      }
+      if (reqCase_ == 10) {
+        output.writeMessage(10, (ChatRecord.Req) req_);
+      }
+      if (reqCase_ == 11) {
+        output.writeMessage(11, (ChangePassword.Req) req_);
+      }
+      if (reqCase_ == 12) {
+        output.writeMessage(12, (ChangeName.Req) req_);
+      }
+      if (reqCase_ == 13) {
+        output.writeMessage(13, (ChangeHeadpic.Req) req_);
+      }
+      if (reqCase_ == 14) {
+        output.writeMessage(14, (AddFriendRequestFromOther.Req) req_);
+      }
+      if (reqCase_ == 15) {
+        output.writeMessage(15, (AddFriendRequestFromSelf.Req) req_);
       }
     }
 
@@ -10699,94 +16649,122 @@ public final class Test {
       size = 0;
       if (reqCase_ == 1) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, (Test.AddFriend.AToServer) req_);
+          .computeMessageSize(1, (AddFriend.AToServer) req_);
       }
       if (reqCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, (Test.AddFriend.BToServer) req_);
+          .computeMessageSize(2, (AddFriend.BToServer) req_);
       }
       if (reqCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, (Test.ChatWithServer.Req) req_);
+          .computeMessageSize(3, (ChatWithServer.Req) req_);
       }
       if (reqCase_ == 4) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, (Test.GetToken.Req) req_);
+          .computeMessageSize(4, (GetToken.Req) req_);
       }
       if (reqCase_ == 5) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, (Test.HeartBeat.Req) req_);
+          .computeMessageSize(5, (HeartBeat.Req) req_);
       }
       if (reqCase_ == 6) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, (Test.Login.Req) req_);
+          .computeMessageSize(6, (Login.Req) req_);
       }
       if (reqCase_ == 7) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, (Test.Register.Req) req_);
+          .computeMessageSize(7, (Register.Req) req_);
       }
       if (reqCase_ == 8) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, (Test.SearchUser.Req) req_);
+          .computeMessageSize(8, (SearchUser.Req) req_);
+      }
+      if (reqCase_ == 9) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, (FriendList.Req) req_);
+      }
+      if (reqCase_ == 10) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, (ChatRecord.Req) req_);
+      }
+      if (reqCase_ == 11) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, (ChangePassword.Req) req_);
+      }
+      if (reqCase_ == 12) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(12, (ChangeName.Req) req_);
+      }
+      if (reqCase_ == 13) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, (ChangeHeadpic.Req) req_);
+      }
+      if (reqCase_ == 14) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(14, (AddFriendRequestFromOther.Req) req_);
+      }
+      if (reqCase_ == 15) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, (AddFriendRequestFromSelf.Req) req_);
       }
       memoizedSerializedSize = size;
       return size;
     }
 
-    public static Test.ReqToServer parseFrom(
+    public static ReqToServer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.ReqToServer parseFrom(
+    public static ReqToServer parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.ReqToServer parseFrom(byte[] data)
+    public static ReqToServer parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.ReqToServer parseFrom(
+    public static ReqToServer parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.ReqToServer parseFrom(java.io.InputStream input)
+    public static ReqToServer parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.ReqToServer parseFrom(
+    public static ReqToServer parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.ReqToServer parseDelimitedFrom(java.io.InputStream input)
+    public static ReqToServer parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static Test.ReqToServer parseDelimitedFrom(
+    public static ReqToServer parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.ReqToServer parseFrom(
+    public static ReqToServer parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.ReqToServer parseFrom(
+    public static ReqToServer parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -10797,7 +16775,7 @@ public final class Test {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Test.ReqToServer prototype) {
+    public static Builder newBuilder(ReqToServer prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
@@ -10808,7 +16786,7 @@ public final class Test {
         com.google.protobuf.GeneratedMessageLite.Builder<
           ReqToServer, Builder> implements
         // @@protoc_insertion_point(builder_implements:ReqToServer)
-        Test.ReqToServerOrBuilder {
+        ReqToServerOrBuilder {
       // Construct using Test.ReqToServer.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
@@ -10829,13 +16807,13 @@ public final class Test {
       /**
        * <code>optional .AddFriend.AToServer add_friend_a_to_server = 1;</code>
        */
-      public Test.AddFriend.AToServer getAddFriendAToServer() {
+      public AddFriend.AToServer getAddFriendAToServer() {
         return instance.getAddFriendAToServer();
       }
       /**
        * <code>optional .AddFriend.AToServer add_friend_a_to_server = 1;</code>
        */
-      public Builder setAddFriendAToServer(Test.AddFriend.AToServer value) {
+      public Builder setAddFriendAToServer(AddFriend.AToServer value) {
         copyOnWrite();
         instance.setAddFriendAToServer(value);
         return this;
@@ -10844,7 +16822,7 @@ public final class Test {
        * <code>optional .AddFriend.AToServer add_friend_a_to_server = 1;</code>
        */
       public Builder setAddFriendAToServer(
-          Test.AddFriend.AToServer.Builder builderForValue) {
+          AddFriend.AToServer.Builder builderForValue) {
         copyOnWrite();
         instance.setAddFriendAToServer(builderForValue);
         return this;
@@ -10852,7 +16830,7 @@ public final class Test {
       /**
        * <code>optional .AddFriend.AToServer add_friend_a_to_server = 1;</code>
        */
-      public Builder mergeAddFriendAToServer(Test.AddFriend.AToServer value) {
+      public Builder mergeAddFriendAToServer(AddFriend.AToServer value) {
         copyOnWrite();
         instance.mergeAddFriendAToServer(value);
         return this;
@@ -10869,13 +16847,13 @@ public final class Test {
       /**
        * <code>optional .AddFriend.BToServer add_friend_b_to_server = 2;</code>
        */
-      public Test.AddFriend.BToServer getAddFriendBToServer() {
+      public AddFriend.BToServer getAddFriendBToServer() {
         return instance.getAddFriendBToServer();
       }
       /**
        * <code>optional .AddFriend.BToServer add_friend_b_to_server = 2;</code>
        */
-      public Builder setAddFriendBToServer(Test.AddFriend.BToServer value) {
+      public Builder setAddFriendBToServer(AddFriend.BToServer value) {
         copyOnWrite();
         instance.setAddFriendBToServer(value);
         return this;
@@ -10884,7 +16862,7 @@ public final class Test {
        * <code>optional .AddFriend.BToServer add_friend_b_to_server = 2;</code>
        */
       public Builder setAddFriendBToServer(
-          Test.AddFriend.BToServer.Builder builderForValue) {
+          AddFriend.BToServer.Builder builderForValue) {
         copyOnWrite();
         instance.setAddFriendBToServer(builderForValue);
         return this;
@@ -10892,7 +16870,7 @@ public final class Test {
       /**
        * <code>optional .AddFriend.BToServer add_friend_b_to_server = 2;</code>
        */
-      public Builder mergeAddFriendBToServer(Test.AddFriend.BToServer value) {
+      public Builder mergeAddFriendBToServer(AddFriend.BToServer value) {
         copyOnWrite();
         instance.mergeAddFriendBToServer(value);
         return this;
@@ -10909,13 +16887,13 @@ public final class Test {
       /**
        * <code>optional .ChatWithServer.Req chat_with_server_req = 3;</code>
        */
-      public Test.ChatWithServer.Req getChatWithServerReq() {
+      public ChatWithServer.Req getChatWithServerReq() {
         return instance.getChatWithServerReq();
       }
       /**
        * <code>optional .ChatWithServer.Req chat_with_server_req = 3;</code>
        */
-      public Builder setChatWithServerReq(Test.ChatWithServer.Req value) {
+      public Builder setChatWithServerReq(ChatWithServer.Req value) {
         copyOnWrite();
         instance.setChatWithServerReq(value);
         return this;
@@ -10924,7 +16902,7 @@ public final class Test {
        * <code>optional .ChatWithServer.Req chat_with_server_req = 3;</code>
        */
       public Builder setChatWithServerReq(
-          Test.ChatWithServer.Req.Builder builderForValue) {
+          ChatWithServer.Req.Builder builderForValue) {
         copyOnWrite();
         instance.setChatWithServerReq(builderForValue);
         return this;
@@ -10932,7 +16910,7 @@ public final class Test {
       /**
        * <code>optional .ChatWithServer.Req chat_with_server_req = 3;</code>
        */
-      public Builder mergeChatWithServerReq(Test.ChatWithServer.Req value) {
+      public Builder mergeChatWithServerReq(ChatWithServer.Req value) {
         copyOnWrite();
         instance.mergeChatWithServerReq(value);
         return this;
@@ -10949,13 +16927,13 @@ public final class Test {
       /**
        * <code>optional .GetToken.Req get_token_req = 4;</code>
        */
-      public Test.GetToken.Req getGetTokenReq() {
+      public GetToken.Req getGetTokenReq() {
         return instance.getGetTokenReq();
       }
       /**
        * <code>optional .GetToken.Req get_token_req = 4;</code>
        */
-      public Builder setGetTokenReq(Test.GetToken.Req value) {
+      public Builder setGetTokenReq(GetToken.Req value) {
         copyOnWrite();
         instance.setGetTokenReq(value);
         return this;
@@ -10964,7 +16942,7 @@ public final class Test {
        * <code>optional .GetToken.Req get_token_req = 4;</code>
        */
       public Builder setGetTokenReq(
-          Test.GetToken.Req.Builder builderForValue) {
+          GetToken.Req.Builder builderForValue) {
         copyOnWrite();
         instance.setGetTokenReq(builderForValue);
         return this;
@@ -10972,7 +16950,7 @@ public final class Test {
       /**
        * <code>optional .GetToken.Req get_token_req = 4;</code>
        */
-      public Builder mergeGetTokenReq(Test.GetToken.Req value) {
+      public Builder mergeGetTokenReq(GetToken.Req value) {
         copyOnWrite();
         instance.mergeGetTokenReq(value);
         return this;
@@ -10989,13 +16967,13 @@ public final class Test {
       /**
        * <code>optional .HeartBeat.Req heart_beat_req = 5;</code>
        */
-      public Test.HeartBeat.Req getHeartBeatReq() {
+      public HeartBeat.Req getHeartBeatReq() {
         return instance.getHeartBeatReq();
       }
       /**
        * <code>optional .HeartBeat.Req heart_beat_req = 5;</code>
        */
-      public Builder setHeartBeatReq(Test.HeartBeat.Req value) {
+      public Builder setHeartBeatReq(HeartBeat.Req value) {
         copyOnWrite();
         instance.setHeartBeatReq(value);
         return this;
@@ -11004,7 +16982,7 @@ public final class Test {
        * <code>optional .HeartBeat.Req heart_beat_req = 5;</code>
        */
       public Builder setHeartBeatReq(
-          Test.HeartBeat.Req.Builder builderForValue) {
+          HeartBeat.Req.Builder builderForValue) {
         copyOnWrite();
         instance.setHeartBeatReq(builderForValue);
         return this;
@@ -11012,7 +16990,7 @@ public final class Test {
       /**
        * <code>optional .HeartBeat.Req heart_beat_req = 5;</code>
        */
-      public Builder mergeHeartBeatReq(Test.HeartBeat.Req value) {
+      public Builder mergeHeartBeatReq(HeartBeat.Req value) {
         copyOnWrite();
         instance.mergeHeartBeatReq(value);
         return this;
@@ -11029,13 +17007,13 @@ public final class Test {
       /**
        * <code>optional .Login.Req login_req = 6;</code>
        */
-      public Test.Login.Req getLoginReq() {
+      public Login.Req getLoginReq() {
         return instance.getLoginReq();
       }
       /**
        * <code>optional .Login.Req login_req = 6;</code>
        */
-      public Builder setLoginReq(Test.Login.Req value) {
+      public Builder setLoginReq(Login.Req value) {
         copyOnWrite();
         instance.setLoginReq(value);
         return this;
@@ -11044,7 +17022,7 @@ public final class Test {
        * <code>optional .Login.Req login_req = 6;</code>
        */
       public Builder setLoginReq(
-          Test.Login.Req.Builder builderForValue) {
+          Login.Req.Builder builderForValue) {
         copyOnWrite();
         instance.setLoginReq(builderForValue);
         return this;
@@ -11052,7 +17030,7 @@ public final class Test {
       /**
        * <code>optional .Login.Req login_req = 6;</code>
        */
-      public Builder mergeLoginReq(Test.Login.Req value) {
+      public Builder mergeLoginReq(Login.Req value) {
         copyOnWrite();
         instance.mergeLoginReq(value);
         return this;
@@ -11069,13 +17047,13 @@ public final class Test {
       /**
        * <code>optional .Register.Req register_req = 7;</code>
        */
-      public Test.Register.Req getRegisterReq() {
+      public Register.Req getRegisterReq() {
         return instance.getRegisterReq();
       }
       /**
        * <code>optional .Register.Req register_req = 7;</code>
        */
-      public Builder setRegisterReq(Test.Register.Req value) {
+      public Builder setRegisterReq(Register.Req value) {
         copyOnWrite();
         instance.setRegisterReq(value);
         return this;
@@ -11084,7 +17062,7 @@ public final class Test {
        * <code>optional .Register.Req register_req = 7;</code>
        */
       public Builder setRegisterReq(
-          Test.Register.Req.Builder builderForValue) {
+          Register.Req.Builder builderForValue) {
         copyOnWrite();
         instance.setRegisterReq(builderForValue);
         return this;
@@ -11092,7 +17070,7 @@ public final class Test {
       /**
        * <code>optional .Register.Req register_req = 7;</code>
        */
-      public Builder mergeRegisterReq(Test.Register.Req value) {
+      public Builder mergeRegisterReq(Register.Req value) {
         copyOnWrite();
         instance.mergeRegisterReq(value);
         return this;
@@ -11109,13 +17087,13 @@ public final class Test {
       /**
        * <code>optional .SearchUser.Req search_user_req = 8;</code>
        */
-      public Test.SearchUser.Req getSearchUserReq() {
+      public SearchUser.Req getSearchUserReq() {
         return instance.getSearchUserReq();
       }
       /**
        * <code>optional .SearchUser.Req search_user_req = 8;</code>
        */
-      public Builder setSearchUserReq(Test.SearchUser.Req value) {
+      public Builder setSearchUserReq(SearchUser.Req value) {
         copyOnWrite();
         instance.setSearchUserReq(value);
         return this;
@@ -11124,7 +17102,7 @@ public final class Test {
        * <code>optional .SearchUser.Req search_user_req = 8;</code>
        */
       public Builder setSearchUserReq(
-          Test.SearchUser.Req.Builder builderForValue) {
+          SearchUser.Req.Builder builderForValue) {
         copyOnWrite();
         instance.setSearchUserReq(builderForValue);
         return this;
@@ -11132,7 +17110,7 @@ public final class Test {
       /**
        * <code>optional .SearchUser.Req search_user_req = 8;</code>
        */
-      public Builder mergeSearchUserReq(Test.SearchUser.Req value) {
+      public Builder mergeSearchUserReq(SearchUser.Req value) {
         copyOnWrite();
         instance.mergeSearchUserReq(value);
         return this;
@@ -11146,6 +17124,286 @@ public final class Test {
         return this;
       }
 
+      /**
+       * <code>optional .FriendList.Req friendlist_req = 9;</code>
+       */
+      public FriendList.Req getFriendlistReq() {
+        return instance.getFriendlistReq();
+      }
+      /**
+       * <code>optional .FriendList.Req friendlist_req = 9;</code>
+       */
+      public Builder setFriendlistReq(FriendList.Req value) {
+        copyOnWrite();
+        instance.setFriendlistReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .FriendList.Req friendlist_req = 9;</code>
+       */
+      public Builder setFriendlistReq(
+          FriendList.Req.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFriendlistReq(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .FriendList.Req friendlist_req = 9;</code>
+       */
+      public Builder mergeFriendlistReq(FriendList.Req value) {
+        copyOnWrite();
+        instance.mergeFriendlistReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .FriendList.Req friendlist_req = 9;</code>
+       */
+      public Builder clearFriendlistReq() {
+        copyOnWrite();
+        instance.clearFriendlistReq();
+        return this;
+      }
+
+      /**
+       * <code>optional .ChatRecord.Req chat_record_req = 10;</code>
+       */
+      public ChatRecord.Req getChatRecordReq() {
+        return instance.getChatRecordReq();
+      }
+      /**
+       * <code>optional .ChatRecord.Req chat_record_req = 10;</code>
+       */
+      public Builder setChatRecordReq(ChatRecord.Req value) {
+        copyOnWrite();
+        instance.setChatRecordReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .ChatRecord.Req chat_record_req = 10;</code>
+       */
+      public Builder setChatRecordReq(
+          ChatRecord.Req.Builder builderForValue) {
+        copyOnWrite();
+        instance.setChatRecordReq(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .ChatRecord.Req chat_record_req = 10;</code>
+       */
+      public Builder mergeChatRecordReq(ChatRecord.Req value) {
+        copyOnWrite();
+        instance.mergeChatRecordReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .ChatRecord.Req chat_record_req = 10;</code>
+       */
+      public Builder clearChatRecordReq() {
+        copyOnWrite();
+        instance.clearChatRecordReq();
+        return this;
+      }
+
+      /**
+       * <code>optional .ChangePassword.Req change_password_req = 11;</code>
+       */
+      public ChangePassword.Req getChangePasswordReq() {
+        return instance.getChangePasswordReq();
+      }
+      /**
+       * <code>optional .ChangePassword.Req change_password_req = 11;</code>
+       */
+      public Builder setChangePasswordReq(ChangePassword.Req value) {
+        copyOnWrite();
+        instance.setChangePasswordReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .ChangePassword.Req change_password_req = 11;</code>
+       */
+      public Builder setChangePasswordReq(
+          ChangePassword.Req.Builder builderForValue) {
+        copyOnWrite();
+        instance.setChangePasswordReq(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .ChangePassword.Req change_password_req = 11;</code>
+       */
+      public Builder mergeChangePasswordReq(ChangePassword.Req value) {
+        copyOnWrite();
+        instance.mergeChangePasswordReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .ChangePassword.Req change_password_req = 11;</code>
+       */
+      public Builder clearChangePasswordReq() {
+        copyOnWrite();
+        instance.clearChangePasswordReq();
+        return this;
+      }
+
+      /**
+       * <code>optional .ChangeName.Req change_name_req = 12;</code>
+       */
+      public ChangeName.Req getChangeNameReq() {
+        return instance.getChangeNameReq();
+      }
+      /**
+       * <code>optional .ChangeName.Req change_name_req = 12;</code>
+       */
+      public Builder setChangeNameReq(ChangeName.Req value) {
+        copyOnWrite();
+        instance.setChangeNameReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .ChangeName.Req change_name_req = 12;</code>
+       */
+      public Builder setChangeNameReq(
+          ChangeName.Req.Builder builderForValue) {
+        copyOnWrite();
+        instance.setChangeNameReq(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .ChangeName.Req change_name_req = 12;</code>
+       */
+      public Builder mergeChangeNameReq(ChangeName.Req value) {
+        copyOnWrite();
+        instance.mergeChangeNameReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .ChangeName.Req change_name_req = 12;</code>
+       */
+      public Builder clearChangeNameReq() {
+        copyOnWrite();
+        instance.clearChangeNameReq();
+        return this;
+      }
+
+      /**
+       * <code>optional .ChangeHeadpic.Req change_headpic_req = 13;</code>
+       */
+      public ChangeHeadpic.Req getChangeHeadpicReq() {
+        return instance.getChangeHeadpicReq();
+      }
+      /**
+       * <code>optional .ChangeHeadpic.Req change_headpic_req = 13;</code>
+       */
+      public Builder setChangeHeadpicReq(ChangeHeadpic.Req value) {
+        copyOnWrite();
+        instance.setChangeHeadpicReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .ChangeHeadpic.Req change_headpic_req = 13;</code>
+       */
+      public Builder setChangeHeadpicReq(
+          ChangeHeadpic.Req.Builder builderForValue) {
+        copyOnWrite();
+        instance.setChangeHeadpicReq(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .ChangeHeadpic.Req change_headpic_req = 13;</code>
+       */
+      public Builder mergeChangeHeadpicReq(ChangeHeadpic.Req value) {
+        copyOnWrite();
+        instance.mergeChangeHeadpicReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .ChangeHeadpic.Req change_headpic_req = 13;</code>
+       */
+      public Builder clearChangeHeadpicReq() {
+        copyOnWrite();
+        instance.clearChangeHeadpicReq();
+        return this;
+      }
+
+      /**
+       * <code>optional .AddFriendRequestFromOther.Req add_friend_request_from_other_req = 14;</code>
+       */
+      public AddFriendRequestFromOther.Req getAddFriendRequestFromOtherReq() {
+        return instance.getAddFriendRequestFromOtherReq();
+      }
+      /**
+       * <code>optional .AddFriendRequestFromOther.Req add_friend_request_from_other_req = 14;</code>
+       */
+      public Builder setAddFriendRequestFromOtherReq(AddFriendRequestFromOther.Req value) {
+        copyOnWrite();
+        instance.setAddFriendRequestFromOtherReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .AddFriendRequestFromOther.Req add_friend_request_from_other_req = 14;</code>
+       */
+      public Builder setAddFriendRequestFromOtherReq(
+          AddFriendRequestFromOther.Req.Builder builderForValue) {
+        copyOnWrite();
+        instance.setAddFriendRequestFromOtherReq(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .AddFriendRequestFromOther.Req add_friend_request_from_other_req = 14;</code>
+       */
+      public Builder mergeAddFriendRequestFromOtherReq(AddFriendRequestFromOther.Req value) {
+        copyOnWrite();
+        instance.mergeAddFriendRequestFromOtherReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .AddFriendRequestFromOther.Req add_friend_request_from_other_req = 14;</code>
+       */
+      public Builder clearAddFriendRequestFromOtherReq() {
+        copyOnWrite();
+        instance.clearAddFriendRequestFromOtherReq();
+        return this;
+      }
+
+      /**
+       * <code>optional .AddFriendRequestFromSelf.Req add_friend_request_from_self_req = 15;</code>
+       */
+      public AddFriendRequestFromSelf.Req getAddFriendRequestFromSelfReq() {
+        return instance.getAddFriendRequestFromSelfReq();
+      }
+      /**
+       * <code>optional .AddFriendRequestFromSelf.Req add_friend_request_from_self_req = 15;</code>
+       */
+      public Builder setAddFriendRequestFromSelfReq(AddFriendRequestFromSelf.Req value) {
+        copyOnWrite();
+        instance.setAddFriendRequestFromSelfReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .AddFriendRequestFromSelf.Req add_friend_request_from_self_req = 15;</code>
+       */
+      public Builder setAddFriendRequestFromSelfReq(
+          AddFriendRequestFromSelf.Req.Builder builderForValue) {
+        copyOnWrite();
+        instance.setAddFriendRequestFromSelfReq(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .AddFriendRequestFromSelf.Req add_friend_request_from_self_req = 15;</code>
+       */
+      public Builder mergeAddFriendRequestFromSelfReq(AddFriendRequestFromSelf.Req value) {
+        copyOnWrite();
+        instance.mergeAddFriendRequestFromSelfReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .AddFriendRequestFromSelf.Req add_friend_request_from_self_req = 15;</code>
+       */
+      public Builder clearAddFriendRequestFromSelfReq() {
+        copyOnWrite();
+        instance.clearAddFriendRequestFromSelfReq();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ReqToServer)
     }
     protected final Object dynamicMethod(
@@ -11153,7 +17411,7 @@ public final class Test {
         Object arg0, Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new Test.ReqToServer();
+          return new ReqToServer();
         }
         case IS_INITIALIZED: {
           return DEFAULT_INSTANCE;
@@ -11166,7 +17424,7 @@ public final class Test {
         }
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
-          Test.ReqToServer other = (Test.ReqToServer) arg1;
+          ReqToServer other = (ReqToServer) arg1;
           switch (other.getReqCase()) {
             case ADD_FRIEND_A_TO_SERVER: {
               req_ = visitor.visitOneofMessage(
@@ -11224,6 +17482,55 @@ public final class Test {
                   other.req_);
               break;
             }
+            case FRIENDLIST_REQ: {
+              req_ = visitor.visitOneofMessage(
+                  reqCase_ == 9,
+                  req_,
+                  other.req_);
+              break;
+            }
+            case CHAT_RECORD_REQ: {
+              req_ = visitor.visitOneofMessage(
+                  reqCase_ == 10,
+                  req_,
+                  other.req_);
+              break;
+            }
+            case CHANGE_PASSWORD_REQ: {
+              req_ = visitor.visitOneofMessage(
+                  reqCase_ == 11,
+                  req_,
+                  other.req_);
+              break;
+            }
+            case CHANGE_NAME_REQ: {
+              req_ = visitor.visitOneofMessage(
+                  reqCase_ == 12,
+                  req_,
+                  other.req_);
+              break;
+            }
+            case CHANGE_HEADPIC_REQ: {
+              req_ = visitor.visitOneofMessage(
+                  reqCase_ == 13,
+                  req_,
+                  other.req_);
+              break;
+            }
+            case ADD_FRIEND_REQUEST_FROM_OTHER_REQ: {
+              req_ = visitor.visitOneofMessage(
+                  reqCase_ == 14,
+                  req_,
+                  other.req_);
+              break;
+            }
+            case ADD_FRIEND_REQUEST_FROM_SELF_REQ: {
+              req_ = visitor.visitOneofMessage(
+                  reqCase_ == 15,
+                  req_,
+                  other.req_);
+              break;
+            }
             case REQ_NOT_SET: {
               visitor.visitOneofNotSet(reqCase_ != 0);
               break;
@@ -11257,115 +17564,213 @@ public final class Test {
                   break;
                 }
                 case 10: {
-                  Test.AddFriend.AToServer.Builder subBuilder = null;
+                  AddFriend.AToServer.Builder subBuilder = null;
                   if (reqCase_ == 1) {
-                    subBuilder = ((Test.AddFriend.AToServer) req_).toBuilder();
+                    subBuilder = ((AddFriend.AToServer) req_).toBuilder();
                   }
                   req_ =
-                       input.readMessage(Test.AddFriend.AToServer.parser(), extensionRegistry);
+                       input.readMessage(AddFriend.AToServer.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.AddFriend.AToServer) req_);
+                    subBuilder.mergeFrom((AddFriend.AToServer) req_);
                     req_ = subBuilder.buildPartial();
                   }
                   reqCase_ = 1;
                   break;
                 }
                 case 18: {
-                  Test.AddFriend.BToServer.Builder subBuilder = null;
+                  AddFriend.BToServer.Builder subBuilder = null;
                   if (reqCase_ == 2) {
-                    subBuilder = ((Test.AddFriend.BToServer) req_).toBuilder();
+                    subBuilder = ((AddFriend.BToServer) req_).toBuilder();
                   }
                   req_ =
-                       input.readMessage(Test.AddFriend.BToServer.parser(), extensionRegistry);
+                       input.readMessage(AddFriend.BToServer.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.AddFriend.BToServer) req_);
+                    subBuilder.mergeFrom((AddFriend.BToServer) req_);
                     req_ = subBuilder.buildPartial();
                   }
                   reqCase_ = 2;
                   break;
                 }
                 case 26: {
-                  Test.ChatWithServer.Req.Builder subBuilder = null;
+                  ChatWithServer.Req.Builder subBuilder = null;
                   if (reqCase_ == 3) {
-                    subBuilder = ((Test.ChatWithServer.Req) req_).toBuilder();
+                    subBuilder = ((ChatWithServer.Req) req_).toBuilder();
                   }
                   req_ =
-                       input.readMessage(Test.ChatWithServer.Req.parser(), extensionRegistry);
+                       input.readMessage(ChatWithServer.Req.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.ChatWithServer.Req) req_);
+                    subBuilder.mergeFrom((ChatWithServer.Req) req_);
                     req_ = subBuilder.buildPartial();
                   }
                   reqCase_ = 3;
                   break;
                 }
                 case 34: {
-                  Test.GetToken.Req.Builder subBuilder = null;
+                  GetToken.Req.Builder subBuilder = null;
                   if (reqCase_ == 4) {
-                    subBuilder = ((Test.GetToken.Req) req_).toBuilder();
+                    subBuilder = ((GetToken.Req) req_).toBuilder();
                   }
                   req_ =
-                       input.readMessage(Test.GetToken.Req.parser(), extensionRegistry);
+                       input.readMessage(GetToken.Req.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.GetToken.Req) req_);
+                    subBuilder.mergeFrom((GetToken.Req) req_);
                     req_ = subBuilder.buildPartial();
                   }
                   reqCase_ = 4;
                   break;
                 }
                 case 42: {
-                  Test.HeartBeat.Req.Builder subBuilder = null;
+                  HeartBeat.Req.Builder subBuilder = null;
                   if (reqCase_ == 5) {
-                    subBuilder = ((Test.HeartBeat.Req) req_).toBuilder();
+                    subBuilder = ((HeartBeat.Req) req_).toBuilder();
                   }
                   req_ =
-                       input.readMessage(Test.HeartBeat.Req.parser(), extensionRegistry);
+                       input.readMessage(HeartBeat.Req.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.HeartBeat.Req) req_);
+                    subBuilder.mergeFrom((HeartBeat.Req) req_);
                     req_ = subBuilder.buildPartial();
                   }
                   reqCase_ = 5;
                   break;
                 }
                 case 50: {
-                  Test.Login.Req.Builder subBuilder = null;
+                  Login.Req.Builder subBuilder = null;
                   if (reqCase_ == 6) {
-                    subBuilder = ((Test.Login.Req) req_).toBuilder();
+                    subBuilder = ((Login.Req) req_).toBuilder();
                   }
                   req_ =
-                       input.readMessage(Test.Login.Req.parser(), extensionRegistry);
+                       input.readMessage(Login.Req.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.Login.Req) req_);
+                    subBuilder.mergeFrom((Login.Req) req_);
                     req_ = subBuilder.buildPartial();
                   }
                   reqCase_ = 6;
                   break;
                 }
                 case 58: {
-                  Test.Register.Req.Builder subBuilder = null;
+                  Register.Req.Builder subBuilder = null;
                   if (reqCase_ == 7) {
-                    subBuilder = ((Test.Register.Req) req_).toBuilder();
+                    subBuilder = ((Register.Req) req_).toBuilder();
                   }
                   req_ =
-                       input.readMessage(Test.Register.Req.parser(), extensionRegistry);
+                       input.readMessage(Register.Req.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.Register.Req) req_);
+                    subBuilder.mergeFrom((Register.Req) req_);
                     req_ = subBuilder.buildPartial();
                   }
                   reqCase_ = 7;
                   break;
                 }
                 case 66: {
-                  Test.SearchUser.Req.Builder subBuilder = null;
+                  SearchUser.Req.Builder subBuilder = null;
                   if (reqCase_ == 8) {
-                    subBuilder = ((Test.SearchUser.Req) req_).toBuilder();
+                    subBuilder = ((SearchUser.Req) req_).toBuilder();
                   }
                   req_ =
-                       input.readMessage(Test.SearchUser.Req.parser(), extensionRegistry);
+                       input.readMessage(SearchUser.Req.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.SearchUser.Req) req_);
+                    subBuilder.mergeFrom((SearchUser.Req) req_);
                     req_ = subBuilder.buildPartial();
                   }
                   reqCase_ = 8;
+                  break;
+                }
+                case 74: {
+                  FriendList.Req.Builder subBuilder = null;
+                  if (reqCase_ == 9) {
+                    subBuilder = ((FriendList.Req) req_).toBuilder();
+                  }
+                  req_ =
+                       input.readMessage(FriendList.Req.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((FriendList.Req) req_);
+                    req_ = subBuilder.buildPartial();
+                  }
+                  reqCase_ = 9;
+                  break;
+                }
+                case 82: {
+                  ChatRecord.Req.Builder subBuilder = null;
+                  if (reqCase_ == 10) {
+                    subBuilder = ((ChatRecord.Req) req_).toBuilder();
+                  }
+                  req_ =
+                       input.readMessage(ChatRecord.Req.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((ChatRecord.Req) req_);
+                    req_ = subBuilder.buildPartial();
+                  }
+                  reqCase_ = 10;
+                  break;
+                }
+                case 90: {
+                  ChangePassword.Req.Builder subBuilder = null;
+                  if (reqCase_ == 11) {
+                    subBuilder = ((ChangePassword.Req) req_).toBuilder();
+                  }
+                  req_ =
+                       input.readMessage(ChangePassword.Req.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((ChangePassword.Req) req_);
+                    req_ = subBuilder.buildPartial();
+                  }
+                  reqCase_ = 11;
+                  break;
+                }
+                case 98: {
+                  ChangeName.Req.Builder subBuilder = null;
+                  if (reqCase_ == 12) {
+                    subBuilder = ((ChangeName.Req) req_).toBuilder();
+                  }
+                  req_ =
+                       input.readMessage(ChangeName.Req.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((ChangeName.Req) req_);
+                    req_ = subBuilder.buildPartial();
+                  }
+                  reqCase_ = 12;
+                  break;
+                }
+                case 106: {
+                  ChangeHeadpic.Req.Builder subBuilder = null;
+                  if (reqCase_ == 13) {
+                    subBuilder = ((ChangeHeadpic.Req) req_).toBuilder();
+                  }
+                  req_ =
+                       input.readMessage(ChangeHeadpic.Req.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((ChangeHeadpic.Req) req_);
+                    req_ = subBuilder.buildPartial();
+                  }
+                  reqCase_ = 13;
+                  break;
+                }
+                case 114: {
+                  AddFriendRequestFromOther.Req.Builder subBuilder = null;
+                  if (reqCase_ == 14) {
+                    subBuilder = ((AddFriendRequestFromOther.Req) req_).toBuilder();
+                  }
+                  req_ =
+                       input.readMessage(AddFriendRequestFromOther.Req.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((AddFriendRequestFromOther.Req) req_);
+                    req_ = subBuilder.buildPartial();
+                  }
+                  reqCase_ = 14;
+                  break;
+                }
+                case 122: {
+                  AddFriendRequestFromSelf.Req.Builder subBuilder = null;
+                  if (reqCase_ == 15) {
+                    subBuilder = ((AddFriendRequestFromSelf.Req) req_).toBuilder();
+                  }
+                  req_ =
+                       input.readMessage(AddFriendRequestFromSelf.Req.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((AddFriendRequestFromSelf.Req) req_);
+                    req_ = subBuilder.buildPartial();
+                  }
+                  reqCase_ = 15;
                   break;
                 }
               }
@@ -11383,7 +17788,7 @@ public final class Test {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          if (PARSER == null) {    synchronized (Test.ReqToServer.class) {
+          if (PARSER == null) {    synchronized (ReqToServer.class) {
               if (PARSER == null) {
                 PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
               }
@@ -11397,13 +17802,13 @@ public final class Test {
 
 
     // @@protoc_insertion_point(class_scope:ReqToServer)
-    private static final Test.ReqToServer DEFAULT_INSTANCE;
+    private static final ReqToServer DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new ReqToServer();
       DEFAULT_INSTANCE.makeImmutable();
     }
 
-    public static Test.ReqToServer getDefaultInstance() {
+    public static ReqToServer getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -11421,49 +17826,69 @@ public final class Test {
     /**
      * <code>optional .AddFriend.ServerRelayToB add_friend_server_relay_to_b = 1;</code>
      */
-    Test.AddFriend.ServerRelayToB getAddFriendServerRelayToB();
+    AddFriend.ServerRelayToB getAddFriendServerRelayToB();
 
     /**
      * <code>optional .AddFriend.ServerRspToA add_friend_server_rsp_to_a = 2;</code>
      */
-    Test.AddFriend.ServerRspToA getAddFriendServerRspToA();
+    AddFriend.ServerRspToA getAddFriendServerRspToA();
 
     /**
      * <code>optional .ChatWithServer.Relay chat_with_server_relay = 3;</code>
      */
-    Test.ChatWithServer.Relay getChatWithServerRelay();
+    ChatWithServer.Relay getChatWithServerRelay();
 
     /**
      * <code>optional .GetToken.Res get_token_res = 4;</code>
      */
-    Test.GetToken.Res getGetTokenRes();
+    GetToken.Res getGetTokenRes();
 
     /**
      * <code>optional .HeartBeat.Res heart_beat_res = 5;</code>
      */
-    Test.HeartBeat.Res getHeartBeatRes();
+    HeartBeat.Res getHeartBeatRes();
 
     /**
      * <code>optional .Login.Res login_res = 6;</code>
      */
-    Test.Login.Res getLoginRes();
+    Login.Res getLoginRes();
 
     /**
      * <code>optional .Register.Res register_res = 7;</code>
      */
-    Test.Register.Res getRegisterRes();
+    Register.Res getRegisterRes();
 
     /**
      * <code>optional .SearchUser.Res search_user_res = 8;</code>
      */
-    Test.SearchUser.Res getSearchUserRes();
+    SearchUser.Res getSearchUserRes();
 
     /**
      * <code>optional .Error error = 9;</code>
      */
-    Test.Error getError();
+    Error getError();
 
-    public Test.RspToClient.RspCase getRspCase();
+    /**
+     * <code>optional .FriendList.Rsp friendlist_res = 10;</code>
+     */
+    FriendList.Rsp getFriendlistRes();
+
+    /**
+     * <code>optional .ChatRecord.Res chat_record_res = 11;</code>
+     */
+    ChatRecord.Res getChatRecordRes();
+
+    /**
+     * <code>optional .AddFriendRequestFromOther.Rsp add_friend_request_from_other_res = 12;</code>
+     */
+    AddFriendRequestFromOther.Rsp getAddFriendRequestFromOtherRes();
+
+    /**
+     * <code>optional .AddFriendRequestFromSelf.Rsp add_friend_request_from_self_res = 13;</code>
+     */
+    AddFriendRequestFromSelf.Rsp getAddFriendRequestFromSelfRes();
+
+    public RspToClient.RspCase getRspCase();
   }
   /**
    * Protobuf type {@code RspToClient}
@@ -11488,6 +17913,10 @@ public final class Test {
       REGISTER_RES(7),
       SEARCH_USER_RES(8),
       ERROR(9),
+      FRIENDLIST_RES(10),
+      CHAT_RECORD_RES(11),
+      ADD_FRIEND_REQUEST_FROM_OTHER_RES(12),
+      ADD_FRIEND_REQUEST_FROM_SELF_RES(13),
       RSP_NOT_SET(0);
       private final int value;
       private RspCase(int value) {
@@ -11512,6 +17941,10 @@ public final class Test {
           case 7: return REGISTER_RES;
           case 8: return SEARCH_USER_RES;
           case 9: return ERROR;
+          case 10: return FRIENDLIST_RES;
+          case 11: return CHAT_RECORD_RES;
+          case 12: return ADD_FRIEND_REQUEST_FROM_OTHER_RES;
+          case 13: return ADD_FRIEND_REQUEST_FROM_SELF_RES;
           case 0: return RSP_NOT_SET;
           default: return null;
         }
@@ -11536,16 +17969,16 @@ public final class Test {
     /**
      * <code>optional .AddFriend.ServerRelayToB add_friend_server_relay_to_b = 1;</code>
      */
-    public Test.AddFriend.ServerRelayToB getAddFriendServerRelayToB() {
+    public AddFriend.ServerRelayToB getAddFriendServerRelayToB() {
       if (rspCase_ == 1) {
-         return (Test.AddFriend.ServerRelayToB) rsp_;
+         return (AddFriend.ServerRelayToB) rsp_;
       }
-      return Test.AddFriend.ServerRelayToB.getDefaultInstance();
+      return AddFriend.ServerRelayToB.getDefaultInstance();
     }
     /**
      * <code>optional .AddFriend.ServerRelayToB add_friend_server_relay_to_b = 1;</code>
      */
-    private void setAddFriendServerRelayToB(Test.AddFriend.ServerRelayToB value) {
+    private void setAddFriendServerRelayToB(AddFriend.ServerRelayToB value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -11556,17 +17989,17 @@ public final class Test {
      * <code>optional .AddFriend.ServerRelayToB add_friend_server_relay_to_b = 1;</code>
      */
     private void setAddFriendServerRelayToB(
-        Test.AddFriend.ServerRelayToB.Builder builderForValue) {
+        AddFriend.ServerRelayToB.Builder builderForValue) {
       rsp_ = builderForValue.build();
       rspCase_ = 1;
     }
     /**
      * <code>optional .AddFriend.ServerRelayToB add_friend_server_relay_to_b = 1;</code>
      */
-    private void mergeAddFriendServerRelayToB(Test.AddFriend.ServerRelayToB value) {
+    private void mergeAddFriendServerRelayToB(AddFriend.ServerRelayToB value) {
       if (rspCase_ == 1 &&
-          rsp_ != Test.AddFriend.ServerRelayToB.getDefaultInstance()) {
-        rsp_ = Test.AddFriend.ServerRelayToB.newBuilder((Test.AddFriend.ServerRelayToB) rsp_)
+          rsp_ != AddFriend.ServerRelayToB.getDefaultInstance()) {
+        rsp_ = AddFriend.ServerRelayToB.newBuilder((AddFriend.ServerRelayToB) rsp_)
             .mergeFrom(value).buildPartial();
       } else {
         rsp_ = value;
@@ -11587,16 +18020,16 @@ public final class Test {
     /**
      * <code>optional .AddFriend.ServerRspToA add_friend_server_rsp_to_a = 2;</code>
      */
-    public Test.AddFriend.ServerRspToA getAddFriendServerRspToA() {
+    public AddFriend.ServerRspToA getAddFriendServerRspToA() {
       if (rspCase_ == 2) {
-         return (Test.AddFriend.ServerRspToA) rsp_;
+         return (AddFriend.ServerRspToA) rsp_;
       }
-      return Test.AddFriend.ServerRspToA.getDefaultInstance();
+      return AddFriend.ServerRspToA.getDefaultInstance();
     }
     /**
      * <code>optional .AddFriend.ServerRspToA add_friend_server_rsp_to_a = 2;</code>
      */
-    private void setAddFriendServerRspToA(Test.AddFriend.ServerRspToA value) {
+    private void setAddFriendServerRspToA(AddFriend.ServerRspToA value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -11607,17 +18040,17 @@ public final class Test {
      * <code>optional .AddFriend.ServerRspToA add_friend_server_rsp_to_a = 2;</code>
      */
     private void setAddFriendServerRspToA(
-        Test.AddFriend.ServerRspToA.Builder builderForValue) {
+        AddFriend.ServerRspToA.Builder builderForValue) {
       rsp_ = builderForValue.build();
       rspCase_ = 2;
     }
     /**
      * <code>optional .AddFriend.ServerRspToA add_friend_server_rsp_to_a = 2;</code>
      */
-    private void mergeAddFriendServerRspToA(Test.AddFriend.ServerRspToA value) {
+    private void mergeAddFriendServerRspToA(AddFriend.ServerRspToA value) {
       if (rspCase_ == 2 &&
-          rsp_ != Test.AddFriend.ServerRspToA.getDefaultInstance()) {
-        rsp_ = Test.AddFriend.ServerRspToA.newBuilder((Test.AddFriend.ServerRspToA) rsp_)
+          rsp_ != AddFriend.ServerRspToA.getDefaultInstance()) {
+        rsp_ = AddFriend.ServerRspToA.newBuilder((AddFriend.ServerRspToA) rsp_)
             .mergeFrom(value).buildPartial();
       } else {
         rsp_ = value;
@@ -11638,16 +18071,16 @@ public final class Test {
     /**
      * <code>optional .ChatWithServer.Relay chat_with_server_relay = 3;</code>
      */
-    public Test.ChatWithServer.Relay getChatWithServerRelay() {
+    public ChatWithServer.Relay getChatWithServerRelay() {
       if (rspCase_ == 3) {
-         return (Test.ChatWithServer.Relay) rsp_;
+         return (ChatWithServer.Relay) rsp_;
       }
-      return Test.ChatWithServer.Relay.getDefaultInstance();
+      return ChatWithServer.Relay.getDefaultInstance();
     }
     /**
      * <code>optional .ChatWithServer.Relay chat_with_server_relay = 3;</code>
      */
-    private void setChatWithServerRelay(Test.ChatWithServer.Relay value) {
+    private void setChatWithServerRelay(ChatWithServer.Relay value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -11658,17 +18091,17 @@ public final class Test {
      * <code>optional .ChatWithServer.Relay chat_with_server_relay = 3;</code>
      */
     private void setChatWithServerRelay(
-        Test.ChatWithServer.Relay.Builder builderForValue) {
+        ChatWithServer.Relay.Builder builderForValue) {
       rsp_ = builderForValue.build();
       rspCase_ = 3;
     }
     /**
      * <code>optional .ChatWithServer.Relay chat_with_server_relay = 3;</code>
      */
-    private void mergeChatWithServerRelay(Test.ChatWithServer.Relay value) {
+    private void mergeChatWithServerRelay(ChatWithServer.Relay value) {
       if (rspCase_ == 3 &&
-          rsp_ != Test.ChatWithServer.Relay.getDefaultInstance()) {
-        rsp_ = Test.ChatWithServer.Relay.newBuilder((Test.ChatWithServer.Relay) rsp_)
+          rsp_ != ChatWithServer.Relay.getDefaultInstance()) {
+        rsp_ = ChatWithServer.Relay.newBuilder((ChatWithServer.Relay) rsp_)
             .mergeFrom(value).buildPartial();
       } else {
         rsp_ = value;
@@ -11689,16 +18122,16 @@ public final class Test {
     /**
      * <code>optional .GetToken.Res get_token_res = 4;</code>
      */
-    public Test.GetToken.Res getGetTokenRes() {
+    public GetToken.Res getGetTokenRes() {
       if (rspCase_ == 4) {
-         return (Test.GetToken.Res) rsp_;
+         return (GetToken.Res) rsp_;
       }
-      return Test.GetToken.Res.getDefaultInstance();
+      return GetToken.Res.getDefaultInstance();
     }
     /**
      * <code>optional .GetToken.Res get_token_res = 4;</code>
      */
-    private void setGetTokenRes(Test.GetToken.Res value) {
+    private void setGetTokenRes(GetToken.Res value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -11709,17 +18142,17 @@ public final class Test {
      * <code>optional .GetToken.Res get_token_res = 4;</code>
      */
     private void setGetTokenRes(
-        Test.GetToken.Res.Builder builderForValue) {
+        GetToken.Res.Builder builderForValue) {
       rsp_ = builderForValue.build();
       rspCase_ = 4;
     }
     /**
      * <code>optional .GetToken.Res get_token_res = 4;</code>
      */
-    private void mergeGetTokenRes(Test.GetToken.Res value) {
+    private void mergeGetTokenRes(GetToken.Res value) {
       if (rspCase_ == 4 &&
-          rsp_ != Test.GetToken.Res.getDefaultInstance()) {
-        rsp_ = Test.GetToken.Res.newBuilder((Test.GetToken.Res) rsp_)
+          rsp_ != GetToken.Res.getDefaultInstance()) {
+        rsp_ = GetToken.Res.newBuilder((GetToken.Res) rsp_)
             .mergeFrom(value).buildPartial();
       } else {
         rsp_ = value;
@@ -11740,16 +18173,16 @@ public final class Test {
     /**
      * <code>optional .HeartBeat.Res heart_beat_res = 5;</code>
      */
-    public Test.HeartBeat.Res getHeartBeatRes() {
+    public HeartBeat.Res getHeartBeatRes() {
       if (rspCase_ == 5) {
-         return (Test.HeartBeat.Res) rsp_;
+         return (HeartBeat.Res) rsp_;
       }
-      return Test.HeartBeat.Res.getDefaultInstance();
+      return HeartBeat.Res.getDefaultInstance();
     }
     /**
      * <code>optional .HeartBeat.Res heart_beat_res = 5;</code>
      */
-    private void setHeartBeatRes(Test.HeartBeat.Res value) {
+    private void setHeartBeatRes(HeartBeat.Res value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -11760,17 +18193,17 @@ public final class Test {
      * <code>optional .HeartBeat.Res heart_beat_res = 5;</code>
      */
     private void setHeartBeatRes(
-        Test.HeartBeat.Res.Builder builderForValue) {
+        HeartBeat.Res.Builder builderForValue) {
       rsp_ = builderForValue.build();
       rspCase_ = 5;
     }
     /**
      * <code>optional .HeartBeat.Res heart_beat_res = 5;</code>
      */
-    private void mergeHeartBeatRes(Test.HeartBeat.Res value) {
+    private void mergeHeartBeatRes(HeartBeat.Res value) {
       if (rspCase_ == 5 &&
-          rsp_ != Test.HeartBeat.Res.getDefaultInstance()) {
-        rsp_ = Test.HeartBeat.Res.newBuilder((Test.HeartBeat.Res) rsp_)
+          rsp_ != HeartBeat.Res.getDefaultInstance()) {
+        rsp_ = HeartBeat.Res.newBuilder((HeartBeat.Res) rsp_)
             .mergeFrom(value).buildPartial();
       } else {
         rsp_ = value;
@@ -11791,16 +18224,16 @@ public final class Test {
     /**
      * <code>optional .Login.Res login_res = 6;</code>
      */
-    public Test.Login.Res getLoginRes() {
+    public Login.Res getLoginRes() {
       if (rspCase_ == 6) {
-         return (Test.Login.Res) rsp_;
+         return (Login.Res) rsp_;
       }
-      return Test.Login.Res.getDefaultInstance();
+      return Login.Res.getDefaultInstance();
     }
     /**
      * <code>optional .Login.Res login_res = 6;</code>
      */
-    private void setLoginRes(Test.Login.Res value) {
+    private void setLoginRes(Login.Res value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -11811,17 +18244,17 @@ public final class Test {
      * <code>optional .Login.Res login_res = 6;</code>
      */
     private void setLoginRes(
-        Test.Login.Res.Builder builderForValue) {
+        Login.Res.Builder builderForValue) {
       rsp_ = builderForValue.build();
       rspCase_ = 6;
     }
     /**
      * <code>optional .Login.Res login_res = 6;</code>
      */
-    private void mergeLoginRes(Test.Login.Res value) {
+    private void mergeLoginRes(Login.Res value) {
       if (rspCase_ == 6 &&
-          rsp_ != Test.Login.Res.getDefaultInstance()) {
-        rsp_ = Test.Login.Res.newBuilder((Test.Login.Res) rsp_)
+          rsp_ != Login.Res.getDefaultInstance()) {
+        rsp_ = Login.Res.newBuilder((Login.Res) rsp_)
             .mergeFrom(value).buildPartial();
       } else {
         rsp_ = value;
@@ -11842,16 +18275,16 @@ public final class Test {
     /**
      * <code>optional .Register.Res register_res = 7;</code>
      */
-    public Test.Register.Res getRegisterRes() {
+    public Register.Res getRegisterRes() {
       if (rspCase_ == 7) {
-         return (Test.Register.Res) rsp_;
+         return (Register.Res) rsp_;
       }
-      return Test.Register.Res.getDefaultInstance();
+      return Register.Res.getDefaultInstance();
     }
     /**
      * <code>optional .Register.Res register_res = 7;</code>
      */
-    private void setRegisterRes(Test.Register.Res value) {
+    private void setRegisterRes(Register.Res value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -11862,17 +18295,17 @@ public final class Test {
      * <code>optional .Register.Res register_res = 7;</code>
      */
     private void setRegisterRes(
-        Test.Register.Res.Builder builderForValue) {
+        Register.Res.Builder builderForValue) {
       rsp_ = builderForValue.build();
       rspCase_ = 7;
     }
     /**
      * <code>optional .Register.Res register_res = 7;</code>
      */
-    private void mergeRegisterRes(Test.Register.Res value) {
+    private void mergeRegisterRes(Register.Res value) {
       if (rspCase_ == 7 &&
-          rsp_ != Test.Register.Res.getDefaultInstance()) {
-        rsp_ = Test.Register.Res.newBuilder((Test.Register.Res) rsp_)
+          rsp_ != Register.Res.getDefaultInstance()) {
+        rsp_ = Register.Res.newBuilder((Register.Res) rsp_)
             .mergeFrom(value).buildPartial();
       } else {
         rsp_ = value;
@@ -11893,16 +18326,16 @@ public final class Test {
     /**
      * <code>optional .SearchUser.Res search_user_res = 8;</code>
      */
-    public Test.SearchUser.Res getSearchUserRes() {
+    public SearchUser.Res getSearchUserRes() {
       if (rspCase_ == 8) {
-         return (Test.SearchUser.Res) rsp_;
+         return (SearchUser.Res) rsp_;
       }
-      return Test.SearchUser.Res.getDefaultInstance();
+      return SearchUser.Res.getDefaultInstance();
     }
     /**
      * <code>optional .SearchUser.Res search_user_res = 8;</code>
      */
-    private void setSearchUserRes(Test.SearchUser.Res value) {
+    private void setSearchUserRes(SearchUser.Res value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -11913,17 +18346,17 @@ public final class Test {
      * <code>optional .SearchUser.Res search_user_res = 8;</code>
      */
     private void setSearchUserRes(
-        Test.SearchUser.Res.Builder builderForValue) {
+        SearchUser.Res.Builder builderForValue) {
       rsp_ = builderForValue.build();
       rspCase_ = 8;
     }
     /**
      * <code>optional .SearchUser.Res search_user_res = 8;</code>
      */
-    private void mergeSearchUserRes(Test.SearchUser.Res value) {
+    private void mergeSearchUserRes(SearchUser.Res value) {
       if (rspCase_ == 8 &&
-          rsp_ != Test.SearchUser.Res.getDefaultInstance()) {
-        rsp_ = Test.SearchUser.Res.newBuilder((Test.SearchUser.Res) rsp_)
+          rsp_ != SearchUser.Res.getDefaultInstance()) {
+        rsp_ = SearchUser.Res.newBuilder((SearchUser.Res) rsp_)
             .mergeFrom(value).buildPartial();
       } else {
         rsp_ = value;
@@ -11944,16 +18377,16 @@ public final class Test {
     /**
      * <code>optional .Error error = 9;</code>
      */
-    public Test.Error getError() {
+    public Error getError() {
       if (rspCase_ == 9) {
-         return (Test.Error) rsp_;
+         return (Error) rsp_;
       }
-      return Test.Error.getDefaultInstance();
+      return Error.getDefaultInstance();
     }
     /**
      * <code>optional .Error error = 9;</code>
      */
-    private void setError(Test.Error value) {
+    private void setError(Error value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -11964,17 +18397,17 @@ public final class Test {
      * <code>optional .Error error = 9;</code>
      */
     private void setError(
-        Test.Error.Builder builderForValue) {
+        Error.Builder builderForValue) {
       rsp_ = builderForValue.build();
       rspCase_ = 9;
     }
     /**
      * <code>optional .Error error = 9;</code>
      */
-    private void mergeError(Test.Error value) {
+    private void mergeError(Error value) {
       if (rspCase_ == 9 &&
-          rsp_ != Test.Error.getDefaultInstance()) {
-        rsp_ = Test.Error.newBuilder((Test.Error) rsp_)
+          rsp_ != Error.getDefaultInstance()) {
+        rsp_ = Error.newBuilder((Error) rsp_)
             .mergeFrom(value).buildPartial();
       } else {
         rsp_ = value;
@@ -11991,34 +18424,250 @@ public final class Test {
       }
     }
 
+    public static final int FRIENDLIST_RES_FIELD_NUMBER = 10;
+    /**
+     * <code>optional .FriendList.Rsp friendlist_res = 10;</code>
+     */
+    public FriendList.Rsp getFriendlistRes() {
+      if (rspCase_ == 10) {
+         return (FriendList.Rsp) rsp_;
+      }
+      return FriendList.Rsp.getDefaultInstance();
+    }
+    /**
+     * <code>optional .FriendList.Rsp friendlist_res = 10;</code>
+     */
+    private void setFriendlistRes(FriendList.Rsp value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      rsp_ = value;
+      rspCase_ = 10;
+    }
+    /**
+     * <code>optional .FriendList.Rsp friendlist_res = 10;</code>
+     */
+    private void setFriendlistRes(
+        FriendList.Rsp.Builder builderForValue) {
+      rsp_ = builderForValue.build();
+      rspCase_ = 10;
+    }
+    /**
+     * <code>optional .FriendList.Rsp friendlist_res = 10;</code>
+     */
+    private void mergeFriendlistRes(FriendList.Rsp value) {
+      if (rspCase_ == 10 &&
+          rsp_ != FriendList.Rsp.getDefaultInstance()) {
+        rsp_ = FriendList.Rsp.newBuilder((FriendList.Rsp) rsp_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        rsp_ = value;
+      }
+      rspCase_ = 10;
+    }
+    /**
+     * <code>optional .FriendList.Rsp friendlist_res = 10;</code>
+     */
+    private void clearFriendlistRes() {
+      if (rspCase_ == 10) {
+        rspCase_ = 0;
+        rsp_ = null;
+      }
+    }
+
+    public static final int CHAT_RECORD_RES_FIELD_NUMBER = 11;
+    /**
+     * <code>optional .ChatRecord.Res chat_record_res = 11;</code>
+     */
+    public ChatRecord.Res getChatRecordRes() {
+      if (rspCase_ == 11) {
+         return (ChatRecord.Res) rsp_;
+      }
+      return ChatRecord.Res.getDefaultInstance();
+    }
+    /**
+     * <code>optional .ChatRecord.Res chat_record_res = 11;</code>
+     */
+    private void setChatRecordRes(ChatRecord.Res value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      rsp_ = value;
+      rspCase_ = 11;
+    }
+    /**
+     * <code>optional .ChatRecord.Res chat_record_res = 11;</code>
+     */
+    private void setChatRecordRes(
+        ChatRecord.Res.Builder builderForValue) {
+      rsp_ = builderForValue.build();
+      rspCase_ = 11;
+    }
+    /**
+     * <code>optional .ChatRecord.Res chat_record_res = 11;</code>
+     */
+    private void mergeChatRecordRes(ChatRecord.Res value) {
+      if (rspCase_ == 11 &&
+          rsp_ != ChatRecord.Res.getDefaultInstance()) {
+        rsp_ = ChatRecord.Res.newBuilder((ChatRecord.Res) rsp_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        rsp_ = value;
+      }
+      rspCase_ = 11;
+    }
+    /**
+     * <code>optional .ChatRecord.Res chat_record_res = 11;</code>
+     */
+    private void clearChatRecordRes() {
+      if (rspCase_ == 11) {
+        rspCase_ = 0;
+        rsp_ = null;
+      }
+    }
+
+    public static final int ADD_FRIEND_REQUEST_FROM_OTHER_RES_FIELD_NUMBER = 12;
+    /**
+     * <code>optional .AddFriendRequestFromOther.Rsp add_friend_request_from_other_res = 12;</code>
+     */
+    public AddFriendRequestFromOther.Rsp getAddFriendRequestFromOtherRes() {
+      if (rspCase_ == 12) {
+         return (AddFriendRequestFromOther.Rsp) rsp_;
+      }
+      return AddFriendRequestFromOther.Rsp.getDefaultInstance();
+    }
+    /**
+     * <code>optional .AddFriendRequestFromOther.Rsp add_friend_request_from_other_res = 12;</code>
+     */
+    private void setAddFriendRequestFromOtherRes(AddFriendRequestFromOther.Rsp value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      rsp_ = value;
+      rspCase_ = 12;
+    }
+    /**
+     * <code>optional .AddFriendRequestFromOther.Rsp add_friend_request_from_other_res = 12;</code>
+     */
+    private void setAddFriendRequestFromOtherRes(
+        AddFriendRequestFromOther.Rsp.Builder builderForValue) {
+      rsp_ = builderForValue.build();
+      rspCase_ = 12;
+    }
+    /**
+     * <code>optional .AddFriendRequestFromOther.Rsp add_friend_request_from_other_res = 12;</code>
+     */
+    private void mergeAddFriendRequestFromOtherRes(AddFriendRequestFromOther.Rsp value) {
+      if (rspCase_ == 12 &&
+          rsp_ != AddFriendRequestFromOther.Rsp.getDefaultInstance()) {
+        rsp_ = AddFriendRequestFromOther.Rsp.newBuilder((AddFriendRequestFromOther.Rsp) rsp_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        rsp_ = value;
+      }
+      rspCase_ = 12;
+    }
+    /**
+     * <code>optional .AddFriendRequestFromOther.Rsp add_friend_request_from_other_res = 12;</code>
+     */
+    private void clearAddFriendRequestFromOtherRes() {
+      if (rspCase_ == 12) {
+        rspCase_ = 0;
+        rsp_ = null;
+      }
+    }
+
+    public static final int ADD_FRIEND_REQUEST_FROM_SELF_RES_FIELD_NUMBER = 13;
+    /**
+     * <code>optional .AddFriendRequestFromSelf.Rsp add_friend_request_from_self_res = 13;</code>
+     */
+    public AddFriendRequestFromSelf.Rsp getAddFriendRequestFromSelfRes() {
+      if (rspCase_ == 13) {
+         return (AddFriendRequestFromSelf.Rsp) rsp_;
+      }
+      return AddFriendRequestFromSelf.Rsp.getDefaultInstance();
+    }
+    /**
+     * <code>optional .AddFriendRequestFromSelf.Rsp add_friend_request_from_self_res = 13;</code>
+     */
+    private void setAddFriendRequestFromSelfRes(AddFriendRequestFromSelf.Rsp value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      rsp_ = value;
+      rspCase_ = 13;
+    }
+    /**
+     * <code>optional .AddFriendRequestFromSelf.Rsp add_friend_request_from_self_res = 13;</code>
+     */
+    private void setAddFriendRequestFromSelfRes(
+        AddFriendRequestFromSelf.Rsp.Builder builderForValue) {
+      rsp_ = builderForValue.build();
+      rspCase_ = 13;
+    }
+    /**
+     * <code>optional .AddFriendRequestFromSelf.Rsp add_friend_request_from_self_res = 13;</code>
+     */
+    private void mergeAddFriendRequestFromSelfRes(AddFriendRequestFromSelf.Rsp value) {
+      if (rspCase_ == 13 &&
+          rsp_ != AddFriendRequestFromSelf.Rsp.getDefaultInstance()) {
+        rsp_ = AddFriendRequestFromSelf.Rsp.newBuilder((AddFriendRequestFromSelf.Rsp) rsp_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        rsp_ = value;
+      }
+      rspCase_ = 13;
+    }
+    /**
+     * <code>optional .AddFriendRequestFromSelf.Rsp add_friend_request_from_self_res = 13;</code>
+     */
+    private void clearAddFriendRequestFromSelfRes() {
+      if (rspCase_ == 13) {
+        rspCase_ = 0;
+        rsp_ = null;
+      }
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (rspCase_ == 1) {
-        output.writeMessage(1, (Test.AddFriend.ServerRelayToB) rsp_);
+        output.writeMessage(1, (AddFriend.ServerRelayToB) rsp_);
       }
       if (rspCase_ == 2) {
-        output.writeMessage(2, (Test.AddFriend.ServerRspToA) rsp_);
+        output.writeMessage(2, (AddFriend.ServerRspToA) rsp_);
       }
       if (rspCase_ == 3) {
-        output.writeMessage(3, (Test.ChatWithServer.Relay) rsp_);
+        output.writeMessage(3, (ChatWithServer.Relay) rsp_);
       }
       if (rspCase_ == 4) {
-        output.writeMessage(4, (Test.GetToken.Res) rsp_);
+        output.writeMessage(4, (GetToken.Res) rsp_);
       }
       if (rspCase_ == 5) {
-        output.writeMessage(5, (Test.HeartBeat.Res) rsp_);
+        output.writeMessage(5, (HeartBeat.Res) rsp_);
       }
       if (rspCase_ == 6) {
-        output.writeMessage(6, (Test.Login.Res) rsp_);
+        output.writeMessage(6, (Login.Res) rsp_);
       }
       if (rspCase_ == 7) {
-        output.writeMessage(7, (Test.Register.Res) rsp_);
+        output.writeMessage(7, (Register.Res) rsp_);
       }
       if (rspCase_ == 8) {
-        output.writeMessage(8, (Test.SearchUser.Res) rsp_);
+        output.writeMessage(8, (SearchUser.Res) rsp_);
       }
       if (rspCase_ == 9) {
-        output.writeMessage(9, (Test.Error) rsp_);
+        output.writeMessage(9, (Error) rsp_);
+      }
+      if (rspCase_ == 10) {
+        output.writeMessage(10, (FriendList.Rsp) rsp_);
+      }
+      if (rspCase_ == 11) {
+        output.writeMessage(11, (ChatRecord.Res) rsp_);
+      }
+      if (rspCase_ == 12) {
+        output.writeMessage(12, (AddFriendRequestFromOther.Rsp) rsp_);
+      }
+      if (rspCase_ == 13) {
+        output.writeMessage(13, (AddFriendRequestFromSelf.Rsp) rsp_);
       }
     }
 
@@ -12029,98 +18678,114 @@ public final class Test {
       size = 0;
       if (rspCase_ == 1) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, (Test.AddFriend.ServerRelayToB) rsp_);
+          .computeMessageSize(1, (AddFriend.ServerRelayToB) rsp_);
       }
       if (rspCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, (Test.AddFriend.ServerRspToA) rsp_);
+          .computeMessageSize(2, (AddFriend.ServerRspToA) rsp_);
       }
       if (rspCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, (Test.ChatWithServer.Relay) rsp_);
+          .computeMessageSize(3, (ChatWithServer.Relay) rsp_);
       }
       if (rspCase_ == 4) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, (Test.GetToken.Res) rsp_);
+          .computeMessageSize(4, (GetToken.Res) rsp_);
       }
       if (rspCase_ == 5) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, (Test.HeartBeat.Res) rsp_);
+          .computeMessageSize(5, (HeartBeat.Res) rsp_);
       }
       if (rspCase_ == 6) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, (Test.Login.Res) rsp_);
+          .computeMessageSize(6, (Login.Res) rsp_);
       }
       if (rspCase_ == 7) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, (Test.Register.Res) rsp_);
+          .computeMessageSize(7, (Register.Res) rsp_);
       }
       if (rspCase_ == 8) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, (Test.SearchUser.Res) rsp_);
+          .computeMessageSize(8, (SearchUser.Res) rsp_);
       }
       if (rspCase_ == 9) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(9, (Test.Error) rsp_);
+          .computeMessageSize(9, (Error) rsp_);
+      }
+      if (rspCase_ == 10) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, (FriendList.Rsp) rsp_);
+      }
+      if (rspCase_ == 11) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, (ChatRecord.Res) rsp_);
+      }
+      if (rspCase_ == 12) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(12, (AddFriendRequestFromOther.Rsp) rsp_);
+      }
+      if (rspCase_ == 13) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, (AddFriendRequestFromSelf.Rsp) rsp_);
       }
       memoizedSerializedSize = size;
       return size;
     }
 
-    public static Test.RspToClient parseFrom(
+    public static RspToClient parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.RspToClient parseFrom(
+    public static RspToClient parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.RspToClient parseFrom(byte[] data)
+    public static RspToClient parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static Test.RspToClient parseFrom(
+    public static RspToClient parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static Test.RspToClient parseFrom(java.io.InputStream input)
+    public static RspToClient parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.RspToClient parseFrom(
+    public static RspToClient parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.RspToClient parseDelimitedFrom(java.io.InputStream input)
+    public static RspToClient parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static Test.RspToClient parseDelimitedFrom(
+    public static RspToClient parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static Test.RspToClient parseFrom(
+    public static RspToClient parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static Test.RspToClient parseFrom(
+    public static RspToClient parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -12131,7 +18796,7 @@ public final class Test {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Test.RspToClient prototype) {
+    public static Builder newBuilder(RspToClient prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
@@ -12142,7 +18807,7 @@ public final class Test {
         com.google.protobuf.GeneratedMessageLite.Builder<
           RspToClient, Builder> implements
         // @@protoc_insertion_point(builder_implements:RspToClient)
-        Test.RspToClientOrBuilder {
+        RspToClientOrBuilder {
       // Construct using Test.RspToClient.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
@@ -12163,13 +18828,13 @@ public final class Test {
       /**
        * <code>optional .AddFriend.ServerRelayToB add_friend_server_relay_to_b = 1;</code>
        */
-      public Test.AddFriend.ServerRelayToB getAddFriendServerRelayToB() {
+      public AddFriend.ServerRelayToB getAddFriendServerRelayToB() {
         return instance.getAddFriendServerRelayToB();
       }
       /**
        * <code>optional .AddFriend.ServerRelayToB add_friend_server_relay_to_b = 1;</code>
        */
-      public Builder setAddFriendServerRelayToB(Test.AddFriend.ServerRelayToB value) {
+      public Builder setAddFriendServerRelayToB(AddFriend.ServerRelayToB value) {
         copyOnWrite();
         instance.setAddFriendServerRelayToB(value);
         return this;
@@ -12178,7 +18843,7 @@ public final class Test {
        * <code>optional .AddFriend.ServerRelayToB add_friend_server_relay_to_b = 1;</code>
        */
       public Builder setAddFriendServerRelayToB(
-          Test.AddFriend.ServerRelayToB.Builder builderForValue) {
+          AddFriend.ServerRelayToB.Builder builderForValue) {
         copyOnWrite();
         instance.setAddFriendServerRelayToB(builderForValue);
         return this;
@@ -12186,7 +18851,7 @@ public final class Test {
       /**
        * <code>optional .AddFriend.ServerRelayToB add_friend_server_relay_to_b = 1;</code>
        */
-      public Builder mergeAddFriendServerRelayToB(Test.AddFriend.ServerRelayToB value) {
+      public Builder mergeAddFriendServerRelayToB(AddFriend.ServerRelayToB value) {
         copyOnWrite();
         instance.mergeAddFriendServerRelayToB(value);
         return this;
@@ -12203,13 +18868,13 @@ public final class Test {
       /**
        * <code>optional .AddFriend.ServerRspToA add_friend_server_rsp_to_a = 2;</code>
        */
-      public Test.AddFriend.ServerRspToA getAddFriendServerRspToA() {
+      public AddFriend.ServerRspToA getAddFriendServerRspToA() {
         return instance.getAddFriendServerRspToA();
       }
       /**
        * <code>optional .AddFriend.ServerRspToA add_friend_server_rsp_to_a = 2;</code>
        */
-      public Builder setAddFriendServerRspToA(Test.AddFriend.ServerRspToA value) {
+      public Builder setAddFriendServerRspToA(AddFriend.ServerRspToA value) {
         copyOnWrite();
         instance.setAddFriendServerRspToA(value);
         return this;
@@ -12218,7 +18883,7 @@ public final class Test {
        * <code>optional .AddFriend.ServerRspToA add_friend_server_rsp_to_a = 2;</code>
        */
       public Builder setAddFriendServerRspToA(
-          Test.AddFriend.ServerRspToA.Builder builderForValue) {
+          AddFriend.ServerRspToA.Builder builderForValue) {
         copyOnWrite();
         instance.setAddFriendServerRspToA(builderForValue);
         return this;
@@ -12226,7 +18891,7 @@ public final class Test {
       /**
        * <code>optional .AddFriend.ServerRspToA add_friend_server_rsp_to_a = 2;</code>
        */
-      public Builder mergeAddFriendServerRspToA(Test.AddFriend.ServerRspToA value) {
+      public Builder mergeAddFriendServerRspToA(AddFriend.ServerRspToA value) {
         copyOnWrite();
         instance.mergeAddFriendServerRspToA(value);
         return this;
@@ -12243,13 +18908,13 @@ public final class Test {
       /**
        * <code>optional .ChatWithServer.Relay chat_with_server_relay = 3;</code>
        */
-      public Test.ChatWithServer.Relay getChatWithServerRelay() {
+      public ChatWithServer.Relay getChatWithServerRelay() {
         return instance.getChatWithServerRelay();
       }
       /**
        * <code>optional .ChatWithServer.Relay chat_with_server_relay = 3;</code>
        */
-      public Builder setChatWithServerRelay(Test.ChatWithServer.Relay value) {
+      public Builder setChatWithServerRelay(ChatWithServer.Relay value) {
         copyOnWrite();
         instance.setChatWithServerRelay(value);
         return this;
@@ -12258,7 +18923,7 @@ public final class Test {
        * <code>optional .ChatWithServer.Relay chat_with_server_relay = 3;</code>
        */
       public Builder setChatWithServerRelay(
-          Test.ChatWithServer.Relay.Builder builderForValue) {
+          ChatWithServer.Relay.Builder builderForValue) {
         copyOnWrite();
         instance.setChatWithServerRelay(builderForValue);
         return this;
@@ -12266,7 +18931,7 @@ public final class Test {
       /**
        * <code>optional .ChatWithServer.Relay chat_with_server_relay = 3;</code>
        */
-      public Builder mergeChatWithServerRelay(Test.ChatWithServer.Relay value) {
+      public Builder mergeChatWithServerRelay(ChatWithServer.Relay value) {
         copyOnWrite();
         instance.mergeChatWithServerRelay(value);
         return this;
@@ -12283,13 +18948,13 @@ public final class Test {
       /**
        * <code>optional .GetToken.Res get_token_res = 4;</code>
        */
-      public Test.GetToken.Res getGetTokenRes() {
+      public GetToken.Res getGetTokenRes() {
         return instance.getGetTokenRes();
       }
       /**
        * <code>optional .GetToken.Res get_token_res = 4;</code>
        */
-      public Builder setGetTokenRes(Test.GetToken.Res value) {
+      public Builder setGetTokenRes(GetToken.Res value) {
         copyOnWrite();
         instance.setGetTokenRes(value);
         return this;
@@ -12298,7 +18963,7 @@ public final class Test {
        * <code>optional .GetToken.Res get_token_res = 4;</code>
        */
       public Builder setGetTokenRes(
-          Test.GetToken.Res.Builder builderForValue) {
+          GetToken.Res.Builder builderForValue) {
         copyOnWrite();
         instance.setGetTokenRes(builderForValue);
         return this;
@@ -12306,7 +18971,7 @@ public final class Test {
       /**
        * <code>optional .GetToken.Res get_token_res = 4;</code>
        */
-      public Builder mergeGetTokenRes(Test.GetToken.Res value) {
+      public Builder mergeGetTokenRes(GetToken.Res value) {
         copyOnWrite();
         instance.mergeGetTokenRes(value);
         return this;
@@ -12323,13 +18988,13 @@ public final class Test {
       /**
        * <code>optional .HeartBeat.Res heart_beat_res = 5;</code>
        */
-      public Test.HeartBeat.Res getHeartBeatRes() {
+      public HeartBeat.Res getHeartBeatRes() {
         return instance.getHeartBeatRes();
       }
       /**
        * <code>optional .HeartBeat.Res heart_beat_res = 5;</code>
        */
-      public Builder setHeartBeatRes(Test.HeartBeat.Res value) {
+      public Builder setHeartBeatRes(HeartBeat.Res value) {
         copyOnWrite();
         instance.setHeartBeatRes(value);
         return this;
@@ -12338,7 +19003,7 @@ public final class Test {
        * <code>optional .HeartBeat.Res heart_beat_res = 5;</code>
        */
       public Builder setHeartBeatRes(
-          Test.HeartBeat.Res.Builder builderForValue) {
+          HeartBeat.Res.Builder builderForValue) {
         copyOnWrite();
         instance.setHeartBeatRes(builderForValue);
         return this;
@@ -12346,7 +19011,7 @@ public final class Test {
       /**
        * <code>optional .HeartBeat.Res heart_beat_res = 5;</code>
        */
-      public Builder mergeHeartBeatRes(Test.HeartBeat.Res value) {
+      public Builder mergeHeartBeatRes(HeartBeat.Res value) {
         copyOnWrite();
         instance.mergeHeartBeatRes(value);
         return this;
@@ -12363,13 +19028,13 @@ public final class Test {
       /**
        * <code>optional .Login.Res login_res = 6;</code>
        */
-      public Test.Login.Res getLoginRes() {
+      public Login.Res getLoginRes() {
         return instance.getLoginRes();
       }
       /**
        * <code>optional .Login.Res login_res = 6;</code>
        */
-      public Builder setLoginRes(Test.Login.Res value) {
+      public Builder setLoginRes(Login.Res value) {
         copyOnWrite();
         instance.setLoginRes(value);
         return this;
@@ -12378,7 +19043,7 @@ public final class Test {
        * <code>optional .Login.Res login_res = 6;</code>
        */
       public Builder setLoginRes(
-          Test.Login.Res.Builder builderForValue) {
+          Login.Res.Builder builderForValue) {
         copyOnWrite();
         instance.setLoginRes(builderForValue);
         return this;
@@ -12386,7 +19051,7 @@ public final class Test {
       /**
        * <code>optional .Login.Res login_res = 6;</code>
        */
-      public Builder mergeLoginRes(Test.Login.Res value) {
+      public Builder mergeLoginRes(Login.Res value) {
         copyOnWrite();
         instance.mergeLoginRes(value);
         return this;
@@ -12403,13 +19068,13 @@ public final class Test {
       /**
        * <code>optional .Register.Res register_res = 7;</code>
        */
-      public Test.Register.Res getRegisterRes() {
+      public Register.Res getRegisterRes() {
         return instance.getRegisterRes();
       }
       /**
        * <code>optional .Register.Res register_res = 7;</code>
        */
-      public Builder setRegisterRes(Test.Register.Res value) {
+      public Builder setRegisterRes(Register.Res value) {
         copyOnWrite();
         instance.setRegisterRes(value);
         return this;
@@ -12418,7 +19083,7 @@ public final class Test {
        * <code>optional .Register.Res register_res = 7;</code>
        */
       public Builder setRegisterRes(
-          Test.Register.Res.Builder builderForValue) {
+          Register.Res.Builder builderForValue) {
         copyOnWrite();
         instance.setRegisterRes(builderForValue);
         return this;
@@ -12426,7 +19091,7 @@ public final class Test {
       /**
        * <code>optional .Register.Res register_res = 7;</code>
        */
-      public Builder mergeRegisterRes(Test.Register.Res value) {
+      public Builder mergeRegisterRes(Register.Res value) {
         copyOnWrite();
         instance.mergeRegisterRes(value);
         return this;
@@ -12443,13 +19108,13 @@ public final class Test {
       /**
        * <code>optional .SearchUser.Res search_user_res = 8;</code>
        */
-      public Test.SearchUser.Res getSearchUserRes() {
+      public SearchUser.Res getSearchUserRes() {
         return instance.getSearchUserRes();
       }
       /**
        * <code>optional .SearchUser.Res search_user_res = 8;</code>
        */
-      public Builder setSearchUserRes(Test.SearchUser.Res value) {
+      public Builder setSearchUserRes(SearchUser.Res value) {
         copyOnWrite();
         instance.setSearchUserRes(value);
         return this;
@@ -12458,7 +19123,7 @@ public final class Test {
        * <code>optional .SearchUser.Res search_user_res = 8;</code>
        */
       public Builder setSearchUserRes(
-          Test.SearchUser.Res.Builder builderForValue) {
+          SearchUser.Res.Builder builderForValue) {
         copyOnWrite();
         instance.setSearchUserRes(builderForValue);
         return this;
@@ -12466,7 +19131,7 @@ public final class Test {
       /**
        * <code>optional .SearchUser.Res search_user_res = 8;</code>
        */
-      public Builder mergeSearchUserRes(Test.SearchUser.Res value) {
+      public Builder mergeSearchUserRes(SearchUser.Res value) {
         copyOnWrite();
         instance.mergeSearchUserRes(value);
         return this;
@@ -12483,13 +19148,13 @@ public final class Test {
       /**
        * <code>optional .Error error = 9;</code>
        */
-      public Test.Error getError() {
+      public Error getError() {
         return instance.getError();
       }
       /**
        * <code>optional .Error error = 9;</code>
        */
-      public Builder setError(Test.Error value) {
+      public Builder setError(Error value) {
         copyOnWrite();
         instance.setError(value);
         return this;
@@ -12498,7 +19163,7 @@ public final class Test {
        * <code>optional .Error error = 9;</code>
        */
       public Builder setError(
-          Test.Error.Builder builderForValue) {
+          Error.Builder builderForValue) {
         copyOnWrite();
         instance.setError(builderForValue);
         return this;
@@ -12506,7 +19171,7 @@ public final class Test {
       /**
        * <code>optional .Error error = 9;</code>
        */
-      public Builder mergeError(Test.Error value) {
+      public Builder mergeError(Error value) {
         copyOnWrite();
         instance.mergeError(value);
         return this;
@@ -12520,6 +19185,166 @@ public final class Test {
         return this;
       }
 
+      /**
+       * <code>optional .FriendList.Rsp friendlist_res = 10;</code>
+       */
+      public FriendList.Rsp getFriendlistRes() {
+        return instance.getFriendlistRes();
+      }
+      /**
+       * <code>optional .FriendList.Rsp friendlist_res = 10;</code>
+       */
+      public Builder setFriendlistRes(FriendList.Rsp value) {
+        copyOnWrite();
+        instance.setFriendlistRes(value);
+        return this;
+      }
+      /**
+       * <code>optional .FriendList.Rsp friendlist_res = 10;</code>
+       */
+      public Builder setFriendlistRes(
+          FriendList.Rsp.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFriendlistRes(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .FriendList.Rsp friendlist_res = 10;</code>
+       */
+      public Builder mergeFriendlistRes(FriendList.Rsp value) {
+        copyOnWrite();
+        instance.mergeFriendlistRes(value);
+        return this;
+      }
+      /**
+       * <code>optional .FriendList.Rsp friendlist_res = 10;</code>
+       */
+      public Builder clearFriendlistRes() {
+        copyOnWrite();
+        instance.clearFriendlistRes();
+        return this;
+      }
+
+      /**
+       * <code>optional .ChatRecord.Res chat_record_res = 11;</code>
+       */
+      public ChatRecord.Res getChatRecordRes() {
+        return instance.getChatRecordRes();
+      }
+      /**
+       * <code>optional .ChatRecord.Res chat_record_res = 11;</code>
+       */
+      public Builder setChatRecordRes(ChatRecord.Res value) {
+        copyOnWrite();
+        instance.setChatRecordRes(value);
+        return this;
+      }
+      /**
+       * <code>optional .ChatRecord.Res chat_record_res = 11;</code>
+       */
+      public Builder setChatRecordRes(
+          ChatRecord.Res.Builder builderForValue) {
+        copyOnWrite();
+        instance.setChatRecordRes(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .ChatRecord.Res chat_record_res = 11;</code>
+       */
+      public Builder mergeChatRecordRes(ChatRecord.Res value) {
+        copyOnWrite();
+        instance.mergeChatRecordRes(value);
+        return this;
+      }
+      /**
+       * <code>optional .ChatRecord.Res chat_record_res = 11;</code>
+       */
+      public Builder clearChatRecordRes() {
+        copyOnWrite();
+        instance.clearChatRecordRes();
+        return this;
+      }
+
+      /**
+       * <code>optional .AddFriendRequestFromOther.Rsp add_friend_request_from_other_res = 12;</code>
+       */
+      public AddFriendRequestFromOther.Rsp getAddFriendRequestFromOtherRes() {
+        return instance.getAddFriendRequestFromOtherRes();
+      }
+      /**
+       * <code>optional .AddFriendRequestFromOther.Rsp add_friend_request_from_other_res = 12;</code>
+       */
+      public Builder setAddFriendRequestFromOtherRes(AddFriendRequestFromOther.Rsp value) {
+        copyOnWrite();
+        instance.setAddFriendRequestFromOtherRes(value);
+        return this;
+      }
+      /**
+       * <code>optional .AddFriendRequestFromOther.Rsp add_friend_request_from_other_res = 12;</code>
+       */
+      public Builder setAddFriendRequestFromOtherRes(
+          AddFriendRequestFromOther.Rsp.Builder builderForValue) {
+        copyOnWrite();
+        instance.setAddFriendRequestFromOtherRes(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .AddFriendRequestFromOther.Rsp add_friend_request_from_other_res = 12;</code>
+       */
+      public Builder mergeAddFriendRequestFromOtherRes(AddFriendRequestFromOther.Rsp value) {
+        copyOnWrite();
+        instance.mergeAddFriendRequestFromOtherRes(value);
+        return this;
+      }
+      /**
+       * <code>optional .AddFriendRequestFromOther.Rsp add_friend_request_from_other_res = 12;</code>
+       */
+      public Builder clearAddFriendRequestFromOtherRes() {
+        copyOnWrite();
+        instance.clearAddFriendRequestFromOtherRes();
+        return this;
+      }
+
+      /**
+       * <code>optional .AddFriendRequestFromSelf.Rsp add_friend_request_from_self_res = 13;</code>
+       */
+      public AddFriendRequestFromSelf.Rsp getAddFriendRequestFromSelfRes() {
+        return instance.getAddFriendRequestFromSelfRes();
+      }
+      /**
+       * <code>optional .AddFriendRequestFromSelf.Rsp add_friend_request_from_self_res = 13;</code>
+       */
+      public Builder setAddFriendRequestFromSelfRes(AddFriendRequestFromSelf.Rsp value) {
+        copyOnWrite();
+        instance.setAddFriendRequestFromSelfRes(value);
+        return this;
+      }
+      /**
+       * <code>optional .AddFriendRequestFromSelf.Rsp add_friend_request_from_self_res = 13;</code>
+       */
+      public Builder setAddFriendRequestFromSelfRes(
+          AddFriendRequestFromSelf.Rsp.Builder builderForValue) {
+        copyOnWrite();
+        instance.setAddFriendRequestFromSelfRes(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .AddFriendRequestFromSelf.Rsp add_friend_request_from_self_res = 13;</code>
+       */
+      public Builder mergeAddFriendRequestFromSelfRes(AddFriendRequestFromSelf.Rsp value) {
+        copyOnWrite();
+        instance.mergeAddFriendRequestFromSelfRes(value);
+        return this;
+      }
+      /**
+       * <code>optional .AddFriendRequestFromSelf.Rsp add_friend_request_from_self_res = 13;</code>
+       */
+      public Builder clearAddFriendRequestFromSelfRes() {
+        copyOnWrite();
+        instance.clearAddFriendRequestFromSelfRes();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:RspToClient)
     }
     protected final Object dynamicMethod(
@@ -12527,7 +19352,7 @@ public final class Test {
         Object arg0, Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new Test.RspToClient();
+          return new RspToClient();
         }
         case IS_INITIALIZED: {
           return DEFAULT_INSTANCE;
@@ -12540,7 +19365,7 @@ public final class Test {
         }
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
-          Test.RspToClient other = (Test.RspToClient) arg1;
+          RspToClient other = (RspToClient) arg1;
           switch (other.getRspCase()) {
             case ADD_FRIEND_SERVER_RELAY_TO_B: {
               rsp_ = visitor.visitOneofMessage(
@@ -12605,6 +19430,34 @@ public final class Test {
                   other.rsp_);
               break;
             }
+            case FRIENDLIST_RES: {
+              rsp_ = visitor.visitOneofMessage(
+                  rspCase_ == 10,
+                  rsp_,
+                  other.rsp_);
+              break;
+            }
+            case CHAT_RECORD_RES: {
+              rsp_ = visitor.visitOneofMessage(
+                  rspCase_ == 11,
+                  rsp_,
+                  other.rsp_);
+              break;
+            }
+            case ADD_FRIEND_REQUEST_FROM_OTHER_RES: {
+              rsp_ = visitor.visitOneofMessage(
+                  rspCase_ == 12,
+                  rsp_,
+                  other.rsp_);
+              break;
+            }
+            case ADD_FRIEND_REQUEST_FROM_SELF_RES: {
+              rsp_ = visitor.visitOneofMessage(
+                  rspCase_ == 13,
+                  rsp_,
+                  other.rsp_);
+              break;
+            }
             case RSP_NOT_SET: {
               visitor.visitOneofNotSet(rspCase_ != 0);
               break;
@@ -12638,129 +19491,185 @@ public final class Test {
                   break;
                 }
                 case 10: {
-                  Test.AddFriend.ServerRelayToB.Builder subBuilder = null;
+                  AddFriend.ServerRelayToB.Builder subBuilder = null;
                   if (rspCase_ == 1) {
-                    subBuilder = ((Test.AddFriend.ServerRelayToB) rsp_).toBuilder();
+                    subBuilder = ((AddFriend.ServerRelayToB) rsp_).toBuilder();
                   }
                   rsp_ =
-                       input.readMessage(Test.AddFriend.ServerRelayToB.parser(), extensionRegistry);
+                       input.readMessage(AddFriend.ServerRelayToB.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.AddFriend.ServerRelayToB) rsp_);
+                    subBuilder.mergeFrom((AddFriend.ServerRelayToB) rsp_);
                     rsp_ = subBuilder.buildPartial();
                   }
                   rspCase_ = 1;
                   break;
                 }
                 case 18: {
-                  Test.AddFriend.ServerRspToA.Builder subBuilder = null;
+                  AddFriend.ServerRspToA.Builder subBuilder = null;
                   if (rspCase_ == 2) {
-                    subBuilder = ((Test.AddFriend.ServerRspToA) rsp_).toBuilder();
+                    subBuilder = ((AddFriend.ServerRspToA) rsp_).toBuilder();
                   }
                   rsp_ =
-                       input.readMessage(Test.AddFriend.ServerRspToA.parser(), extensionRegistry);
+                       input.readMessage(AddFriend.ServerRspToA.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.AddFriend.ServerRspToA) rsp_);
+                    subBuilder.mergeFrom((AddFriend.ServerRspToA) rsp_);
                     rsp_ = subBuilder.buildPartial();
                   }
                   rspCase_ = 2;
                   break;
                 }
                 case 26: {
-                  Test.ChatWithServer.Relay.Builder subBuilder = null;
+                  ChatWithServer.Relay.Builder subBuilder = null;
                   if (rspCase_ == 3) {
-                    subBuilder = ((Test.ChatWithServer.Relay) rsp_).toBuilder();
+                    subBuilder = ((ChatWithServer.Relay) rsp_).toBuilder();
                   }
                   rsp_ =
-                       input.readMessage(Test.ChatWithServer.Relay.parser(), extensionRegistry);
+                       input.readMessage(ChatWithServer.Relay.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.ChatWithServer.Relay) rsp_);
+                    subBuilder.mergeFrom((ChatWithServer.Relay) rsp_);
                     rsp_ = subBuilder.buildPartial();
                   }
                   rspCase_ = 3;
                   break;
                 }
                 case 34: {
-                  Test.GetToken.Res.Builder subBuilder = null;
+                  GetToken.Res.Builder subBuilder = null;
                   if (rspCase_ == 4) {
-                    subBuilder = ((Test.GetToken.Res) rsp_).toBuilder();
+                    subBuilder = ((GetToken.Res) rsp_).toBuilder();
                   }
                   rsp_ =
-                       input.readMessage(Test.GetToken.Res.parser(), extensionRegistry);
+                       input.readMessage(GetToken.Res.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.GetToken.Res) rsp_);
+                    subBuilder.mergeFrom((GetToken.Res) rsp_);
                     rsp_ = subBuilder.buildPartial();
                   }
                   rspCase_ = 4;
                   break;
                 }
                 case 42: {
-                  Test.HeartBeat.Res.Builder subBuilder = null;
+                  HeartBeat.Res.Builder subBuilder = null;
                   if (rspCase_ == 5) {
-                    subBuilder = ((Test.HeartBeat.Res) rsp_).toBuilder();
+                    subBuilder = ((HeartBeat.Res) rsp_).toBuilder();
                   }
                   rsp_ =
-                       input.readMessage(Test.HeartBeat.Res.parser(), extensionRegistry);
+                       input.readMessage(HeartBeat.Res.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.HeartBeat.Res) rsp_);
+                    subBuilder.mergeFrom((HeartBeat.Res) rsp_);
                     rsp_ = subBuilder.buildPartial();
                   }
                   rspCase_ = 5;
                   break;
                 }
                 case 50: {
-                  Test.Login.Res.Builder subBuilder = null;
+                  Login.Res.Builder subBuilder = null;
                   if (rspCase_ == 6) {
-                    subBuilder = ((Test.Login.Res) rsp_).toBuilder();
+                    subBuilder = ((Login.Res) rsp_).toBuilder();
                   }
                   rsp_ =
-                       input.readMessage(Test.Login.Res.parser(), extensionRegistry);
+                       input.readMessage(Login.Res.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.Login.Res) rsp_);
+                    subBuilder.mergeFrom((Login.Res) rsp_);
                     rsp_ = subBuilder.buildPartial();
                   }
                   rspCase_ = 6;
                   break;
                 }
                 case 58: {
-                  Test.Register.Res.Builder subBuilder = null;
+                  Register.Res.Builder subBuilder = null;
                   if (rspCase_ == 7) {
-                    subBuilder = ((Test.Register.Res) rsp_).toBuilder();
+                    subBuilder = ((Register.Res) rsp_).toBuilder();
                   }
                   rsp_ =
-                       input.readMessage(Test.Register.Res.parser(), extensionRegistry);
+                       input.readMessage(Register.Res.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.Register.Res) rsp_);
+                    subBuilder.mergeFrom((Register.Res) rsp_);
                     rsp_ = subBuilder.buildPartial();
                   }
                   rspCase_ = 7;
                   break;
                 }
                 case 66: {
-                  Test.SearchUser.Res.Builder subBuilder = null;
+                  SearchUser.Res.Builder subBuilder = null;
                   if (rspCase_ == 8) {
-                    subBuilder = ((Test.SearchUser.Res) rsp_).toBuilder();
+                    subBuilder = ((SearchUser.Res) rsp_).toBuilder();
                   }
                   rsp_ =
-                       input.readMessage(Test.SearchUser.Res.parser(), extensionRegistry);
+                       input.readMessage(SearchUser.Res.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.SearchUser.Res) rsp_);
+                    subBuilder.mergeFrom((SearchUser.Res) rsp_);
                     rsp_ = subBuilder.buildPartial();
                   }
                   rspCase_ = 8;
                   break;
                 }
                 case 74: {
-                  Test.Error.Builder subBuilder = null;
+                  Error.Builder subBuilder = null;
                   if (rspCase_ == 9) {
-                    subBuilder = ((Test.Error) rsp_).toBuilder();
+                    subBuilder = ((Error) rsp_).toBuilder();
                   }
                   rsp_ =
-                       input.readMessage(Test.Error.parser(), extensionRegistry);
+                       input.readMessage(Error.parser(), extensionRegistry);
                   if (subBuilder != null) {
-                    subBuilder.mergeFrom((Test.Error) rsp_);
+                    subBuilder.mergeFrom((Error) rsp_);
                     rsp_ = subBuilder.buildPartial();
                   }
                   rspCase_ = 9;
+                  break;
+                }
+                case 82: {
+                  FriendList.Rsp.Builder subBuilder = null;
+                  if (rspCase_ == 10) {
+                    subBuilder = ((FriendList.Rsp) rsp_).toBuilder();
+                  }
+                  rsp_ =
+                       input.readMessage(FriendList.Rsp.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((FriendList.Rsp) rsp_);
+                    rsp_ = subBuilder.buildPartial();
+                  }
+                  rspCase_ = 10;
+                  break;
+                }
+                case 90: {
+                  ChatRecord.Res.Builder subBuilder = null;
+                  if (rspCase_ == 11) {
+                    subBuilder = ((ChatRecord.Res) rsp_).toBuilder();
+                  }
+                  rsp_ =
+                       input.readMessage(ChatRecord.Res.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((ChatRecord.Res) rsp_);
+                    rsp_ = subBuilder.buildPartial();
+                  }
+                  rspCase_ = 11;
+                  break;
+                }
+                case 98: {
+                  AddFriendRequestFromOther.Rsp.Builder subBuilder = null;
+                  if (rspCase_ == 12) {
+                    subBuilder = ((AddFriendRequestFromOther.Rsp) rsp_).toBuilder();
+                  }
+                  rsp_ =
+                       input.readMessage(AddFriendRequestFromOther.Rsp.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((AddFriendRequestFromOther.Rsp) rsp_);
+                    rsp_ = subBuilder.buildPartial();
+                  }
+                  rspCase_ = 12;
+                  break;
+                }
+                case 106: {
+                  AddFriendRequestFromSelf.Rsp.Builder subBuilder = null;
+                  if (rspCase_ == 13) {
+                    subBuilder = ((AddFriendRequestFromSelf.Rsp) rsp_).toBuilder();
+                  }
+                  rsp_ =
+                       input.readMessage(AddFriendRequestFromSelf.Rsp.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((AddFriendRequestFromSelf.Rsp) rsp_);
+                    rsp_ = subBuilder.buildPartial();
+                  }
+                  rspCase_ = 13;
                   break;
                 }
               }
@@ -12778,7 +19687,7 @@ public final class Test {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          if (PARSER == null) {    synchronized (Test.RspToClient.class) {
+          if (PARSER == null) {    synchronized (RspToClient.class) {
               if (PARSER == null) {
                 PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
               }
@@ -12792,13 +19701,13 @@ public final class Test {
 
 
     // @@protoc_insertion_point(class_scope:RspToClient)
-    private static final Test.RspToClient DEFAULT_INSTANCE;
+    private static final RspToClient DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new RspToClient();
       DEFAULT_INSTANCE.makeImmutable();
     }
 
-    public static Test.RspToClient getDefaultInstance() {
+    public static RspToClient getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 

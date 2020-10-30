@@ -59,7 +59,7 @@ public class AddFriendFragment extends Fragment {
         searchFriendAdapter = new SearchFriendAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(activity));
         recyclerView.setAdapter(searchFriendAdapter);
-        searchFriendAdapter.setOnItemClickListener(MyItemClickListener);
+        //searchFriendAdapter.setOnItemClickListener(MyItemClickListener);
 
 
         // 搜索ID
@@ -70,6 +70,8 @@ public class AddFriendFragment extends Fragment {
                 searchID = editTextSearchID.getText().toString().trim();
                 searchResults = addFriendViewModel.searchPeopleFromID(searchID);
                 if (searchResults.size() == 0){
+                    Toast.makeText(getActivity(), "用户不存在！", Toast.LENGTH_SHORT).show();
+                } else if(searchID.equals("10021")){
                     Toast.makeText(getActivity(), "用户不存在！", Toast.LENGTH_SHORT).show();
                 } else {
                     int temp = searchFriendAdapter.getItemCount();
@@ -84,18 +86,18 @@ public class AddFriendFragment extends Fragment {
 
 
 
-    private SearchFriendAdapter.OnItemClickListener MyItemClickListener = new SearchFriendAdapter.OnItemClickListener() {
-        @Override
-        public void onItemClick(View v, SearchFriendAdapter.ViewName viewName, int position) {
-            if (v.getId() == R.id.imageButton){
-                Toast.makeText(activity,"发送请求"+(position+1),Toast.LENGTH_SHORT).show();
-            }
-        }
-
-        @Override
-        public void onItemLongClick(View v) {
-
-        }
-    };
+//    private SearchFriendAdapter.OnItemClickListener MyItemClickListener = new SearchFriendAdapter.OnItemClickListener() {
+//        @Override
+//        public void onItemClick(View v, SearchFriendAdapter.ViewName viewName, int position) {
+//            if (v.getId() == R.id.imageButton){
+//                Toast.makeText(activity,"发送请求"+(position+1),Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//
+//        @Override
+//        public void onItemLongClick(View v) {
+//
+//        }
+//    };
 
 }

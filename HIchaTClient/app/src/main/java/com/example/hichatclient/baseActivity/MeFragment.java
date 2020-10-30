@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hichatclient.R;
@@ -34,6 +35,7 @@ public class MeFragment extends Fragment {
     private TextView textViewUserID;
     private TextView textViewUserName;
     private Button buttonChangePassword;
+    private ImageView imageViewProfile;
     private LiveData<List<User>> users;
     private User user;
 
@@ -59,6 +61,8 @@ public class MeFragment extends Fragment {
         textViewUserID = activity.findViewById(R.id.textViewUserID3);
         textViewUserName = activity.findViewById(R.id.textViewUserName3);
         buttonChangePassword = activity.findViewById(R.id.buttonChangePassword);
+        imageViewProfile = activity.findViewById(R.id.imageViewProfile);
+        imageViewProfile.setImageResource(R.drawable.profile);
 
         // 获取BaseActivity传递过来的参数
         if (isAdded()){
@@ -72,7 +76,7 @@ public class MeFragment extends Fragment {
         users.observe(getViewLifecycleOwner(), new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
-                user = users.get(users.size()-1);
+                user = users.get(0);
                 textViewUserID.setText(user.getUserID());
                 textViewUserName.setText(user.getUserName());
             }

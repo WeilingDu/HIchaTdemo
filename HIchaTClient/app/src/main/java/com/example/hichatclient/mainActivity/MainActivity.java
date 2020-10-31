@@ -2,14 +2,14 @@ package com.example.hichatclient.mainActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 
+import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.service.HeartbeatService;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //final ApplicationUtil appUtil = (ApplicationUtil) MainActivity.this.getApplication();
+
+
     }
 
     @Override

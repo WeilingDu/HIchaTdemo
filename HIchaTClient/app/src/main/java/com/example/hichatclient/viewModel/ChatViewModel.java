@@ -9,10 +9,21 @@ import androidx.lifecycle.LiveData;
 import com.example.hichatclient.data.entity.ChattingContent;
 import com.example.hichatclient.dataResource.MessageRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChatViewModel extends AndroidViewModel {
     private MessageRepository messageRepository;
+
+    public List<ChattingContent> getAllNewChatMessages() {
+        return allNewChatMessages;
+    }
+
+    public void setAllNewChatMessages(List<ChattingContent> allNewChatMessages) {
+        this.allNewChatMessages = allNewChatMessages;
+    }
+
+    private List<ChattingContent> allNewChatMessages = new ArrayList<>();
 
     public ChatViewModel(@NonNull Application application) {
         super(application);

@@ -13,9 +13,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public class UserRepository {
     private UserDao userDao;
@@ -53,8 +50,8 @@ public class UserRepository {
         }
     }
     // 登录
-    public User sendIDAndLogIn(String userID, String userPassword) throws InterruptedException {
-        SendIDAndLogInThread sendIDAndLogInThread = new SendIDAndLogInThread(userID, userPassword);
+    public User sendIDAndLogIn(String userID, String userPassword, Socket socket) throws InterruptedException {
+        SendIDAndLogInThread sendIDAndLogInThread = new SendIDAndLogInThread(userID, userPassword, socket);
         sendIDAndLogInThread.start();
         sendIDAndLogInThread.join();
         return sendIDAndLogInThread.user;
@@ -63,10 +60,14 @@ public class UserRepository {
         private String userID;
         private String userPassword;
         private User user;
+        private Socket socket;
 
-        public SendIDAndLogInThread(String userID, String userPassword){
+
+        public SendIDAndLogInThread(String userID, String userPassword, Socket socket){
             this.userID = userID;
             this.userPassword = userPassword;
+            this.socket = socket;
+
         }
 
         @Override
@@ -81,14 +82,9 @@ public class UserRepository {
             int ip = 0;
             int port = 0;
 
-            Socket socket = null;
-            try {
-                socket = new Socket("49.234.105.69", 20001);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
             System.out.println(socket.isConnected());
-            // **********发送"用户名和密码"***********
+            // **********发送"用户名和密码"***********cc
             Test.Login.Req.Builder loginRequest = Test.Login.Req.newBuilder();
             loginRequest.setId(Integer.parseInt(userID));
             loginRequest.setPassword(userPassword);
@@ -217,8 +213,8 @@ public class UserRepository {
 
 
     // 注册
-    public String signUp(String userName, String userPassword) throws InterruptedException {
-        SignUpThread signUpThread = new SignUpThread(userName, userPassword);
+    public String signUp(String userName, String userPassword, Socket socket) throws InterruptedException {
+        SignUpThread signUpThread = new SignUpThread(userName, userPassword, socket);
 //        System.out.println("repository");
         signUpThread.start();
         signUpThread.join();
@@ -228,11 +224,13 @@ public class UserRepository {
         private String userName;
         private String userPassword;
         private String userID;
+        private Socket socket;
 
 
-        public SignUpThread(String userName, String userPassword){
+        public SignUpThread(String userName, String userPassword, Socket socket){
             this.userName = userName;
             this.userPassword = userPassword;
+            this.socket = socket;
         }
 
 
@@ -242,12 +240,6 @@ public class UserRepository {
             super.run();
             System.out.println("Thread-run");
             String userID = null;
-            Socket socket = null;
-            try {
-                socket = new Socket("49.234.105.69", 20001);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
             System.out.println(socket.isConnected());
             // **********发送"昵称和密码"***********
             Test.Register.Req.Builder registerRequest = Test.Register.Req.newBuilder();

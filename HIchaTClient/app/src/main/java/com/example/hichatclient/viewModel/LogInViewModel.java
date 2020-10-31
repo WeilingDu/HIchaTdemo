@@ -11,6 +11,7 @@ import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.dataResource.UserRepository;
 
 import java.io.IOException;
+import java.net.Socket;
 
 
 public class LogInViewModel extends AndroidViewModel {
@@ -24,8 +25,8 @@ public class LogInViewModel extends AndroidViewModel {
 
 
 
-    public User sendIDAndPassword(String userID, String userPassword) throws InterruptedException {
-        return userRepository.sendIDAndLogIn(userID, userPassword);
+    public User sendIDAndPassword(String userID, String userPassword, Socket socket) throws InterruptedException {
+        return userRepository.sendIDAndLogIn(userID, userPassword, socket);
     }
 
     public void insertUser(User user) throws InterruptedException {

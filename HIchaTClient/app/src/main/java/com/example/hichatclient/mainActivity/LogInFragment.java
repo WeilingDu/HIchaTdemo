@@ -24,12 +24,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.baseActivity.BaseActivity;
 import com.example.hichatclient.viewModel.LogInViewModel;
 import com.example.hichatclient.data.entity.User;
 
 import java.io.IOException;
+import java.net.Socket;
 
 
 public class LogInFragment extends Fragment {
@@ -40,6 +42,8 @@ public class LogInFragment extends Fragment {
     private LogInViewModel logInViewModel;
     private FragmentActivity activity;
     private SharedPreferences sharedPreferences;
+    private ApplicationUtil applicationUtil;
+    private Socket socket;
 
 
 
@@ -59,6 +63,8 @@ public class LogInFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         activity = requireActivity();
         logInViewModel = new ViewModelProvider(activity).get(LogInViewModel.class);
+        applicationUtil = (ApplicationUtil) activity.getApplication();
+        socket = applicationUtil.getSocket();
 
         buttonLogIn = activity.findViewById(R.id.buttonLogIn);
         buttonToSignUp = activity.findViewById(R.id.buttonToSignUp);
@@ -96,7 +102,7 @@ public class LogInFragment extends Fragment {
                 String userPassword = editTextUserPassword.getText().toString().trim();
                 try {
                     User user;
-                    user = logInViewModel.sendIDAndPassword(userID, userPassword);
+                    user = logInViewModel.sendIDAndPassword(userID, userPassword, socket);
                     //user = logInViewModel.sendIDAndPasswordTest(userID, userPassword); // 用于本地测试
                     if (user == null) {
                         Toast.makeText(getActivity(), "登录失败！", Toast.LENGTH_SHORT).show();
@@ -119,8 +125,6 @@ public class LogInFragment extends Fragment {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
-
             }
         });
 

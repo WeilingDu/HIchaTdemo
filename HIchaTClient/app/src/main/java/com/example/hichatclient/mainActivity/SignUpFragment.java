@@ -29,12 +29,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.viewModel.SignUpViewModel;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.Socket;
 import java.util.Objects;
 import static android.app.Activity.RESULT_OK;
 
@@ -48,7 +50,9 @@ public class SignUpFragment extends Fragment {
     private ImageButton imageButtonHeadPortrait;
     private SignUpViewModel signUpViewModel;
     private FragmentActivity activity;
-    private View view;
+    private ApplicationUtil applicationUtil;
+    private Socket socket;
+
 
 
     public SignUpFragment() {
@@ -58,7 +62,6 @@ public class SignUpFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_sign_up, container, false);
         return inflater.inflate(R.layout.fragment_sign_up, container, false);
     }
 
@@ -147,6 +150,9 @@ public class SignUpFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         activity = requireActivity();
         signUpViewModel = new ViewModelProvider(activity).get(SignUpViewModel.class);
+        applicationUtil = (ApplicationUtil) activity.getApplication();
+        socket = applicationUtil.getSocket();
+
         editTextUserName = activity.findViewById(R.id.userName1);
         editTextUserPassword = activity.findViewById(R.id.userPasswordSign);
         editTextUserPasswordCheck = activity.findViewById(R.id.userPasswordCheck1);
@@ -200,8 +206,7 @@ public class SignUpFragment extends Fragment {
                     Toast.makeText(getActivity(), "两次输入的密码不一致！", Toast.LENGTH_SHORT).show();
                 } else {
                     try {
-                        userID = signUpViewModel.signUp(userName, userPassword);
-                        System.out.println("userID");
+                        userID = signUpViewModel.signUp(userName, userPassword, socket);
                         AlertDialog.Builder builder= new AlertDialog.Builder(activity);
                         builder.setTitle("注册成功！您的ID为：" + userID);
                         builder.setPositiveButton("返回登录界面", new DialogInterface.OnClickListener() {

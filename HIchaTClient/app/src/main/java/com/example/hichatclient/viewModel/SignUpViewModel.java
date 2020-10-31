@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import com.example.hichatclient.dataResource.UserRepository;
 
 import java.io.IOException;
+import java.net.Socket;
 
 public class SignUpViewModel extends AndroidViewModel {
     private UserRepository userRepository;
@@ -18,7 +19,7 @@ public class SignUpViewModel extends AndroidViewModel {
         userRepository = new UserRepository(application);
     }
 
-    public String signUp(String userName, String userPassword) throws InterruptedException {
-        return userRepository.signUp(userName, userPassword);
+    public String signUp(String userName, String userPassword, Socket socket) throws InterruptedException {
+        return userRepository.signUp(userName, userPassword, socket);
     }
 }

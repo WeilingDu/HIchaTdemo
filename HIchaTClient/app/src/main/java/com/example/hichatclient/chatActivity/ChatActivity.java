@@ -67,7 +67,7 @@ public class ChatActivity extends AppCompatActivity {
         recyclerView.setAdapter(messageAdapter);
 
 
-        initMessage();
+        initMessage();  // 假装是历史聊天记录，待实现
         messageAdapter.setAllMsg(allMessage);
 
         buttonSend.setOnClickListener(new View.OnClickListener() {
@@ -101,11 +101,12 @@ public class ChatActivity extends AppCompatActivity {
                     @Override
                     public void onChanged(Integer integer) {
                         if (integer == 1){
-                            ChattingContent chattingContent = chatService.getFriendMessage();
-                            allMessage.add(chattingContent);
+                            List<ChattingContent> allNewChatMessages = chatService.getFriendMessagesByFriendID(friendID);
+                            chatViewModel.setAllNewChatMessages(allNewChatMessages);
+
+                            //allMessage.addAll(chattingContent);
                             messageAdapter.notifyItemInserted(allMessage.size()-1);  // 当有新消息是刷新RecyclerView中的显示
                             recyclerView.scrollToPosition(allMessage.size()-1);  // 将RecyclerView定位在最后一行
-
                         }
                     }
                 });

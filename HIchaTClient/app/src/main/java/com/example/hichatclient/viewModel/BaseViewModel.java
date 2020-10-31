@@ -10,6 +10,7 @@ import com.example.hichatclient.dataResource.FriendsRepository;
 import com.example.hichatclient.dataResource.UserRepository;
 
 import java.io.IOException;
+import java.net.Socket;
 import java.util.List;
 
 
@@ -34,7 +35,7 @@ public class BaseViewModel extends AndroidViewModel {
     }
 
 
-    public void getUserFriendsFromServer(String userID, String userShortToken) throws IOException {
-        friendsRepository.getUserFriendsFromServer(userID, userShortToken);
+    public void getUserFriendsFromServer(String userID, String userShortToken, Socket socket) throws IOException {
+        friendsRepository.getUserFriendsFromServer(userID, userShortToken, socket);
     }
 }

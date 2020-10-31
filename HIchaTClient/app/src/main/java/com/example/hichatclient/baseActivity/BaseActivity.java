@@ -10,15 +10,19 @@ import androidx.navigation.ui.NavigationUI;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.viewModel.BaseViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.IOException;
+import java.net.Socket;
 
 public class BaseActivity extends AppCompatActivity {
     private BaseViewModel baseViewModel;
     private SharedPreferences sharedPreferences;
+    private ApplicationUtil applicationUtil;
+    private Socket socket;
 
 
     @Override
@@ -27,6 +31,8 @@ public class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
 
         baseViewModel = new ViewModelProvider(this).get(BaseViewModel.class);
+        applicationUtil = (ApplicationUtil) BaseActivity.this.getApplication();
+        socket = applicationUtil.getSocket();
 
         // 设置底部导航栏
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationViewBase);
@@ -46,7 +52,7 @@ public class BaseActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    baseViewModel.getUserFriendsFromServer(userID, userShortToken);
+                    baseViewModel.getUserFriendsFromServer(userID, userShortToken, socket);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

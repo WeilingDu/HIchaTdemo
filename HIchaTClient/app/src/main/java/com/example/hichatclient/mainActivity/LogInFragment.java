@@ -118,12 +118,15 @@ public class LogInFragment extends Fragment {
                         logInViewModel.insertUser(user);
                         Toast.makeText(getActivity(), "登录成功！", Toast.LENGTH_SHORT).show();
 
-                        // 将用户的ID和short token都存到share preferences里面
+                        // 将用户的ID存到share preferences里面
                         sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("userID", user.getUserID());
-                        editor.putString("userShortToken", user.getUserShortToken());
                         editor.apply();
+
+                        // 将用户的tokens存到ApplicationUtil中作为全局变量
+                        applicationUtil.setUserShortToken(user.getUserShortToken());
+                        applicationUtil.setUserLongToken(user.getUserLongToken());
 
                         // 跳转至BaseActivity的MeFragment
                         Intent intent = new Intent();

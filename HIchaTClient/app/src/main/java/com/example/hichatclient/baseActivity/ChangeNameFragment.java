@@ -82,7 +82,9 @@ public class ChangeNameFragment extends Fragment {
         // 获取Share Preferences中的数据
         sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
         final String userID = sharedPreferences.getString("userID", "fail");
-        final String userShortToken = sharedPreferences.getString("userShortToken", "fail");
+
+        // 获取applicationUtil中的数据
+        final String userShortToken = applicationUtil.getUserShortToken();
 
 
         buttonChangeName.setEnabled(false);

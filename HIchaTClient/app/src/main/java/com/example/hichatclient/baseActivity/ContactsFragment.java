@@ -118,10 +118,14 @@ public class ContactsFragment extends Fragment {
 
         // 跳转新的朋友界面(NewFriendsActivity)
         buttonNewFriends = activity.findViewById(R.id.buttonNewFriends);
-        Intent intent = new Intent();
-        intent.setClass(activity, NewFriendsActivity.class);
-        startActivity(intent);
-
+        buttonNewFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(activity, NewFriendsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // TODO: Use the ViewModel
     }

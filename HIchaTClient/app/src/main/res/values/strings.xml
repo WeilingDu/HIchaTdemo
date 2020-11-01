@@ -40,4 +40,7 @@
     <string name="othersToMe">别人发送的好友请求</string>
     <string name="image">image</string>
     <string name="profile">profile</string>
+    <string name="image">image</string>
+    <string name="refuse">拒绝</string>
+    <string name="agree">同意</string>
 </resources>

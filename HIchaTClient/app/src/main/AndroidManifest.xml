@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".newFriendsActivity.NewFriendsActivity"></activity>
+        <activity android:name=".newFriendsActivity.OthersRequestActivity"></activity>
+        <activity android:name=".newFriendsActivity.NewFriendsActivity" />
 
         <service
             android:name=".service.ChatService"

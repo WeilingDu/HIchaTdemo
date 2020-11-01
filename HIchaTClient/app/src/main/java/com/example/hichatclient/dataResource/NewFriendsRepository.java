@@ -7,8 +7,10 @@ import androidx.lifecycle.LiveData;
 import com.example.hichatclient.data.ChatDatabase;
 import com.example.hichatclient.data.dao.MeToOthersDao;
 import com.example.hichatclient.data.dao.OthersToMeDao;
+import com.example.hichatclient.data.dao.UserDao;
 import com.example.hichatclient.data.entity.MeToOthers;
 import com.example.hichatclient.data.entity.OthersToMe;
+import com.example.hichatclient.data.entity.User;
 
 import java.util.List;
 
@@ -22,6 +24,17 @@ public class NewFriendsRepository {
         othersToMeDao = chatDatabase.getOthersToMeDao();
     }
 
+    // 向服务器提交对别人好友请求的回应
+    public void othersToMeResponseToServer(String userShortToken, String objectID, boolean refuse){
+
+    }
+
+    // 当用户回应别人的好友请求时，更新数据库中的信息
+    public void updateOthersToMeResponse(OthersToMe othersToMe){
+        new updateOthersToMeResponseThread(othersToMeDao, othersToMe).start();
+    }
+
+
     public LiveData<List<MeToOthers>> getAllMeToOthersFromSQL(String userID){
         return meToOthersDao.getAllMeToOthers(userID);
     }
@@ -31,11 +44,88 @@ public class NewFriendsRepository {
     }
 
     public void updateMeToOthers(List<MeToOthers> meToOthers){
-        meToOthersDao.insertAllMeToOthers(meToOthers);
+        new updateMeToOtherThread(meToOthersDao, meToOthers).start();
     }
 
     public void updateOthersToMe(List<OthersToMe> othersToMes){
-        othersToMeDao.insertAllOthersToMe(othersToMes);
+        new updateOthersToMeThread(othersToMeDao, othersToMes).start();
     }
+
+    public OthersToMe getOthersToMeByObjectID(String userID, String objectID) throws InterruptedException {
+        GetOthersToMeByObjectIDThread getOthersToMeByObjectIDThread = new GetOthersToMeByObjectIDThread(othersToMeDao, userID, objectID);
+        getOthersToMeByObjectIDThread.start();
+        getOthersToMeByObjectIDThread.join();
+        return getOthersToMeByObjectIDThread.othersToMe;
+    }
+
+
+    static class updateOthersToMeResponseThread extends Thread{
+        OthersToMeDao othersToMeDao;
+        OthersToMe othersToMe;
+
+        public updateOthersToMeResponseThread(OthersToMeDao othersToMeDao, OthersToMe othersToMe) {
+            this.othersToMeDao = othersToMeDao;
+            this.othersToMe = othersToMe;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            othersToMeDao.updateOthersToMe(othersToMe);
+        }
+    }
+
+
+    static class GetOthersToMeByObjectIDThread extends Thread{
+        OthersToMeDao othersToMeDao;
+        String userID;
+        String objectID;
+        OthersToMe othersToMe;
+
+        public GetOthersToMeByObjectIDThread(OthersToMeDao othersToMeDao, String userID, String objectID) {
+            this.othersToMeDao = othersToMeDao;
+            this.userID = userID;
+            this.objectID = objectID;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            this.othersToMe = othersToMeDao.getOthersToMeByObjectID(userID, objectID);
+        }
+    }
+
+    static class updateMeToOtherThread extends Thread{
+        MeToOthersDao meToOthersDao;
+        List<MeToOthers> meToOthers;
+
+        public updateMeToOtherThread(MeToOthersDao meToOthersDao, List<MeToOthers> meToOthers){
+            this.meToOthersDao = meToOthersDao;
+            this.meToOthers = meToOthers;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            meToOthersDao.insertAllMeToOthers(meToOthers);
+        }
+    }
+
+    static class updateOthersToMeThread extends Thread{
+        OthersToMeDao othersToMeDao;
+        List<OthersToMe> othersToMes;
+
+        public updateOthersToMeThread(OthersToMeDao othersToMeDao, List<OthersToMe> othersToMes){
+            this.othersToMeDao = othersToMeDao;
+            this.othersToMes = othersToMes;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            othersToMeDao.insertAllOthersToMe(othersToMes);
+        }
+    }
+
 
 }

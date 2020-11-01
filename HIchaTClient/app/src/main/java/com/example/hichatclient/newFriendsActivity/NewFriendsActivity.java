@@ -14,6 +14,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.IBinder;
 
+import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.data.entity.MeToOthers;
 import com.example.hichatclient.data.entity.OthersToMe;
@@ -29,6 +30,8 @@ public class NewFriendsActivity extends AppCompatActivity {
     private OthersToMeAdapter othersToMeAdapter;
     private NewFriendsViewModel newFriendsViewModel;
     private SharedPreferences sharedPreferences;
+    private ApplicationUtil applicationUtil;
+
     // Service
     private ChatService chatService;
 
@@ -49,10 +52,14 @@ public class NewFriendsActivity extends AppCompatActivity {
         othersToMeAdapter = new OthersToMeAdapter();
         recyclerViewOtherToMe.setAdapter(othersToMeAdapter);
 
+        applicationUtil = (ApplicationUtil) NewFriendsActivity.this.getApplication();
+
         // 获取Share Preferences中的数据
         sharedPreferences = getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
         final String userID = sharedPreferences.getString("userID", "fail");
-        final String userShortToken = sharedPreferences.getString("userShortToken", "fail");
+
+        // 获取applicationUtil中的数据
+        final String userShortToken = applicationUtil.getUserShortToken();
 
         // 观察数据库中MeToOthers的变化
         newFriendsViewModel.getAllMeToOthersFromSQL(userID).observe(this, new Observer<List<MeToOthers>>() {

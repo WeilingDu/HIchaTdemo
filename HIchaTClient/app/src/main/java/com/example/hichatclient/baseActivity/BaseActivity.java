@@ -51,7 +51,9 @@ public class BaseActivity extends AppCompatActivity {
         // 获取Share Preferences中的数据
         sharedPreferences = getSharedPreferences("MY_DATA", MODE_PRIVATE);
         final String userID = sharedPreferences.getString("userID", "fail");
-        final String userShortToken = sharedPreferences.getString("userShortToken", "fail");
+
+        // 获取applicationUtil中的数据
+        final String userShortToken = applicationUtil.getUserShortToken();
 
 
         // 从服务器获取好友列表并存入数据库中

@@ -8,6 +8,24 @@ import java.net.Socket;
 public class ApplicationUtil extends Application {
     private Socket socketDynamic;
     private Socket socketStatic;
+    private String userShortToken;
+    private String userLongToken;
+
+    public String getUserShortToken() {
+        return userShortToken;
+    }
+
+    public void setUserShortToken(String userShortToken) {
+        this.userShortToken = userShortToken;
+    }
+
+    public String getUserLongToken() {
+        return userLongToken;
+    }
+
+    public void setUserLongToken(String userLongToken) {
+        this.userLongToken = userLongToken;
+    }
 
     // ******** methods for socketDynamic ********
     public Socket getSocketDynamic() {

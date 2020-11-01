@@ -29,6 +29,10 @@ public class ChatService extends LifecycleService {
     private ApplicationUtil applicationUtil;
     private Socket socket;
 
+    private String userID;
+    private String userShortToken;
+    private String userLongToken;
+
     private MutableLiveData<Integer> meToOthersFlag = new MutableLiveData<>(0);
     private MutableLiveData<Integer> othersToMeFlag = new MutableLiveData<>(0);
 
@@ -36,6 +40,29 @@ public class ChatService extends LifecycleService {
     private List<MeToOthers> meToOthersNew = new ArrayList<>();
     private List<OthersToMe> othersToMesNew = new ArrayList<>();
 
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getUserShortToken() {
+        return userShortToken;
+    }
+
+    public void setUserShortToken(String userShortToken) {
+        this.userShortToken = userShortToken;
+    }
+
+    public String getUserLongToken() {
+        return userLongToken;
+    }
+
+    public void setUserLongToken(String userLongToken) {
+        this.userLongToken = userLongToken;
+    }
 
     public MutableLiveData<Integer> getMeToOthersFlag() {
         return meToOthersFlag;

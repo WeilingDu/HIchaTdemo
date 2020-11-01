@@ -1,5 +1,6 @@
 package com.example.hichatclient.newFriendsActivity;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hichatclient.R;
+import com.example.hichatclient.chatActivity.ChatActivity;
 import com.example.hichatclient.data.entity.OthersToMe;
 
 import java.util.ArrayList;
@@ -42,11 +44,19 @@ public class OthersToMeAdapter extends RecyclerView.Adapter<OthersToMeAdapter.Ot
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OthersToMeViewHolder holder, int position) {
-        OthersToMe othersToMe = allOthersToMe.get(position);
+    public void onBindViewHolder(@NonNull final OthersToMeViewHolder holder, int position) {
+        final OthersToMe othersToMe = allOthersToMe.get(position);
         holder.textViewObjectID.setText(othersToMe.getObjectID());
         holder.textViewObjectName.setText(othersToMe.getObjectName());
         holder.textViewUserResponse.setText(othersToMe.getUserResponse());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.itemView.getContext(), OthersRequestActivity.class);
+                intent.putExtra("objectID", othersToMe.getObjectID());
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

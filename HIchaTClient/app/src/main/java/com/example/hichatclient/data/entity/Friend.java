@@ -4,15 +4,12 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(primaryKeys = {"userID", "friendID"})
 public class Friend {
-    @PrimaryKey(autoGenerate = true)
-    private int id;
 
-    @ColumnInfo(name = "user_id")
     private String userID;
-    @ColumnInfo(name = "friend_id")
     private String friendID;
+
     @ColumnInfo(name = "friend_name")
     private String friendName;
     @ColumnInfo(name = "friend_profile")
@@ -80,11 +77,4 @@ public class Friend {
         this.friendPort = friendPort;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

@@ -39,4 +39,5 @@
     <string name="meToOthers">我发送的好友请求</string>
     <string name="othersToMe">别人发送的好友请求</string>
     <string name="image">image</string>
+    <string name="profile">profile</string>
 </resources>

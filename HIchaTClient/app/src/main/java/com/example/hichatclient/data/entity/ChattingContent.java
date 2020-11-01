@@ -4,15 +4,12 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(primaryKeys = {"userID", "friendID"})
 public class ChattingContent {
-    @PrimaryKey(autoGenerate = true)
-    private int id;
 
-    @ColumnInfo(name = "user_id")
     private String userID;
-    @ColumnInfo(name = "friend_id")
     private String friendID;
+
     @ColumnInfo(name = "msg_type")
     private String msgType;
     @ColumnInfo(name = "msg_time")
@@ -28,13 +25,6 @@ public class ChattingContent {
         this.msgContent = msgContent;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUserID() {
         return userID;

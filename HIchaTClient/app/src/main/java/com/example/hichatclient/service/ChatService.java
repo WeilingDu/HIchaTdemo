@@ -13,6 +13,8 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.Test;
 import com.example.hichatclient.data.entity.ChattingContent;
+import com.example.hichatclient.data.entity.MeToOthers;
+import com.example.hichatclient.data.entity.OthersToMe;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,13 +26,47 @@ import java.util.TimerTask;
 
 public class ChatService extends LifecycleService {
     private final IBinder binder = new ChatBinder();
-    public MutableLiveData<Integer> isFriendMessage = new MutableLiveData<>(0);
-    public List<ChattingContent> allChattingContents = new ArrayList<>();
     private ApplicationUtil applicationUtil;
     private Socket socket;
 
-    public void setAllChattingContents(List<ChattingContent> allChattingContents) {
-        this.allChattingContents = allChattingContents;
+    private MutableLiveData<Integer> meToOthersFlag = new MutableLiveData<>(0);
+    private MutableLiveData<Integer> othersToMeFlag = new MutableLiveData<>(0);
+
+
+    private List<MeToOthers> meToOthersNew = new ArrayList<>();
+    private List<OthersToMe> othersToMesNew = new ArrayList<>();
+
+
+    public MutableLiveData<Integer> getMeToOthersFlag() {
+        return meToOthersFlag;
+    }
+
+    public void setMeToOthersFlag(MutableLiveData<Integer> meToOthersFlag) {
+        this.meToOthersFlag = meToOthersFlag;
+    }
+
+    public MutableLiveData<Integer> getOthersToMeFlag() {
+        return othersToMeFlag;
+    }
+
+    public void setOthersToMeFlag(MutableLiveData<Integer> othersToMeFlag) {
+        this.othersToMeFlag = othersToMeFlag;
+    }
+
+    public List<MeToOthers> getMeToOthersNew() {
+        return meToOthersNew;
+    }
+
+    public void setMeToOthersNew(List<MeToOthers> meToOthersNew) {
+        this.meToOthersNew = meToOthersNew;
+    }
+
+    public List<OthersToMe> getOthersToMesNew() {
+        return othersToMesNew;
+    }
+
+    public void setOthersToMesNew(List<OthersToMe> othersToMesNew) {
+        this.othersToMesNew = othersToMesNew;
     }
 
     public class ChatBinder extends Binder {
@@ -47,7 +83,7 @@ public class ChatService extends LifecycleService {
         t.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                isFriendMessage.postValue(1);
+                System.out.println("here");
             }
         }, 30000, 30000);
         return binder;
@@ -64,7 +100,8 @@ public class ChatService extends LifecycleService {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         applicationUtil = (ApplicationUtil)getApplication();
-        socket = applicationUtil.getSocket();
+        this.socket = applicationUtil.getSocketDynamic();
+
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -73,33 +110,20 @@ public class ChatService extends LifecycleService {
         super.onDestroy();
     }
 
-    /** method for clients */
-
-    public static final int PACKET_HEAD_LENGTH = 4;//从服务器接收的数据包头长度
-    //处理粘包、半包问题使用的数组合并函数
-    public static byte[] mergebyte(byte[] a, byte[] b, int begin, int end) {
-        byte[] add = new byte[a.length + end - begin];
-        int i = 0;
-        for (i = 0; i < a.length; i++) {
-            add[i] = a[i];
-        }
-        for (int k = begin; k < end; k++, i++) {
-            add[i] = b[k];
-        }
-        return add;
-    }
+    //
 
 
 
-    public List<ChattingContent> getFriendMessagesByFriendID(String friendID){
-        List<ChattingContent> msgs = new ArrayList<>();
-        for(int i=0; i<allChattingContents.size(); i++){
-            if (allChattingContents.get(i).getFriendID().equals(friendID)){
-                msgs.add(allChattingContents.get(i));
-            }
-        }
-        return msgs;
-    }
+
+//    public List<ChattingContent> getFriendMessagesByFriendID(String friendID){
+//        List<ChattingContent> msgs = new ArrayList<>();
+//        for(int i=0; i<allChattingContents.size(); i++){
+//            if (allChattingContents.get(i).getFriendID().equals(friendID)){
+//                msgs.add(allChattingContents.get(i));
+//            }
+//        }
+//        return msgs;
+//    }
 
 }
 

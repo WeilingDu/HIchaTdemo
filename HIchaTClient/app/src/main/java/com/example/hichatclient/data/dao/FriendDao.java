@@ -22,7 +22,7 @@ public interface FriendDao {
     @Update
     void updateFriend(Friend... friends);
 
-    @Query("SELECT * FROM Friend Where user_id LIKE :userID")
+    @Query("SELECT * FROM Friend Where userID LIKE :userID")
     LiveData<List<Friend>> getAllUserFriend(String userID);
 
 

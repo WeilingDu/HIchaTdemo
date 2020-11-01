@@ -4,15 +4,12 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(primaryKeys = {"userID", "objectID"})
 public class MeToOthers {
-    @PrimaryKey(autoGenerate = true)
-    private int id;
 
-    @ColumnInfo(name = "user_id")
     private String userID;
-    @ColumnInfo(name = "object_id")
     private String objectID;
+
     @ColumnInfo(name = "object_name")
     private String objectName;
     @ColumnInfo(name = "object_profile")
@@ -28,13 +25,7 @@ public class MeToOthers {
         this.objectResponse = objectResponse;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUserID() {
         return userID;

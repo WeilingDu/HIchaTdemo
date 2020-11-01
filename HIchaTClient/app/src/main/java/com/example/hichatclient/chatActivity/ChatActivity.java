@@ -97,19 +97,19 @@ public class ChatActivity extends AppCompatActivity {
             public void onServiceConnected(ComponentName name, IBinder service) {
                 ChatService.ChatBinder binder = (ChatService.ChatBinder) service;
                 chatService = binder.getService();
-                chatService.isFriendMessage.observe(ChatActivity.this, new Observer<Integer>() {
-                    @Override
-                    public void onChanged(Integer integer) {
-                        if (integer == 1){
-                            List<ChattingContent> allNewChatMessages = chatService.getFriendMessagesByFriendID(friendID);
-                            chatViewModel.setAllNewChatMessages(allNewChatMessages);
-
-                            //allMessage.addAll(chattingContent);
-                            messageAdapter.notifyItemInserted(allMessage.size()-1);  // 当有新消息是刷新RecyclerView中的显示
-                            recyclerView.scrollToPosition(allMessage.size()-1);  // 将RecyclerView定位在最后一行
-                        }
-                    }
-                });
+//                chatService.isFriendMessage.observe(ChatActivity.this, new Observer<Integer>() {
+//                    @Override
+//                    public void onChanged(Integer integer) {
+//                        if (integer == 1){
+//                            List<ChattingContent> allNewChatMessages = chatService.getFriendMessagesByFriendID(friendID);
+//                            chatViewModel.setAllNewChatMessages(allNewChatMessages);
+//
+//                            //allMessage.addAll(chattingContent);
+//                            messageAdapter.notifyItemInserted(allMessage.size()-1);  // 当有新消息是刷新RecyclerView中的显示
+//                            recyclerView.scrollToPosition(allMessage.size()-1);  // 将RecyclerView定位在最后一行
+//                        }
+//                    }
+//                });
             }
 
             @Override

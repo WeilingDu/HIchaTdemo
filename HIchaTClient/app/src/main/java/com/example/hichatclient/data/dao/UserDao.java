@@ -23,11 +23,11 @@ public interface UserDao {
     @Update
     void updateUser(User... users);
 
-    @Query("SELECT * FROM User Where user_id LIKE :userID")
+    @Query("SELECT * FROM User Where userID LIKE :userID")
     LiveData<List<User>> getUserInfo(String userID);
 
 
-    @Query("SELECT * FROM User Where user_id LIKE :userID")
+    @Query("SELECT * FROM User Where userID LIKE :userID")
     User getUserByUserID(String userID);
 
 }

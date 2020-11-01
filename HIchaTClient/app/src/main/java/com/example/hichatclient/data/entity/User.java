@@ -6,10 +6,7 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class User {
-    @PrimaryKey(autoGenerate = true)
-    private int id;
-
-    @ColumnInfo(name = "user_id")
+    @PrimaryKey
     private String userID;
     @ColumnInfo(name = "user_password")
     private String userPassword;
@@ -50,13 +47,6 @@ public class User {
         this.userLongToken = userLongToken;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUserID() {
         return userID;

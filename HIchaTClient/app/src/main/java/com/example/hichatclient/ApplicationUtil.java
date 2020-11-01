@@ -6,11 +6,42 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class ApplicationUtil extends Application {
-    private Socket socket;
+    private Socket socketDynamic;
+    private Socket socketStatic;
 
-    public Socket getSocket() {
-        return socket;
+    // ******** methods for socketDynamic ********
+    public Socket getSocketDynamic() {
+        return socketDynamic;
     }
+
+    public void setSocketDynamic(Socket socketDynamic) {
+        this.socketDynamic = socketDynamic;
+    }
+
+    public boolean dynamicIsConnected(){
+        return this.socketDynamic.isConnected();
+    }
+
+    public void initSocketDynamic() throws IOException {
+        this.socketDynamic = new Socket("49.234.105.69", 20001);
+    }
+    
+    // ******** methods for socketStatic ********
+    public Socket getSocketStatic() {
+        return socketStatic;
+    }
+
+    public void setSocketStatic(Socket socketStatic) {
+        this.socketStatic = socketStatic;
+    }
+    public boolean staticIsConnected(){
+        return this.socketStatic.isConnected();
+    }
+
+    public void initSocketStatic() throws IOException {
+        this.socketStatic = new Socket("49.234.105.69", 20001);
+    }
+
 
     @Override
     public void onCreate() {
@@ -22,17 +53,20 @@ public class ApplicationUtil extends Application {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        this.socket = connectThread.socket;
+        this.socketDynamic = connectThread.socketDynamic;
+        this.socketStatic = connectThread.socketDynamic;
     }
 
     static class ConnectThread extends Thread {
-        private Socket socket;
+        private Socket socketDynamic;
+        private Socket socketStatic;
         @Override
         public void run() {
             super.run();
             try {
                 System.out.println("************************* init socket ***********************");
-                this.socket = new Socket("49.234.105.69", 20001);
+                this.socketDynamic = new Socket("49.234.105.69", 20001);
+                this.socketStatic = new Socket("49.234.105.69", 20001);
             } catch (IOException e) {
                 e.printStackTrace();
             }

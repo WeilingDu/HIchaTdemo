@@ -64,7 +64,14 @@ public class LogInFragment extends Fragment {
         activity = requireActivity();
         logInViewModel = new ViewModelProvider(activity).get(LogInViewModel.class);
         applicationUtil = (ApplicationUtil) activity.getApplication();
-        socket = applicationUtil.getSocket();
+        if (!applicationUtil.staticIsConnected()) {
+            try {
+                applicationUtil.initSocketStatic();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        socket = applicationUtil.getSocketStatic();
 
         buttonLogIn = activity.findViewById(R.id.buttonLogIn);
         buttonToSignUp = activity.findViewById(R.id.buttonToSignUp);
@@ -102,6 +109,7 @@ public class LogInFragment extends Fragment {
                 String userPassword = editTextUserPassword.getText().toString().trim();
                 try {
                     User user;
+
                     user = logInViewModel.sendIDAndPassword(userID, userPassword, socket);
                     //user = logInViewModel.sendIDAndPasswordTest(userID, userPassword); // 用于本地测试
                     if (user == null) {

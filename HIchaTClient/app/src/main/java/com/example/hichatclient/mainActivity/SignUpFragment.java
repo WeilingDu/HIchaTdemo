@@ -151,7 +151,14 @@ public class SignUpFragment extends Fragment {
         activity = requireActivity();
         signUpViewModel = new ViewModelProvider(activity).get(SignUpViewModel.class);
         applicationUtil = (ApplicationUtil) activity.getApplication();
-        socket = applicationUtil.getSocket();
+        if (!applicationUtil.staticIsConnected()) {
+            try {
+                applicationUtil.initSocketStatic();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        socket = applicationUtil.getSocketStatic();
 
         editTextUserName = activity.findViewById(R.id.userName1);
         editTextUserPassword = activity.findViewById(R.id.userPasswordSign);

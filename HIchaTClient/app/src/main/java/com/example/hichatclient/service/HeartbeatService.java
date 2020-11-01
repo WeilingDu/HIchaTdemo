@@ -42,15 +42,15 @@ public class HeartbeatService extends Service{
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        applicationUtil = (ApplicationUtil)getApplication();
-        socket = applicationUtil.getSocket();
-        try {
-            getFriendMessagesFromServer();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //heartBeatTest();
-        
+//        applicationUtil = (ApplicationUtil)getApplication();
+//        socket = applicationUtil.getSocket();
+//        try {
+//            getFriendMessagesFromServer();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        heartBeatTest();
+
         return super.onStartCommand(intent, flags, startId);
     }
 

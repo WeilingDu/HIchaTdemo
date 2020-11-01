@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModel;
 import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.dataResource.MeRepository;
 
+import java.net.Socket;
+
 public class ChangePasswordViewModel extends AndroidViewModel {
     // TODO: Implement the ViewModel
     private MeRepository meRepository;
@@ -26,8 +28,8 @@ public class ChangePasswordViewModel extends AndroidViewModel {
         return user.getUserPassword().equals(oldPassword);
     }
 
-    public int updateUserPasswordToServer(String userShortToken, String userNewPassword){
-        return meRepository.updateUserPasswordToServer(userShortToken, userNewPassword);
+    public int updateUserPasswordToServer(String userShortToken, String userNewPassword, Socket socket){
+        return meRepository.updateUserPasswordToServer(userShortToken, userNewPassword, socket);
     }
 
     public User getUserInfoByUserID(String userID) throws InterruptedException {

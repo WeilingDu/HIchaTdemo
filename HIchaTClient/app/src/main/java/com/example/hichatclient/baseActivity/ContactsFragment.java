@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -29,18 +30,22 @@ import android.widget.SearchView;
 
 import com.example.hichatclient.R;
 import com.example.hichatclient.data.entity.Friend;
+import com.example.hichatclient.newFriendsActivity.NewFriendsActivity;
 import com.example.hichatclient.viewModel.ContactsViewModel;
 
 import java.util.List;
 
 public class ContactsFragment extends Fragment {
-
     private ContactsViewModel contactsViewModel;
     private FragmentActivity activity;
+    private SharedPreferences sharedPreferences;
+
     private RecyclerView recyclerView;
     private FriendAdapter friendAdapter;
-    private Button button;
-    private SharedPreferences sharedPreferences;
+
+    private Button buttonAddFriend;
+    private Button buttonNewFriends;
+
 
     public ContactsFragment() {
         setHasOptionsMenu(true);  // 强制顶部工具条显示
@@ -101,14 +106,22 @@ public class ContactsFragment extends Fragment {
             }
         });
 
-        button = activity.findViewById(R.id.buttonAddFriend);
-        button.setOnClickListener(new View.OnClickListener() {
+        // 跳转添加好友界面
+        buttonAddFriend = activity.findViewById(R.id.buttonAddFriend);
+        buttonAddFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NavController controller = Navigation.findNavController(v);
                 controller.navigate(R.id.action_contactsFragment_to_addFriendFragment);
             }
         });
+
+        // 跳转新的朋友界面(NewFriendsActivity)
+        buttonNewFriends = activity.findViewById(R.id.buttonNewFriends);
+        Intent intent = new Intent();
+        intent.setClass(activity, NewFriendsActivity.class);
+        startActivity(intent);
+
 
         // TODO: Use the ViewModel
     }

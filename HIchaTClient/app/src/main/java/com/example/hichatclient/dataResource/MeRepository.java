@@ -9,6 +9,7 @@ import com.example.hichatclient.data.ChatDatabase;
 import com.example.hichatclient.data.dao.UserDao;
 import com.example.hichatclient.data.entity.User;
 
+import java.net.Socket;
 import java.util.List;
 
 public class MeRepository {
@@ -24,14 +25,14 @@ public class MeRepository {
     }
 
     // 向服务器发送更新用户昵称的请求
-    public int updateUserNameToServer(String userShortToken, String userNewName){
+    public int updateUserNameToServer(String userShortToken, String userNewName, Socket socket){
         int flag = 1;
 
         return flag;
     }
 
     // 向服务器发送更新用户密码的请求
-    public int updateUserPasswordToServer(String userShortToken, String userNewPassword){
+    public int updateUserPasswordToServer(String userShortToken, String userNewPassword, Socket socket){
         int flag = 1;
         return flag;
     }

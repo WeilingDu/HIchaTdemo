@@ -25,7 +25,7 @@ public class ApplicationUtil extends Application {
     public void initSocketDynamic() throws IOException {
         this.socketDynamic = new Socket("49.234.105.69", 20001);
     }
-    
+
     // ******** methods for socketStatic ********
     public Socket getSocketStatic() {
         return socketStatic;

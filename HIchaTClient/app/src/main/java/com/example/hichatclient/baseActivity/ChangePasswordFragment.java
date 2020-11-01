@@ -24,15 +24,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.mainActivity.MainActivity;
 import com.example.hichatclient.viewModel.ChangePasswordViewModel;
 
+import java.io.IOException;
+import java.net.Socket;
+
 public class ChangePasswordFragment extends Fragment {
     private ChangePasswordViewModel changePasswordViewModel;
     private SharedPreferences sharedPreferences;
     private FragmentActivity activity;
+    private ApplicationUtil applicationUtil;
+    private Socket socket;
+
     private String userOldPassword;
     private String userNewPassword;
     private String userNewPasswordCheck;
@@ -58,6 +65,16 @@ public class ChangePasswordFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         activity = requireActivity();
         changePasswordViewModel = new ViewModelProvider(activity).get(ChangePasswordViewModel.class);
+        applicationUtil = (ApplicationUtil) activity.getApplication();
+        if (!applicationUtil.staticIsConnected()) {
+            try {
+                applicationUtil.initSocketStatic();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        socket = applicationUtil.getSocketStatic();
+
         editTextUserOldPassword = activity.findViewById(R.id.editTextOldPassword);
         editTextUserNewPassword = activity.findViewById(R.id.editTextNewPassword);
         editTextUserNewPasswordCheck = activity.findViewById(R.id.editTextNewPasswordCheck);
@@ -107,7 +124,7 @@ public class ChangePasswordFragment extends Fragment {
                         if (!userNewPassword.equals(userNewPasswordCheck)){
                             Toast.makeText(getActivity(), "两次输入的密码不一致！", Toast.LENGTH_SHORT).show();
                         } else {
-                            int flag = changePasswordViewModel.updateUserPasswordToServer(userShortToken, userNewPassword);
+                            int flag = changePasswordViewModel.updateUserPasswordToServer(userShortToken, userNewPassword, socket);
                             if(flag == 1){
                                 User user;
                                 user = changePasswordViewModel.getUserInfoByUserID(userID);

@@ -23,20 +23,27 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.viewModel.ChangeNameViewModel;
 
+import java.io.IOException;
+import java.net.Socket;
+
 public class ChangeNameFragment extends Fragment {
-    private ChangeNameViewModel changeNameViewModel;
     private TextView textViewUserName;
     private EditText editTextUserNewName;
     private Button buttonChangeName;
-    private FragmentActivity activity;
-    private SharedPreferences sharedPreferences;
 
     private String userName;
     private String userNewName;
+
+    private FragmentActivity activity;
+    private SharedPreferences sharedPreferences;
+    private ChangeNameViewModel changeNameViewModel;
+    private ApplicationUtil applicationUtil;
+    private Socket socket;
 
     public static ChangeNameFragment newInstance() {
         return new ChangeNameFragment();
@@ -54,6 +61,16 @@ public class ChangeNameFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         activity = requireActivity();
         changeNameViewModel = new ViewModelProvider(activity).get(ChangeNameViewModel.class);
+        applicationUtil = (ApplicationUtil) activity.getApplication();
+        if (!applicationUtil.staticIsConnected()) {
+            try {
+                applicationUtil.initSocketStatic();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        socket = applicationUtil.getSocketStatic();
+
         textViewUserName = activity.findViewById(R.id.textView53);
         editTextUserNewName = activity.findViewById(R.id.userNewName);
         buttonChangeName = activity.findViewById(R.id.buttonChangeName);
@@ -94,7 +111,7 @@ public class ChangeNameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 userNewName = editTextUserNewName.getText().toString().trim();
-                int flag = changeNameViewModel.updateUserNameToServer(userShortToken, userNewName);
+                int flag = changeNameViewModel.updateUserNameToServer(userShortToken, userNewName, socket);
                 if(flag == 1){
                     try {
                         User user;

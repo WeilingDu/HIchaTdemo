@@ -44,6 +44,18 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
         // return null;
     }
 
+    static class FriendViewHolder extends RecyclerView.ViewHolder{
+        ImageView imageViewFriendImage;
+        TextView textViewFriendName;
+
+        public FriendViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imageViewFriendImage = itemView.findViewById(R.id.friendImage);
+            textViewFriendName = itemView.findViewById(R.id.friendName);
+
+        }
+    }
+
     @Override
     public void onBindViewHolder(@NonNull final FriendViewHolder holder, int position) {
         final Friend friend = allFriends.get(position);
@@ -67,15 +79,5 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
         return allFriends.size();
     }
 
-    static class FriendViewHolder extends RecyclerView.ViewHolder{
-        ImageView imageViewFriendImage;
-        TextView textViewFriendName;
 
-        public FriendViewHolder(@NonNull View itemView) {
-            super(itemView);
-            imageViewFriendImage = itemView.findViewById(R.id.friendImage);
-            textViewFriendName = itemView.findViewById(R.id.friendName);
-
-        }
-    }
 }

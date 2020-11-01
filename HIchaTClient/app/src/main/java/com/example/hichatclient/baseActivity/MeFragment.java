@@ -41,6 +41,7 @@ public class MeFragment extends Fragment {
     private User user;
     private SharedPreferences sharedPreferences;
 
+
     public static MeFragment newInstance() {
         return new MeFragment();
     }

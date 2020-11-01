@@ -36,4 +36,7 @@
     <string name="inputNew2">请再次输入新密码</string>
     <string name="send3">发送</string>
     <string name="plzinput">请输入...</string>
+    <string name="meToOthers">我发送的好友请求</string>
+    <string name="othersToMe">别人发送的好友请求</string>
+    <string name="image">image</string>
 </resources>

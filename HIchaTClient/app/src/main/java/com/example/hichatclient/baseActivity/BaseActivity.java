@@ -32,7 +32,14 @@ public class BaseActivity extends AppCompatActivity {
 
         baseViewModel = new ViewModelProvider(this).get(BaseViewModel.class);
         applicationUtil = (ApplicationUtil) BaseActivity.this.getApplication();
-        socket = applicationUtil.getSocket();
+        if (!applicationUtil.staticIsConnected()) {
+            try {
+                applicationUtil.initSocketStatic();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        socket = applicationUtil.getSocketStatic();
 
         // 设置底部导航栏
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationViewBase);

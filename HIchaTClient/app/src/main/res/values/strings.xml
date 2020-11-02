@@ -43,4 +43,10 @@
     <string name="image">image</string>
     <string name="refuse">拒绝</string>
     <string name="agree">同意</string>
+    <string name="search3">搜索</string>
+    <string name="searchResultChinese">用户不存在</string>
+    <string name="id3">ID</string>
+    <string name="nickname">昵称</string>
+    <string name="addfriend">添加好友</string>
+    <string name="profile8">profile</string>
 </resources>

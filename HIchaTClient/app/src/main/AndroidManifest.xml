@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".newFriendsActivity.OthersRequestActivity"></activity>
+        <activity android:name=".newFriendsActivity.AddNewFriendActivity"></activity>
+        <activity android:name=".newFriendsActivity.SearchFriendActivity" />
+        <activity android:name=".newFriendsActivity.OthersRequestActivity" />
         <activity android:name=".newFriendsActivity.NewFriendsActivity" />
 
         <service

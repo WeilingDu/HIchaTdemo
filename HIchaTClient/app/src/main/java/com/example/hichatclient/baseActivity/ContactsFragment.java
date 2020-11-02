@@ -33,6 +33,7 @@ import com.example.hichatclient.R;
 import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.newFriendsActivity.NewFriendsActivity;
 import com.example.hichatclient.newFriendsActivity.OthersRequestActivity;
+import com.example.hichatclient.newFriendsActivity.SearchFriendActivity;
 import com.example.hichatclient.viewModel.ContactsViewModel;
 
 import java.util.List;
@@ -110,13 +111,14 @@ public class ContactsFragment extends Fragment {
             }
         });
 
-        // 跳转添加好友界面
+        // 跳转搜索新的好友界面
         buttonAddFriend = activity.findViewById(R.id.buttonAddFriend);
         buttonAddFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavController controller = Navigation.findNavController(v);
-                controller.navigate(R.id.action_contactsFragment_to_addFriendFragment);
+                Intent intent = new Intent();
+                intent.setClass(activity, SearchFriendActivity.class);
+                startActivity(intent);
             }
         });
 

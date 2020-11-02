@@ -7,7 +7,8 @@ import android.os.Bundle;
 
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
-import com.example.hichatclient.service.HeartbeatService;
+import com.example.hichatclient.service.ChatService;
+
 
 import java.io.IOException;
 
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Intent intent = new Intent(this, HeartbeatService.class);
+        Intent intent = new Intent(this, ChatService.class);
         startService(intent);
     }
 

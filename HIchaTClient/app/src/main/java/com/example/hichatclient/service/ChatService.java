@@ -173,15 +173,17 @@ public class ChatService extends LifecycleService {
             @Override
             public void run() {
                 try {
-                    if(updateShortTokenFlag == 1){
-                        getNewShortToken();
+                    if (userShortToken != null){
+                        if(updateShortTokenFlag == 1){
+                            getNewShortToken();
+                        }
+                        sendHeartbeat();
                     }
-                    sendHeartbeat();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-        }, 10, 10000);
+        }, 10000, 10000);
     }
 
     //监听服务器发来的所有消息

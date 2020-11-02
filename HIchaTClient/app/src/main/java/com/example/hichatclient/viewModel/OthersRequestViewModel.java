@@ -10,6 +10,9 @@ import com.example.hichatclient.data.entity.OthersToMe;
 import com.example.hichatclient.dataResource.FriendsRepository;
 import com.example.hichatclient.dataResource.NewFriendsRepository;
 
+import java.io.IOException;
+import java.net.Socket;
+
 public class OthersRequestViewModel extends AndroidViewModel {
     NewFriendsRepository newFriendsRepository;
     FriendsRepository friendsRepository;
@@ -24,8 +27,8 @@ public class OthersRequestViewModel extends AndroidViewModel {
         return newFriendsRepository.getOthersToMeByObjectID(userID, objectID);
     }
 
-    public void othersToMeResponseToServer(String userShortToken, String objectID, boolean refuse){
-        newFriendsRepository.othersToMeResponseToServer(userShortToken, objectID, refuse);
+    public void othersToMeResponseToServer(String userShortToken, String objectID, boolean refuse, Socket socket) throws IOException {
+        newFriendsRepository.othersToMeResponseToServer(userShortToken, objectID, refuse, socket);
     }
 
     public void updateOthersToMeResponse(OthersToMe othersToMe){

@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.dataResource.MeRepository;
 
+import java.io.IOException;
 import java.net.Socket;
 
 public class ChangeNameViewModel extends AndroidViewModel {
@@ -20,7 +21,7 @@ public class ChangeNameViewModel extends AndroidViewModel {
         meRepository = new MeRepository(application);
     }
 
-    public int updateUserNameToServer(String shortToken, String userNewName, Socket socket){
+    public int updateUserNameToServer(String shortToken, String userNewName, Socket socket) throws IOException {
         return meRepository.updateUserNameToServer(shortToken, userNewName, socket);
     }
 

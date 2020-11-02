@@ -139,7 +139,7 @@ public class ChangePasswordFragment extends Fragment {
                             }
                         }
                     }
-                } catch (InterruptedException e) {
+                } catch (InterruptedException | IOException e) {
                     e.printStackTrace();
                 }
 

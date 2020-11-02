@@ -16,6 +16,7 @@ import android.os.IBinder;
 
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
+import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.data.entity.MeToOthers;
 import com.example.hichatclient.data.entity.OthersToMe;
 import com.example.hichatclient.service.ChatService;
@@ -92,17 +93,25 @@ public class NewFriendsActivity extends AppCompatActivity {
                     public void onChanged(Integer integer) {
                         if (integer == 1){
                             List<MeToOthers> meToOthers = chatService.getMeToOthersNew();
-                            newFriendsViewModel.updateMeToOthers(meToOthers);
+                            newFriendsViewModel.updateMeToOthers(meToOthers); // 更新数据库中的MeToOthers信息
+                            for (int i=0; i<meToOthers.size(); i++){
+                                MeToOthers meToOthers1 = meToOthers.get(i);
+                                if(meToOthers1.getObjectResponse().equals("agree")){  // 当对方同意我的好友请求时，更新数据库中的Friend信息
+                                    Friend friend = new Friend(userID, meToOthers1.getObjectID(), meToOthers1.getObjectName(), meToOthers1.getObjectProfile(), "null", "null");
+                                    newFriendsViewModel.insertNewFriendIntoSQL(friend);
+                                }
+                            }
+
                         }
                     }
                 });
-                // 当服务器接收新的OtherToMe
+                // 当服务器接收新的OthersToMe
                 chatService.getOthersToMeFlag().observe(NewFriendsActivity.this, new Observer<Integer>() {
                     @Override
                     public void onChanged(Integer integer) {
                         if (integer == 1){
                             List<OthersToMe> othersToMes = chatService.getOthersToMesNew();
-                            newFriendsViewModel.updateOthersToMe(othersToMes);
+                            newFriendsViewModel.updateOthersToMe(othersToMes);  // 更新数据库中的OthersToMe信息
                         }
                     }
                 });

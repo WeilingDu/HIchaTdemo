@@ -16,10 +16,14 @@ import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.data.entity.OthersToMe;
 import com.example.hichatclient.viewModel.OthersRequestViewModel;
 
+import java.io.IOException;
+import java.net.Socket;
+
 public class OthersRequestActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private OthersRequestViewModel othersRequestViewModel;
     private ApplicationUtil applicationUtil;
+    private Socket socket;
 
     private OthersToMe othersToMe;
     private String objectID;
@@ -49,6 +53,7 @@ public class OthersRequestActivity extends AppCompatActivity {
 
         // 获取applicationUtil中的数据
         final String userShortToken = applicationUtil.getUserShortToken();
+        socket = applicationUtil.getSocketStatic();
 
         // 获取NewFriendActivity传来的参数
         objectID = getIntent().getStringExtra("objectID");
@@ -65,9 +70,13 @@ public class OthersRequestActivity extends AppCompatActivity {
         buttonRefuse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                othersRequestViewModel.othersToMeResponseToServer(userShortToken, objectID, true);  // 告诉服务器用户的回应
+                try {
+                    othersRequestViewModel.othersToMeResponseToServer(userShortToken, objectID, true, socket);  // 告诉服务器用户的回应
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 othersToMe.setUserResponse("refuse");
-                othersRequestViewModel.updateOthersToMeResponse(othersToMe);  // 更新数据库中的信息
+                othersRequestViewModel.updateOthersToMeResponse(othersToMe);  // 更新数据库中OthersToMe的信息
             }
         });
 
@@ -75,7 +84,11 @@ public class OthersRequestActivity extends AppCompatActivity {
         buttonAgree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                othersRequestViewModel.othersToMeResponseToServer(userShortToken, objectID, false);  // 告诉服务器用户的回应
+                try {
+                    othersRequestViewModel.othersToMeResponseToServer(userShortToken, objectID, false, socket);  // 告诉服务器用户的回应
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 othersToMe.setUserResponse("agree");
                 othersRequestViewModel.updateOthersToMeResponse(othersToMe);  // 更新数据库中的OthersToMe信息
                 Friend friend = new Friend(userID, othersToMe.getObjectID(), othersToMe.getObjectName(), othersToMe.getObjectProfile(), "null", "null");

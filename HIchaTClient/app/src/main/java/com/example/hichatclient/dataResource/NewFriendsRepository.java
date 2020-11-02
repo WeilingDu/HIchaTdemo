@@ -12,6 +12,9 @@ import com.example.hichatclient.data.entity.MeToOthers;
 import com.example.hichatclient.data.entity.OthersToMe;
 import com.example.hichatclient.data.entity.User;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.Socket;
 import java.util.List;
 
 public class NewFriendsRepository {
@@ -25,9 +28,28 @@ public class NewFriendsRepository {
     }
 
     // 向服务器提交对别人好友请求的回应
-    public void othersToMeResponseToServer(String userShortToken, String objectID, boolean refuse){
+    public void othersToMeResponseToServer(String userShortToken, String objectID, boolean refuse, Socket socket) throws IOException {
+        Test.AddFriend.BToServer.Builder othersToMeRsp = Test.AddFriend.BToServer.newBuilder();
+        othersToMeRsp.setAId(Integer.parseInt(objectID));
+        othersToMeRsp.setBShortToken(userShortToken);
+        othersToMeRsp.setRefuse(refuse);
+        Test.ReqToServer.Builder reqToServer = Test.ReqToServer.newBuilder();
+        reqToServer.setAddFriendBToServer(othersToMeRsp);
+        byte[] request = reqToServer.build().toByteArray();
+        byte[] len = new byte[4];
+        for (int i = 0;  i < 4;  i++)
+        {
+            len[3-i] = (byte)((request.length >> (8 * i)) & 0xFF);
+        }
+        byte[] send_data = new byte[request.length + len.length];
+        System.arraycopy(len, 0, send_data, 0, len.length);
+        System.arraycopy(request, 0, send_data, len.length, request.length);
 
+        OutputStream outputStream = socket.getOutputStream();
+        outputStream.write(send_data);
+        outputStream.flush();
     }
+
 
     // 当用户回应别人的好友请求时，更新数据库中的信息
     public void updateOthersToMeResponse(OthersToMe othersToMe){

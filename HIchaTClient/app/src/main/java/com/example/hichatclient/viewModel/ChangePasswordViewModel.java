@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.dataResource.MeRepository;
 
+import java.io.IOException;
 import java.net.Socket;
 
 public class ChangePasswordViewModel extends AndroidViewModel {
@@ -28,7 +29,7 @@ public class ChangePasswordViewModel extends AndroidViewModel {
         return user.getUserPassword().equals(oldPassword);
     }
 
-    public int updateUserPasswordToServer(String userShortToken, String userNewPassword, Socket socket){
+    public int updateUserPasswordToServer(String userShortToken, String userNewPassword, Socket socket) throws IOException {
         return meRepository.updateUserPasswordToServer(userShortToken, userNewPassword, socket);
     }
 

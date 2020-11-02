@@ -113,7 +113,12 @@ public class ChangeNameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 userNewName = editTextUserNewName.getText().toString().trim();
-                int flag = changeNameViewModel.updateUserNameToServer(userShortToken, userNewName, socket);
+                int flag = 0;  // 向服务器发送修改昵称请求
+                try {
+                    flag = changeNameViewModel.updateUserNameToServer(userShortToken, userNewName, socket);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 if(flag == 1){
                     try {
                         User user;

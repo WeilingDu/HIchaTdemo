@@ -1,22 +1,15 @@
 package com.example.hichatclient.baseActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
-import com.example.hichatclient.viewModel.BaseViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.io.IOException;
-import java.net.Socket;
 
 public class BaseActivity extends AppCompatActivity {
 //    private BaseViewModel baseViewModel;

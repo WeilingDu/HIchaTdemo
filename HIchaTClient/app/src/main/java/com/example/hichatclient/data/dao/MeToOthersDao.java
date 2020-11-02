@@ -34,5 +34,5 @@ public interface MeToOthersDao {
 
 
     @Query("SELECT * FROM MeToOthers WHERE userID LIKE :userID AND objectID LIKE :objectID")
-    OthersToMe getMeToOthersByObjectID(String userID, String objectID);
+    MeToOthers getMeToOthersByObjectID(String userID, String objectID);
 }

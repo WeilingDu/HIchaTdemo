@@ -1,5 +1,6 @@
 package com.example.hichatclient.data.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -7,7 +8,9 @@ import androidx.room.PrimaryKey;
 @Entity(primaryKeys = {"userID", "friendID"})
 public class ChattingContent {
 
+    @NonNull
     private String userID;
+    @NonNull
     private String friendID;
 
     @ColumnInfo(name = "msg_type")

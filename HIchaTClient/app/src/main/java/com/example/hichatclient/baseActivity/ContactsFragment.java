@@ -28,9 +28,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SearchView;
 
+import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.newFriendsActivity.NewFriendsActivity;
+import com.example.hichatclient.newFriendsActivity.OthersRequestActivity;
 import com.example.hichatclient.viewModel.ContactsViewModel;
 
 import java.util.List;
@@ -39,6 +41,7 @@ public class ContactsFragment extends Fragment {
     private ContactsViewModel contactsViewModel;
     private FragmentActivity activity;
     private SharedPreferences sharedPreferences;
+    private ApplicationUtil applicationUtil;
 
     private RecyclerView recyclerView;
     private FriendAdapter friendAdapter;
@@ -80,11 +83,12 @@ public class ContactsFragment extends Fragment {
         activity = requireActivity();
         // contactsViewModel只在这个Fragment的生命周期中存活
         contactsViewModel = new ViewModelProvider(this).get(ContactsViewModel.class);
+        applicationUtil = (ApplicationUtil) activity.getApplication();
 
         // 获取Share Preferences中的数据
         sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
         final String userID = sharedPreferences.getString("userID", "fail");
-        final String userShortToken = sharedPreferences.getString("userShortToken", "fail");
+        final String userShortToken = applicationUtil.getUserShortToken();
 
 
         recyclerView = activity.findViewById(R.id.recyclerFriends);

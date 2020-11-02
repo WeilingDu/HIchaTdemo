@@ -13,11 +13,12 @@ import com.example.hichatclient.data.dao.OthersToMeDao;
 import com.example.hichatclient.data.dao.UserDao;
 import com.example.hichatclient.data.entity.ChattingContent;
 import com.example.hichatclient.data.entity.Friend;
+import com.example.hichatclient.data.entity.MeToOthers;
 import com.example.hichatclient.data.entity.OthersToMe;
 import com.example.hichatclient.data.entity.User;
 
 // singleton
-@Database(entities = {User.class, Friend.class, ChattingContent.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class, Friend.class, ChattingContent.class, MeToOthers.class, OthersToMe.class}, version = 1, exportSchema = false)
 public abstract class ChatDatabase extends RoomDatabase {
     private static ChatDatabase INSTANCE;
     public static synchronized ChatDatabase getDatabase(Context context){

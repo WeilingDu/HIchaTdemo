@@ -157,4 +157,26 @@ public class FriendsRepository {
     }
 
 
+    // 把新的好友添加到数据库中
+    public void insertNewFriendIntoSQL(Friend friend){
+        new insertNewFriendIntoSQLThread(friendDao, friend).start();
+    }
+
+    static class insertNewFriendIntoSQLThread extends Thread {
+        FriendDao friendDao;
+        Friend friend;
+
+        public insertNewFriendIntoSQLThread(FriendDao friendDao, Friend friend) {
+            this.friendDao = friendDao;
+            this.friend = friend;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            friendDao.insertFriend(friend);
+        }
+    }
+
+
 }

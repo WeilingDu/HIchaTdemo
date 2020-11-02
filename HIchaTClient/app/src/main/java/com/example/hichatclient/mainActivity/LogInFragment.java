@@ -105,10 +105,10 @@ public class LogInFragment extends Fragment {
         buttonLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userID = editTextUserID.getText().toString().trim();
+                final String userID = editTextUserID.getText().toString().trim();
                 String userPassword = editTextUserPassword.getText().toString().trim();
                 try {
-                    User user;
+                    final User user;
 
                     user = logInViewModel.sendIDAndPassword(userID, userPassword, socket);
                     //user = logInViewModel.sendIDAndPasswordTest(userID, userPassword); // 用于本地测试
@@ -127,6 +127,18 @@ public class LogInFragment extends Fragment {
                         // 将用户的tokens存到ApplicationUtil中作为全局变量
                         applicationUtil.setUserShortToken(user.getUserShortToken());
                         applicationUtil.setUserLongToken(user.getUserLongToken());
+
+                        // 从服务器获取好友列表并存入数据库中
+                        new Thread(new Runnable(){
+                            @Override
+                            public void run() {
+                                try {
+                                    logInViewModel.getUserFriendsFromServer(user.getUserID(), user.getUserShortToken(), socket);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }).start();
 
                         // 跳转至BaseActivity的MeFragment
                         Intent intent = new Intent();

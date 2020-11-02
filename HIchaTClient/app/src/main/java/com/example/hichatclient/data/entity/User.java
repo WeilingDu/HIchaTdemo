@@ -1,11 +1,13 @@
 package com.example.hichatclient.data.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
 public class User {
+    @NonNull
     @PrimaryKey
     private String userID;
     @ColumnInfo(name = "user_password")

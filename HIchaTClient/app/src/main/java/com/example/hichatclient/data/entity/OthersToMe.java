@@ -1,12 +1,15 @@
 package com.example.hichatclient.data.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(primaryKeys = {"userID", "objectID"})
 public class OthersToMe {
+    @NonNull
     private String userID;
+    @NonNull
     private String objectID;
 
     @ColumnInfo(name = "object_name")

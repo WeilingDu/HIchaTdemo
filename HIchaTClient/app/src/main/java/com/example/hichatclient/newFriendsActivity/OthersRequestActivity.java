@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
+import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.data.entity.OthersToMe;
 import com.example.hichatclient.viewModel.OthersRequestViewModel;
 
@@ -49,31 +50,36 @@ public class OthersRequestActivity extends AppCompatActivity {
         // 获取applicationUtil中的数据
         final String userShortToken = applicationUtil.getUserShortToken();
 
+        // 获取NewFriendActivity传来的参数
         objectID = getIntent().getStringExtra("objectID");
 
         try {
-            othersToMe = othersRequestViewModel.getOthersToMeByObjectID(userID, objectID);
+            othersToMe = othersRequestViewModel.getOthersToMeByObjectID(userID, objectID);  // 通过objectID获取OtherToMe的具体信息
             textViewObjectID.setText(othersToMe.getObjectID());
             textViewObjectName.setText(othersToMe.getObjectName());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
+        // 当用户拒绝别人的好友请求时
         buttonRefuse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                othersRequestViewModel.othersToMeResponseToServer(userShortToken, objectID, true);
+                othersRequestViewModel.othersToMeResponseToServer(userShortToken, objectID, true);  // 告诉服务器用户的回应
                 othersToMe.setUserResponse("refuse");
-                othersRequestViewModel.updateOthersToMeResponse(othersToMe);
+                othersRequestViewModel.updateOthersToMeResponse(othersToMe);  // 更新数据库中的信息
             }
         });
 
+        // 当用户同意别人的好友请求时
         buttonAgree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                othersRequestViewModel.othersToMeResponseToServer(userShortToken, objectID, false);
+                othersRequestViewModel.othersToMeResponseToServer(userShortToken, objectID, false);  // 告诉服务器用户的回应
                 othersToMe.setUserResponse("agree");
-                othersRequestViewModel.updateOthersToMeResponse(othersToMe);
+                othersRequestViewModel.updateOthersToMeResponse(othersToMe);  // 更新数据库中的OthersToMe信息
+                Friend friend = new Friend(userID, othersToMe.getObjectID(), othersToMe.getObjectName(), othersToMe.getObjectProfile(), "null", "null");
+                othersRequestViewModel.insertNewFriendIntoSQL(friend);  // 更新数据库中的Friend信息
             }
         });
 

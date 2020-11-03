@@ -18,16 +18,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //final ApplicationUtil appUtil = (ApplicationUtil) MainActivity.this.getApplication();
-
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Intent intent = new Intent(this, ChatService.class);
-        startService(intent);
     }
 
 

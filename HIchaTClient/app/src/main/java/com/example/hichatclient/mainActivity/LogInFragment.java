@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.baseActivity.BaseActivity;
+import com.example.hichatclient.service.ChatService;
 import com.example.hichatclient.viewModel.LogInViewModel;
 import com.example.hichatclient.data.entity.User;
 
@@ -113,10 +114,23 @@ public class LogInFragment extends Fragment {
                     user = logInViewModel.sendIDAndPassword(userID, userPassword, socket);
                     //user = logInViewModel.sendIDAndPasswordTest(userID, userPassword); // 用于本地测试
                     if (user == null) {
-                        Toast.makeText(getActivity(), "登录失败！", Toast.LENGTH_SHORT).show();
+                        activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getActivity(), "登录失败！", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     } else {
                         logInViewModel.insertUser(user);
-                        Toast.makeText(getActivity(), "登录成功！", Toast.LENGTH_SHORT).show();
+                        activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getActivity(), "登录成功！", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                        Intent service_intent = new Intent(activity, ChatService.class);
+                        activity.startService(service_intent);
 
                         // 将用户的ID存到share preferences里面
                         sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
@@ -140,6 +154,8 @@ public class LogInFragment extends Fragment {
                             }
                         }).start();
 
+
+
                         // 跳转至BaseActivity的MeFragment
                         Intent intent = new Intent();
                         intent.setClass(activity, BaseActivity.class);
@@ -159,4 +175,5 @@ public class LogInFragment extends Fragment {
             }
         });
     }
+
 }

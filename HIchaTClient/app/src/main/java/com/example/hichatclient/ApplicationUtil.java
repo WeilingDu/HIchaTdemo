@@ -72,7 +72,7 @@ public class ApplicationUtil extends Application {
             e.printStackTrace();
         }
         this.socketDynamic = connectThread.socketDynamic;
-        this.socketStatic = connectThread.socketDynamic;
+        this.socketStatic = connectThread.socketStatic;
     }
 
     static class ConnectThread extends Thread {

@@ -25,11 +25,6 @@
         <activity android:name=".chatActivity.ChatActivity" />
         <activity android:name=".chatActivity.FriendInfoActivity" />
 
-        <service
-            android:name=".service.HeartbeatService"
-            android:enabled="true"
-            android:exported="true" />
-
         <activity
             android:name=".baseActivity.BaseActivity"
             android:windowSoftInputMode="adjustPan|stateHidden" />

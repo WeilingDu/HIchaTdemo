@@ -122,26 +122,25 @@ public class ChatService extends LifecycleService {
     @Override
     public void onCreate() {
         super.onCreate();
-
-
-
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
         applicationUtil = (ApplicationUtil)getApplication();
         this.socket = applicationUtil.getSocketDynamic();
-        senHeartbeatToServer();
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
+                    senHeartbeatToServer();
                     getMessagesFromServer();
+                    System.out.println("hello world!");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -211,19 +210,25 @@ public class ChatService extends LifecycleService {
                 bodylength += (temp[i] & 0xff) << ((3-i)*8);
             }
             if (bytes.length - PACKET_HEAD_LENGTH < bodylength) {//不够一个包
-                byte[] body = new byte[bodylength + PACKET_HEAD_LENGTH - bytes.length];//剩下应该读的字节(凑一个包)
+                byte[] body;
+                if((bodylength + PACKET_HEAD_LENGTH - bytes.length) > 2530686){
+                    body = new byte[2530686];
+                }
+                else{
+                    body = new byte[bodylength + PACKET_HEAD_LENGTH - bytes.length];//剩下应该读的字节(凑一个包)
+                }
                 int couter = is.read(body);
                 if (couter < 0) {
                     continue;
                 }
                 bytes = mergebyte(bytes, body, 0, couter);
-                if (couter < body.length) {
+                if (couter < bodylength + PACKET_HEAD_LENGTH - bytes.length) {
                     continue;
                 }
             }
             byte[] body = new byte[0];
             body = mergebyte(body, bytes, PACKET_HEAD_LENGTH, bytes.length);
-            bytes = null;
+            bytes = new byte[0];
             Test.RspToClient response = Test.RspToClient.parseFrom(body);
             Test.RspToClient.RspCase type = response.getRspCase();
             switch (type) {

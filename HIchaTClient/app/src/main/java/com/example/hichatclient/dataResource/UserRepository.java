@@ -123,6 +123,7 @@ public class UserRepository {
             }
 
             // **********接收"是否登录成功"***********
+            byte[] bytes = new byte[0];
             while(socket.isConnected()){
                 InputStream is = null;
                 try {
@@ -130,7 +131,7 @@ public class UserRepository {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                byte[] bytes = new byte[0];
+
                 if (bytes.length < PACKET_HEAD_LENGTH) {
                     byte[] head = new byte[PACKET_HEAD_LENGTH - bytes.length];
                     int couter = 0;
@@ -155,7 +156,13 @@ public class UserRepository {
                     bodylength += (temp[i] & 0xff) << ((3-i)*8);
                 }
                 if (bytes.length - PACKET_HEAD_LENGTH < bodylength) {//不够一个包
-                    byte[] body = new byte[bodylength + PACKET_HEAD_LENGTH - bytes.length];//剩下应该读的字节(凑一个包)
+                    byte[] body;
+                    if((bodylength + PACKET_HEAD_LENGTH - bytes.length) > 2530686){
+                        body = new byte[2530686];
+                    }
+                    else{
+                        body = new byte[bodylength + PACKET_HEAD_LENGTH - bytes.length];//剩下应该读的字节(凑一个包)
+                    }
                     int couter = 0;
                     try {
                         couter = is.read(body);
@@ -166,12 +173,13 @@ public class UserRepository {
                         continue;
                     }
                     bytes = mergebyte(bytes, body, 0, couter);
-                    if (couter < body.length) {
+                    if (couter < bodylength + PACKET_HEAD_LENGTH - bytes.length) {
                         continue;
                     }
                 }
                 byte[] body = new byte[0];
                 body = mergebyte(body, bytes, PACKET_HEAD_LENGTH, bytes.length);
+                bytes = new byte[0];
                 Test.RspToClient response = null;
                 try {
                     response = Test.RspToClient.parseFrom(body);
@@ -280,6 +288,7 @@ public class UserRepository {
             }
 
             // **********接收"是否连接成功和用户ID"***********
+            byte[] bytes = new byte[0];
             while(socket.isConnected())
             {
                 InputStream is = null;
@@ -288,7 +297,7 @@ public class UserRepository {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                byte[] bytes = new byte[0];
+
                 if (bytes.length < PACKET_HEAD_LENGTH) {
                     byte[] head = new byte[PACKET_HEAD_LENGTH - bytes.length];
                     int couter = 0;
@@ -313,7 +322,13 @@ public class UserRepository {
                     bodylength += (temp[i] & 0xff) << ((3-i)*8);
                 }
                 if (bytes.length - PACKET_HEAD_LENGTH < bodylength) {//不够一个包
-                    byte[] body = new byte[bodylength + PACKET_HEAD_LENGTH - bytes.length];//剩下应该读的字节(凑一个包)
+                    byte[] body;
+                    if((bodylength + PACKET_HEAD_LENGTH - bytes.length) > 2530686){
+                        body = new byte[2530686];
+                    }
+                    else{
+                        body = new byte[bodylength + PACKET_HEAD_LENGTH - bytes.length];//剩下应该读的字节(凑一个包)
+                    }
                     int couter = 0;
                     try {
                         couter = is.read(body);
@@ -324,12 +339,13 @@ public class UserRepository {
                         continue;
                     }
                     bytes = mergebyte(bytes, body, 0, couter);
-                    if (couter < body.length) {
+                    if (couter < bodylength + PACKET_HEAD_LENGTH - bytes.length) {
                         continue;
                     }
                 }
                 byte[] body = new byte[0];
                 body = mergebyte(body, bytes, PACKET_HEAD_LENGTH, bytes.length);
+                bytes = new byte[0];
                 Test.RspToClient response = null;
                 try {
                     response = Test.RspToClient.parseFrom(body);

@@ -14,26 +14,7 @@ import java.util.List;
 public class ContactsViewModel extends AndroidViewModel {
     // TODO: Implement the ViewModel
     private FriendsRepository friendsRepository;
-    private LiveData<List<Friend>> allUserFriendsLive;
-    private String userID;
-    private String userShortToken;
 
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
-
-
-    public String getUserShortToken() {
-        return userShortToken;
-    }
-
-    public void setUserShortToken(String userShortToken) {
-        this.userShortToken = userShortToken;
-    }
 
     public ContactsViewModel(@NonNull Application application) {
         super(application);
@@ -41,8 +22,7 @@ public class ContactsViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Friend>> getUserFriendsFromSQL(String userID) {
-        allUserFriendsLive = friendsRepository.getUserFriendsFromSQL(userID);
-        return allUserFriendsLive;
+        return friendsRepository.getUserFriendsFromSQL(userID);
     }
 
     public LiveData<List<Friend>> findFriendsWithPatten(String patten){

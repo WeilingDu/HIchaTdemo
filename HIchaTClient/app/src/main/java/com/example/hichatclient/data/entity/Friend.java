@@ -21,16 +21,37 @@ public class Friend {
     private String friendIP;
     @ColumnInfo(name = "friend_port")
     private String friendPort;
+    @ColumnInfo(name = "the_last_msg")
+    private String theLastMsg;   // 用户与该好友的最后一条消息
+    @ColumnInfo(name = "is_chatting")
+    private boolean isChatting;  // 是否在聊天列表中
 
-    public Friend(String userID, String friendID, String friendName, String friendProfile, String friendIP, String friendPort) {
+    public Friend(String userID, String friendID, String friendName, String friendProfile, String friendIP, String friendPort, String theLastMsg, boolean isChatting) {
         this.userID = userID;
         this.friendID = friendID;
         this.friendName = friendName;
         this.friendProfile = friendProfile;
         this.friendIP = friendIP;
         this.friendPort = friendPort;
+        this.theLastMsg = theLastMsg;
+        this.isChatting = isChatting;
     }
 
+    public String getTheLastMsg() {
+        return theLastMsg;
+    }
+
+    public void setTheLastMsg(String theLastMsg) {
+        this.theLastMsg = theLastMsg;
+    }
+
+    public boolean isChatting() {
+        return isChatting;
+    }
+
+    public void setChatting(boolean chatting) {
+        isChatting = chatting;
+    }
 
     public String getUserID() {
         return userID;

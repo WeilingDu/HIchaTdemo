@@ -54,6 +54,7 @@ public class UserRepository {
         SendIDAndLogInThread sendIDAndLogInThread = new SendIDAndLogInThread(userID, userPassword, socket);
         sendIDAndLogInThread.start();
         sendIDAndLogInThread.join();
+        System.out.println(sendIDAndLogInThread.user);
         return sendIDAndLogInThread.user;
     }
     static class SendIDAndLogInThread extends Thread {
@@ -122,7 +123,7 @@ public class UserRepository {
                 e.printStackTrace();
             }
 
-            // **********接收"是否登录成功"***********
+            //**********接收"是否登录成功"***********
             byte[] bytes = new byte[0];
             while(socket.isConnected()){
                 InputStream is = null;
@@ -211,6 +212,7 @@ public class UserRepository {
 
             if (isLogIn == 1){
                 User user = new User(userID, userPassword, userName, "111", shortToken, longToken);
+//                User user = new User(userID, userPassword, "123", "111", "123", "123");
                 this.user = user;
             } else {
                 this.user = null;
@@ -372,16 +374,7 @@ public class UserRepository {
 
     // 向数据库添加登录成功的用户信息
     public void insertUser(User user) throws InterruptedException {
-        GetUserInfoByUserIDThread getUserInfoByUserIDThread = new GetUserInfoByUserIDThread(userDao, user.getUserID());
-        getUserInfoByUserIDThread.start();
-        getUserInfoByUserIDThread.join();
-        if (getUserInfoByUserIDThread.user != null){
-            UpdateUserInfoSQLThread updateUserInfoSQLThread = new UpdateUserInfoSQLThread(userDao, user);
-            updateUserInfoSQLThread.start();
-        } else {
-            InsertUserThread insertUserThread = new InsertUserThread(userDao, user);
-            insertUserThread.start();
-        }
+        new InsertUserThread(userDao, user).start();
     }
 
     static class InsertUserThread extends Thread {
@@ -399,39 +392,6 @@ public class UserRepository {
             userDao.insertUser(user);
         }
     }
-
-    static class UpdateUserInfoSQLThread extends Thread {
-        UserDao userDao;
-        User user;
-
-        public UpdateUserInfoSQLThread(UserDao userDao, User user){
-            this.userDao = userDao;
-            this.user = user;
-        }
-
-        @Override
-        public void run() {
-            super.run();
-            userDao.updateUser(user);
-        }
-    }
-
-    static class GetUserInfoByUserIDThread extends Thread {
-        UserDao userDao;
-        String userID;
-        User user = null;
-        public GetUserInfoByUserIDThread(UserDao userDao, String userID){
-            this.userDao = userDao;
-            this.userID = userID;
-        }
-
-        @Override
-        public void run() {
-            super.run();
-            user = userDao.getUserByUserID(userID);
-        }
-    }
-
 
 
 }

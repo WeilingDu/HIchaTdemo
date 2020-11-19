@@ -10,18 +10,21 @@ import com.example.hichatclient.data.dao.FriendDao;
 import com.example.hichatclient.data.entity.ChattingContent;
 import com.example.hichatclient.data.entity.Friend;
 
+import java.net.Socket;
 import java.util.List;
 
 public class MessageRepository {
     private ChattingContentDao chattingContentDao;
+    private FriendDao friendDao;
 
     public MessageRepository(Context context) {
         ChatDatabase chatDatabase = ChatDatabase.getDatabase(context.getApplicationContext());
         chattingContentDao = chatDatabase.getChattingContentDao();
+        friendDao = chatDatabase.getFriendDao();
     }
 
     // 通过服务器发给好友消息
-    public boolean sendMessageToServer(ChattingContent chattingContent, String userShortToken){
+    public boolean sendMessageToServer(ChattingContent chattingContent, String userShortToken, Socket socket) {
         boolean flag = true;
         return flag;
     }
@@ -34,6 +37,10 @@ public class MessageRepository {
         return chattingContent;
     }
 
+    // 从数据库获取用户正在聊天的好友列表
+    public LiveData<List<Friend>> getAllChattingFriendFromSQL(String userID){
+        return friendDao.getAllChattingFriend(userID, true);
+    }
 
     // 往数据库添加一条聊天信息
     public void insertOneMessageIntoSQL(ChattingContent chattingContent){

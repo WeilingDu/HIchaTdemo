@@ -1,6 +1,7 @@
 package com.example.hichatclient.service;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
@@ -12,7 +13,11 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.Test;
+import com.example.hichatclient.data.ChatDatabase;
+import com.example.hichatclient.data.dao.ChattingContentDao;
+import com.example.hichatclient.data.dao.FriendDao;
 import com.example.hichatclient.data.entity.ChattingContent;
+import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.data.entity.MeToOthers;
 import com.example.hichatclient.data.entity.OthersToMe;
 
@@ -29,6 +34,40 @@ public class ChatService extends LifecycleService {
     private final IBinder binder = new ChatBinder();
     private ApplicationUtil applicationUtil;
     private Socket socket;
+    private ChattingContentDao chattingContentDao;
+    private FriendDao friendDao;
+
+    public ApplicationUtil getApplicationUtil() {
+        return applicationUtil;
+    }
+
+    public void setApplicationUtil(ApplicationUtil applicationUtil) {
+        this.applicationUtil = applicationUtil;
+    }
+
+    public Socket getSocket() {
+        return socket;
+    }
+
+    public void setSocket(Socket socket) {
+        this.socket = socket;
+    }
+
+    public ChattingContentDao getChattingContentDao() {
+        return chattingContentDao;
+    }
+
+    public void setChattingContentDao(ChattingContentDao chattingContentDao) {
+        this.chattingContentDao = chattingContentDao;
+    }
+
+    public FriendDao getFriendDao() {
+        return friendDao;
+    }
+
+    public void setFriendDao(FriendDao friendDao) {
+        this.friendDao = friendDao;
+    }
 
     private String userID;
     private String userShortToken;
@@ -122,12 +161,18 @@ public class ChatService extends LifecycleService {
     @Override
     public void onCreate() {
         super.onCreate();
-        applicationUtil = (ApplicationUtil)getApplication();
-        this.socket = applicationUtil.getSocketDynamic();
+        this.setApplicationUtil((ApplicationUtil)getApplication());
+//        ChatDatabase chatDatabase = ChatDatabase.getDatabase(this.getApplicationContext());
+//        this.chattingContentDao = chatDatabase.getChattingContentDao();
+        //this.friendDao = chatDatabase.getFriendDao();
+
+        System.out.println("hello world!");
+        this.setSocket(applicationUtil.getSocketDynamic());
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
+//                    testInsert();
                     senHeartbeatToServer();
                     getMessagesFromServer();
                     System.out.println("hello world!");
@@ -164,6 +209,15 @@ public class ChatService extends LifecycleService {
     }
 
     private int updateShortTokenFlag = 0;
+
+    public void testInsert(){
+        ChattingContent chattingContent = new ChattingContent("123", "123", "send", "111", "hello");
+        chattingContentDao.insertContent(chattingContent);
+//        Friend friend1 = new Friend("10012", "123", "jane", "111", "111", "2", "hello", true);
+//        Friend friend2 = new Friend("10012", "124", "jane2", "111", "111", "2", "hello", true);
+//        friendDao.insertFriend(friend1);
+//        friendDao.insertFriend(friend2);
+    }
 
     //发送心跳
     public void senHeartbeatToServer(){
@@ -233,6 +287,7 @@ public class ChatService extends LifecycleService {
             Test.RspToClient.RspCase type = response.getRspCase();
             switch (type) {
                 case ADD_FRIEND_FROM_OTHER_RSP:
+                    System.out.println("ChatService: add_friend_from_other");
                     addFriendReqOther(response);
                     break;
                 case ADD_FRIEND_FROM_SELF_RSP:

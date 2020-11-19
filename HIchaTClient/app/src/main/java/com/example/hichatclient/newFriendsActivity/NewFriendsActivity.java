@@ -97,7 +97,7 @@ public class NewFriendsActivity extends AppCompatActivity {
                             for (int i=0; i<meToOthers.size(); i++){
                                 MeToOthers meToOthers1 = meToOthers.get(i);
                                 if(meToOthers1.getObjectResponse().equals("agree")){  // 当对方同意我的好友请求时，更新数据库中的Friend信息
-                                    Friend friend = new Friend(userID, meToOthers1.getObjectID(), meToOthers1.getObjectName(), meToOthers1.getObjectProfile(), "null", "null");
+                                    Friend friend = new Friend(userID, meToOthers1.getObjectID(), meToOthers1.getObjectName(), meToOthers1.getObjectProfile(), "null", "null", "New Friend", true);
                                     newFriendsViewModel.insertNewFriendIntoSQL(friend);
                                 }
                             }

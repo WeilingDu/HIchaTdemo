@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hichatclient.R;
 import com.example.hichatclient.chatActivity.ChatActivity;
+import com.example.hichatclient.chatActivity.FriendInfoActivity;
 import com.example.hichatclient.data.entity.Friend;
 
 import java.util.ArrayList;
@@ -20,16 +21,6 @@ import java.util.List;
 
 public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendViewHolder> {
     List<Friend> allFriends = new ArrayList<>();
-    private String userID;
-    private String userShortToken;
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
-
-    public void setUserShortToken(String userShortToken) {
-        this.userShortToken = userShortToken;
-    }
 
     public void setAllFriends(List<Friend> allFriends) {
         this.allFriends = allFriends;
@@ -64,10 +55,9 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(), ChatActivity.class);
+                // 点击好友，跳转至好友信息界面（FriendInfoActivity）
+                Intent intent = new Intent(holder.itemView.getContext(), FriendInfoActivity.class);
                 intent.putExtra("friendID", friend.getFriendID());
-                intent.putExtra("userID", userID);
-                intent.putExtra("userShortToken", userShortToken);
                 holder.itemView.getContext().startActivity(intent);
 
             }

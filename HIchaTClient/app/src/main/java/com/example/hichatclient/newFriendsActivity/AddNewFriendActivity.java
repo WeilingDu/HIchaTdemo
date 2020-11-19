@@ -1,6 +1,7 @@
 package com.example.hichatclient.newFriendsActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -41,6 +42,8 @@ public class AddNewFriendActivity extends AppCompatActivity {
         textViewResultID = findViewById(R.id.textViewSearchID5);
         textViewResultName = findViewById(R.id.textViewSearchName5);
         buttonAddFriend = findViewById(R.id.buttonSendAddFriend);
+
+        searchFriendViewModel = new ViewModelProvider(this).get(SearchFriendViewModel.class);
 
         // 获取applicationUtil中的数据
         applicationUtil = (ApplicationUtil) AddNewFriendActivity.this.getApplication();

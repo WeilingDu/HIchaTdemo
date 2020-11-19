@@ -110,7 +110,6 @@ public class LogInFragment extends Fragment {
                 String userPassword = editTextUserPassword.getText().toString().trim();
                 try {
                     final User user;
-
                     user = logInViewModel.sendIDAndPassword(userID, userPassword, socket);
                     //user = logInViewModel.sendIDAndPasswordTest(userID, userPassword); // 用于本地测试
                     if (user == null) {
@@ -148,6 +147,7 @@ public class LogInFragment extends Fragment {
                             public void run() {
                                 try {
                                     logInViewModel.getUserFriendsFromServer(user.getUserID(), user.getUserShortToken(), socket);
+                                    System.out.println("logInFragment: " + user.getUserID() + user.getUserShortToken());
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }

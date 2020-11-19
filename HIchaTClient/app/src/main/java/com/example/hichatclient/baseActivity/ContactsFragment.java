@@ -82,14 +82,12 @@ public class ContactsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         activity = requireActivity();
-        // contactsViewModel只在这个Fragment的生命周期中存活
-        contactsViewModel = new ViewModelProvider(this).get(ContactsViewModel.class);
+        contactsViewModel = new ViewModelProvider(activity).get(ContactsViewModel.class);
         applicationUtil = (ApplicationUtil) activity.getApplication();
 
         // 获取Share Preferences中的数据
         sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
         final String userID = sharedPreferences.getString("userID", "fail");
-        final String userShortToken = applicationUtil.getUserShortToken();
 
 
         recyclerView = activity.findViewById(R.id.recyclerFriends);
@@ -103,8 +101,6 @@ public class ContactsFragment extends Fragment {
             public void onChanged(List<Friend> friends) {
                 int temp = friendAdapter.getItemCount();
                 friendAdapter.setAllFriends(friends);
-                friendAdapter.setUserID(userID);
-                friendAdapter.setUserShortToken(userShortToken);
                 if(temp != friends.size()){
                     friendAdapter.notifyDataSetChanged();
                 }

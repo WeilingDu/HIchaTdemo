@@ -121,10 +121,21 @@ public class ChangePasswordFragment extends Fragment {
                 userNewPasswordCheck = editTextUserNewPasswordCheck.getText().toString().trim();
                 try {
                     if (!changePasswordViewModel.checkOldPasswordIsRight(userID, userOldPassword)){
-                        Toast.makeText(getActivity(), "旧密码输入错误！", Toast.LENGTH_SHORT).show();
+                        activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getActivity(), "旧密码输入错误！", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     } else {
                         if (!userNewPassword.equals(userNewPasswordCheck)){
-                            Toast.makeText(getActivity(), "两次输入的密码不一致！", Toast.LENGTH_SHORT).show();
+                            activity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getActivity(), "两次输入的密码不一致！", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
                         } else {
                             int flag = changePasswordViewModel.updateUserPasswordToServer(userShortToken, userNewPassword, socket);
                             if(flag == 1){
@@ -132,7 +143,13 @@ public class ChangePasswordFragment extends Fragment {
                                 user = changePasswordViewModel.getUserInfoByUserID(userID);
                                 user.setUserPassword(userNewPassword);
                                 changePasswordViewModel.updateUserInfoInSQL(user);
-                                Toast.makeText(getActivity(), "修改成功！", Toast.LENGTH_SHORT).show();
+                                activity.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getActivity(), "修改成功！", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
                                 Intent intent = new Intent(activity, MainActivity.class);
                                 startActivity(intent);
 

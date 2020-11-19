@@ -38,6 +38,11 @@ public class FriendsRepository {
         return add;
     }
 
+    // 向服务器发送删好友请求
+    public void deleteFriendToServer(String friendID, String userShortToken, Socket socket){
+
+    }
+
 
     // 从服务器获取好友列表，在Base Activity中执行
     public List<Friend> getUserFriendsFromServer(String userID, String userShortToken, Socket socket) throws IOException {
@@ -98,13 +103,16 @@ public class FriendsRepository {
             body = mergebyte(body, bytes, PACKET_HEAD_LENGTH, bytes.length);
             Test.RspToClient response = Test.RspToClient.parseFrom(body);
             Test.RspToClient.RspCase type = response.getRspCase();
+            System.out.println("type" + type);
             switch (type) {
                 case FRIENDLIST_RES:
                     int num = response.getFriendlistRes().getFriendListCount();
+                    System.out.println("num" + num);
                     for(int i = 0; i < num; i++)
                     {
+                        System.out.println("num" + num);
                         Test.People friendi = response.getFriendlistRes().getFriendList(i);
-                        Friend friend = new Friend(userID, Integer.toString(friendi.getId()), friendi.getName(), "123", "123", "123");
+                        Friend friend = new Friend(userID, Integer.toString(friendi.getId()), friendi.getName(), "123", "123", "123",null, false);
                         friends.add(friend);
                     }
                     break;
@@ -114,6 +122,7 @@ public class FriendsRepository {
             }
             break;
         }
+        System.out.println(friends.size());
         insertFriends(friends); // 将用户的好友信息插入数据库
         return friends;
     }
@@ -149,6 +158,11 @@ public class FriendsRepository {
         LiveData<List<Friend>> friends;
         friends = friendDao.getAllUserFriend(userID);
         return friends;
+    }
+
+    // 根据userID和friendID从数据库中获取好友信息
+    public LiveData<Friend> getFriendInfo(String userID, String friendID){
+        return friendDao.getFriendInfo(userID, friendID);
     }
 
     // 从数据库中搜索好友

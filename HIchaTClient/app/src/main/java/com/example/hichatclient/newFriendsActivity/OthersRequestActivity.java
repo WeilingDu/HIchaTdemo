@@ -91,7 +91,7 @@ public class OthersRequestActivity extends AppCompatActivity {
                 }
                 othersToMe.setUserResponse("agree");
                 othersRequestViewModel.updateOthersToMeResponse(othersToMe);  // 更新数据库中的OthersToMe信息
-                Friend friend = new Friend(userID, othersToMe.getObjectID(), othersToMe.getObjectName(), othersToMe.getObjectProfile(), "null", "null");
+                Friend friend = new Friend(userID, othersToMe.getObjectID(), othersToMe.getObjectName(), othersToMe.getObjectProfile(), "null", "null", "New Friend", true);
                 othersRequestViewModel.insertNewFriendIntoSQL(friend);  // 更新数据库中的Friend信息
             }
         });

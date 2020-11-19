@@ -21,6 +21,9 @@ import java.util.List;
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
     private List<Friend> chattingFriends = new ArrayList<>();
 
+    public void setChattingFriends(List<Friend> chattingFriends) {
+        this.chattingFriends = chattingFriends;
+    }
 
     @NonNull
     @Override
@@ -35,6 +38,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     public void onBindViewHolder(@NonNull final ChatViewHolder holder, int position) {
         final Friend friend = chattingFriends.get(position);
         holder.textViewChatFriendName.setText(friend.getFriendName());
+        holder.textViewChatNewContent.setText(friend.getTheLastMsg());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

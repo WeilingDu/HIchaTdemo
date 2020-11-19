@@ -125,7 +125,12 @@ public class ChangeNameFragment extends Fragment {
                         user = changeNameViewModel.getUserInfoByUserID(userID);
                         user.setUserName(userNewName);
                         changeNameViewModel.updateUserInfoInSQL(user);
-                        Toast.makeText(getActivity(), "修改成功！", Toast.LENGTH_SHORT).show();
+                        activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getActivity(), "修改成功！", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                         NavController navController = Navigation.findNavController(v);
                         navController.navigate(R.id.action_changeNameFragment_to_meFragment);
                     } catch (InterruptedException e) {
@@ -133,7 +138,12 @@ public class ChangeNameFragment extends Fragment {
                     }
 
                 } else {
-                    Toast.makeText(getActivity(), "修改失败！", Toast.LENGTH_SHORT).show();
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getActivity(), "修改失败！", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
 
             }

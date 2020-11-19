@@ -65,7 +65,7 @@ public class SearchFriendActivity extends AppCompatActivity {
                     if (searchResult == null){
                         textViewSearchResult.setText(R.string.searchResultChinese);
                     } else {
-                        // 跳转至新的界面，显示搜索解雇的信息
+                        // 跳转至新的界面，显示搜索结果的信息
                         Intent intent = new Intent();
                         intent.setClass(SearchFriendActivity.this, AddNewFriendActivity.class);
                         intent.putExtra("resultID", searchResult.getResultID());

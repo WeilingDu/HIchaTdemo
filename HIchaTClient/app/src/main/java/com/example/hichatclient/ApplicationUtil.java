@@ -1,6 +1,7 @@
 package com.example.hichatclient;
 
 import android.app.Application;
+import android.content.Context;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -10,6 +11,7 @@ public class ApplicationUtil extends Application {
     private Socket socketStatic;
     private String userShortToken;
     private String userLongToken;
+
 
     public String getUserShortToken() {
         return userShortToken;

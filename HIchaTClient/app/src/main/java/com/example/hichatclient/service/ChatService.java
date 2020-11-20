@@ -16,6 +16,7 @@ import com.example.hichatclient.Test;
 import com.example.hichatclient.data.ChatDatabase;
 import com.example.hichatclient.data.dao.ChattingContentDao;
 import com.example.hichatclient.data.dao.FriendDao;
+import com.example.hichatclient.data.dao.OthersToMeDao;
 import com.example.hichatclient.data.entity.ChattingContent;
 import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.data.entity.MeToOthers;
@@ -36,6 +37,7 @@ public class ChatService extends LifecycleService {
     private Socket socket;
     private ChattingContentDao chattingContentDao;
     private FriendDao friendDao;
+    private OthersToMeDao othersToMeDao;
 
     public ApplicationUtil getApplicationUtil() {
         return applicationUtil;
@@ -163,8 +165,11 @@ public class ChatService extends LifecycleService {
         super.onCreate();
         this.setApplicationUtil((ApplicationUtil)getApplication());
         setUserShortToken(applicationUtil.getUserShortToken());
+        setUserID(applicationUtil.getUserID());
         System.out.println("ChatService: " + userShortToken);
+        System.out.println("ChatService: " + userID);
         ChatDatabase chatDatabase = ChatDatabase.getDatabase(this.getApplicationContext());
+        this.othersToMeDao = chatDatabase.getOthersToMeDao();
 //        this.chattingContentDao = chatDatabase.getChattingContentDao();
         //this.friendDao = chatDatabase.getFriendDao();
 
@@ -396,7 +401,9 @@ public class ChatService extends LifecycleService {
             Test.People reqi = addFriendFromOtherRsp.getUser(i);
             OthersToMe othersToMe = new OthersToMe(userID,Integer.toString(reqi.getId()),reqi.getName(),"reqi.getHeadpic()","wait");
             System.out.println(reqi.getId() + reqi.getName());
-            othersToMesNew.add(othersToMe);
+
+            othersToMeDao.insertOthersToMe(othersToMe);
+            // othersToMesNew.add(othersToMe);
         }
 //        othersToMeFlag.setValue(1);
     }

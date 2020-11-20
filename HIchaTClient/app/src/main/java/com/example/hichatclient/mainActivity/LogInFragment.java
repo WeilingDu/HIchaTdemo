@@ -151,6 +151,7 @@ public class LogInFragment extends Fragment {
                         // 将用户的tokens存到ApplicationUtil中作为全局变量
                         applicationUtil.setUserShortToken(user.getUserShortToken());
                         applicationUtil.setUserLongToken(user.getUserLongToken());
+                        applicationUtil.setUserID(user.getUserID());
 
                         // 跳转至BaseActivity的MeFragment
                         Intent intent = new Intent();

@@ -83,49 +83,49 @@ public class NewFriendsActivity extends AppCompatActivity {
 
 
         // bind to service
-        Intent bindIntent = new Intent(this, ChatService.class);
-        ServiceConnection serviceConnection = new ServiceConnection() {
-            @Override
-            public void onServiceConnected(ComponentName name, IBinder service) {
-                ChatService.ChatBinder binder = (ChatService.ChatBinder) service;
-                chatService = binder.getService();
-                // 当服务器接收新的MeToOthers
-                chatService.getMeToOthersFlag().observe(NewFriendsActivity.this, new Observer<Integer>() {
-                    @Override
-                    public void onChanged(Integer integer) {
-                        if (integer == 1){
-                            List<MeToOthers> meToOthers = chatService.getMeToOthersNew();
-                            newFriendsViewModel.updateMeToOthers(meToOthers); // 更新数据库中的MeToOthers信息
-                            for (int i=0; i<meToOthers.size(); i++){
-                                MeToOthers meToOthers1 = meToOthers.get(i);
-                                if(meToOthers1.getObjectResponse().equals("agree")){  // 当对方同意我的好友请求时，更新数据库中的Friend信息
-                                    Friend friend = new Friend(userID, meToOthers1.getObjectID(), meToOthers1.getObjectName(), meToOthers1.getObjectProfile(), "null", "null", "New Friend", true);
-                                    newFriendsViewModel.insertNewFriendIntoSQL(friend);
-                                }
-                            }
-
-                        }
-                    }
-                });
-                // 当服务器接收新的OthersToMe
-                chatService.getOthersToMeFlag().observe(NewFriendsActivity.this, new Observer<Integer>() {
-                    @Override
-                    public void onChanged(Integer integer) {
-                        if (integer == 1){
-                            List<OthersToMe> othersToMes = chatService.getOthersToMesNew();
-                            newFriendsViewModel.updateOthersToMe(othersToMes);  // 更新数据库中的OthersToMe信息
-                        }
-                    }
-                });
-
-            }
-
-            @Override
-            public void onServiceDisconnected(ComponentName name) {
-
-            }
-        };
-        bindService(bindIntent, serviceConnection, Context.BIND_AUTO_CREATE);
+//        Intent bindIntent = new Intent(this, ChatService.class);
+//        ServiceConnection serviceConnection = new ServiceConnection() {
+//            @Override
+//            public void onServiceConnected(ComponentName name, IBinder service) {
+//                ChatService.ChatBinder binder = (ChatService.ChatBinder) service;
+//                chatService = binder.getService();
+//                // 当服务器接收新的MeToOthers
+//                chatService.getMeToOthersFlag().observe(NewFriendsActivity.this, new Observer<Integer>() {
+//                    @Override
+//                    public void onChanged(Integer integer) {
+//                        if (integer == 1){
+//                            List<MeToOthers> meToOthers = chatService.getMeToOthersNew();
+//                            newFriendsViewModel.updateMeToOthers(meToOthers); // 更新数据库中的MeToOthers信息
+//                            for (int i=0; i<meToOthers.size(); i++){
+//                                MeToOthers meToOthers1 = meToOthers.get(i);
+//                                if(meToOthers1.getObjectResponse().equals("agree")){  // 当对方同意我的好友请求时，更新数据库中的Friend信息
+//                                    Friend friend = new Friend(userID, meToOthers1.getObjectID(), meToOthers1.getObjectName(), meToOthers1.getObjectProfile(), "null", "null", "New Friend", true);
+//                                    newFriendsViewModel.insertNewFriendIntoSQL(friend);
+//                                }
+//                            }
+//
+//                        }
+//                    }
+//                });
+//                // 当服务器接收新的OthersToMe
+//                chatService.getOthersToMeFlag().observe(NewFriendsActivity.this, new Observer<Integer>() {
+//                    @Override
+//                    public void onChanged(Integer integer) {
+//                        if (integer == 1){
+//                            List<OthersToMe> othersToMes = chatService.getOthersToMesNew();
+//                            newFriendsViewModel.updateOthersToMe(othersToMes);  // 更新数据库中的OthersToMe信息
+//                        }
+//                    }
+//                });
+//
+//            }
+//
+//            @Override
+//            public void onServiceDisconnected(ComponentName name) {
+//
+//            }
+//        };
+//        bindService(bindIntent, serviceConnection, Context.BIND_AUTO_CREATE);
 
 
     }

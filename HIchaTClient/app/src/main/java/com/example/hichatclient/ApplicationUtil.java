@@ -11,7 +11,15 @@ public class ApplicationUtil extends Application {
     private Socket socketStatic;
     private String userShortToken;
     private String userLongToken;
+    private String userID;
 
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
 
     public String getUserShortToken() {
         return userShortToken;

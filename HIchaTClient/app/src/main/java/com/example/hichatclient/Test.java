@@ -14864,9 +14864,17 @@ public final class Test {
         com.google.protobuf.MessageLiteOrBuilder {
 
       /**
-       * <code>optional uint32 src_id = 1;</code>
+       * <code>repeated uint32 src_id = 1;</code>
        */
-      int getSrcId();
+      java.util.List<Integer> getSrcIdList();
+      /**
+       * <code>repeated uint32 src_id = 1;</code>
+       */
+      int getSrcIdCount();
+      /**
+       * <code>repeated uint32 src_id = 1;</code>
+       */
+      int getSrcId(int index);
     }
     /**
      * <pre>
@@ -14881,34 +14889,71 @@ public final class Test {
         // @@protoc_insertion_point(message_implements:DeleteFriend.ServerToB)
         ServerToBOrBuilder {
       private ServerToB() {
+        srcId_ = emptyIntList();
       }
       public static final int SRC_ID_FIELD_NUMBER = 1;
-      private int srcId_;
+      private com.google.protobuf.Internal.IntList srcId_;
       /**
-       * <code>optional uint32 src_id = 1;</code>
+       * <code>repeated uint32 src_id = 1;</code>
        */
-      public int getSrcId() {
+      public java.util.List<Integer>
+          getSrcIdList() {
         return srcId_;
       }
       /**
-       * <code>optional uint32 src_id = 1;</code>
+       * <code>repeated uint32 src_id = 1;</code>
        */
-      private void setSrcId(int value) {
-        
-        srcId_ = value;
+      public int getSrcIdCount() {
+        return srcId_.size();
       }
       /**
-       * <code>optional uint32 src_id = 1;</code>
+       * <code>repeated uint32 src_id = 1;</code>
+       */
+      public int getSrcId(int index) {
+        return srcId_.getInt(index);
+      }
+      private void ensureSrcIdIsMutable() {
+        if (!srcId_.isModifiable()) {
+          srcId_ =
+              com.google.protobuf.GeneratedMessageLite.mutableCopy(srcId_);
+         }
+      }
+      /**
+       * <code>repeated uint32 src_id = 1;</code>
+       */
+      private void setSrcId(
+          int index, int value) {
+        ensureSrcIdIsMutable();
+        srcId_.setInt(index, value);
+      }
+      /**
+       * <code>repeated uint32 src_id = 1;</code>
+       */
+      private void addSrcId(int value) {
+        ensureSrcIdIsMutable();
+        srcId_.addInt(value);
+      }
+      /**
+       * <code>repeated uint32 src_id = 1;</code>
+       */
+      private void addAllSrcId(
+          Iterable<? extends Integer> values) {
+        ensureSrcIdIsMutable();
+        com.google.protobuf.AbstractMessageLite.addAll(
+            values, srcId_);
+      }
+      /**
+       * <code>repeated uint32 src_id = 1;</code>
        */
       private void clearSrcId() {
-        
-        srcId_ = 0;
+        srcId_ = emptyIntList();
       }
 
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        if (srcId_ != 0) {
-          output.writeUInt32(1, srcId_);
+        getSerializedSize();
+        for (int i = 0; i < srcId_.size(); i++) {
+          output.writeUInt32(1, srcId_.getInt(i));
         }
       }
 
@@ -14917,9 +14962,14 @@ public final class Test {
         if (size != -1) return size;
 
         size = 0;
-        if (srcId_ != 0) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeUInt32Size(1, srcId_);
+        {
+          int dataSize = 0;
+          for (int i = 0; i < srcId_.size(); i++) {
+            dataSize += com.google.protobuf.CodedOutputStream
+              .computeUInt32SizeNoTag(srcId_.getInt(i));
+          }
+          size += dataSize;
+          size += 1 * getSrcIdList().size();
         }
         memoizedSerializedSize = size;
         return size;
@@ -15012,21 +15062,53 @@ public final class Test {
 
 
         /**
-         * <code>optional uint32 src_id = 1;</code>
+         * <code>repeated uint32 src_id = 1;</code>
          */
-        public int getSrcId() {
-          return instance.getSrcId();
+        public java.util.List<Integer>
+            getSrcIdList() {
+          return java.util.Collections.unmodifiableList(
+              instance.getSrcIdList());
         }
         /**
-         * <code>optional uint32 src_id = 1;</code>
+         * <code>repeated uint32 src_id = 1;</code>
          */
-        public Builder setSrcId(int value) {
+        public int getSrcIdCount() {
+          return instance.getSrcIdCount();
+        }
+        /**
+         * <code>repeated uint32 src_id = 1;</code>
+         */
+        public int getSrcId(int index) {
+          return instance.getSrcId(index);
+        }
+        /**
+         * <code>repeated uint32 src_id = 1;</code>
+         */
+        public Builder setSrcId(
+            int index, int value) {
           copyOnWrite();
-          instance.setSrcId(value);
+          instance.setSrcId(index, value);
           return this;
         }
         /**
-         * <code>optional uint32 src_id = 1;</code>
+         * <code>repeated uint32 src_id = 1;</code>
+         */
+        public Builder addSrcId(int value) {
+          copyOnWrite();
+          instance.addSrcId(value);
+          return this;
+        }
+        /**
+         * <code>repeated uint32 src_id = 1;</code>
+         */
+        public Builder addAllSrcId(
+            Iterable<? extends Integer> values) {
+          copyOnWrite();
+          instance.addAllSrcId(values);
+          return this;
+        }
+        /**
+         * <code>repeated uint32 src_id = 1;</code>
          */
         public Builder clearSrcId() {
           copyOnWrite();
@@ -15047,6 +15129,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case MAKE_IMMUTABLE: {
+            srcId_.makeImmutable();
             return null;
           }
           case NEW_BUILDER: {
@@ -15055,8 +15138,7 @@ public final class Test {
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
             ServerToB other = (ServerToB) arg1;
-            srcId_ = visitor.visitInt(srcId_ != 0, srcId_,
-                other.srcId_ != 0, other.srcId_);
+            srcId_= visitor.visitIntList(srcId_, other.srcId_);
             if (visitor == MergeFromVisitor
                 .INSTANCE) {
             }
@@ -15082,8 +15164,24 @@ public final class Test {
                     break;
                   }
                   case 8: {
-
-                    srcId_ = input.readUInt32();
+                    if (!srcId_.isModifiable()) {
+                      srcId_ =
+                          com.google.protobuf.GeneratedMessageLite.mutableCopy(srcId_);
+                    }
+                    srcId_.addInt(input.readUInt32());
+                    break;
+                  }
+                  case 10: {
+                    int length = input.readRawVarint32();
+                    int limit = input.pushLimit(length);
+                    if (!srcId_.isModifiable() && input.getBytesUntilLimit() > 0) {
+                      srcId_ =
+                          com.google.protobuf.GeneratedMessageLite.mutableCopy(srcId_);
+                    }
+                    while (input.getBytesUntilLimit() > 0) {
+                      srcId_.addInt(input.readUInt32());
+                    }
+                    input.popLimit(limit);
                     break;
                   }
                 }
@@ -17335,14 +17433,18 @@ public final class Test {
         com.google.protobuf.MessageLiteOrBuilder {
 
       /**
-       * <code>optional uint32 src_id = 1;</code>
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
        */
-      int getSrcId();
-
+      java.util.List<ServerToB.SeenInfo>
+          getSeenInfoList();
       /**
-       * <code>optional uint64 time = 2;</code>
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
        */
-      long getTime();
+      ServerToB.SeenInfo getSeenInfo(int index);
+      /**
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+       */
+      int getSeenInfoCount();
     }
     /**
      * <pre>
@@ -17357,60 +17459,462 @@ public final class Test {
         // @@protoc_insertion_point(message_implements:Seen.ServerToB)
         ServerToBOrBuilder {
       private ServerToB() {
+        seenInfo_ = emptyProtobufList();
       }
-      public static final int SRC_ID_FIELD_NUMBER = 1;
-      private int srcId_;
-      /**
-       * <code>optional uint32 src_id = 1;</code>
-       */
-      public int getSrcId() {
-        return srcId_;
+      public interface SeenInfoOrBuilder extends
+          // @@protoc_insertion_point(interface_extends:Seen.ServerToB.SeenInfo)
+          com.google.protobuf.MessageLiteOrBuilder {
+
+        /**
+         * <code>optional uint32 src_id = 1;</code>
+         */
+        int getSrcId();
+
+        /**
+         * <code>optional uint64 time = 2;</code>
+         */
+        long getTime();
       }
       /**
-       * <code>optional uint32 src_id = 1;</code>
+       * Protobuf type {@code Seen.ServerToB.SeenInfo}
        */
-      private void setSrcId(int value) {
-        
-        srcId_ = value;
-      }
-      /**
-       * <code>optional uint32 src_id = 1;</code>
-       */
-      private void clearSrcId() {
-        
-        srcId_ = 0;
+      public  static final class SeenInfo extends
+          com.google.protobuf.GeneratedMessageLite<
+              SeenInfo, SeenInfo.Builder> implements
+          // @@protoc_insertion_point(message_implements:Seen.ServerToB.SeenInfo)
+          SeenInfoOrBuilder {
+        private SeenInfo() {
+        }
+        public static final int SRC_ID_FIELD_NUMBER = 1;
+        private int srcId_;
+        /**
+         * <code>optional uint32 src_id = 1;</code>
+         */
+        public int getSrcId() {
+          return srcId_;
+        }
+        /**
+         * <code>optional uint32 src_id = 1;</code>
+         */
+        private void setSrcId(int value) {
+          
+          srcId_ = value;
+        }
+        /**
+         * <code>optional uint32 src_id = 1;</code>
+         */
+        private void clearSrcId() {
+          
+          srcId_ = 0;
+        }
+
+        public static final int TIME_FIELD_NUMBER = 2;
+        private long time_;
+        /**
+         * <code>optional uint64 time = 2;</code>
+         */
+        public long getTime() {
+          return time_;
+        }
+        /**
+         * <code>optional uint64 time = 2;</code>
+         */
+        private void setTime(long value) {
+          
+          time_ = value;
+        }
+        /**
+         * <code>optional uint64 time = 2;</code>
+         */
+        private void clearTime() {
+          
+          time_ = 0L;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                            throws java.io.IOException {
+          if (srcId_ != 0) {
+            output.writeUInt32(1, srcId_);
+          }
+          if (time_ != 0L) {
+            output.writeUInt64(2, time_);
+          }
+        }
+
+        public int getSerializedSize() {
+          int size = memoizedSerializedSize;
+          if (size != -1) return size;
+
+          size = 0;
+          if (srcId_ != 0) {
+            size += com.google.protobuf.CodedOutputStream
+              .computeUInt32Size(1, srcId_);
+          }
+          if (time_ != 0L) {
+            size += com.google.protobuf.CodedOutputStream
+              .computeUInt64Size(2, time_);
+          }
+          memoizedSerializedSize = size;
+          return size;
+        }
+
+        public static SeenInfo parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data);
+        }
+        public static SeenInfo parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data, extensionRegistry);
+        }
+        public static SeenInfo parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data);
+        }
+        public static SeenInfo parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data, extensionRegistry);
+        }
+        public static SeenInfo parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input);
+        }
+        public static SeenInfo parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+        public static SeenInfo parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+        }
+        public static SeenInfo parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+        public static SeenInfo parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input);
+        }
+        public static SeenInfo parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+          return DEFAULT_INSTANCE.toBuilder();
+        }
+        public static Builder newBuilder(SeenInfo prototype) {
+          return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        /**
+         * Protobuf type {@code Seen.ServerToB.SeenInfo}
+         */
+        public static final class Builder extends
+            com.google.protobuf.GeneratedMessageLite.Builder<
+              SeenInfo, Builder> implements
+            // @@protoc_insertion_point(builder_implements:Seen.ServerToB.SeenInfo)
+            SeenInfoOrBuilder {
+          // Construct using Test.Seen.ServerToB.SeenInfo.newBuilder()
+          private Builder() {
+            super(DEFAULT_INSTANCE);
+          }
+
+
+          /**
+           * <code>optional uint32 src_id = 1;</code>
+           */
+          public int getSrcId() {
+            return instance.getSrcId();
+          }
+          /**
+           * <code>optional uint32 src_id = 1;</code>
+           */
+          public Builder setSrcId(int value) {
+            copyOnWrite();
+            instance.setSrcId(value);
+            return this;
+          }
+          /**
+           * <code>optional uint32 src_id = 1;</code>
+           */
+          public Builder clearSrcId() {
+            copyOnWrite();
+            instance.clearSrcId();
+            return this;
+          }
+
+          /**
+           * <code>optional uint64 time = 2;</code>
+           */
+          public long getTime() {
+            return instance.getTime();
+          }
+          /**
+           * <code>optional uint64 time = 2;</code>
+           */
+          public Builder setTime(long value) {
+            copyOnWrite();
+            instance.setTime(value);
+            return this;
+          }
+          /**
+           * <code>optional uint64 time = 2;</code>
+           */
+          public Builder clearTime() {
+            copyOnWrite();
+            instance.clearTime();
+            return this;
+          }
+
+          // @@protoc_insertion_point(builder_scope:Seen.ServerToB.SeenInfo)
+        }
+        protected final Object dynamicMethod(
+            MethodToInvoke method,
+            Object arg0, Object arg1) {
+          switch (method) {
+            case NEW_MUTABLE_INSTANCE: {
+              return new SeenInfo();
+            }
+            case IS_INITIALIZED: {
+              return DEFAULT_INSTANCE;
+            }
+            case MAKE_IMMUTABLE: {
+              return null;
+            }
+            case NEW_BUILDER: {
+              return new Builder();
+            }
+            case VISIT: {
+              Visitor visitor = (Visitor) arg0;
+              SeenInfo other = (SeenInfo) arg1;
+              srcId_ = visitor.visitInt(srcId_ != 0, srcId_,
+                  other.srcId_ != 0, other.srcId_);
+              time_ = visitor.visitLong(time_ != 0L, time_,
+                  other.time_ != 0L, other.time_);
+              if (visitor == MergeFromVisitor
+                  .INSTANCE) {
+              }
+              return this;
+            }
+            case MERGE_FROM_STREAM: {
+              com.google.protobuf.CodedInputStream input =
+                  (com.google.protobuf.CodedInputStream) arg0;
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                  (com.google.protobuf.ExtensionRegistryLite) arg1;
+              try {
+                boolean done = false;
+                while (!done) {
+                  int tag = input.readTag();
+                  switch (tag) {
+                    case 0:
+                      done = true;
+                      break;
+                    default: {
+                      if (!input.skipField(tag)) {
+                        done = true;
+                      }
+                      break;
+                    }
+                    case 8: {
+
+                      srcId_ = input.readUInt32();
+                      break;
+                    }
+                    case 16: {
+
+                      time_ = input.readUInt64();
+                      break;
+                    }
+                  }
+                }
+              } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw new RuntimeException(e.setUnfinishedMessage(this));
+              } catch (java.io.IOException e) {
+                throw new RuntimeException(
+                    new com.google.protobuf.InvalidProtocolBufferException(
+                        e.getMessage()).setUnfinishedMessage(this));
+              } finally {
+              }
+            }
+            case GET_DEFAULT_INSTANCE: {
+              return DEFAULT_INSTANCE;
+            }
+            case GET_PARSER: {
+              if (PARSER == null) {    synchronized (SeenInfo.class) {
+                  if (PARSER == null) {
+                    PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                  }
+                }
+              }
+              return PARSER;
+            }
+          }
+          throw new UnsupportedOperationException();
+        }
+
+
+        // @@protoc_insertion_point(class_scope:Seen.ServerToB.SeenInfo)
+        private static final SeenInfo DEFAULT_INSTANCE;
+        static {
+          DEFAULT_INSTANCE = new SeenInfo();
+          DEFAULT_INSTANCE.makeImmutable();
+        }
+
+        public static SeenInfo getDefaultInstance() {
+          return DEFAULT_INSTANCE;
+        }
+
+        private static volatile com.google.protobuf.Parser<SeenInfo> PARSER;
+
+        public static com.google.protobuf.Parser<SeenInfo> parser() {
+          return DEFAULT_INSTANCE.getParserForType();
+        }
       }
 
-      public static final int TIME_FIELD_NUMBER = 2;
-      private long time_;
+      public static final int SEEN_INFO_FIELD_NUMBER = 1;
+      private com.google.protobuf.Internal.ProtobufList<SeenInfo> seenInfo_;
       /**
-       * <code>optional uint64 time = 2;</code>
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
        */
-      public long getTime() {
-        return time_;
+      public java.util.List<SeenInfo> getSeenInfoList() {
+        return seenInfo_;
       }
       /**
-       * <code>optional uint64 time = 2;</code>
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
        */
-      private void setTime(long value) {
-        
-        time_ = value;
+      public java.util.List<? extends SeenInfoOrBuilder>
+          getSeenInfoOrBuilderList() {
+        return seenInfo_;
       }
       /**
-       * <code>optional uint64 time = 2;</code>
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
        */
-      private void clearTime() {
-        
-        time_ = 0L;
+      public int getSeenInfoCount() {
+        return seenInfo_.size();
+      }
+      /**
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+       */
+      public SeenInfo getSeenInfo(int index) {
+        return seenInfo_.get(index);
+      }
+      /**
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+       */
+      public SeenInfoOrBuilder getSeenInfoOrBuilder(
+          int index) {
+        return seenInfo_.get(index);
+      }
+      private void ensureSeenInfoIsMutable() {
+        if (!seenInfo_.isModifiable()) {
+          seenInfo_ =
+              com.google.protobuf.GeneratedMessageLite.mutableCopy(seenInfo_);
+         }
+      }
+
+      /**
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+       */
+      private void setSeenInfo(
+          int index, SeenInfo value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureSeenInfoIsMutable();
+        seenInfo_.set(index, value);
+      }
+      /**
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+       */
+      private void setSeenInfo(
+          int index, SeenInfo.Builder builderForValue) {
+        ensureSeenInfoIsMutable();
+        seenInfo_.set(index, builderForValue.build());
+      }
+      /**
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+       */
+      private void addSeenInfo(SeenInfo value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureSeenInfoIsMutable();
+        seenInfo_.add(value);
+      }
+      /**
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+       */
+      private void addSeenInfo(
+          int index, SeenInfo value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureSeenInfoIsMutable();
+        seenInfo_.add(index, value);
+      }
+      /**
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+       */
+      private void addSeenInfo(
+          SeenInfo.Builder builderForValue) {
+        ensureSeenInfoIsMutable();
+        seenInfo_.add(builderForValue.build());
+      }
+      /**
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+       */
+      private void addSeenInfo(
+          int index, SeenInfo.Builder builderForValue) {
+        ensureSeenInfoIsMutable();
+        seenInfo_.add(index, builderForValue.build());
+      }
+      /**
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+       */
+      private void addAllSeenInfo(
+          Iterable<? extends SeenInfo> values) {
+        ensureSeenInfoIsMutable();
+        com.google.protobuf.AbstractMessageLite.addAll(
+            values, seenInfo_);
+      }
+      /**
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+       */
+      private void clearSeenInfo() {
+        seenInfo_ = emptyProtobufList();
+      }
+      /**
+       * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+       */
+      private void removeSeenInfo(int index) {
+        ensureSeenInfoIsMutable();
+        seenInfo_.remove(index);
       }
 
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        if (srcId_ != 0) {
-          output.writeUInt32(1, srcId_);
-        }
-        if (time_ != 0L) {
-          output.writeUInt64(2, time_);
+        for (int i = 0; i < seenInfo_.size(); i++) {
+          output.writeMessage(1, seenInfo_.get(i));
         }
       }
 
@@ -17419,13 +17923,9 @@ public final class Test {
         if (size != -1) return size;
 
         size = 0;
-        if (srcId_ != 0) {
+        for (int i = 0; i < seenInfo_.size(); i++) {
           size += com.google.protobuf.CodedOutputStream
-            .computeUInt32Size(1, srcId_);
-        }
-        if (time_ != 0L) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeUInt64Size(2, time_);
+            .computeMessageSize(1, seenInfo_.get(i));
         }
         memoizedSerializedSize = size;
         return size;
@@ -17518,48 +18018,99 @@ public final class Test {
 
 
         /**
-         * <code>optional uint32 src_id = 1;</code>
+         * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
          */
-        public int getSrcId() {
-          return instance.getSrcId();
+        public java.util.List<SeenInfo> getSeenInfoList() {
+          return java.util.Collections.unmodifiableList(
+              instance.getSeenInfoList());
         }
         /**
-         * <code>optional uint32 src_id = 1;</code>
+         * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
          */
-        public Builder setSrcId(int value) {
+        public int getSeenInfoCount() {
+          return instance.getSeenInfoCount();
+        }/**
+         * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+         */
+        public SeenInfo getSeenInfo(int index) {
+          return instance.getSeenInfo(index);
+        }
+        /**
+         * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+         */
+        public Builder setSeenInfo(
+            int index, SeenInfo value) {
           copyOnWrite();
-          instance.setSrcId(value);
+          instance.setSeenInfo(index, value);
           return this;
         }
         /**
-         * <code>optional uint32 src_id = 1;</code>
+         * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
          */
-        public Builder clearSrcId() {
+        public Builder setSeenInfo(
+            int index, SeenInfo.Builder builderForValue) {
           copyOnWrite();
-          instance.clearSrcId();
-          return this;
-        }
-
-        /**
-         * <code>optional uint64 time = 2;</code>
-         */
-        public long getTime() {
-          return instance.getTime();
-        }
-        /**
-         * <code>optional uint64 time = 2;</code>
-         */
-        public Builder setTime(long value) {
-          copyOnWrite();
-          instance.setTime(value);
+          instance.setSeenInfo(index, builderForValue);
           return this;
         }
         /**
-         * <code>optional uint64 time = 2;</code>
+         * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
          */
-        public Builder clearTime() {
+        public Builder addSeenInfo(SeenInfo value) {
           copyOnWrite();
-          instance.clearTime();
+          instance.addSeenInfo(value);
+          return this;
+        }
+        /**
+         * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+         */
+        public Builder addSeenInfo(
+            int index, SeenInfo value) {
+          copyOnWrite();
+          instance.addSeenInfo(index, value);
+          return this;
+        }
+        /**
+         * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+         */
+        public Builder addSeenInfo(
+            SeenInfo.Builder builderForValue) {
+          copyOnWrite();
+          instance.addSeenInfo(builderForValue);
+          return this;
+        }
+        /**
+         * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+         */
+        public Builder addSeenInfo(
+            int index, SeenInfo.Builder builderForValue) {
+          copyOnWrite();
+          instance.addSeenInfo(index, builderForValue);
+          return this;
+        }
+        /**
+         * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+         */
+        public Builder addAllSeenInfo(
+            Iterable<? extends SeenInfo> values) {
+          copyOnWrite();
+          instance.addAllSeenInfo(values);
+          return this;
+        }
+        /**
+         * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+         */
+        public Builder clearSeenInfo() {
+          copyOnWrite();
+          instance.clearSeenInfo();
+          return this;
+        }
+        /**
+         * <code>repeated .Seen.ServerToB.SeenInfo seen_info = 1;</code>
+         */
+        public Builder removeSeenInfo(int index) {
+          copyOnWrite();
+          instance.removeSeenInfo(index);
           return this;
         }
 
@@ -17576,6 +18127,7 @@ public final class Test {
             return DEFAULT_INSTANCE;
           }
           case MAKE_IMMUTABLE: {
+            seenInfo_.makeImmutable();
             return null;
           }
           case NEW_BUILDER: {
@@ -17584,10 +18136,7 @@ public final class Test {
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
             ServerToB other = (ServerToB) arg1;
-            srcId_ = visitor.visitInt(srcId_ != 0, srcId_,
-                other.srcId_ != 0, other.srcId_);
-            time_ = visitor.visitLong(time_ != 0L, time_,
-                other.time_ != 0L, other.time_);
+            seenInfo_= visitor.visitList(seenInfo_, other.seenInfo_);
             if (visitor == MergeFromVisitor
                 .INSTANCE) {
             }
@@ -17612,14 +18161,13 @@ public final class Test {
                     }
                     break;
                   }
-                  case 8: {
-
-                    srcId_ = input.readUInt32();
-                    break;
-                  }
-                  case 16: {
-
-                    time_ = input.readUInt64();
+                  case 10: {
+                    if (!seenInfo_.isModifiable()) {
+                      seenInfo_ =
+                          com.google.protobuf.GeneratedMessageLite.mutableCopy(seenInfo_);
+                    }
+                    seenInfo_.add(
+                        input.readMessage(SeenInfo.parser(), extensionRegistry));
                     break;
                   }
                 }
@@ -17954,6 +18502,10 @@ public final class Test {
        * <code>UNKNOWN_SEEN_ERR = 17;</code>
        */
       UNKNOWN_SEEN_ERR(17),
+      /**
+       * <code>UNKNOWN_DEL_ERR = 18;</code>
+       */
+      UNKNOWN_DEL_ERR(18),
       UNRECOGNIZED(-1),
       ;
 
@@ -18029,6 +18581,10 @@ public final class Test {
        * <code>UNKNOWN_SEEN_ERR = 17;</code>
        */
       public static final int UNKNOWN_SEEN_ERR_VALUE = 17;
+      /**
+       * <code>UNKNOWN_DEL_ERR = 18;</code>
+       */
+      public static final int UNKNOWN_DEL_ERR_VALUE = 18;
 
 
       public final int getNumber() {
@@ -18063,6 +18619,7 @@ public final class Test {
           case 15: return UNKNOWN_CHANGE_ERR;
           case 16: return UNKNOWN_ADD_REQ_ERR;
           case 17: return UNKNOWN_SEEN_ERR;
+          case 18: return UNKNOWN_DEL_ERR;
           default: return null;
         }
       }

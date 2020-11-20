@@ -17,6 +17,9 @@ public interface FriendDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertFriend(Friend... friends);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertAllFriend(List<Friend> friends);
+
     @Delete
     void deleteFriend(Friend... friends);
 

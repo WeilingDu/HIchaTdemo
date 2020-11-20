@@ -33,6 +33,7 @@ import com.example.hichatclient.data.entity.User;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Map;
 
 
 public class LogInFragment extends Fragment {
@@ -45,6 +46,9 @@ public class LogInFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private ApplicationUtil applicationUtil;
     private Socket socket;
+    private String isLogIn;
+    private User user;
+
 
 
 
@@ -109,10 +113,17 @@ public class LogInFragment extends Fragment {
                 final String userID = editTextUserID.getText().toString().trim();
                 String userPassword = editTextUserPassword.getText().toString().trim();
                 try {
-                    final User user;
-                    user = logInViewModel.sendIDAndPassword(userID, userPassword, socket);
+                    Map<Integer, User> map = logInViewModel.sendIDAndPassword(userID, userPassword, socket);
+
+                    for(Integer key:map.keySet()){
+                        isLogIn = key.toString();
+                        if (!isLogIn.equals("0")){
+                            user = map.get(key);
+                        }
+                    }
+//                    System.out.println("isLogIn" + isLogIn);
                     //user = logInViewModel.sendIDAndPasswordTest(userID, userPassword); // 用于本地测试
-                    if (user == null) {
+                    if (isLogIn.equals("0")) {
                         activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -141,24 +152,10 @@ public class LogInFragment extends Fragment {
                         applicationUtil.setUserShortToken(user.getUserShortToken());
                         applicationUtil.setUserLongToken(user.getUserLongToken());
 
-                        // 从服务器获取好友列表并存入数据库中
-                        new Thread(new Runnable(){
-                            @Override
-                            public void run() {
-                                try {
-                                    logInViewModel.getUserFriendsFromServer(user.getUserID(), user.getUserShortToken(), socket);
-                                    System.out.println("logInFragment: " + user.getUserID() + user.getUserShortToken());
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }).start();
-
-
-
                         // 跳转至BaseActivity的MeFragment
                         Intent intent = new Intent();
                         intent.setClass(activity, BaseActivity.class);
+                        intent.putExtra("isLogIn", isLogIn);
                         startActivity(intent);
                     }
                 } catch (InterruptedException e) {

@@ -13,22 +13,22 @@ import com.example.hichatclient.dataResource.UserRepository;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Map;
 
 
 public class LogInViewModel extends AndroidViewModel {
     private UserRepository userRepository;
-    private FriendsRepository friendsRepository;
+
 
 
     public LogInViewModel(@NonNull Application application){
         super(application);
         userRepository = new UserRepository(application);
-        friendsRepository = new FriendsRepository(application);
     }
 
 
 
-    public User sendIDAndPassword(String userID, String userPassword, Socket socket) throws InterruptedException {
+    public Map<Integer,User> sendIDAndPassword(String userID, String userPassword, Socket socket) throws InterruptedException {
         return userRepository.sendIDAndLogIn(userID, userPassword, socket);
     }
 
@@ -36,9 +36,6 @@ public class LogInViewModel extends AndroidViewModel {
         userRepository.insertUser(user);
     }
 
-    public void getUserFriendsFromServer(String userID, String userShortToken, Socket socket) throws IOException {
-        friendsRepository.getUserFriendsFromServer(userID, userShortToken, socket);
-    }
 
     // 用于本地测试
     public User sendIDAndPasswordTest(String userID, String userPassword) {

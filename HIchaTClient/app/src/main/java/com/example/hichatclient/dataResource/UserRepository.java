@@ -4,6 +4,14 @@ import android.content.Context;
 
 import com.example.hichatclient.Test;
 import com.example.hichatclient.data.ChatDatabase;
+import com.example.hichatclient.data.dao.ChattingContentDao;
+import com.example.hichatclient.data.dao.FriendDao;
+import com.example.hichatclient.data.dao.MeToOthersDao;
+import com.example.hichatclient.data.dao.OthersToMeDao;
+import com.example.hichatclient.data.entity.ChattingContent;
+import com.example.hichatclient.data.entity.Friend;
+import com.example.hichatclient.data.entity.MeToOthers;
+import com.example.hichatclient.data.entity.OthersToMe;
 import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.data.dao.UserDao;
 import com.google.protobuf.ByteString;
@@ -13,13 +21,25 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class UserRepository {
     private UserDao userDao;
+    private FriendDao friendDao;
+    private MeToOthersDao meToOthersDao;
+    private OthersToMeDao othersToMeDao;
+    private ChattingContentDao chattingContentDao;
 
     public UserRepository(Context context) {
         ChatDatabase chatDatabase = ChatDatabase.getDatabase(context.getApplicationContext());
         userDao = chatDatabase.getUserDao();
+        friendDao = chatDatabase.getFriendDao();
+        meToOthersDao = chatDatabase.getMeToOthersDao();
+        othersToMeDao = chatDatabase.getOthersToMeDao();
+        chattingContentDao = chatDatabase.getChattingContentDao();
     }
 
     public static final int PACKET_HEAD_LENGTH = 4;//从服务器接收的数据包头长度
@@ -38,6 +58,20 @@ public class UserRepository {
 
 
 
+    public void insertLogInMsg(List<Friend> friends, List<MeToOthers> meToOthers, List<OthersToMe> othersToMes, List<ChattingContent> chattingContents){
+        if (!friends.isEmpty()){
+            new insertFriendsTread(friendDao, friends).start();
+        }
+        if (!meToOthers.isEmpty()){
+            new updateMeToOtherThread(meToOthersDao, meToOthers).start();
+        }
+        if (!othersToMes.isEmpty()){
+            new updateOthersToMeThread(othersToMeDao, othersToMes).start();
+        }
+        if (!chattingContents.isEmpty()){
+            new insertMessageThread(chattingContentDao, chattingContents).start();
+        }
+    }
 
     // 登录（用于本地测试）
     public User sendIDAndLogInTest(String userID, String userPassword){
@@ -50,25 +84,35 @@ public class UserRepository {
         }
     }
     // 登录
-    public User sendIDAndLogIn(String userID, String userPassword, Socket socket) throws InterruptedException {
+    public Map<Integer,User> sendIDAndLogIn(String userID, String userPassword, Socket socket) throws InterruptedException {
+        Map<Integer, User> map = new HashMap<>();
         SendIDAndLogInThread sendIDAndLogInThread = new SendIDAndLogInThread(userID, userPassword, socket);
         sendIDAndLogInThread.start();
         sendIDAndLogInThread.join();
         System.out.println(sendIDAndLogInThread.user);
-        return sendIDAndLogInThread.user;
+        map.put(sendIDAndLogInThread.isLogIn, sendIDAndLogInThread.user);
+        insertLogInMsg(sendIDAndLogInThread.friends, sendIDAndLogInThread.meToOthers, sendIDAndLogInThread.othersToMes, sendIDAndLogInThread.chattingContents);
+        return map;
     }
     static class SendIDAndLogInThread extends Thread {
         private String userID;
         private String userPassword;
-        private User user;
         private Socket socket;
+        private List<OthersToMe> othersToMes;
+        private List<MeToOthers> meToOthers;
+        private List<ChattingContent> chattingContents;
+        private List<String> deleteFriends;
+        private List<Friend> friends;
+
+
+        private User user;  // 0: user=null; 1: user=user信息; 2: user=null
+        private Integer isLogIn;  // 0: 登录失败；1: 登录成功且获取了全部信息；2: 登录成功但是没有获取FriendList
 
 
         public SendIDAndLogInThread(String userID, String userPassword, Socket socket){
             this.userID = userID;
             this.userPassword = userPassword;
             this.socket = socket;
-
         }
 
         @Override
@@ -82,6 +126,15 @@ public class UserRepository {
             String longToken = null;
             int ip = 0;
             int port = 0;
+
+
+            List<OthersToMe> othersToMes = new ArrayList<> ();
+            List<MeToOthers> meToOthers = new ArrayList<>();
+            List<ChattingContent> chattingContents = new ArrayList<>();
+            List<String> deleteFriends = new ArrayList<>();
+            List<String> seenFriendID = new ArrayList<>();
+            List <String> seenTime = new ArrayList<>();
+            List<Friend> friends = new ArrayList<>();
 
 
             System.out.println(socket.isConnected());
@@ -122,27 +175,30 @@ public class UserRepository {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            //**********接收"是否登录成功"***********
+            // **********接收"是否登录成功"***********
+            int errorFlag = 0;
             byte[] bytes = new byte[0];
             while(socket.isConnected()){
                 InputStream is = null;
                 try {
+                    socket.setSoTimeout(1000);//  0.5秒就退出read()方法的阻塞
                     is = socket.getInputStream();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
                 if (bytes.length < PACKET_HEAD_LENGTH) {
                     byte[] head = new byte[PACKET_HEAD_LENGTH - bytes.length];
                     int couter = 0;
+                    System.out.println(bytes.length);
                     try {
                         couter = is.read(head);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    if (couter < 0) {
-                        continue;
+                    System.out.println(PACKET_HEAD_LENGTH);
+                    if (couter <= 0) {
+                        errorFlag++;
+                        break;//continue;
                     }
                     bytes = mergebyte(bytes, head, 0, couter);
                     if (couter < PACKET_HEAD_LENGTH) {
@@ -166,17 +222,19 @@ public class UserRepository {
                     }
                     int couter = 0;
                     try {
-                        couter = is.read(body);
+                        couter = is.read(body,0,body.length);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    if (couter < 0) {
-                        continue;
+                    if (couter <= 0) {
+                        errorFlag++;
+                        break;//continue;
                     }
                     bytes = mergebyte(bytes, body, 0, couter);
-                    if (couter < bodylength + PACKET_HEAD_LENGTH - bytes.length) {
-                        continue;
-                    }
+                    continue;
+//                    if (couter < bodylength + PACKET_HEAD_LENGTH - bytes.length) {
+//                        continue;
+//                    }
                 }
                 byte[] body = new byte[0];
                 body = mergebyte(body, bytes, PACKET_HEAD_LENGTH, bytes.length);
@@ -188,9 +246,11 @@ public class UserRepository {
                     e.printStackTrace();
                 }
                 Test.RspToClient.RspCase type = response.getRspCase();
+                int num;  //接收列表计数
                 switch (type){
                     case LOGIN_RES:
-                        isLogIn = 1;
+                        isLogIn = 2;
+                        errorFlag++;
                         userName = response.getLoginRes().getName();
 //                picBytes = response.getLoginRes().getHeadpic().toByteArray();
 //                if (picBytes.length != 0) {
@@ -201,14 +261,82 @@ public class UserRepository {
                         shortToken = response.getLoginRes().getShortToken();
                         longToken = response.getLoginRes().getLongToken();
                         break;
+                    case ADD_FRIEND_FROM_OTHER_RSP:
+                        num = response.getAddFriendFromOtherRsp().getUserCount();
+                        for(int i = 0;i < num; i++){
+                            Test.People reqOtheri = response.getAddFriendFromOtherRsp().getUser(i);
+                            OthersToMe othersToMe = new OthersToMe(userID,Integer.toString(reqOtheri.getId()),reqOtheri.getName(),"reqi.getHeadpic()","wait");
+                            othersToMes.add(othersToMe);
+                        }
+                        break;
+                    case ADD_FRIEND_FROM_SELF_RSP:
+                        num = response.getAddFriendFromSelfRsp().getRequestsCount();
+                        for(int i = 0; i < num; i++){
+                            Test.AddFriendFromSelf.Rsp.RequestFromSelf reqMei = response.getAddFriendFromSelfRsp().getRequests(i);
+                            if(reqMei.getStatus().toString().equals("00")){
+                                MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),"reqi.getObjUser().getHeadpic()","wait");
+                                meToOthers.add(meToOther);
+                            }
+                            else if((reqMei.getStatus().toString().equals("01"))){
+                                MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),"reqi.getObjUser().getHeadpic()","agree");
+                                meToOthers.add(meToOther);
+                            }
+                            else if((reqMei.getStatus().toString().equals("10"))){
+                                MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),"reqi.getObjUser().getHeadpic()","refuse");
+                                meToOthers.add(meToOther);
+                            }
+                        }
+                        break;
+                    case UNRECEIVED_MSG_RES:
+                        num = response.getUnreceivedMsgRes().getMsgCount();
+                        for(int i = 0; i < num; i++){
+                            Test.UnreceivedMsg.Res.Msg unreceivedMsgi = response.getUnreceivedMsgRes().getMsg(i);
+                            ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(unreceivedMsgi.getOtherId()),"receive",Long.toString(unreceivedMsgi.getTime()),unreceivedMsgi.getContent());
+                            chattingContents.add(chattingContent);
+                        }
+                        break;
+                    case SEEN_SERVER_TO_B:
+                        num = response.getSeenServerToB().getSeenInfoCount();
+                        for(int i = 0; i < num; i++){
+                            Test.Seen.ServerToB.SeenInfo seenInfoi = response.getSeenServerToB().getSeenInfo(i);
+                            seenFriendID.add(Integer.toString(seenInfoi.getSrcId()));
+                            seenTime.add(Long.toString(seenInfoi.getTime()));
+                        }
+                        break;
+                    case DELETE_FRIEND_SERVER_TO_B:
+                        num = response.getDeleteFriendServerToB().getSrcIdCount();
+                        for(int i = 0; i < num; i++){
+                            deleteFriends.add(Integer.toString(response.getDeleteFriendServerToB().getSrcId(i)));
+                        }
+                        break;
+                    case FRIENDLIST_RES:
+                        isLogIn = 1;
+                        num = response.getFriendlistRes().getFriendListCount();
+                        for(int i = 0; i < num; i++)
+                        {
+                            Test.People friendi = response.getFriendlistRes().getFriendList(i);
+                            Friend friend = new Friend(userID, Integer.toString(friendi.getId()), friendi.getName(), "123", "123", "123", null, false);
+                            friends.add(friend);
+                        }
+                        break;
                     case ERROR:
-                        isLogIn = 0;
+                        if (response.getError().getErrorType() == Test.Error.Error_type.ID_OR_PSW_WRONG) {
+                            isLogIn = 0;
+                        } else {
+                            isLogIn = 2;
+                        }
                         System.out.println("Fail!!!!");
                         break;
                 }
-                break;
+                if(type == Test.RspToClient.RspCase.FRIENDLIST_RES){
+                    isLogIn = 1;
+                    break;
+                }
             }
 
+            if(errorFlag == 2){
+                isLogIn = 2;
+            }
 
             if (isLogIn == 1){
                 User user = new User(userID, userPassword, userName, "111", shortToken, longToken);
@@ -218,6 +346,80 @@ public class UserRepository {
                 this.user = null;
             }
 
+            this.isLogIn = isLogIn;
+            this.othersToMes = othersToMes;
+            this.meToOthers = meToOthers;
+            this.chattingContents = chattingContents;
+            this.deleteFriends = deleteFriends;
+            this.friends = friends;
+
+        }
+    }
+
+
+
+    static class insertFriendsTread extends Thread {
+        FriendDao friendDao;
+        List<Friend> friends;
+
+        public insertFriendsTread(FriendDao friendDao, List<Friend> friends){
+            this.friendDao = friendDao;
+            this.friends = friends;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            friendDao.insertAllFriend(friends);
+
+        }
+    }
+
+    static class updateMeToOtherThread extends Thread{
+        MeToOthersDao meToOthersDao;
+        List<MeToOthers> meToOthers;
+
+        public updateMeToOtherThread(MeToOthersDao meToOthersDao, List<MeToOthers> meToOthers){
+            this.meToOthersDao = meToOthersDao;
+            this.meToOthers = meToOthers;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            meToOthersDao.insertAllMeToOthers(meToOthers);
+        }
+    }
+
+    static class updateOthersToMeThread extends Thread{
+        OthersToMeDao othersToMeDao;
+        List<OthersToMe> othersToMes;
+
+        public updateOthersToMeThread(OthersToMeDao othersToMeDao, List<OthersToMe> othersToMes){
+            this.othersToMeDao = othersToMeDao;
+            this.othersToMes = othersToMes;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            othersToMeDao.insertAllOthersToMe(othersToMes);
+        }
+    }
+
+    static class insertMessageThread extends Thread{
+        ChattingContentDao chattingContentDao;
+        List<ChattingContent> chattingContent;
+
+        public insertMessageThread(ChattingContentDao chattingContentDao, List<ChattingContent> chattingContent) {
+            this.chattingContentDao = chattingContentDao;
+            this.chattingContent = chattingContent;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            chattingContentDao.insertAllContent(chattingContent);
         }
     }
 

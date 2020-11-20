@@ -166,21 +166,31 @@ public class ChatService extends LifecycleService {
 //        this.chattingContentDao = chatDatabase.getChattingContentDao();
         //this.friendDao = chatDatabase.getFriendDao();
 
-        System.out.println("hello world!");
+        System.out.println("hello world 1!");
         this.setSocket(applicationUtil.getSocketDynamic());
-        new Thread(new Runnable() {
+        Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-//                    testInsert();
-                    senHeartbeatToServer();
-                    getMessagesFromServer();
-                    System.out.println("hello world!");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                senHeartbeatToServer();
+                Timer t = new Timer();
+                t.scheduleAtFixedRate(new TimerTask() {
+                    @Override
+                    public void run() {
+                        System.out.println("hello world 2!");
+                    }
+                }, 1000, 1000);
+
+//                try {
+////                    testInsert();
+//                    senHeartbeatToServer();
+//                    getMessagesFromServer();
+//                    System.out.println("hello world!");
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
             }
-        }).start();
+        });
+        t.start();
     }
 
     @Override

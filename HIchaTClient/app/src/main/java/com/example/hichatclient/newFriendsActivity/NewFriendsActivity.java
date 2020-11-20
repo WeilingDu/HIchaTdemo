@@ -80,6 +80,8 @@ public class NewFriendsActivity extends AppCompatActivity {
             }
         });
 
+
+
         // bind to service
         Intent bindIntent = new Intent(this, ChatService.class);
         ServiceConnection serviceConnection = new ServiceConnection() {

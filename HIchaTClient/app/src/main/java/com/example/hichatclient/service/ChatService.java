@@ -162,7 +162,9 @@ public class ChatService extends LifecycleService {
     public void onCreate() {
         super.onCreate();
         this.setApplicationUtil((ApplicationUtil)getApplication());
-//        ChatDatabase chatDatabase = ChatDatabase.getDatabase(this.getApplicationContext());
+        setUserShortToken(applicationUtil.getUserShortToken());
+        System.out.println("ChatService: " + userShortToken);
+        ChatDatabase chatDatabase = ChatDatabase.getDatabase(this.getApplicationContext());
 //        this.chattingContentDao = chatDatabase.getChattingContentDao();
         //this.friendDao = chatDatabase.getFriendDao();
 
@@ -171,23 +173,25 @@ public class ChatService extends LifecycleService {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                senHeartbeatToServer();
-                Timer t = new Timer();
-                t.scheduleAtFixedRate(new TimerTask() {
-                    @Override
-                    public void run() {
-                        System.out.println("hello world 2!");
-                    }
-                }, 1000, 1000);
+                // ****** test *******
+//                senHeartbeatToServer();
+//                Timer t = new Timer();
+//                t.scheduleAtFixedRate(new TimerTask() {
+//                    @Override
+//                    public void run() {
+//                        System.out.println("hello world 2!");
+//                    }
+//                }, 1000, 1000);
 
-//                try {
-////                    testInsert();
-//                    senHeartbeatToServer();
-//                    getMessagesFromServer();
-//                    System.out.println("hello world!");
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
+                // ******* 服务器 ******
+                try {
+//                    testInsert();
+                    senHeartbeatToServer();
+                    getMessagesFromServer();
+                    System.out.println("hello world 2!");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         t.start();
@@ -228,6 +232,8 @@ public class ChatService extends LifecycleService {
 //        friendDao.insertFriend(friend1);
 //        friendDao.insertFriend(friend2);
     }
+
+
 
     //发送心跳
     public void senHeartbeatToServer(){
@@ -389,9 +395,10 @@ public class ChatService extends LifecycleService {
         for(int i = 0;i < num; i++){
             Test.People reqi = addFriendFromOtherRsp.getUser(i);
             OthersToMe othersToMe = new OthersToMe(userID,Integer.toString(reqi.getId()),reqi.getName(),"reqi.getHeadpic()","wait");
+            System.out.println(reqi.getId() + reqi.getName());
             othersToMesNew.add(othersToMe);
         }
-        othersToMeFlag.setValue(1);
+//        othersToMeFlag.setValue(1);
     }
 
     //监听自己给别人发送的好友请求的状态
@@ -413,7 +420,7 @@ public class ChatService extends LifecycleService {
                 meToOthersNew.add(meToOthers);
             }
         }
-        meToOthersFlag.setValue(1);
+//        meToOthersFlag.setValue(1);
     }
 
     //监听掉线/离线期间没有接收到的消息

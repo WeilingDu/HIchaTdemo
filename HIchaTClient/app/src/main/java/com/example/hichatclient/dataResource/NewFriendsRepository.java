@@ -124,6 +124,7 @@ public class NewFriendsRepository {
 
     // 向服务器提交对别人好友请求的回应
     public void othersToMeResponseToServer(String userShortToken, String objectID, boolean refuse, Socket socket) throws IOException {
+        System.out.println("NewFriendRepository");
         Test.AddFriend.BToServer.Builder othersToMeRsp = Test.AddFriend.BToServer.newBuilder();
         othersToMeRsp.setAId(Integer.parseInt(objectID));
         othersToMeRsp.setBShortToken(userShortToken);

@@ -32,6 +32,7 @@ public class AddNewFriendActivity extends AppCompatActivity {
     private TextView textViewResultName;
     private Button buttonAddFriend;
 
+    private int flag;
 
 
     @Override
@@ -63,19 +64,32 @@ public class AddNewFriendActivity extends AppCompatActivity {
         buttonAddFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+                System.out.println("AddNewFriendActivity: click");
                 AlertDialog.Builder builder= new AlertDialog.Builder(AddNewFriendActivity.this);
                 builder.setTitle("您是否要向对方发送好友请求？");
                 builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         try {
-                            if (searchFriendViewModel.addFriend(resultID, userShortToken, socket) == 1){
+                            Thread t = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        flag = searchFriendViewModel.addFriend(resultID, userShortToken, socket);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                            t.start();
+                            t.join();
+                            if (flag == 1){
                                 Toast.makeText(v.getContext(), "好友请求已发送！", Toast.LENGTH_SHORT).show();
                                 // 当用户发送好友请求时，更新数据库中的MeToOthers信息
                                 MeToOthers meToOthers = new MeToOthers(userID, resultID, resultName, "null", "wait");
                                 searchFriendViewModel.updateMeToOthersSend(meToOthers);
                             }
-                        } catch (IOException e) {
+                        } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }
@@ -86,6 +100,8 @@ public class AddNewFriendActivity extends AppCompatActivity {
 
                     }
                 });
+                builder.create();
+                builder.show();
             }
         });
    }

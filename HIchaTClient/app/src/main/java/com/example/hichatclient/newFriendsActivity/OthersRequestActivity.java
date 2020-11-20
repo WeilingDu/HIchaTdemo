@@ -90,11 +90,11 @@ public class OthersRequestActivity extends AppCompatActivity {
         buttonAgree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Thread(new Runnable() {
+                Thread t = new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            System.out.println("call this function");
+                            System.out.println("OthersRequestActivity userShortToken: " + userShortToken);
                             othersRequestViewModel.othersToMeResponseToServer(userShortToken, objectID, false, socket);  // 告诉服务器用户的回应
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -102,6 +102,12 @@ public class OthersRequestActivity extends AppCompatActivity {
 
                     }
                 });
+                t.start();
+                try {
+                    t.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 othersToMe.setUserResponse("agree");
                 System.out.println("othersRequestActivity: " + othersToMe.getUserResponse());
                 othersRequestViewModel.updateOthersToMeResponse(othersToMe);  // 更新数据库中的OthersToMe信息

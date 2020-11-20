@@ -25,7 +25,6 @@ public class FriendInfoActivity extends AppCompatActivity {
     private FriendInfoViewModel friendInfoViewModel;
     private Socket socket;
 
-    private Friend friend;
 
 
     // UI控件
@@ -58,7 +57,9 @@ public class FriendInfoActivity extends AppCompatActivity {
 
         // 获取ContactsFragment传来的参数
         final String friendID = getIntent().getStringExtra("friendID");
+        System.out.println("FriendInfoActivity friendID: " + friendID);
 
+        Friend friend;
         friend = friendInfoViewModel.getFriendInfo(userID, friendID).getValue();
         textViewFriendID.setText(friendID);
         textViewFriendName.setText(friend.getFriendName());

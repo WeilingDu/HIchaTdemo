@@ -7,10 +7,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
@@ -28,6 +31,7 @@ public class SearchFriendActivity extends AppCompatActivity {
 
     private String userShortToken;
     private String userID;
+    private String searchID;
     private SearchResult searchResult;
 
 
@@ -55,13 +59,45 @@ public class SearchFriendActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
         userID = sharedPreferences.getString("userID", "fail");
 
-        final String searchID = editTextSearchID.getText().toString().trim();
+
+        buttonSearch.setEnabled(false);
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                searchID = editTextSearchID.getText().toString().trim();
+                buttonSearch.setEnabled(!searchID.isEmpty());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        };
+
+        editTextSearchID.addTextChangedListener(textWatcher);
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 try {
-                    searchResult = searchFriendViewModel.searchPeopleFromID(searchID, userShortToken, socket);
+                    Thread t = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                System.out.println("SearchFriendActivity searchID: " + searchID);
+                                searchResult = searchFriendViewModel.searchPeopleFromID(searchID, userShortToken, socket);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    t.start();
+                    t.join();
                     if (searchResult == null){
                         textViewSearchResult.setText(R.string.searchResultChinese);
                     } else {
@@ -72,7 +108,7 @@ public class SearchFriendActivity extends AppCompatActivity {
                         intent.putExtra("resultName", searchResult.getResultName());
                         startActivity(intent);
                     }
-                } catch (IOException e) {
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }

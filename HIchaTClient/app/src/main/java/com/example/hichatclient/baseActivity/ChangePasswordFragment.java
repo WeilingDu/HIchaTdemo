@@ -48,6 +48,7 @@ public class ChangePasswordFragment extends Fragment {
     private EditText editTextUserNewPassword;
     private EditText editTextUserNewPasswordCheck;
     private Button buttonChangePassword;
+    private int flag;
 
 
     public static ChangePasswordFragment newInstance() {
@@ -137,7 +138,19 @@ public class ChangePasswordFragment extends Fragment {
                             });
 
                         } else {
-                            int flag = changePasswordViewModel.updateUserPasswordToServer(userShortToken, userNewPassword, socket);
+                            Thread t = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        flag = changePasswordViewModel.updateUserPasswordToServer(userShortToken, userNewPassword, socket);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                            t.start();
+                            t.join();
+
                             if(flag == 1){
                                 User user;
                                 user = changePasswordViewModel.getUserInfoByUserID(userID);
@@ -156,7 +169,7 @@ public class ChangePasswordFragment extends Fragment {
                             }
                         }
                     }
-                } catch (InterruptedException | IOException e) {
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 

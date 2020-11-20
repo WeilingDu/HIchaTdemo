@@ -44,6 +44,7 @@ public class ChangeNameFragment extends Fragment {
     private ChangeNameViewModel changeNameViewModel;
     private ApplicationUtil applicationUtil;
     private Socket socket;
+    private int flag;
 
     public static ChangeNameFragment newInstance() {
         return new ChangeNameFragment();
@@ -99,7 +100,7 @@ public class ChangeNameFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 userNewName = editTextUserNewName.getText().toString().trim();
-                buttonChangeName.setEnabled(!userID.isEmpty());
+                buttonChangeName.setEnabled(!userNewName.isEmpty());
             }
 
             @Override
@@ -113,12 +114,24 @@ public class ChangeNameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 userNewName = editTextUserNewName.getText().toString().trim();
-                int flag = 0;  // 向服务器发送修改昵称请求
+                flag = 0;  // 向服务器发送修改昵称请求
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            flag = changeNameViewModel.updateUserNameToServer(userShortToken, userNewName, socket);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                t.start();
                 try {
-                    flag = changeNameViewModel.updateUserNameToServer(userShortToken, userNewName, socket);
-                } catch (IOException e) {
+                    t.join();
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                System.out.println("flag: " + flag);
                 if(flag == 1){
                     try {
                         User user;

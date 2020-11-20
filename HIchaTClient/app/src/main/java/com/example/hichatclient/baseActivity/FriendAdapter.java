@@ -58,6 +58,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
                 // 点击好友，跳转至好友信息界面（FriendInfoActivity）
                 Intent intent = new Intent(holder.itemView.getContext(), FriendInfoActivity.class);
                 intent.putExtra("friendID", friend.getFriendID());
+                System.out.println("FriendAdapter friendID: " + friend.getFriendID());
                 holder.itemView.getContext().startActivity(intent);
 
             }

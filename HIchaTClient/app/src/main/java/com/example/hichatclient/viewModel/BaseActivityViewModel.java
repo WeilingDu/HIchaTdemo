@@ -26,6 +26,9 @@ public class BaseActivityViewModel extends AndroidViewModel {
         friendsRepository.getUserFriendsFromServer(userID, userShortToken, socket);
     }
 
+    public void deleteFriendInSQL(String userID, String friendID){
+        friendsRepository.deleteFriendInSQL(userID, friendID);
+    }
 
 
 

@@ -54,10 +54,34 @@ public class BaseActivity extends AppCompatActivity {
 
         // 获取applicationUtil中的数据
         applicationUtil = (ApplicationUtil) this.getApplication();
+        if (!applicationUtil.staticIsConnected()) {
+            try {
+                applicationUtil.initSocketStatic();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         socket = applicationUtil.getSocketStatic();
         final String userShortToken = applicationUtil.getUserShortToken();
 
         String isLogIn = getIntent().getStringExtra("isLogIn");
+//        final String deleteId = getIntent().getStringExtra("deleteId");
+//        if (!deleteId.equals("-1")){
+//            Thread thread = new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    // 从本地数据库中删掉该好友
+//                    System.out.println("BaseActivity deleteFriendInSQL");
+//                    baseActivityViewModel.deleteFriendInSQL(userID, deleteId);
+//                }
+//            });
+//            thread.start();
+//            try {
+//                thread.join();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
 
         if (isLogIn.equals("2")){
              // 从服务器获取好友列表并存入数据库中
@@ -76,16 +100,4 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onResume() {
-//        String FragmentId = getIntent().getStringExtra("FragmentId");
-//        if (FragmentId.equals("1")){
-//            ContactsFragment fragment = new ContactsFragment();
-//            FragmentManager fragmentManager = getSupportFragmentManager();
-//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//            fragmentTransaction.replace(R.id.contactsFragment, fragment);
-//            fragmentTransaction.commit();
-//        }
-//        super.onResume();
-//    }
 }

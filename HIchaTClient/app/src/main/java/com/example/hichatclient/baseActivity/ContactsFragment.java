@@ -99,7 +99,6 @@ public class ContactsFragment extends Fragment {
         contactsViewModel.getUserFriendsFromSQL(userID).observe(activity, new Observer<List<Friend>>() {
             @Override
             public void onChanged(List<Friend> friends) {
-                System.out.println("ContactsFragment friends: " + friends.get(0).getFriendID());
                 friendAdapter.setAllFriends(friends);
                 friendAdapter.notifyDataSetChanged();
 

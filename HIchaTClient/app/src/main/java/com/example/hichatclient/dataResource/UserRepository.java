@@ -87,6 +87,8 @@ public class UserRepository {
     public Map<Integer,User> sendIDAndLogIn(String userID, String userPassword, Socket socket) throws InterruptedException {
         Map<Integer, User> map = new HashMap<>();
         SendIDAndLogInThread sendIDAndLogInThread = new SendIDAndLogInThread(userID, userPassword, socket);
+        System.out.println("UserRepository userID: " + userID);
+        System.out.println("UserRepository userPassword: " + userPassword);
         sendIDAndLogInThread.start();
         sendIDAndLogInThread.join();
         System.out.println(sendIDAndLogInThread.user);
@@ -304,6 +306,7 @@ public class UserRepository {
                         }
                         break;
                     case DELETE_FRIEND_SERVER_TO_B:
+                        System.out.println("LogInFragment delete_friend_server_to_b");
                         num = response.getDeleteFriendServerToB().getSrcIdCount();
                         for(int i = 0; i < num; i++){
                             deleteFriends.add(Integer.toString(response.getDeleteFriendServerToB().getSrcId(i)));

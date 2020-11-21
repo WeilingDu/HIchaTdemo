@@ -30,7 +30,8 @@ public class FriendInfoActivity extends AppCompatActivity {
     private FriendInfoViewModel friendInfoViewModel;
     private String userShortToken;
     private Socket socket;
-    private Friend friend;
+    private String friendID;
+    private String userID;
 
 
 
@@ -55,15 +56,22 @@ public class FriendInfoActivity extends AppCompatActivity {
 
         // 获取applicationUtil中的数据
         applicationUtil = (ApplicationUtil) FriendInfoActivity.this.getApplication();
+        if (!applicationUtil.staticIsConnected()) {
+            try {
+                applicationUtil.initSocketStatic();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         socket = applicationUtil.getSocketStatic();
         userShortToken = applicationUtil.getUserShortToken();
 
         // 获取Share Preferences中的数据
         sharedPreferences = getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
-        final String userID = sharedPreferences.getString("userID", "fail");
+        userID = sharedPreferences.getString("userID", "fail");
 
         // 获取ContactsFragment传来的参数
-        final String friendID = getIntent().getStringExtra("friendID");
+        friendID = getIntent().getStringExtra("friendID");
         System.out.println("FriendInfoActivity friendID: " + friendID);
 
         textViewFriendID.setText(friendID);
@@ -75,6 +83,7 @@ public class FriendInfoActivity extends AppCompatActivity {
                 textViewFriendName.setText(friend.getFriendName());
             }
         });
+
 
         // 点击发信息，跳转和好友的聊天界面
         buttonSendMessage.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +110,7 @@ public class FriendInfoActivity extends AppCompatActivity {
                                     // 向服务器发送删好友请求
                                     friendInfoViewModel.deleteFriendToServer(friendID, userShortToken, socket);
 
+
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -112,25 +122,14 @@ public class FriendInfoActivity extends AppCompatActivity {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        Thread thread = new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                // 从本地数据库中删掉该好友
-                                friendInfoViewModel.deleteFriendInSQL(userID, friendID);
-                            }
-                        });
-                        thread.start();
-                        try {
-                            t.join();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+
                         Intent intent = new Intent();
                         intent.setClass(v.getContext(), BaseActivity.class);
+                        intent.putExtra("deleteId", friendID);
                         intent.putExtra("isLogIn", "-1");
                         intent.putExtra("FragmentId", "1");
+                        finish();
                         startActivity(intent);
-
                     }
                 });
                 builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -146,5 +145,23 @@ public class FriendInfoActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // 从本地数据库中删掉该好友
+                friendInfoViewModel.deleteFriendInSQL(userID, friendID);
+            }
+        });
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

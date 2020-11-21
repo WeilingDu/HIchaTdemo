@@ -113,6 +113,8 @@ public class LogInFragment extends Fragment {
                 final String userID = editTextUserID.getText().toString().trim();
                 String userPassword = editTextUserPassword.getText().toString().trim();
                 try {
+                    System.out.println("LogInFragment userID: " + userID);
+                    System.out.println("LogInFragment userPassword: " + userPassword);
                     Map<Integer, User> map = logInViewModel.sendIDAndPassword(userID, userPassword, socket);
 
                     for(Integer key:map.keySet()){
@@ -121,7 +123,6 @@ public class LogInFragment extends Fragment {
                             user = map.get(key);
                         }
                     }
-//                    System.out.println("isLogIn" + isLogIn);
                     //user = logInViewModel.sendIDAndPasswordTest(userID, userPassword); // 用于本地测试
                     if (isLogIn.equals("0")) {
                         activity.runOnUiThread(new Runnable() {
@@ -156,6 +157,7 @@ public class LogInFragment extends Fragment {
                         // 跳转至BaseActivity的MeFragment
                         Intent intent = new Intent();
                         intent.setClass(activity, BaseActivity.class);
+                        intent.putExtra("deleteId", "-1");
                         intent.putExtra("isLogIn", isLogIn);
                         intent.putExtra("FragmentId", "-1");
                         startActivity(intent);

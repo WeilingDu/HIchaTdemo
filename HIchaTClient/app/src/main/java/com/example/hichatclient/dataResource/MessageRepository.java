@@ -12,6 +12,8 @@ import com.example.hichatclient.data.entity.ChattingContent;
 import com.example.hichatclient.data.entity.ChattingFriend;
 import com.example.hichatclient.data.entity.Friend;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.util.List;
 
@@ -26,8 +28,29 @@ public class MessageRepository {
     }
 
     // 通过服务器发给好友消息
-    public boolean sendMessageToServer(ChattingContent chattingContent, String userShortToken, Socket socket) {
+    public boolean sendMessageToServer(ChattingContent chattingContent, String userShortToken, Socket socket) throws IOException {
         boolean flag = true;
+//        Test.ChatWithServer.Req.Builder chatWithServerReq = Test.ChatWithServer.Req.newBuilder();
+//        chatWithServerReq.setShortToken(userShortToken);
+//        chatWithServerReq.setObjId(Integer.parseInt(chattingContent.getFriendID()));
+//        chatWithServerReq.setTime(Long.parseLong(chattingContent.getMsgTime()));
+//        chatWithServerReq.setContent(chattingContent.getMsgContent());
+//
+//        Test.ReqToServer.Builder reqToServer = Test.ReqToServer.newBuilder();
+//        reqToServer.setChatWithServerReq(chatWithServerReq);
+//        byte[] request = reqToServer.build().toByteArray();
+//        byte[] len = new byte[4];
+//        for (int i = 0;  i < 4;  i++)
+//        {
+//            len[3-i] = (byte)((request.length >> (8 * i)) & 0xFF);
+//        }
+//        byte[] send_data = new byte[request.length + len.length];
+//        System.arraycopy(len, 0, send_data, 0, len.length);
+//        System.arraycopy(request, 0, send_data, len.length, request.length);
+//
+//        OutputStream outputStream = socket.getOutputStream();
+//        outputStream.write(send_data);
+//        outputStream.flush();
         return flag;
     }
 

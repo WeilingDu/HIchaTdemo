@@ -76,16 +76,16 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onResume() {
-        String FragmentId = getIntent().getStringExtra("FragmentId");
-        if (FragmentId.equals("1")){
-            ContactsFragment fragment = new ContactsFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.contactsFragment, fragment);
-            fragmentTransaction.commit();
-        }
-        super.onResume();
-    }
+//    @Override
+//    protected void onResume() {
+//        String FragmentId = getIntent().getStringExtra("FragmentId");
+//        if (FragmentId.equals("1")){
+//            ContactsFragment fragment = new ContactsFragment();
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//            fragmentTransaction.replace(R.id.contactsFragment, fragment);
+//            fragmentTransaction.commit();
+//        }
+//        super.onResume();
+//    }
 }

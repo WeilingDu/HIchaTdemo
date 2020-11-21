@@ -29,6 +29,7 @@ import com.example.hichatclient.newFriendsActivity.AddNewFriendActivity;
 import com.example.hichatclient.service.ChatService;
 import com.example.hichatclient.viewModel.ChatViewModel;
 
+import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,7 @@ public class ChatActivity extends AppCompatActivity {
     private List<ChattingContent> allMessage;
     private Friend friend;
     private User user;
+    private boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,8 +113,25 @@ public class ChatActivity extends AppCompatActivity {
                 String content = editTextSendMsg.getText().toString();
                 if(!"".equals(content)){
                     //如果字符串不为空，则创建ChattingContent对象
-                    ChattingContent msg = new ChattingContent(userID, friendID, "send", "1", content);
-                    if (chatViewModel.sendMessageToServer(msg, userShortToken, socket)){
+                    final ChattingContent msg = new ChattingContent(userID, friendID, "send", "1", content);
+                    flag = false;
+                    Thread t = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                flag = chatViewModel.sendMessageToServer(msg, userShortToken, socket);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    t.start();
+                    try {
+                        t.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    if (flag){
                         allMessage.add(msg);
                         chatViewModel.insertOneMessageIntoSQL(msg); // 将该消息插入数据库中
                         runOnUiThread(new Runnable() {

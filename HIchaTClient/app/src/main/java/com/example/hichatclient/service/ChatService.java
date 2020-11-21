@@ -155,7 +155,7 @@ public class ChatService extends LifecycleService {
         this.friendDao = chatDatabase.getFriendDao();
 
         System.out.println("hello world 1!");
-        this.setSocket(applicationUtil.getSocketDynamic());
+        setSocket(applicationUtil.getSocketDynamic());
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -174,7 +174,6 @@ public class ChatService extends LifecycleService {
 //                    testInsert();
                     senHeartbeatToServer();
                     getMessagesFromServer();
-                    System.out.println("hello world 2!");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -228,6 +227,7 @@ public class ChatService extends LifecycleService {
             @Override
             public void run() {
                 try {
+                    System.out.println("hello world 2!");
                     if (userShortToken != null){
                         if(updateShortTokenFlag == 1){
                             getNewShortToken();
@@ -305,6 +305,7 @@ public class ChatService extends LifecycleService {
                     chatMessage(response);
                     break;
                 case DELETE_FRIEND_SERVER_TO_B:
+                    System.out.println("ChatService: delete_friend_server_to_b");
                     beDeleted(response);
                     break;
                 case SEEN_SERVER_TO_B:
@@ -438,6 +439,7 @@ public class ChatService extends LifecycleService {
         int num = deleteFriendServerToB.getSrcIdCount();
         for(int i = 0; i < num; i++){
             String deleteMeId = Integer.toString(response.getDeleteFriendServerToB().getSrcId(i));
+            System.out.println("ChatService deleteMeId: " + deleteMeId);
             deleteMe.add(deleteMeId);
             friendDao.deleteOneFriend(userID, deleteMeId);
         }

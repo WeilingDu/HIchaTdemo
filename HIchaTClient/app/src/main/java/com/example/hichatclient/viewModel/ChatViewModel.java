@@ -14,6 +14,7 @@ import com.example.hichatclient.dataResource.FriendsRepository;
 import com.example.hichatclient.dataResource.MeRepository;
 import com.example.hichatclient.dataResource.MessageRepository;
 
+import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +50,7 @@ public class ChatViewModel extends AndroidViewModel {
         this.user = user;
     }
 
-    public boolean sendMessageToServer(ChattingContent chattingContent, String userShortToken, Socket socket){
+    public boolean sendMessageToServer(ChattingContent chattingContent, String userShortToken, Socket socket) throws IOException {
         return messageRepository.sendMessageToServer(chattingContent, userShortToken, socket);
     }
 

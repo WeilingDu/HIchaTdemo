@@ -93,8 +93,11 @@ public class ChatActivity extends AppCompatActivity {
         friend = chatViewModel.getFriendInfo(userID, friendID).getValue();
         user = chatViewModel.getUserInfoByUserID(userID).getValue();
 
-        
-
+        allMessage = chatViewModel.getAllMessageLive(userID, friendID).getValue();
+        if (allMessage != null){
+            System.out.println("ChatActivity: there are messages!!!");
+            messageAdapter.setAllMsg(allMessage);
+        }
 
 
         // 当数据库中的聊天记录有变化时

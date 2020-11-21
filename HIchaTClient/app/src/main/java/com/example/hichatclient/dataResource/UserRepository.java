@@ -296,6 +296,7 @@ public class UserRepository {
                         for(int i = 0; i < num; i++){
                             Test.UnreceivedMsg.Res.Msg unreceivedMsgi = response.getUnreceivedMsgRes().getMsg(i);
                             ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(unreceivedMsgi.getOtherId()),"receive",Long.toString(unreceivedMsgi.getTime()),unreceivedMsgi.getContent());
+                            System.out.println("LogInFragment content: " + chattingContent.getMsgContent());
                             chattingContents.add(chattingContent);
                         }
                         break;

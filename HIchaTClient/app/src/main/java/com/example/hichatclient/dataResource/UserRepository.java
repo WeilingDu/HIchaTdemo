@@ -249,6 +249,7 @@ public class UserRepository {
                 }
                 Test.RspToClient.RspCase type = response.getRspCase();
                 int num;  //接收列表计数
+                System.out.println("LogInFragment type: " + type);
                 switch (type){
                     case LOGIN_RES:
                         isLogIn = 2;
@@ -290,6 +291,7 @@ public class UserRepository {
                         }
                         break;
                     case UNRECEIVED_MSG_RES:
+                        System.out.println("LogInFragment unreceived_msg_res");
                         num = response.getUnreceivedMsgRes().getMsgCount();
                         for(int i = 0; i < num; i++){
                             Test.UnreceivedMsg.Res.Msg unreceivedMsgi = response.getUnreceivedMsgRes().getMsg(i);
@@ -318,7 +320,7 @@ public class UserRepository {
                         for(int i = 0; i < num; i++)
                         {
                             Test.People friendi = response.getFriendlistRes().getFriendList(i);
-                            Friend friend = new Friend(userID, Integer.toString(friendi.getId()), friendi.getName(), "123", "123", "123", null, false);
+                            Friend friend = new Friend(userID, Integer.toString(friendi.getId()), friendi.getName(), "123", "123", "123");
                             friends.add(friend);
                         }
                         break;

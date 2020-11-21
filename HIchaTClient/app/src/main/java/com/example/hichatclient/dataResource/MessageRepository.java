@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.hichatclient.Test;
 import com.example.hichatclient.data.ChatDatabase;
 import com.example.hichatclient.data.dao.ChattingContentDao;
 import com.example.hichatclient.data.dao.ChattingFriendDao;
@@ -30,36 +31,36 @@ public class MessageRepository {
     // 通过服务器发给好友消息
     public boolean sendMessageToServer(ChattingContent chattingContent, String userShortToken, Socket socket) throws IOException {
         boolean flag = true;
-//        Test.ChatWithServer.Req.Builder chatWithServerReq = Test.ChatWithServer.Req.newBuilder();
-//        chatWithServerReq.setShortToken(userShortToken);
-//        chatWithServerReq.setObjId(Integer.parseInt(chattingContent.getFriendID()));
-//        chatWithServerReq.setTime(Long.parseLong(chattingContent.getMsgTime()));
-//        chatWithServerReq.setContent(chattingContent.getMsgContent());
-//
-//        Test.ReqToServer.Builder reqToServer = Test.ReqToServer.newBuilder();
-//        reqToServer.setChatWithServerReq(chatWithServerReq);
-//        byte[] request = reqToServer.build().toByteArray();
-//        byte[] len = new byte[4];
-//        for (int i = 0;  i < 4;  i++)
-//        {
-//            len[3-i] = (byte)((request.length >> (8 * i)) & 0xFF);
-//        }
-//        byte[] send_data = new byte[request.length + len.length];
-//        System.arraycopy(len, 0, send_data, 0, len.length);
-//        System.arraycopy(request, 0, send_data, len.length, request.length);
-//
-//        OutputStream outputStream = socket.getOutputStream();
-//        outputStream.write(send_data);
-//        outputStream.flush();
+        System.out.println("MessageRepository userShortToken: " + userShortToken);
+        System.out.println("MessageRepository content: " + chattingContent.getMsgType() + chattingContent.getMsgContent());
+        Test.ChatWithServer.Req.Builder chatWithServerReq = Test.ChatWithServer.Req.newBuilder();
+        chatWithServerReq.setShortToken(userShortToken);
+        chatWithServerReq.setObjId(Integer.parseInt(chattingContent.getFriendID()));
+        chatWithServerReq.setTime(Long.parseLong(chattingContent.getMsgTime()));
+        chatWithServerReq.setContent(chattingContent.getMsgContent());
+
+        Test.ReqToServer.Builder reqToServer = Test.ReqToServer.newBuilder();
+        reqToServer.setChatWithServerReq(chatWithServerReq);
+        byte[] request = reqToServer.build().toByteArray();
+        byte[] len = new byte[4];
+        for (int i = 0;  i < 4;  i++)
+        {
+            len[3-i] = (byte)((request.length >> (8 * i)) & 0xFF);
+        }
+        byte[] send_data = new byte[request.length + len.length];
+        System.arraycopy(len, 0, send_data, 0, len.length);
+        System.arraycopy(request, 0, send_data, len.length, request.length);
+
+        OutputStream outputStream = socket.getOutputStream();
+        outputStream.write(send_data);
+        outputStream.flush();
         return flag;
     }
 
 
     // 从数据库中获取用户和某好友的聊天记录
     public LiveData<List<ChattingContent>> getChattingContentFromSQL(String userID, String friendID) {
-        LiveData<List<ChattingContent>> chattingContent;
-        chattingContent = chattingContentDao.findAllContent(userID, friendID);
-        return chattingContent;
+        return chattingContentDao.findAllContent(userID, friendID);
     }
 
     // 从数据库获取用户正在聊天的好友列表
@@ -90,7 +91,7 @@ public class MessageRepository {
 
     // 往数据库添加一条聊天信息
     public void insertOneMessageIntoSQL(ChattingContent chattingContent){
-        new insertOneMessageIntoSQLThread(chattingContentDao, chattingContent);
+        new insertOneMessageIntoSQLThread(chattingContentDao, chattingContent).start();
     }
 
     static class insertOneMessageIntoSQLThread extends Thread{

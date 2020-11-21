@@ -147,6 +147,7 @@ public class LogInFragment extends Fragment {
                         sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("userID", user.getUserID());
+                        editor.putString("deleteFlag", "false");
                         editor.apply();
 
                         // 将用户的tokens存到ApplicationUtil中作为全局变量
@@ -157,7 +158,6 @@ public class LogInFragment extends Fragment {
                         // 跳转至BaseActivity的MeFragment
                         Intent intent = new Intent();
                         intent.setClass(activity, BaseActivity.class);
-                        intent.putExtra("deleteId", "-1");
                         intent.putExtra("isLogIn", isLogIn);
                         intent.putExtra("FragmentId", "-1");
                         startActivity(intent);

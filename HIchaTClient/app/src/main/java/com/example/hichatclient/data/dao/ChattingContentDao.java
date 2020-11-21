@@ -12,10 +12,10 @@ import java.util.List;
 
 @Dao
 public interface ChattingContentDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     void insertContent(ChattingContent... chattingContents);
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     void insertAllContent(List<ChattingContent> chattingContents);
 
 

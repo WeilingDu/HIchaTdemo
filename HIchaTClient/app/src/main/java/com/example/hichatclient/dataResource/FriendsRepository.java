@@ -130,7 +130,7 @@ public class FriendsRepository {
                     {
                         System.out.println("num" + num);
                         Test.People friendi = response.getFriendlistRes().getFriendList(i);
-                        Friend friend = new Friend(userID, Integer.toString(friendi.getId()), friendi.getName(), "123", "123", "123", null, false);
+                        Friend friend = new Friend(userID, Integer.toString(friendi.getId()), friendi.getName(), "123", "123", "123");
                         friends.add(friend);
                     }
                     break;

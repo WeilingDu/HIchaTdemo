@@ -3,6 +3,8 @@ package com.example.hichatclient;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.lifecycle.LiveData;
+
 import java.io.IOException;
 import java.net.Socket;
 

@@ -32,6 +32,7 @@ public class FriendInfoActivity extends AppCompatActivity {
     private Socket socket;
     private String friendID;
     private String userID;
+    private String flag;
 
 
 
@@ -65,10 +66,12 @@ public class FriendInfoActivity extends AppCompatActivity {
         }
         socket = applicationUtil.getSocketStatic();
         userShortToken = applicationUtil.getUserShortToken();
+        System.out.println("FriendInfoActivity userShortToken: " + userShortToken);
 
         // 获取Share Preferences中的数据
         sharedPreferences = getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
         userID = sharedPreferences.getString("userID", "fail");
+        flag = sharedPreferences.getString("deleteFlag", "fail");
 
         // 获取ContactsFragment传来的参数
         friendID = getIntent().getStringExtra("friendID");
@@ -108,6 +111,7 @@ public class FriendInfoActivity extends AppCompatActivity {
                             public void run() {
                                 try {
                                     // 向服务器发送删好友请求
+                                    flag = "true";
                                     friendInfoViewModel.deleteFriendToServer(friendID, userShortToken, socket);
 
 
@@ -123,9 +127,12 @@ public class FriendInfoActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("deleteFlag", flag);
+                        editor.apply();
+
                         Intent intent = new Intent();
                         intent.setClass(v.getContext(), BaseActivity.class);
-                        intent.putExtra("deleteId", friendID);
                         intent.putExtra("isLogIn", "-1");
                         intent.putExtra("FragmentId", "1");
                         finish();
@@ -150,18 +157,21 @@ public class FriendInfoActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // 从本地数据库中删掉该好友
-                friendInfoViewModel.deleteFriendInSQL(userID, friendID);
+        if (flag.equals("true")){
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    // 从本地数据库中删掉该好友
+                    friendInfoViewModel.deleteFriendInSQL(userID, friendID);
+                }
+            });
+            thread.start();
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        });
-        thread.start();
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
+
 }

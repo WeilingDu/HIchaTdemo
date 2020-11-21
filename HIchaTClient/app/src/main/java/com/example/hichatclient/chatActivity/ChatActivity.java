@@ -49,7 +49,7 @@ public class ChatActivity extends AppCompatActivity {
     private MessageAdapter messageAdapter;
 
     // 用户和某好友的聊天信息
-    private List<ChattingContent> allMessage;
+    private List<ChattingContent> allMessage = new ArrayList<>();
     private Friend friend;
     private User user;
     private boolean flag;
@@ -77,6 +77,9 @@ public class ChatActivity extends AppCompatActivity {
         // 获取Share Preferences中的数据
         sharedPreferences = getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
         final String userID = sharedPreferences.getString("userID", "fail");
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("deleteFlag", "false");
+        editor.apply();
 
         // 接收FriendInfoActivity传来的参数
         final String friendID = getIntent().getStringExtra("friendID");
@@ -90,27 +93,26 @@ public class ChatActivity extends AppCompatActivity {
         friend = chatViewModel.getFriendInfo(userID, friendID).getValue();
         user = chatViewModel.getUserInfoByUserID(userID).getValue();
 
+        
 
-        // 刚点开与好友的聊天框时
-        allMessage = chatViewModel.getAllMessageLive(userID, friendID).getValue();
-        messageAdapter.setAllMsg(allMessage);
-        recyclerView.scrollToPosition(allMessage.size()-1);  // 将RecyclerView定位在最后一行
+
 
         // 当数据库中的聊天记录有变化时
         chatViewModel.getAllMessageLive(userID, friendID).observe(this, new Observer<List<ChattingContent>>() {
             @Override
             public void onChanged(List<ChattingContent> chattingContents) {
-                ChattingContent msg = chattingContents.get(chattingContents.size() - 1);
-                // 更新数据库中的ChattingFriend信息
-                ChattingFriend chattingFriend = new ChattingFriend(user.getUserID(), friend.getFriendID(), friend.getFriendName(), friend.getFriendProfile(), msg.getMsgContent(), msg.getMsgTime());
-                chatViewModel.updateChattingFriendIntoSQL(chattingFriend);
-                // 当收到好友的信息时
-                if (msg.getMsgType().equals("receive")){
-                    allMessage.add(msg);
-                    messageAdapter.notifyItemInserted(allMessage.size()-1);  // 当有新消息是刷新RecyclerView中的显示
-                    recyclerView.scrollToPosition(allMessage.size()-1);  // 将RecyclerView定位在最后一行
-                }
+                if (chattingContents.size() > 0){
+                    ChattingContent msg = chattingContents.get(chattingContents.size() - 1);
+                    // 更新数据库中的ChattingFriend信息
+//                    assert userID != null;
+//                    ChattingFriend chattingFriend = new ChattingFriend(userID, friend.getFriendID(), friend.getFriendName(), friend.getFriendProfile(), msg.getMsgContent(), msg.getMsgTime());
+//                    chatViewModel.updateChattingFriendIntoSQL(chattingFriend);
 
+                    messageAdapter.setAllMsg(chattingContents);
+                    messageAdapter.notifyDataSetChanged();
+                    recyclerView.scrollToPosition(chattingContents.size()-1);  // 将RecyclerView定位在最后一行
+
+                }
             }
         });
 
@@ -121,11 +123,12 @@ public class ChatActivity extends AppCompatActivity {
                 if(!"".equals(content)){
                     //如果字符串不为空，则创建ChattingContent对象
                     final ChattingContent msg = new ChattingContent(userID, friendID, "send", "1", content);
-                    flag = false;
+                    System.out.println("ChatActivity content: " + content);
                     Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             try {
+                                System.out.println("ChatActivity call this function");
                                 flag = chatViewModel.sendMessageToServer(msg, userShortToken, socket);
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -138,19 +141,11 @@ public class ChatActivity extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+                    System.out.println("ChatActivity flag: " + flag);
                     if (flag){
-                        allMessage.add(msg);
                         chatViewModel.insertOneMessageIntoSQL(msg); // 将该消息插入数据库中
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                messageAdapter.notifyItemInserted(allMessage.size()-1);  // 当有新消息是刷新RecyclerView中的显示
-                                recyclerView.scrollToPosition(allMessage.size()-1);  // 将RecyclerView定位在最后一行
-                                editTextSendMsg.setText("");  // 清空输入框的内容
-                                editTextSendMsg.requestFocus();  // 输入光标回到输入框中
-                            }
-                        });
-
+                        editTextSendMsg.setText("");  // 清空输入框的内容
+                        editTextSendMsg.requestFocus();  // 输入光标回到输入框中
                     } else {
                         Toast.makeText(v.getContext().getApplicationContext(), "发送失败！", Toast.LENGTH_SHORT).show();
                     }
@@ -161,19 +156,19 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
-    public void initMessage(){
-        allMessage = new ArrayList<>();
-        ChattingContent msg1 = new ChattingContent("10048", "10001", "receive", "1", "hello!");
-        ChattingContent msg2 = new ChattingContent("10048", "10001", "send", "1", "hi");
-        ChattingContent msg3 = new ChattingContent("10048", "10001", "receive", "1", "Nice to meet u!");
-        ChattingContent msg4 = new ChattingContent("10048", "10001", "send", "1", "me too!");
-        ChattingContent msg5 = new ChattingContent("10048", "10001", "receive", "1", "hiahiahia!");
-        allMessage.add(msg1);
-        allMessage.add(msg2);
-        allMessage.add(msg3);
-        allMessage.add(msg4);
-        allMessage.add(msg5);
-    }
+//    public void initMessage(){
+//        allMessage = new ArrayList<>();
+//        ChattingContent msg1 = new ChattingContent("10048", "10001", "receive", "1", "hello!");
+//        ChattingContent msg2 = new ChattingContent("10048", "10001", "send", "1", "hi");
+//        ChattingContent msg3 = new ChattingContent("10048", "10001", "receive", "1", "Nice to meet u!");
+//        ChattingContent msg4 = new ChattingContent("10048", "10001", "send", "1", "me too!");
+//        ChattingContent msg5 = new ChattingContent("10048", "10001", "receive", "1", "hiahiahia!");
+//        allMessage.add(msg1);
+//        allMessage.add(msg2);
+//        allMessage.add(msg3);
+//        allMessage.add(msg4);
+//        allMessage.add(msg5);
+//    }
 
 
 

@@ -38,4 +38,7 @@ public interface FriendDao {
 
     @Query("SELECT * FROM Friend Where userID LIKE :userID AND is_chatting LIKE :isChatting")
     LiveData<List<Friend>> getAllChattingFriend(String userID, boolean isChatting);
+
+    @Query("DELETE FROM Friend Where userID LIKE :userID AND friendID LIKE :friendID")
+    void deleteOneFriend(String userID, String friendID);
 }

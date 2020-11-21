@@ -13,15 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.hichatclient.R;
 import com.example.hichatclient.chatActivity.ChatActivity;
 import com.example.hichatclient.data.entity.ChattingContent;
+import com.example.hichatclient.data.entity.ChattingFriend;
 import com.example.hichatclient.data.entity.Friend;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
-    private List<Friend> chattingFriends = new ArrayList<>();
+    private List<ChattingFriend> chattingFriends = new ArrayList<>();
 
-    public void setChattingFriends(List<Friend> chattingFriends) {
+    public void setChattingFriends(List<ChattingFriend> chattingFriends) {
         this.chattingFriends = chattingFriends;
     }
 
@@ -36,14 +37,15 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull final ChatViewHolder holder, int position) {
-        final Friend friend = chattingFriends.get(position);
-        holder.textViewChatFriendName.setText(friend.getFriendName());
-        holder.textViewChatNewContent.setText(friend.getTheLastMsg());
+        final ChattingFriend chattingFriend = chattingFriends.get(position);
+
+        holder.textViewChatFriendName.setText(chattingFriend.getFriendName());
+        holder.textViewChatNewContent.setText(chattingFriend.getTheLastMsg());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(), ChatActivity.class);
-                intent.putExtra("friendID", friend.getFriendID());
+                intent.putExtra("friendID", chattingFriend.getFriendID());
                 holder.itemView.getContext().startActivity(intent);
 
             }

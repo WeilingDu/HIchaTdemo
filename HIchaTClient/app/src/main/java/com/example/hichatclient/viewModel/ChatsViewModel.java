@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.hichatclient.data.entity.ChattingFriend;
 import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.dataResource.MessageRepository;
 
@@ -20,7 +21,7 @@ public class ChatsViewModel extends AndroidViewModel {
         messageRepository = new MessageRepository(application);
     }
 
-    public LiveData<List<Friend>> getAllChattingFriendFromSQL(String userID){
+    public LiveData<List<ChattingFriend>> getAllChattingFriendFromSQL(String userID){
         return messageRepository.getAllChattingFriendFromSQL(userID);
     }
 

@@ -7,6 +7,11 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.hichatclient.data.entity.ChattingContent;
+import com.example.hichatclient.data.entity.ChattingFriend;
+import com.example.hichatclient.data.entity.Friend;
+import com.example.hichatclient.data.entity.User;
+import com.example.hichatclient.dataResource.FriendsRepository;
+import com.example.hichatclient.dataResource.MeRepository;
 import com.example.hichatclient.dataResource.MessageRepository;
 
 import java.net.Socket;
@@ -15,10 +20,33 @@ import java.util.List;
 
 public class ChatViewModel extends AndroidViewModel {
     private MessageRepository messageRepository;
+    private MeRepository meRepository;
+    private FriendsRepository friendsRepository;
+    private LiveData<Friend> friend;
+    private LiveData<User> user;
+
 
     public ChatViewModel(@NonNull Application application) {
         super(application);
         messageRepository = new MessageRepository(application);
+        meRepository = new MeRepository(application);
+        friendsRepository = new FriendsRepository(application);
+    }
+
+    public LiveData<Friend> getFriend() {
+        return friend;
+    }
+
+    public void setFriend(LiveData<Friend> friend) {
+        this.friend = friend;
+    }
+
+    public LiveData<User> getUser() {
+        return user;
+    }
+
+    public void setUser(LiveData<User> user) {
+        this.user = user;
     }
 
     public boolean sendMessageToServer(ChattingContent chattingContent, String userShortToken, Socket socket){
@@ -32,5 +60,18 @@ public class ChatViewModel extends AndroidViewModel {
 
     public void insertOneMessageIntoSQL(ChattingContent chattingContent){
         messageRepository.insertOneMessageIntoSQL(chattingContent);
+    }
+
+    public void updateChattingFriendIntoSQL(ChattingFriend chattingFriend){
+        messageRepository.updateChattingFriendIntoSQL(chattingFriend);
+    }
+
+
+    public LiveData<Friend> getFriendInfo(String userID, String friendID){
+        return friendsRepository.getFriendInfo(userID, friendID);
+    }
+
+    public LiveData<User> getUserInfoByUserID(String userID){
+        return meRepository.getLiveUserInfoByUserID(userID);
     }
 }

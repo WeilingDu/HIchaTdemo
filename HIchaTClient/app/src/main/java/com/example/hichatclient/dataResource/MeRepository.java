@@ -211,6 +211,11 @@ public class MeRepository {
     }
 
     //通过用户ID获取数据库中的的用户信息
+    public LiveData<User> getLiveUserInfoByUserID(String userID){
+        return userDao.getLiveUserByUserID(userID);
+    }
+
+    //通过用户ID获取数据库中的的用户信息
     public User getUserInfoByUserID(String userID) throws InterruptedException {
         GetUserInfoByUserIDThread getUserInfoByUserIDThread = new GetUserInfoByUserIDThread(userDao, userID);
         getUserInfoByUserIDThread.start();

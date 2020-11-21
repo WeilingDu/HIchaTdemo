@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
+import com.example.hichatclient.data.entity.ChattingFriend;
 import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.viewModel.ChatsViewModel;
 
@@ -32,7 +33,7 @@ public class ChatsFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private ApplicationUtil applicationUtil;
 
-    private List<Friend> allChattingFriend;
+    private List<ChattingFriend> allChattingFriend;
 
     private ChatAdapter chatAdapter;
     private RecyclerView recyclerView;
@@ -51,33 +52,28 @@ public class ChatsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-//        activity = requireActivity();
-//        chatsViewModel = new ViewModelProvider(activity).get(ChatsViewModel.class);
-//        applicationUtil = (ApplicationUtil) activity.getApplication();
-//
-//        // 获取Share Preferences中的数据
-//        sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
-//        final String userID = sharedPreferences.getString("userID", "fail");
+        activity = requireActivity();
+        chatsViewModel = new ViewModelProvider(activity).get(ChatsViewModel.class);
+        applicationUtil = (ApplicationUtil) activity.getApplication();
 
-//        recyclerView = activity.findViewById(R.id.recyclerViewChats);
-//        chatAdapter = new ChatAdapter();
-//        recyclerView.setLayoutManager(new LinearLayoutManager(activity));
-//        recyclerView.setAdapter(chatAdapter);
+        // 获取Share Preferences中的数据
+        sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
+        final String userID = sharedPreferences.getString("userID", "fail");
 
-//        allChattingFriend = chatsViewModel.getAllChattingFriendFromSQL(userID).getValue();
-//        chatAdapter.setChattingFriends(allChattingFriend);
-//
-//        chatsViewModel.getAllChattingFriendFromSQL(userID).observe(activity, new Observer<List<Friend>>() {
-//            @Override
-//            public void onChanged(List<Friend> friends) {
-//                int temp = chatAdapter.getItemCount();
-//                chatAdapter.setChattingFriends(friends);
-//                if(temp != friends.size()){
-//                    chatAdapter.notifyDataSetChanged();
-//                }
-//            }
-//        });
+        recyclerView = activity.findViewById(R.id.recyclerViewChats);
+        chatAdapter = new ChatAdapter();
+        recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+        recyclerView.setAdapter(chatAdapter);
 
+
+
+        chatsViewModel.getAllChattingFriendFromSQL(userID).observe(activity, new Observer<List<ChattingFriend>>() {
+            @Override
+            public void onChanged(List<ChattingFriend> chattingFriends) {
+                chatAdapter.setChattingFriends(chattingFriends);
+                chatAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
 }

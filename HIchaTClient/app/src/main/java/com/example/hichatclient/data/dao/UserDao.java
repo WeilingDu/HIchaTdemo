@@ -31,4 +31,7 @@ public interface UserDao {
     @Query("SELECT * FROM User Where userID LIKE :userID")
     User getUserByUserID(String userID);
 
+    @Query("SELECT * FROM User Where userID LIKE :userID")
+    LiveData<User> getLiveUserByUserID(String userID);
+
 }

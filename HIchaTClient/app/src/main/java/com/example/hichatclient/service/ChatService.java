@@ -15,9 +15,12 @@ import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.Test;
 import com.example.hichatclient.data.ChatDatabase;
 import com.example.hichatclient.data.dao.ChattingContentDao;
+import com.example.hichatclient.data.dao.ChattingFriendDao;
 import com.example.hichatclient.data.dao.FriendDao;
+import com.example.hichatclient.data.dao.MeToOthersDao;
 import com.example.hichatclient.data.dao.OthersToMeDao;
 import com.example.hichatclient.data.entity.ChattingContent;
+import com.example.hichatclient.data.entity.ChattingFriend;
 import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.data.entity.MeToOthers;
 import com.example.hichatclient.data.entity.OthersToMe;
@@ -35,9 +38,12 @@ public class ChatService extends LifecycleService {
     private final IBinder binder = new ChatBinder();
     private ApplicationUtil applicationUtil;
     private Socket socket;
+
     private ChattingContentDao chattingContentDao;
     private FriendDao friendDao;
     private OthersToMeDao othersToMeDao;
+    private MeToOthersDao meToOthersDao;
+    private ChattingFriendDao chattingFriendDao;
 
     public ApplicationUtil getApplicationUtil() {
         return applicationUtil;
@@ -74,13 +80,16 @@ public class ChatService extends LifecycleService {
     private String userID;
     private String userShortToken;
     private String userLongToken;
+    private List<String> deleteMe = new ArrayList<>();
 
-    private MutableLiveData<Integer> meToOthersFlag = new MutableLiveData<>(0);
-    private MutableLiveData<Integer> othersToMeFlag = new MutableLiveData<>(0);
+    public List<String> getDeleteMe() {
+        return deleteMe;
+    }
+    public void setDeleteMe(List<String> deleteMe) {
+        this.deleteMe = deleteMe;
+    }
+
     private MutableLiveData<Integer> longTokenFlag = new MutableLiveData<>(0);
-
-    private List<MeToOthers> meToOthersNew = new ArrayList<>();
-    private List<OthersToMe> othersToMesNew = new ArrayList<>();
 
     public String getUserID() {
         return userID;
@@ -106,37 +115,8 @@ public class ChatService extends LifecycleService {
         this.userLongToken = userLongToken;
     }
 
-    public MutableLiveData<Integer> getMeToOthersFlag() {
-        return meToOthersFlag;
-    }
 
-    public void setMeToOthersFlag(MutableLiveData<Integer> meToOthersFlag) {
-        this.meToOthersFlag = meToOthersFlag;
-    }
 
-    public MutableLiveData<Integer> getOthersToMeFlag() {
-        return othersToMeFlag;
-    }
-
-    public void setOthersToMeFlag(MutableLiveData<Integer> othersToMeFlag) {
-        this.othersToMeFlag = othersToMeFlag;
-    }
-
-    public List<MeToOthers> getMeToOthersNew() {
-        return meToOthersNew;
-    }
-
-    public void setMeToOthersNew(List<MeToOthers> meToOthersNew) {
-        this.meToOthersNew = meToOthersNew;
-    }
-
-    public List<OthersToMe> getOthersToMesNew() {
-        return othersToMesNew;
-    }
-
-    public void setOthersToMesNew(List<OthersToMe> othersToMesNew) {
-        this.othersToMesNew = othersToMesNew;
-    }
 
     public class ChatBinder extends Binder {
         public ChatService getService(){
@@ -170,8 +150,9 @@ public class ChatService extends LifecycleService {
         System.out.println("ChatService: " + userID);
         ChatDatabase chatDatabase = ChatDatabase.getDatabase(this.getApplicationContext());
         this.othersToMeDao = chatDatabase.getOthersToMeDao();
-//        this.chattingContentDao = chatDatabase.getChattingContentDao();
-        //this.friendDao = chatDatabase.getFriendDao();
+        this.meToOthersDao = chatDatabase.getMeToOthersDao();
+        this.chattingContentDao = chatDatabase.getChattingContentDao();
+        this.friendDao = chatDatabase.getFriendDao();
 
         System.out.println("hello world 1!");
         this.setSocket(applicationUtil.getSocketDynamic());
@@ -416,15 +397,20 @@ public class ChatService extends LifecycleService {
             Test.AddFriendFromSelf.Rsp.RequestFromSelf reqi = addFriendFromSelfRsp.getRequests(i);
             if(reqi.getStatus().toString().equals("00")){
                 MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),"reqi.getObjUser().getHeadpic()","wait");
-                meToOthersNew.add(meToOthers);
+                meToOthersDao.insertMeToOthers(meToOthers);
+//                meToOthersNew.add(meToOthers);
             }
             else if((reqi.getStatus().toString().equals("01"))){
                 MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),"reqi.getObjUser().getHeadpic()","agree");
-                meToOthersNew.add(meToOthers);
+                meToOthersDao.insertMeToOthers(meToOthers);
+                ChattingFriend chattingFriend = new ChattingFriend(userID, meToOthers.getObjectID(), meToOthers.getObjectName(),meToOthers.getObjectProfile(), "We are new friends!", "111");
+                chattingFriendDao.insertChattingFriend(chattingFriend);
+//                meToOthersNew.add(meToOthers);
             }
             else if((reqi.getStatus().toString().equals("10"))){
                 MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),"reqi.getObjUser().getHeadpic()","refuse");
-                meToOthersNew.add(meToOthers);
+                meToOthersDao.insertMeToOthers(meToOthers);
+//                meToOthersNew.add(meToOthers);
             }
         }
 //        meToOthersFlag.setValue(1);
@@ -448,7 +434,13 @@ public class ChatService extends LifecycleService {
 
     //接收被好友删除的通知
     public void beDeleted(Test.RspToClient response){
-
+        Test.DeleteFriend.ServerToB deleteFriendServerToB = response.getDeleteFriendServerToB();
+        int num = deleteFriendServerToB.getSrcIdCount();
+        for(int i = 0; i < num; i++){
+            String deleteMeId = Integer.toString(response.getDeleteFriendServerToB().getSrcId(i));
+            deleteMe.add(deleteMeId);
+            friendDao.deleteOneFriend(userID, deleteMeId);
+        }
     }
 
     //发出的消息已被好友阅读

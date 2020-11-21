@@ -26,7 +26,7 @@ public class Friend {
     @ColumnInfo(name = "is_chatting")
     private boolean isChatting;  // 是否在聊天列表中
 
-    public Friend(String userID, String friendID, String friendName, String friendProfile, String friendIP, String friendPort, String theLastMsg, boolean isChatting) {
+    public Friend(@NonNull String userID, @NonNull String friendID, String friendName, String friendProfile, String friendIP, String friendPort, String theLastMsg, boolean isChatting) {
         this.userID = userID;
         this.friendID = friendID;
         this.friendName = friendName;

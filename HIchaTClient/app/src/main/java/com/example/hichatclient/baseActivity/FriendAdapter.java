@@ -59,7 +59,8 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
                 Intent intent = new Intent(holder.itemView.getContext(), FriendInfoActivity.class);
                 intent.putExtra("friendID", friend.getFriendID());
                 System.out.println("FriendAdapter friendID: " + friend.getFriendID());
-                holder.itemView.getContext().startActivity(intent);
+//                holder.itemView.getContext().startActivity(intent);
+                v.getContext().startActivity(intent);
 
             }
         });

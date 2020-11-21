@@ -157,6 +157,7 @@ public class LogInFragment extends Fragment {
                         Intent intent = new Intent();
                         intent.setClass(activity, BaseActivity.class);
                         intent.putExtra("isLogIn", isLogIn);
+                        intent.putExtra("FragmentId", "-1");
                         startActivity(intent);
                     }
                 } catch (InterruptedException e) {

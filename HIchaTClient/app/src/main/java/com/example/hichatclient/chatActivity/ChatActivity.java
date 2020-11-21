@@ -22,6 +22,9 @@ import android.widget.Toast;
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.data.entity.ChattingContent;
+import com.example.hichatclient.data.entity.ChattingFriend;
+import com.example.hichatclient.data.entity.Friend;
+import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.newFriendsActivity.AddNewFriendActivity;
 import com.example.hichatclient.service.ChatService;
 import com.example.hichatclient.viewModel.ChatViewModel;
@@ -46,6 +49,8 @@ public class ChatActivity extends AppCompatActivity {
 
     // 用户和某好友的聊天信息
     private List<ChattingContent> allMessage;
+    private Friend friend;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,23 +78,32 @@ public class ChatActivity extends AppCompatActivity {
         messageAdapter = new MessageAdapter();
         recyclerView.setAdapter(messageAdapter);
 
-        // 刚点开与好友的聊天框时
-//        allMessage = chatViewModel.getAllMessageLive(userID, friendID).getValue();
-//        messageAdapter.setAllMsg(allMessage);
-//        recyclerView.scrollToPosition(allMessage.size()-1);  // 将RecyclerView定位在最后一行
+        friend = chatViewModel.getFriendInfo(userID, friendID).getValue();
+        user = chatViewModel.getUserInfoByUserID(userID).getValue();
 
-        // 当收到好友的信息时
-//        chatViewModel.getAllMessageLive(userID, friendID).observe(this, new Observer<List<ChattingContent>>() {
-//            @Override
-//            public void onChanged(List<ChattingContent> chattingContents) {
-//                ChattingContent msg = chattingContents.get(chattingContents.size() - 1);
-//                if (msg.getMsgType().equals("receive")){
-//                    allMessage.add(msg);
-//                    messageAdapter.notifyItemInserted(allMessage.size()-1);  // 当有新消息是刷新RecyclerView中的显示
-//                    recyclerView.scrollToPosition(allMessage.size()-1);  // 将RecyclerView定位在最后一行
-//                }
-//            }
-//        });
+
+        // 刚点开与好友的聊天框时
+        allMessage = chatViewModel.getAllMessageLive(userID, friendID).getValue();
+        messageAdapter.setAllMsg(allMessage);
+        recyclerView.scrollToPosition(allMessage.size()-1);  // 将RecyclerView定位在最后一行
+
+        // 当数据库中的聊天记录有变化时
+        chatViewModel.getAllMessageLive(userID, friendID).observe(this, new Observer<List<ChattingContent>>() {
+            @Override
+            public void onChanged(List<ChattingContent> chattingContents) {
+                ChattingContent msg = chattingContents.get(chattingContents.size() - 1);
+                // 更新数据库中的ChattingFriend信息
+                ChattingFriend chattingFriend = new ChattingFriend(user.getUserID(), friend.getFriendID(), friend.getFriendName(), friend.getFriendProfile(), msg.getMsgContent(), msg.getMsgTime());
+                chatViewModel.updateChattingFriendIntoSQL(chattingFriend);
+                // 当收到好友的信息时
+                if (msg.getMsgType().equals("receive")){
+                    allMessage.add(msg);
+                    messageAdapter.notifyItemInserted(allMessage.size()-1);  // 当有新消息是刷新RecyclerView中的显示
+                    recyclerView.scrollToPosition(allMessage.size()-1);  // 将RecyclerView定位在最后一行
+                }
+
+            }
+        });
 
         buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override

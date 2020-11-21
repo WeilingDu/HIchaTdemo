@@ -10,6 +10,7 @@ import com.example.hichatclient.data.dao.FriendDao;
 import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.dataResource.FriendsRepository;
 
+import java.io.IOException;
 import java.net.Socket;
 
 public class FriendInfoViewModel extends AndroidViewModel {
@@ -24,8 +25,12 @@ public class FriendInfoViewModel extends AndroidViewModel {
         return friendsRepository.getFriendInfo(userID, friendID);
     }
 
-    public void deleteFriendToServer(String userShortToken, String friendID, Socket socket){
-        friendsRepository.deleteFriendToServer(userShortToken, friendID, socket);
+    public void deleteFriendToServer(String friendID, String userShortToken, Socket socket) throws IOException {
+        friendsRepository.deleteFriendToServer(friendID, userShortToken, socket);
+    }
+
+    public void deleteFriendInSQL(String userID, String friendID){
+        friendsRepository.deleteFriendInSQL(userID, friendID);
     }
 
 

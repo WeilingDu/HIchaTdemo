@@ -39,9 +39,27 @@ public class FriendsRepository {
     }
 
     // 向服务器发送删好友请求
-    public void deleteFriendToServer(String friendID, String userShortToken, Socket socket){
+    public void deleteFriendToServer(String friendID, String userShortToken, Socket socket) throws IOException {
+        Test.DeleteFriend.AToServer.Builder deleteFriendAToServer = Test.DeleteFriend.AToServer.newBuilder();
+        deleteFriendAToServer.setObjId(Integer.parseInt(friendID));
+        deleteFriendAToServer.setShortToken(userShortToken);
+        Test.ReqToServer.Builder reqToServer = Test.ReqToServer.newBuilder();
+        reqToServer.setDeleteFriendAToServer(deleteFriendAToServer);
+        byte[] request = reqToServer.build().toByteArray();
+        byte[] len = new byte[4];
+        for (int i = 0;  i < 4;  i++)
+        {
+            len[3-i] = (byte)((request.length >> (8 * i)) & 0xFF);
+        }
+        byte[] send_data = new byte[request.length + len.length];
+        System.arraycopy(len, 0, send_data, 0, len.length);
+        System.arraycopy(request, 0, send_data, len.length, request.length);
 
+        OutputStream outputStream = socket.getOutputStream();
+        outputStream.write(send_data);
+        outputStream.flush();
     }
+
 
 
     // 从服务器获取好友列表，在Base Activity中执行
@@ -189,6 +207,30 @@ public class FriendsRepository {
         public void run() {
             super.run();
             friendDao.insertFriend(friend);
+        }
+    }
+
+    // 删掉数据库中的某好友
+    public void deleteFriendInSQL(String userID, String friendID){
+        new deleteFriendInSQLThread(friendDao, userID, friendID).start();
+    }
+
+    static class deleteFriendInSQLThread extends Thread{
+        FriendDao friendDao;
+        String userID;
+        String friendID;
+
+
+        public deleteFriendInSQLThread(FriendDao friendDao, String userID, String friendID) {
+            this.friendDao = friendDao;
+            this.userID = userID;
+            this.friendID = friendID;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            friendDao.deleteOneFriend(userID, friendID);
         }
     }
 

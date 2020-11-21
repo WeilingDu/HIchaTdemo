@@ -1,6 +1,8 @@
 package com.example.hichatclient.baseActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -26,6 +28,7 @@ public class BaseActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private ApplicationUtil applicationUtil;
     private Socket socket;
+    private ContactsFragment contactsFragment;
 
 
 
@@ -55,6 +58,7 @@ public class BaseActivity extends AppCompatActivity {
         final String userShortToken = applicationUtil.getUserShortToken();
 
         String isLogIn = getIntent().getStringExtra("isLogIn");
+
         if (isLogIn.equals("2")){
              // 从服务器获取好友列表并存入数据库中
                         new Thread(new Runnable(){
@@ -70,5 +74,18 @@ public class BaseActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        String FragmentId = getIntent().getStringExtra("FragmentId");
+        if (FragmentId.equals("1")){
+            ContactsFragment fragment = new ContactsFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.contactsFragment, fragment);
+            fragmentTransaction.commit();
+        }
+        super.onResume();
     }
 }

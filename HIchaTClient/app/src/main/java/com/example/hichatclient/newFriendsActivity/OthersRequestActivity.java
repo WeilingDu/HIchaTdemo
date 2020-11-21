@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.baseActivity.BaseActivity;
+import com.example.hichatclient.data.entity.ChattingFriend;
 import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.data.entity.OthersToMe;
 import com.example.hichatclient.viewModel.OthersRequestViewModel;
@@ -72,11 +73,23 @@ public class OthersRequestActivity extends AppCompatActivity {
         buttonRefuse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            othersRequestViewModel.othersToMeResponseToServer(userShortToken, objectID, true, socket);  // 告诉服务器用户的回应
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                t.start();
                 try {
-                    othersRequestViewModel.othersToMeResponseToServer(userShortToken, objectID, true, socket);  // 告诉服务器用户的回应
-                } catch (IOException e) {
+                    t.join();
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
                 othersToMe.setUserResponse("refuse");
                 othersRequestViewModel.updateOthersToMeResponse(othersToMe);  // 更新数据库中OthersToMe的信息
 
@@ -94,7 +107,6 @@ public class OthersRequestActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            System.out.println("OthersRequestActivity userShortToken: " + userShortToken);
                             othersRequestViewModel.othersToMeResponseToServer(userShortToken, objectID, false, socket);  // 告诉服务器用户的回应
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -109,10 +121,12 @@ public class OthersRequestActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 othersToMe.setUserResponse("agree");
-                System.out.println("othersRequestActivity: " + othersToMe.getUserResponse());
                 othersRequestViewModel.updateOthersToMeResponse(othersToMe);  // 更新数据库中的OthersToMe信息
                 Friend friend = new Friend(userID, othersToMe.getObjectID(), othersToMe.getObjectName(), othersToMe.getObjectProfile(), "null", "null", "New Friend", true);
                 othersRequestViewModel.insertNewFriendIntoSQL(friend);  // 更新数据库中的Friend信息
+                ChattingFriend chattingFriend = new ChattingFriend(userID, friend.getFriendID(), friend.getFriendName(), friend.getFriendProfile(), "We are new friends", "111");
+                othersRequestViewModel.updateChattingFriendIntoSQL(chattingFriend);  // 更新数据库中的ChattingFriend信息
+
 
                 Intent intent = new Intent();
                 intent.setClass(v.getContext(), NewFriendsActivity.class);

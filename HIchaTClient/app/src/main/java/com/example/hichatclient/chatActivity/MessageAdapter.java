@@ -39,15 +39,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         // position是当前子项在集合中的位置，通过position参数得到当前项的Msg实例
         ChattingContent chattingContent = allMsg.get(position);
         if (chattingContent.getMsgType().equals("receive")) {
-            System.out.println("receive");
             //如果是收到的信息，则显示左边的布局信息，将右边的信息隐藏
             holder.leftLayout.setVisibility(View.VISIBLE);
             holder.rightLayout.setVisibility(View.GONE);
             holder.leftMsg.setText(chattingContent.getMsgContent());
         } else {
             // 若是发出的信息，则显示右边的布局信息，隐藏左边的布局信息
-            System.out.println("send");
-            System.out.println(chattingContent.getMsgContent());
             holder.rightLayout.setVisibility(View.VISIBLE);
             holder.leftLayout.setVisibility(View.GONE);
             holder.rightMsg.setText(chattingContent.getMsgContent());
@@ -57,7 +54,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     @Override
     public int getItemCount() {
-        System.out.println(allMsg.size());
         return allMsg.size();
     }
 

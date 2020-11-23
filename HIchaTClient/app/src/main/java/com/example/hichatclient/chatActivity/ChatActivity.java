@@ -56,6 +56,8 @@ public class ChatActivity extends AppCompatActivity {
     private Friend friend;
     private User user;
     private boolean flag;
+    private String userShortToken;
+    private String friendID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +77,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         }
         socket = applicationUtil.getSocketStatic();
-        final String userShortToken = applicationUtil.getUserShortToken();
+        userShortToken = applicationUtil.getUserShortToken();
 
 
 
@@ -90,7 +92,7 @@ public class ChatActivity extends AppCompatActivity {
                 "yyyy年MM月dd日HH时mm分", Locale.getDefault());
 
         // 接收FriendInfoActivity传来的参数
-        final String friendID = getIntent().getStringExtra("friendID");
+        friendID = getIntent().getStringExtra("friendID");
 
         chatViewModel = new ViewModelProvider(this).get(ChatViewModel.class);
         recyclerView = findViewById(R.id.recyclerViewChatContent);
@@ -101,19 +103,7 @@ public class ChatActivity extends AppCompatActivity {
         friend = chatViewModel.getFriendInfo(userID, friendID).getValue();
         user = chatViewModel.getUserInfoByUserID(userID).getValue();
 
-        final long time = System.currentTimeMillis();
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // 当用户打开与某个好友的对话框时，向服务器发送已读提示
-                try {
-                    chatViewModel.sendReadMsgToServer(userShortToken, friendID, time, socket);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        t1.start();
+
 
 
         allMessage = chatViewModel.getAllMessageLive(userID, friendID).getValue();
@@ -145,7 +135,7 @@ public class ChatActivity extends AppCompatActivity {
                             public void run() {
                                 // 当用户打开与某个好友的对话框时，向服务器发送已读提示
                                 try {
-
+                                    System.out.println("call this function: sendReadMsgToServer2");
                                     chatViewModel.sendReadMsgToServer(userShortToken, friendID, time, socket);
                                 } catch (IOException e) {
                                     e.printStackTrace();
@@ -204,7 +194,20 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        final long time = System.currentTimeMillis();
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // 当用户打开与某个好友的对话框时，向服务器发送已读提示
+                try {
+                    System.out.println("call this function: sendReadMsgToServer1");
+                    chatViewModel.sendReadMsgToServer(userShortToken, friendID, time, socket);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        t1.start();
 
     }
     //    public void initMessage(){

@@ -81,12 +81,20 @@ public class ChatService extends LifecycleService {
     private String userShortToken;
     private String userLongToken;
     private List<String> deleteMe = new ArrayList<>();
+    private List<ChattingContent> chattingContents = new ArrayList<>();
 
     public List<String> getDeleteMe() {
         return deleteMe;
     }
     public void setDeleteMe(List<String> deleteMe) {
         this.deleteMe = deleteMe;
+    }
+    public List<ChattingContent> getChattingContents() {
+        return chattingContents;
+    }
+
+    public void setChattingContents(List<ChattingContent> chattingContents) {
+        this.chattingContents = chattingContents;
     }
 
     private MutableLiveData<Integer> longTokenFlag = new MutableLiveData<>(0);
@@ -417,23 +425,34 @@ public class ChatService extends LifecycleService {
 //        meToOthersFlag.setValue(1);
     }
 
-    //监听掉线/离线期间没有接收到的消息
+    // 监听掉线/离线期间没有接收到的消息, 用户断线重连之后收到（可能好友发完消息之后将用户删除）
     public void unreceivedMessage(Test.RspToClient response){
-
+        Test.UnreceivedMsg.Res unreceivedMsgList = response.getUnreceivedMsgRes();
+        int num = unreceivedMsgList.getMsgCount();
+        for(int i = 0; i < num; i++){
+            Test.UnreceivedMsg.Res.Msg unreceivedMsg = unreceivedMsgList.getMsg(i);
+            ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(unreceivedMsg.getOtherId()),"receive",Long.toString(unreceivedMsg.getTime()),unreceivedMsg.getContent());
+//            chattingContents.add(chattingContent);
+            System.out.println("Chat service chatting content " + chattingContent.getMsgContent());
+            chattingContentDao.insertContent(chattingContent);
+        }
     }
 
-    //更新shortToken
+    // 更新shortToken
     public void updateShortToken(Test.RspToClient response){
         userShortToken = response.getGetTokenRes().getShortToken();
         applicationUtil.setUserShortToken(userShortToken);
     }
 
-    //实时接收别人发来的聊天消息
+    // 实时接收别人发来的聊天消息
     public void chatMessage(Test.RspToClient response){
-
+        Test.ChatWithServer.Relay chatMsgFromOther = response.getChatWithServerRelay();
+        ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(chatMsgFromOther.getSrcId()),"receive",Long.toString(chatMsgFromOther.getTime()),chatMsgFromOther.getContent());
+//        chattingContents.add(chattingContent);
+        chattingContentDao.insertContent(chattingContent);
     }
 
-    //接收被好友删除的通知
+    // 接收被好友删除的通知
     public void beDeleted(Test.RspToClient response){
         Test.DeleteFriend.ServerToB deleteFriendServerToB = response.getDeleteFriendServerToB();
         int num = deleteFriendServerToB.getSrcIdCount();

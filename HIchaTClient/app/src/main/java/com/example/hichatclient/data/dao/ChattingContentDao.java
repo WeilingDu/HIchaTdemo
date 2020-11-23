@@ -19,7 +19,7 @@ public interface ChattingContentDao {
     void insertAllContent(List<ChattingContent> chattingContents);
 
 
-    @Query("SELECT * FROM chattingcontent WHERE userID LIKE :userID AND friendID LIKE :friendID")
+    @Query("SELECT * FROM chattingcontent WHERE user_id LIKE :userID AND friend_id LIKE :friendID")
     LiveData<List<ChattingContent>> findAllContent(String userID, String friendID);
 
 

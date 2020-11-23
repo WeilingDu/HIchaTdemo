@@ -68,7 +68,6 @@ public class ChatViewModel extends AndroidViewModel {
     }
 
     public void sendReadMsgToServer(String userShortToken, String friendID, long time, Socket socket) throws IOException {
-        System.out.println("ChatViewModel time: " + time);
         messageRepository.sendReadMsgToServer(userShortToken, friendID, time, socket);
     }
 

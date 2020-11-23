@@ -311,6 +311,7 @@ public class ChatService extends LifecycleService {
                     beDeleted(response);
                     break;
                 case SEEN_SERVER_TO_B:
+                    System.out.println("ChatService: seen_server_to_b");
                     messageRead(response);
                     break;
                 case ERROR:
@@ -443,6 +444,9 @@ public class ChatService extends LifecycleService {
         Test.ChatWithServer.Relay chatMsgFromOther = response.getChatWithServerRelay();
         ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(chatMsgFromOther.getSrcId()),"receive",chatMsgFromOther.getTime(),chatMsgFromOther.getContent(), false);
 //        chattingContents.add(chattingContent);
+        System.out.println("ChatService timeFromServer: " + chatMsgFromOther.getTime());
+        System.out.println("ChatService time: " + chattingContent.getMsgTime());
+        System.out.println("ChatService content: " + chattingContent.getMsgContent());
         chattingContentDao.insertContent(chattingContent);
     }
 
@@ -474,7 +478,11 @@ public class ChatService extends LifecycleService {
             List<ChattingContent> chattingContents = chattingContentDao.findAllContentNotRead(userID, seenFriendID.get(i), false, seenTime.get(i));
             List<ChattingContent> chattingContents2 = new ArrayList<>();
             for (int j=0; j<chattingContents.size(); j++){
+                System.out.println("ChatService seenFriendID: " + seenFriendID.get(i));
+                System.out.println("ChatService seenTime: " + seenTime.get(i));
+                System.out.println("ChatService isRead: " + chattingContents.get(i).isRead());
                 chattingContents.get(i).setRead(true);
+                System.out.println("ChatService isRead: " + chattingContents.get(i).isRead());
                 chattingContents2.add(chattingContents.get(i));
             }
             chattingContentDao.updateAllContent(chattingContents2);

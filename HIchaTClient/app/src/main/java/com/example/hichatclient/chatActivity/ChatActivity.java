@@ -138,6 +138,23 @@ public class ChatActivity extends AppCompatActivity {
                     messageAdapter.notifyDataSetChanged();
                     recyclerView.scrollToPosition(chattingContents.size()-1);  // 将RecyclerView定位在最后一行
 
+                    if (msg.getMsgType().equals("receive")){
+                        final long time = System.currentTimeMillis();
+                        Thread t2 = new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // 当用户打开与某个好友的对话框时，向服务器发送已读提示
+                                try {
+
+                                    chatViewModel.sendReadMsgToServer(userShortToken, friendID, time, socket);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                        t2.start();
+                    }
+
                 }
             }
         });

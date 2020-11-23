@@ -32,11 +32,12 @@ public class MessageRepository {
     public boolean sendMessageToServer(ChattingContent chattingContent, String userShortToken, Socket socket) throws IOException {
         boolean flag = true;
         System.out.println("MessageRepository userShortToken: " + userShortToken);
-        System.out.println("MessageRepository content: " + chattingContent.getMsgType() + chattingContent.getMsgContent());
+        System.out.println("MessageRepository content: " + chattingContent.getMsgTime() + chattingContent.getMsgType() + chattingContent.getMsgContent());
         Test.ChatWithServer.Req.Builder chatWithServerReq = Test.ChatWithServer.Req.newBuilder();
         chatWithServerReq.setShortToken(userShortToken);
         chatWithServerReq.setObjId(Integer.parseInt(chattingContent.getFriendID()));
         chatWithServerReq.setTime(chattingContent.getMsgTime());
+
         chatWithServerReq.setContent(chattingContent.getMsgContent());
 
         Test.ReqToServer.Builder reqToServer = Test.ReqToServer.newBuilder();

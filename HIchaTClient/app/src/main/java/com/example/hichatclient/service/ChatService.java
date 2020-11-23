@@ -83,12 +83,6 @@ public class ChatService extends LifecycleService {
     private List<String> deleteMe = new ArrayList<>();
     private List<ChattingContent> chattingContents = new ArrayList<>();
 
-    public List<String> getDeleteMe() {
-        return deleteMe;
-    }
-    public void setDeleteMe(List<String> deleteMe) {
-        this.deleteMe = deleteMe;
-    }
     public List<ChattingContent> getChattingContents() {
         return chattingContents;
     }
@@ -218,8 +212,8 @@ public class ChatService extends LifecycleService {
     private int updateShortTokenFlag = 0;
 
     public void testInsert(){
-        ChattingContent chattingContent = new ChattingContent("123", "123", "send", "111", "hello");
-        chattingContentDao.insertContent(chattingContent);
+//        ChattingContent chattingContent = new ChattingContent("123", "123", "send", "111", "hello");
+//        chattingContentDao.insertContent(chattingContent);
 //        Friend friend1 = new Friend("10012", "123", "jane", "111", "111", "2", "hello", true);
 //        Friend friend2 = new Friend("10012", "124", "jane2", "111", "111", "2", "hello", true);
 //        friendDao.insertFriend(friend1);
@@ -431,7 +425,7 @@ public class ChatService extends LifecycleService {
         int num = unreceivedMsgList.getMsgCount();
         for(int i = 0; i < num; i++){
             Test.UnreceivedMsg.Res.Msg unreceivedMsg = unreceivedMsgList.getMsg(i);
-            ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(unreceivedMsg.getOtherId()),"receive",Long.toString(unreceivedMsg.getTime()),unreceivedMsg.getContent());
+            ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(unreceivedMsg.getOtherId()),"receive",unreceivedMsg.getTime(),unreceivedMsg.getContent(), false);
 //            chattingContents.add(chattingContent);
             System.out.println("Chat service chatting content " + chattingContent.getMsgContent());
             chattingContentDao.insertContent(chattingContent);
@@ -447,7 +441,7 @@ public class ChatService extends LifecycleService {
     // 实时接收别人发来的聊天消息
     public void chatMessage(Test.RspToClient response){
         Test.ChatWithServer.Relay chatMsgFromOther = response.getChatWithServerRelay();
-        ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(chatMsgFromOther.getSrcId()),"receive",Long.toString(chatMsgFromOther.getTime()),chatMsgFromOther.getContent());
+        ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(chatMsgFromOther.getSrcId()),"receive",chatMsgFromOther.getTime(),chatMsgFromOther.getContent(), false);
 //        chattingContents.add(chattingContent);
         chattingContentDao.insertContent(chattingContent);
     }
@@ -459,14 +453,32 @@ public class ChatService extends LifecycleService {
         for(int i = 0; i < num; i++){
             String deleteMeId = Integer.toString(response.getDeleteFriendServerToB().getSrcId(i));
             System.out.println("ChatService deleteMeId: " + deleteMeId);
-            deleteMe.add(deleteMeId);
+//            deleteMe.add(deleteMeId);
             friendDao.deleteOneFriend(userID, deleteMeId);
         }
     }
 
     //发出的消息已被好友阅读
     public void messageRead(Test.RspToClient response){
+        List<String> seenFriendID = new ArrayList<>();
+        List<Long> seenTime = new ArrayList<>();
+        Test.Seen.ServerToB seenServerToB = response.getSeenServerToB();
+        int num = seenServerToB.getSeenInfoCount();
+        for(int i = 0; i < num; i++){
+            Test.Seen.ServerToB.SeenInfo seenInfoi = response.getSeenServerToB().getSeenInfo(i);
+            seenFriendID.add(Integer.toString(seenInfoi.getSrcId()));
+            seenTime.add(seenInfoi.getTime());
+        }
 
+        for (int i=0; i<num; i++){
+            List<ChattingContent> chattingContents = chattingContentDao.findAllContentNotRead(userID, seenFriendID.get(i), false, seenTime.get(i));
+            List<ChattingContent> chattingContents2 = new ArrayList<>();
+            for (int j=0; j<chattingContents.size(); j++){
+                chattingContents.get(i).setRead(true);
+                chattingContents2.add(chattingContents.get(i));
+            }
+            chattingContentDao.updateAllContent(chattingContents2);
+        }
     }
 
 }

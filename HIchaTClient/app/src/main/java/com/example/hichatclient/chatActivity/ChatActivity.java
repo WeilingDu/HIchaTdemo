@@ -31,8 +31,11 @@ import com.example.hichatclient.viewModel.ChatViewModel;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -74,12 +77,17 @@ public class ChatActivity extends AppCompatActivity {
         socket = applicationUtil.getSocketStatic();
         final String userShortToken = applicationUtil.getUserShortToken();
 
+
+
         // 获取Share Preferences中的数据
         sharedPreferences = getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
         final String userID = sharedPreferences.getString("userID", "fail");
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("deleteFlag", "false");
         editor.apply();
+
+        final SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat(
+                "yyyy年MM月dd日HH时mm分", Locale.getDefault());
 
         // 接收FriendInfoActivity传来的参数
         final String friendID = getIntent().getStringExtra("friendID");
@@ -92,6 +100,21 @@ public class ChatActivity extends AppCompatActivity {
 
         friend = chatViewModel.getFriendInfo(userID, friendID).getValue();
         user = chatViewModel.getUserInfoByUserID(userID).getValue();
+
+        final long time = System.currentTimeMillis();
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // 当用户打开与某个好友的对话框时，向服务器发送已读提示
+                try {
+                    chatViewModel.sendReadMsgToServer(userShortToken, friendID, time, socket);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        t1.start();
+
 
         allMessage = chatViewModel.getAllMessageLive(userID, friendID).getValue();
         if (allMessage != null){
@@ -125,7 +148,10 @@ public class ChatActivity extends AppCompatActivity {
                 String content = editTextSendMsg.getText().toString();
                 if(!"".equals(content)){
                     //如果字符串不为空，则创建ChattingContent对象
-                    final ChattingContent msg = new ChattingContent(userID, friendID, "send", "1", content);
+                    final ChattingContent msg = new ChattingContent(userID, friendID, "send", System.currentTimeMillis(), content, false);
+                    System.out.println("ChatActivity time: " + msg.getMsgTime());
+                    String LogTime = newSimpleDateFormat.format(msg.getMsgTime());
+                    System.out.println("ChatActivity format time: " + LogTime);
                     System.out.println("ChatActivity content: " + content);
                     Thread t = new Thread(new Runnable() {
                         @Override
@@ -144,7 +170,6 @@ public class ChatActivity extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("ChatActivity flag: " + flag);
                     if (flag){
                         chatViewModel.insertOneMessageIntoSQL(msg); // 将该消息插入数据库中
                         editTextSendMsg.setText("");  // 清空输入框的内容
@@ -159,7 +184,13 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
-//    public void initMessage(){
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+    }
+    //    public void initMessage(){
 //        allMessage = new ArrayList<>();
 //        ChattingContent msg1 = new ChattingContent("10048", "10001", "receive", "1", "hello!");
 //        ChattingContent msg2 = new ChattingContent("10048", "10001", "send", "1", "hi");

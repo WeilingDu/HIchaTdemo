@@ -67,6 +67,10 @@ public class ChatViewModel extends AndroidViewModel {
         messageRepository.updateChattingFriendIntoSQL(chattingFriend);
     }
 
+    public void sendReadMsgToServer(String userShortToken, String friendID, long time, Socket socket) throws IOException {
+        System.out.println("ChatViewModel time: " + time);
+        messageRepository.sendReadMsgToServer(userShortToken, friendID, time, socket);
+    }
 
     public LiveData<Friend> getFriendInfo(String userID, String friendID){
         return friendsRepository.getFriendInfo(userID, friendID);

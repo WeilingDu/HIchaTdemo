@@ -295,7 +295,7 @@ public class UserRepository {
                         num = response.getUnreceivedMsgRes().getMsgCount();
                         for(int i = 0; i < num; i++){
                             Test.UnreceivedMsg.Res.Msg unreceivedMsgi = response.getUnreceivedMsgRes().getMsg(i);
-                            ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(unreceivedMsgi.getOtherId()),"receive",Long.toString(unreceivedMsgi.getTime()),unreceivedMsgi.getContent());
+                            ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(unreceivedMsgi.getOtherId()),"receive",unreceivedMsgi.getTime(),unreceivedMsgi.getContent(), false);
                             System.out.println("LogInFragment content: " + chattingContent.getMsgContent());
                             chattingContents.add(chattingContent);
                         }

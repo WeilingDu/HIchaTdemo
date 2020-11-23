@@ -18,16 +18,27 @@ public class ChattingContent {
     @ColumnInfo(name = "msg_type")
     private String msgType;
     @ColumnInfo(name = "msg_time")
-    private String msgTime;
+    private long msgTime;
     @ColumnInfo(name = "msg_content")
     private String msgContent;
+    @ColumnInfo(name = "is_read")
+    private boolean isRead;
 
-    public ChattingContent(String userID, String friendID, String msgType, String msgTime, String msgContent) {
+    public ChattingContent(String userID, String friendID, String msgType, long msgTime, String msgContent, boolean isRead) {
         this.userID = userID;
         this.friendID = friendID;
         this.msgType = msgType;
         this.msgTime = msgTime;
         this.msgContent = msgContent;
+        this.isRead = isRead;
+    }
+
+    public boolean isRead() {
+        return isRead;
+    }
+
+    public void setRead(boolean read) {
+        isRead = read;
     }
 
     public int getId() {
@@ -62,11 +73,11 @@ public class ChattingContent {
         this.msgType = msgType;
     }
 
-    public String getMsgTime() {
+    public long getMsgTime() {
         return msgTime;
     }
 
-    public void setMsgTime(String sendTime) {
+    public void setMsgTime(long sendTime) {
         this.msgTime = sendTime;
     }
 

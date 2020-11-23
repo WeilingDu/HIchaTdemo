@@ -36,7 +36,7 @@ public class MessageRepository {
         Test.ChatWithServer.Req.Builder chatWithServerReq = Test.ChatWithServer.Req.newBuilder();
         chatWithServerReq.setShortToken(userShortToken);
         chatWithServerReq.setObjId(Integer.parseInt(chattingContent.getFriendID()));
-        chatWithServerReq.setTime(Long.parseLong(chattingContent.getMsgTime()));
+        chatWithServerReq.setTime(chattingContent.getMsgTime());
         chatWithServerReq.setContent(chattingContent.getMsgContent());
 
         Test.ReqToServer.Builder reqToServer = Test.ReqToServer.newBuilder();
@@ -57,6 +57,30 @@ public class MessageRepository {
         return flag;
     }
 
+    // 给服务器发送已读消息
+    public void sendReadMsgToServer(String userShortToken, String friendID, long time, Socket socket) throws IOException {
+        Test.Seen.AToServer.Builder seenAToServer = Test.Seen.AToServer.newBuilder();
+        seenAToServer.setShortToken(userShortToken);
+        seenAToServer.setObjId(Integer.parseInt(friendID));
+        seenAToServer.setTime(time);
+
+        Test.ReqToServer.Builder reqToServer = Test.ReqToServer.newBuilder();
+        reqToServer.setSeenAToServer(seenAToServer);
+        byte[] request = reqToServer.build().toByteArray();
+        byte[] len = new byte[4];
+        for (int i = 0;  i < 4;  i++)
+        {
+            len[3-i] = (byte)((request.length >> (8 * i)) & 0xFF);
+        }
+        byte[] send_data = new byte[request.length + len.length];
+        System.arraycopy(len, 0, send_data, 0, len.length);
+        System.arraycopy(request, 0, send_data, len.length, request.length);
+
+        OutputStream outputStream = socket.getOutputStream();
+        outputStream.write(send_data);
+        outputStream.flush();
+
+    }
 
     // 从数据库中获取用户和某好友的聊天记录
     public LiveData<List<ChattingContent>> getChattingContentFromSQL(String userID, String friendID) {

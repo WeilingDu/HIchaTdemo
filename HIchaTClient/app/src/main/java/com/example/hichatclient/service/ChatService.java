@@ -474,21 +474,23 @@ public class ChatService extends LifecycleService {
             seenTime.add(seenInfoi.getTime());
         }
 
-        for (int i=0; i<num; i++){
-            List<ChattingContent> chattingContents = chattingContentDao.findAllContentNotRead(userID, seenFriendID.get(i), false, seenTime.get(i));
-            List<ChattingContent> chattingContents2 = new ArrayList<>();
-            if (chattingContents.size() != 0){
-                for (int j=0; j<chattingContents.size(); j++){
-                    System.out.println("ChatService j: " + j);
-                    System.out.println("ChatService seenFriendID: " + seenFriendID.get(j));
-                    System.out.println("ChatService seenTime: " + seenTime.get(j));
-                    System.out.println("ChatService isRead: " + chattingContents.get(j).isRead());
-                    System.out.println("ChatService msgTime: " + chattingContents.get(j).getMsgTime());
-                    chattingContents.get(j).setRead(true);
-                    System.out.println("ChatService isRead: " + chattingContents.get(j).isRead());
-                    chattingContents2.add(chattingContents.get(j));
+        if (num != 0){
+            for (int i=0; i<num; i++){
+                List<ChattingContent> chattingContents = chattingContentDao.findAllContentNotRead(userID, seenFriendID.get(i), false, seenTime.get(i));
+                List<ChattingContent> chattingContents2 = new ArrayList<>();
+                if (chattingContents.size() != 0 ){
+                    for (int j=0; j<chattingContents.size(); j++){
+                        System.out.println("ChatService j: " + j);
+                        System.out.println("ChatService seenFriendID: " + seenFriendID.get(j));
+                        System.out.println("ChatService seenTime: " + seenTime.get(j));
+                        System.out.println("ChatService isRead: " + chattingContents.get(j).isRead());
+                        System.out.println("ChatService msgTime: " + chattingContents.get(j).getMsgTime());
+                        chattingContents.get(j).setRead(true);
+                        System.out.println("ChatService isRead: " + chattingContents.get(j).isRead());
+                        chattingContents2.add(chattingContents.get(j));
+                    }
+                    chattingContentDao.updateAllContent(chattingContents2);
                 }
-                chattingContentDao.updateAllContent(chattingContents2);
             }
         }
     }

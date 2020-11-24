@@ -53,8 +53,8 @@ public class ChatActivity extends AppCompatActivity {
 
     // 用户和某好友的聊天信息
     private List<ChattingContent> allMessage = new ArrayList<>();
-    private Friend friend;
-    private User user;
+    private Friend friendChatting;
+    private User userChatting;
     private boolean flag;
     private String userShortToken;
     private String friendID;
@@ -100,8 +100,18 @@ public class ChatActivity extends AppCompatActivity {
         messageAdapter = new MessageAdapter();
         recyclerView.setAdapter(messageAdapter);
 
-        friend = chatViewModel.getFriendInfo(userID, friendID).getValue();
-        user = chatViewModel.getUserInfoByUserID(userID).getValue();
+        chatViewModel.getFriendInfo(userID, friendID).observe(this, new Observer<Friend>() {
+            @Override
+            public void onChanged(Friend friend) {
+                friendChatting = friend;
+            }
+        });
+        chatViewModel.getUserInfoByUserID(userID).observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(User user) {
+                userChatting = user;
+            }
+        });
 
 
 
@@ -156,6 +166,7 @@ public class ChatActivity extends AppCompatActivity {
                 if(!"".equals(content)){
                     //如果字符串不为空，则创建ChattingContent对象
                     final ChattingContent msg = new ChattingContent(userID, friendID, "send", System.currentTimeMillis(), content, false);
+                    ChattingFriend chattingFriend = new ChattingFriend(userID, friendID, friendChatting.getFriendName(), "123", msg.getMsgContent(), msg.getMsgTime());
                     System.out.println("ChatActivity time: " + msg.getMsgTime());
                     String LogTime = newSimpleDateFormat.format(msg.getMsgTime());
                     System.out.println("ChatActivity format time: " + LogTime);
@@ -179,6 +190,7 @@ public class ChatActivity extends AppCompatActivity {
                     }
                     if (flag){
                         chatViewModel.insertOneMessageIntoSQL(msg); // 将该消息插入数据库中
+                        chatViewModel.updateChattingFriendIntoSQL(chattingFriend);
                         editTextSendMsg.setText("");  // 清空输入框的内容
                         editTextSendMsg.requestFocus();  // 输入光标回到输入框中
                     } else {

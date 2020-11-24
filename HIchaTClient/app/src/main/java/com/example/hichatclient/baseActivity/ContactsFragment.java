@@ -9,6 +9,9 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -91,6 +95,8 @@ public class ContactsFragment extends Fragment {
 
 
         recyclerView = activity.findViewById(R.id.recyclerFriends);
+        recyclerView.addItemDecoration(new SimpleDividerDecoration(activity));
+        recyclerView.setItemAnimator( new DefaultItemAnimator());
         friendAdapter = new FriendAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(activity));
         recyclerView.setAdapter(friendAdapter);
@@ -128,6 +134,40 @@ public class ContactsFragment extends Fragment {
         });
 
         // TODO: Use the ViewModel
+    }
+
+    public class SimpleDividerDecoration extends RecyclerView.ItemDecoration {
+
+        private int dividerHeight;
+        private Paint dividerPaint;
+
+        public SimpleDividerDecoration(Context context) {
+            dividerPaint = new Paint();
+            dividerPaint.setColor(context.getResources().getColor(R.color.divider));
+
+            dividerHeight = 1;
+        }
+
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            super.getItemOffsets(outRect, view, parent, state);
+            outRect.bottom = dividerHeight;
+        }
+
+        @Override
+        public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+            int childCount = parent.getChildCount();
+            int left = parent.getPaddingLeft() + 200;
+            int right = parent.getWidth() - parent.getPaddingRight() - 50;
+
+            for (int i = 0; i < childCount - 1; i++) {
+                View view = parent.getChildAt(i);
+                float top = view.getBottom();
+                float bottom = view.getBottom() + dividerHeight;
+                c.drawRect(left, top, right, bottom, dividerPaint);
+            }
+        }
     }
 
 }

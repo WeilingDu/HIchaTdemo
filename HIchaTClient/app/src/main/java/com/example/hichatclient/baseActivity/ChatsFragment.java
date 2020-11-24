@@ -7,11 +7,15 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -61,10 +65,11 @@ public class ChatsFragment extends Fragment {
         final String userID = sharedPreferences.getString("userID", "fail");
 
         recyclerView = activity.findViewById(R.id.recyclerViewChats);
+        recyclerView.addItemDecoration(new SimpleDividerDecoration(activity));
+        recyclerView.setItemAnimator( new DefaultItemAnimator());
         chatAdapter = new ChatAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(activity));
         recyclerView.setAdapter(chatAdapter);
-
 
 
         chatsViewModel.getAllChattingFriendFromSQL(userID).observe(activity, new Observer<List<ChattingFriend>>() {
@@ -74,6 +79,45 @@ public class ChatsFragment extends Fragment {
                 chatAdapter.notifyDataSetChanged();
             }
         });
+    }
+
+
+
+
+
+
+    public class SimpleDividerDecoration extends RecyclerView.ItemDecoration {
+
+        private int dividerHeight;
+        private Paint dividerPaint;
+
+        public SimpleDividerDecoration(Context context) {
+            dividerPaint = new Paint();
+            dividerPaint.setColor(context.getResources().getColor(R.color.divider));
+
+            dividerHeight = 1;
+        }
+
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            super.getItemOffsets(outRect, view, parent, state);
+            outRect.bottom = dividerHeight;
+        }
+
+        @Override
+        public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+            int childCount = parent.getChildCount();
+            int left = parent.getPaddingLeft() + 200;
+            int right = parent.getWidth() - parent.getPaddingRight() - 50;
+
+            for (int i = 0; i < childCount - 1; i++) {
+                View view = parent.getChildAt(i);
+                float top = view.getBottom();
+                float bottom = view.getBottom() + dividerHeight;
+                c.drawRect(left, top, right, bottom, dividerPaint);
+            }
+        }
     }
 
 }

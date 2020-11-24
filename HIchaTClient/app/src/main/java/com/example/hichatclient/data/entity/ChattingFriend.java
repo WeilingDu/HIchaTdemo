@@ -20,10 +20,10 @@ public class ChattingFriend {
     @ColumnInfo(name = "the_last_msg")
     private String theLastMsg;
     @ColumnInfo(name = "time")
-    private String time;
+    private long time;
 
 
-    public ChattingFriend(@NonNull String userID, @NonNull String friendID, String friendName, String friendProfile, String theLastMsg, String time) {
+    public ChattingFriend(@NonNull String userID, @NonNull String friendID, String friendName, String friendProfile, String theLastMsg, long time) {
         this.userID = userID;
         this.friendID = friendID;
         this.theLastMsg = theLastMsg;
@@ -74,11 +74,11 @@ public class ChattingFriend {
         this.theLastMsg = theLastMsg;
     }
 
-    public String getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(long time) {
         this.time = time;
     }
 }

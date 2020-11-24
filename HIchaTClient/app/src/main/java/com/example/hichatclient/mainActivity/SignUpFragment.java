@@ -214,7 +214,7 @@ public class SignUpFragment extends Fragment {
                 } else {
                     try {
                         userID = signUpViewModel.signUp(userName, userPassword, socket);
-                        AlertDialog.Builder builder= new AlertDialog.Builder(activity);
+                        AlertDialog.Builder builder= new AlertDialog.Builder(activity, R.style.Theme_AppCompat_Light_Dialog_Alert);
                         builder.setTitle("注册成功！您的ID为：" + userID);
                         builder.setPositiveButton("返回登录界面", new DialogInterface.OnClickListener() {
                             @Override

@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="1.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
@@ -33,13 +33,15 @@
 
     <Button
         android:id="@+id/buttonAddFriend"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_circle_shape_enable"
         android:text="@string/addf"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline49"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,13 +54,42 @@
 
     <Button
         android:id="@+id/buttonNewFriends"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_circle_shape_enable"
         android:text="新的朋友"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerFriends"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.922"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAddFriend" />
+        app:layout_constraintTop_toTopOf="@+id/guideline49" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/new_friend"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toEndOf="@+id/buttonNewFriends"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline49"
+        tools:src="@drawable/new_friend" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/add_friend"
+        app:layout_constraintBottom_toTopOf="@+id/guideline49"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.50" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

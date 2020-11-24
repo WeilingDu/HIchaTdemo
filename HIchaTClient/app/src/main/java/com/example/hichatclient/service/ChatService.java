@@ -407,7 +407,7 @@ public class ChatService extends LifecycleService {
             else if((reqi.getStatus().toString().equals("01"))){
                 MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),"reqi.getObjUser().getHeadpic()","agree");
                 meToOthersDao.insertMeToOthers(meToOthers);
-                ChattingFriend chattingFriend = new ChattingFriend(userID, meToOthers.getObjectID(), meToOthers.getObjectName(),meToOthers.getObjectProfile(), "We are new friends!", "111");
+                ChattingFriend chattingFriend = new ChattingFriend(userID, meToOthers.getObjectID(), meToOthers.getObjectName(),meToOthers.getObjectProfile(), "We are new friends!", System.currentTimeMillis());
                 chattingFriendDao.insertChattingFriend(chattingFriend);
 //                meToOthersNew.add(meToOthers);
             }

@@ -101,7 +101,7 @@ public class FriendInfoActivity extends AppCompatActivity {
         buttonDeleteFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                AlertDialog.Builder builder= new AlertDialog.Builder(FriendInfoActivity.this);
+                AlertDialog.Builder builder= new AlertDialog.Builder(v.getContext(), R.style.Theme_AppCompat_Light_Dialog_Alert);
                 builder.setTitle("删除该联系人？");
                 builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
                     @Override

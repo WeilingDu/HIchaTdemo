@@ -5,82 +5,61 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline53"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05109489" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline54"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline56"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.75" />
-
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:contentDescription="@string/image"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline55"
-        app:layout_constraintStart_toStartOf="@+id/guideline53"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.50"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline55"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.25" />
 
     <TextView
         android:id="@+id/textViewNewFriendID"
-        android:layout_width="172dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline56"
-        app:layout_constraintHorizontal_bias="0.166"
-        app:layout_constraintStart_toStartOf="@+id/guideline55"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="200dp"
+        android:layout_height="24dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.135" />
 
     <TextView
         android:id="@+id/textViewNewFriendName"
-        android:layout_width="172dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="10dp"
+        android:layout_width="200dp"
+        android:layout_height="24dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline56"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline55"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNewFriendID"
-        app:layout_constraintVertical_bias="0.016" />
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.783" />
 
     <TextView
         android:id="@+id/textViewNewFriendRep"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="17dp"
+        android:layout_width="50dp"
+        android:layout_height="24dp"
+        android:gravity="center"
+        android:layout_marginEnd="8dp"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline54"
-        app:layout_constraintStart_toStartOf="@+id/guideline56"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.50" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,7 +32,6 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class ChangeNameFragment extends Fragment {
-    private TextView textViewUserName;
     private EditText editTextUserNewName;
     private Button buttonChangeName;
 
@@ -72,7 +71,6 @@ public class ChangeNameFragment extends Fragment {
         }
         socket = applicationUtil.getSocketStatic();
 
-        textViewUserName = activity.findViewById(R.id.textView53);
         editTextUserNewName = activity.findViewById(R.id.userNewName);
         buttonChangeName = activity.findViewById(R.id.buttonChangeName);
 
@@ -89,7 +87,7 @@ public class ChangeNameFragment extends Fragment {
 
 
         buttonChangeName.setEnabled(false);
-        textViewUserName.setText(userName);
+        editTextUserNewName.setText(userName);
 
         TextWatcher textWatcher = new TextWatcher() {
             @Override

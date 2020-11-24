@@ -14,7 +14,7 @@
         android:contentDescription="@string/profile"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline9"
         tools:src="@drawable/ic_baseline_person_24" />
@@ -45,7 +45,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.61" />
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline20"
@@ -56,9 +63,11 @@
 
     <Button
         android:id="@+id/buttonChangePassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:background="@drawable/button_circle_shape_enable"
         android:text="@string/change"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline21"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,59 +75,89 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="67dp"
-        android:layout_height="33dp"
+        android:layout_width="70dp"
+        android:layout_height="45dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:gravity="center"
         android:text="@string/id"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewUserID3"
         app:layout_constraintBottom_toTopOf="@+id/guideline20"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintHorizontal_bias="0.164"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/guideline18"
-        app:layout_constraintVertical_bias="0.527" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline81"
+        app:layout_constraintHorizontal_bias="0.735"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline18" />
 
     <TextView
         android:id="@+id/textViewUserID3"
-        android:layout_width="216dp"
-        android:layout_height="33dp"
+        android:layout_width="190dp"
+        android:layout_height="45dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/guideline20"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.743"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintHorizontal_bias="0.379"
+        app:layout_constraintStart_toStartOf="@+id/guideline81"
+        app:layout_constraintTop_toTopOf="@+id/guideline18"
+        app:layout_constraintVertical_bias="0.50" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="67dp"
-        android:layout_height="33dp"
+        android:layout_width="70dp"
+        android:layout_height="45dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:gravity="center"
         android:text="@string/name"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewUserName3"
         app:layout_constraintBottom_toTopOf="@+id/guideline19"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintEnd_toStartOf="@+id/guideline81"
+        app:layout_constraintHorizontal_bias="0.726"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline20"
-        app:layout_constraintVertical_bias="0.462" />
+        app:layout_constraintTop_toTopOf="@+id/guideline20" />
 
     <TextView
         android:id="@+id/textViewUserName3"
-        android:layout_width="216dp"
-        android:layout_height="33dp"
+        android:layout_width="190dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintBottom_toTopOf="@+id/guideline19"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.743"
+        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintStart_toStartOf="@+id/guideline81"
+        app:layout_constraintTop_toTopOf="@+id/guideline20"
+        app:layout_constraintVertical_bias="0.50" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline81"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <Button
+        android:id="@+id/buttonExit"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:background="@drawable/button_circle_shape_enable"
+        android:text="退出账号"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline33"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/guideline21" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

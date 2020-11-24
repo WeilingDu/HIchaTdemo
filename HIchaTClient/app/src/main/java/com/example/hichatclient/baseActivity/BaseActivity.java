@@ -1,10 +1,13 @@
 package com.example.hichatclient.baseActivity;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -12,6 +15,7 @@ import androidx.navigation.ui.NavigationUI;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
@@ -38,8 +42,28 @@ public class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
 
         // 设置底部导航栏
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationViewBase);
+        final BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationViewBase);
         NavController navController = Navigation.findNavController(this, R.id.fragment2);
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+                if(destination.getId()==R.id.changeNameFragment||destination.getId()==R.id.changePasswordFragment){
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            bottomNavigationView.setVisibility(View.GONE);
+                        }
+                    });
+                }else{
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            bottomNavigationView.setVisibility(View.VISIBLE);
+                        }
+                    });
+                }
+            }
+        });
         AppBarConfiguration configuration = new AppBarConfiguration.Builder(bottomNavigationView.getMenu()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, configuration);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);

@@ -2,6 +2,7 @@ package com.example.hichatclient.baseActivity;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -25,6 +26,8 @@ import android.widget.TextView;
 
 import com.example.hichatclient.R;
 import com.example.hichatclient.data.entity.User;
+import com.example.hichatclient.mainActivity.LogInFragment;
+import com.example.hichatclient.mainActivity.MainActivity;
 import com.example.hichatclient.viewModel.MeViewModel;
 
 import java.util.List;
@@ -36,6 +39,7 @@ public class MeFragment extends Fragment {
     private TextView textViewUserID;
     private TextView textViewUserName;
     private Button buttonChangePassword;
+    private Button buttonExit;
     private ImageView imageViewProfile;
     private LiveData<List<User>> users;
     private User user;
@@ -63,6 +67,7 @@ public class MeFragment extends Fragment {
         textViewUserID = activity.findViewById(R.id.textViewUserID3);
         textViewUserName = activity.findViewById(R.id.textViewUserName3);
         buttonChangePassword = activity.findViewById(R.id.buttonChangePassword);
+        buttonExit = activity.findViewById(R.id.buttonExit);
         imageViewProfile = activity.findViewById(R.id.imageViewProfile);
         imageViewProfile.setImageResource(R.drawable.profile);
 
@@ -97,6 +102,15 @@ public class MeFragment extends Fragment {
             public void onClick(View v) {
                 NavController navController = Navigation.findNavController(v);
                 navController.navigate(R.id.action_meFragment_to_changePasswordFragment);
+            }
+        });
+
+        buttonExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(activity, MainActivity.class);
+                startActivity(intent);
             }
         });
 

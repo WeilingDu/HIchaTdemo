@@ -27,36 +27,49 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.88" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <EditText
         android:id="@+id/editTextSendContent"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
         android:autofillHints=""
+        android:background="@drawable/edit_text_shape"
         android:ems="10"
         android:hint="@string/plzinput"
         android:inputType="textPersonName"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonSend2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline45" />
+        app:layout_constraintTop_toTopOf="@+id/guideline45"
+        app:layout_constraintVertical_bias="0.428" />
 
     <Button
         android:id="@+id/buttonSend2"
-        android:layout_width="74dp"
-        android:layout_height="66dp"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:background="@drawable/button_selector"
         android:text="@string/send3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline46"
-        app:layout_constraintTop_toTopOf="@+id/guideline45" />
+        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline45"
+        app:layout_constraintVertical_bias="0.50" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline46"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.8" />
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.795"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewChatContent"
+        app:layout_constraintVertical_bias="0.50"
+        app:srcCompat="@drawable/emoji" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -124,7 +124,7 @@ public class OthersRequestActivity extends AppCompatActivity {
                 othersRequestViewModel.updateOthersToMeResponse(othersToMe);  // 更新数据库中的OthersToMe信息
                 Friend friend = new Friend(userID, othersToMe.getObjectID(), othersToMe.getObjectName(), othersToMe.getObjectProfile(), "null", "null");
                 othersRequestViewModel.insertNewFriendIntoSQL(friend);  // 更新数据库中的Friend信息
-                ChattingFriend chattingFriend = new ChattingFriend(userID, friend.getFriendID(), friend.getFriendName(), friend.getFriendProfile(), "We are new friends", "111");
+                ChattingFriend chattingFriend = new ChattingFriend(userID, friend.getFriendID(), friend.getFriendName(), friend.getFriendProfile(), "We are new friends", System.currentTimeMillis());
                 othersRequestViewModel.updateChattingFriendIntoSQL(chattingFriend);  // 更新数据库中的ChattingFriend信息
 
 

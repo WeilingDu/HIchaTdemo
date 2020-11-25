@@ -385,7 +385,9 @@ public class ChatService extends LifecycleService {
         for(int i = 0;i < num; i++){
             Test.People reqi = addFriendFromOtherRsp.getUser(i);
             OthersToMe othersToMe = new OthersToMe(userID,Integer.toString(reqi.getId()),reqi.getName(),reqi.getHeadpic().toByteArray(),"wait");
-            System.out.println(reqi.getId() + reqi.getName());
+            if (reqi.getHeadpic().toByteArray().length < 10){
+                othersToMe.setObjectProfile(null);
+            }
 
             othersToMeDao.insertOthersToMe(othersToMe);
             // othersToMesNew.add(othersToMe);
@@ -401,11 +403,17 @@ public class ChatService extends LifecycleService {
             Test.AddFriendFromSelf.Rsp.RequestFromSelf reqi = addFriendFromSelfRsp.getRequests(i);
             if(reqi.getStatus().toString().equals("00")){
                 MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),reqi.getObjUser().getHeadpic().toByteArray(),"wait");
+                if (reqi.getObjUser().getHeadpic().toByteArray().length < 10){
+                    meToOthers.setObjectProfile(null);
+                }
                 meToOthersDao.insertMeToOthers(meToOthers);
 //                meToOthersNew.add(meToOthers);
             }
             else if((reqi.getStatus().toString().equals("01"))){
                 MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),reqi.getObjUser().getHeadpic().toByteArray(),"agree");
+                if (reqi.getObjUser().getHeadpic().toByteArray().length < 10){
+                    meToOthers.setObjectProfile(null);
+                }
                 meToOthersDao.insertMeToOthers(meToOthers);
                 ChattingFriend chattingFriend = new ChattingFriend(userID, meToOthers.getObjectID(), meToOthers.getObjectName(),meToOthers.getObjectProfile(), "We are new friends!", System.currentTimeMillis());
                 chattingFriendDao.insertChattingFriend(chattingFriend);
@@ -413,6 +421,9 @@ public class ChatService extends LifecycleService {
             }
             else if((reqi.getStatus().toString().equals("10"))){
                 MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),reqi.getObjUser().getHeadpic().toByteArray(),"refuse");
+                if (reqi.getObjUser().getHeadpic().toByteArray().length < 10){
+                    meToOthers.setObjectProfile(null);
+                }
                 meToOthersDao.insertMeToOthers(meToOthers);
 //                meToOthersNew.add(meToOthers);
             }

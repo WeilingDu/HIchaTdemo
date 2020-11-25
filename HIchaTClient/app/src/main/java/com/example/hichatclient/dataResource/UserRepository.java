@@ -258,6 +258,9 @@ public class UserRepository {
                         errorFlag++;
                         userName = response.getLoginRes().getName();
                         userProfile = response.getLoginRes().getHeadpic().toByteArray();
+                        if (userProfile.length < 10){
+                            userProfile =  null;
+                        }
 //                picBytes = response.getLoginRes().getHeadpic().toByteArray();
 //                if (picBytes.length != 0) {
 //                    userHeadPic = BitmapFactory.decodeByteArray(picBytes, 0, b.length);
@@ -272,6 +275,9 @@ public class UserRepository {
                         for(int i = 0;i < num; i++){
                             Test.People reqOtheri = response.getAddFriendFromOtherRsp().getUser(i);
                             OthersToMe othersToMe = new OthersToMe(userID,Integer.toString(reqOtheri.getId()),reqOtheri.getName(),reqOtheri.getHeadpic().toByteArray(),"wait");
+                            if (reqOtheri.getHeadpic().toByteArray().length < 10){
+                                othersToMe.setObjectProfile(null);
+                            }
                             othersToMes.add(othersToMe);
                         }
                         break;
@@ -281,16 +287,26 @@ public class UserRepository {
                             Test.AddFriendFromSelf.Rsp.RequestFromSelf reqMei = response.getAddFriendFromSelfRsp().getRequests(i);
                             if(reqMei.getStatus().toString().equals("00")){
                                 MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),reqMei.getObjUser().getHeadpic().toByteArray(),"wait");
+                                if (reqMei.getObjUser().getHeadpic().toByteArray().length  < 10){
+                                    meToOther.setObjectProfile(null);
+                                }
                                 meToOthers.add(meToOther);
                             }
                             else if((reqMei.getStatus().toString().equals("01"))){
                                 MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),reqMei.getObjUser().getHeadpic().toByteArray(),"agree");
+                                if (reqMei.getObjUser().getHeadpic().toByteArray().length  < 10){
+                                    meToOther.setObjectProfile(null);
+                                }
                                 meToOthers.add(meToOther);
                             }
                             else if((reqMei.getStatus().toString().equals("10"))){
                                 MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),reqMei.getObjUser().getHeadpic().toByteArray(),"refuse");
+                                if (reqMei.getObjUser().getHeadpic().toByteArray().length  < 10){
+                                    meToOther.setObjectProfile(null);
+                                }
                                 meToOthers.add(meToOther);
                             }
+
                         }
                         break;
                     case UNRECEIVED_MSG_RES:
@@ -325,6 +341,9 @@ public class UserRepository {
                         {
                             Test.People friendi = response.getFriendlistRes().getFriendList(i);
                             Friend friend = new Friend(userID, Integer.toString(friendi.getId()), friendi.getName(), friendi.getHeadpic().toByteArray(), "123", "123");
+                            if (friendi.getHeadpic().toByteArray().length < 10){
+                                friend.setFriendProfile(null);
+                            }
                             friends.add(friend);
                         }
                         break;

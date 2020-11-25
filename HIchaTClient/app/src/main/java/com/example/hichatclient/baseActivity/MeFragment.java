@@ -93,7 +93,9 @@ public class MeFragment extends Fragment {
                 user = users.get(0);
                 textViewUserID.setText(user.getUserID());
                 textViewUserName.setText(user.getUserName());
-                imageViewProfile.setImageBitmap(toRoundCorner(BitmapFactory.decodeByteArray(user.getUserProfile(), 0, user.getUserProfile().length), 2));
+                if (user.getUserProfile() != null){
+                    imageViewProfile.setImageBitmap(toRoundCorner(BitmapFactory.decodeByteArray(user.getUserProfile(), 0, user.getUserProfile().length), 2));
+                }
             }
         });
 

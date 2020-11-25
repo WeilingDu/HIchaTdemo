@@ -56,4 +56,6 @@
     <string name="deleteFriend">删除好友</string>
     <string name="left_head">left_head</string>
     <string name="right_head">right_head</string>
+    <string name="name11">昵称</string>
+    <string name="id99">ID</string>
 </resources>

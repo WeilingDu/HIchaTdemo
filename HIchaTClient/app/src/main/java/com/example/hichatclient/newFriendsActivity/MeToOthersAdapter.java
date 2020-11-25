@@ -1,8 +1,17 @@
 package com.example.hichatclient.newFriendsActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,6 +39,7 @@ public class MeToOthersAdapter extends RecyclerView.Adapter<MeToOthersAdapter.Me
     }
     static class MeToOthersViewHolder extends RecyclerView.ViewHolder{
         TextView textViewNewFriendID, textViewNewFriendName, textViewNewFriendRep;
+        ImageView imageViewFriendProfile;
 
 
         public MeToOthersViewHolder(@NonNull View itemView) {
@@ -37,6 +47,7 @@ public class MeToOthersAdapter extends RecyclerView.Adapter<MeToOthersAdapter.Me
             textViewNewFriendID = itemView.findViewById(R.id.textViewNewFriendID);
             textViewNewFriendName = itemView.findViewById(R.id.textViewNewFriendName);
             textViewNewFriendRep = itemView.findViewById(R.id.textViewNewFriendRep);
+            imageViewFriendProfile = itemView.findViewById(R.id.imageView);
         }
     }
 
@@ -46,6 +57,12 @@ public class MeToOthersAdapter extends RecyclerView.Adapter<MeToOthersAdapter.Me
         holder.textViewNewFriendID.setText(meToOthers.getObjectID());
         holder.textViewNewFriendName.setText(meToOthers.getObjectName());
         holder.textViewNewFriendRep.setText(meToOthers.getObjectResponse());
+        if (meToOthers.getObjectProfile() != null){
+            holder.imageViewFriendProfile.setImageBitmap(toRoundCorner(BitmapFactory.decodeByteArray(meToOthers.getObjectProfile(), 0, meToOthers.getObjectProfile().length), 2));
+        }else {
+            holder.imageViewFriendProfile.setImageResource(R.drawable.head);
+        }
+
 
     }
 
@@ -55,4 +72,26 @@ public class MeToOthersAdapter extends RecyclerView.Adapter<MeToOthersAdapter.Me
     }
 
 
+    public static Bitmap toRoundCorner(Bitmap bitmap, float ratio) {
+        System.out.println("图片是否变成圆形模式了+++++++++++++");
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        final RectF rectF = new RectF(rect);
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        canvas.drawRoundRect(rectF, bitmap.getWidth() / ratio,
+                bitmap.getHeight() / ratio, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        System.out.println("pixels+++++++" + String.valueOf(ratio));
+
+        return output;
+
+    }
 }

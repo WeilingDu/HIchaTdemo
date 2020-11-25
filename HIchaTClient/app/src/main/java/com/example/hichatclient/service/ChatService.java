@@ -397,10 +397,12 @@ public class ChatService extends LifecycleService {
 
     //监听自己给别人发送的好友请求的状态
     public void addFriendReqSelf(Test.RspToClient response){
+        System.out.println("add_friend_req_self");
         Test.AddFriendFromSelf.Rsp addFriendFromSelfRsp = response.getAddFriendFromSelfRsp();
         int num = addFriendFromSelfRsp.getRequestsCount();
         for(int i = 0; i < num; i++){
             Test.AddFriendFromSelf.Rsp.RequestFromSelf reqi = addFriendFromSelfRsp.getRequests(i);
+            System.out.println("Chat service addFriendReqSelf: " + reqi.getStatus().toString());
             if(reqi.getStatus().toString().equals("00")){
                 MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),reqi.getObjUser().getHeadpic().toByteArray(),"wait");
                 if (reqi.getObjUser().getHeadpic().toByteArray().length < 10){

@@ -6,9 +6,18 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hichatclient.ApplicationUtil;
@@ -32,6 +41,7 @@ public class OthersRequestActivity extends AppCompatActivity {
     private String objectID;
 
     // UI控件
+    private ImageView imageViewObjectImage;
     private TextView textViewObjectID;
     private TextView textViewObjectName;
     private Button buttonRefuse;
@@ -49,6 +59,7 @@ public class OthersRequestActivity extends AppCompatActivity {
         textViewObjectName = findViewById(R.id.textViewObjectName3);
         buttonAgree = findViewById(R.id.buttonAgree);
         buttonRefuse = findViewById(R.id.buttonRefuse);
+        imageViewObjectImage = findViewById(R.id.imageView2);
 
         // 获取Share Preferences中的数据
         sharedPreferences = getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
@@ -63,6 +74,15 @@ public class OthersRequestActivity extends AppCompatActivity {
 
         try {
             othersToMe = othersRequestViewModel.getOthersToMeByObjectID(userID, objectID);  // 通过objectID获取OtherToMe的具体信息
+            if (othersToMe.getUserResponse().equals("agree") || othersToMe.getUserResponse().equals("refuse")){
+                buttonAgree.setEnabled(false);
+                buttonRefuse.setEnabled(false);
+            }
+            if (othersToMe.getObjectProfile() != null){
+                imageViewObjectImage.setImageBitmap(toRoundCorner(BitmapFactory.decodeByteArray(othersToMe.getObjectProfile(), 0, othersToMe.getObjectProfile().length), 2));
+            }else {
+                imageViewObjectImage.setImageResource(R.drawable.head);
+            }
             textViewObjectID.setText(othersToMe.getObjectID());
             textViewObjectName.setText(othersToMe.getObjectName());
         } catch (InterruptedException e) {
@@ -134,6 +154,29 @@ public class OthersRequestActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    public static Bitmap toRoundCorner(Bitmap bitmap, float ratio) {
+        System.out.println("图片是否变成圆形模式了+++++++++++++");
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        final RectF rectF = new RectF(rect);
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        canvas.drawRoundRect(rectF, bitmap.getWidth() / ratio,
+                bitmap.getHeight() / ratio, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        System.out.println("pixels+++++++" + String.valueOf(ratio));
+
+        return output;
 
     }
 }

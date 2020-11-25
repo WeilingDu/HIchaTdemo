@@ -282,9 +282,11 @@ public class UserRepository {
                         }
                         break;
                     case ADD_FRIEND_FROM_SELF_RSP:
+                        System.out.println("add_friend_from_rsp");
                         num = response.getAddFriendFromSelfRsp().getRequestsCount();
                         for(int i = 0; i < num; i++){
                             Test.AddFriendFromSelf.Rsp.RequestFromSelf reqMei = response.getAddFriendFromSelfRsp().getRequests(i);
+                            System.out.println("UserRepository addFriendFromSelfRsp: " + reqMei.getStatus().toString());
                             if(reqMei.getStatus().toString().equals("00")){
                                 MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),reqMei.getObjUser().getHeadpic().toByteArray(),"wait");
                                 if (reqMei.getObjUser().getHeadpic().toByteArray().length  < 10){

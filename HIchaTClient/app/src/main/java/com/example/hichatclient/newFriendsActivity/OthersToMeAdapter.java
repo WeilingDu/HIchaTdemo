@@ -1,10 +1,19 @@
 package com.example.hichatclient.newFriendsActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,12 +43,14 @@ public class OthersToMeAdapter extends RecyclerView.Adapter<OthersToMeAdapter.Ot
 
     static class OthersToMeViewHolder extends RecyclerView.ViewHolder {
         TextView textViewObjectID, textViewObjectName, textViewUserResponse;
+        ImageView imageViewObjectProfile;
 
         public OthersToMeViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewObjectID = itemView.findViewById(R.id.textViewObjectID);
             textViewObjectName = itemView.findViewById(R.id.textViewObjectName);
             textViewUserResponse = itemView.findViewById(R.id.textViewUserRep);
+            imageViewObjectProfile = itemView.findViewById(R.id.imageView3);
         }
     }
 
@@ -49,6 +60,11 @@ public class OthersToMeAdapter extends RecyclerView.Adapter<OthersToMeAdapter.Ot
         holder.textViewObjectID.setText(othersToMe.getObjectID());
         holder.textViewObjectName.setText(othersToMe.getObjectName());
         holder.textViewUserResponse.setText(othersToMe.getUserResponse());
+        if (othersToMe.getObjectProfile() != null){
+            holder.imageViewObjectProfile.setImageBitmap(toRoundCorner(BitmapFactory.decodeByteArray(othersToMe.getObjectProfile(), 0, othersToMe.getObjectProfile().length), 2));
+        }else {
+            holder.imageViewObjectProfile.setImageResource(R.drawable.head);
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,5 +78,29 @@ public class OthersToMeAdapter extends RecyclerView.Adapter<OthersToMeAdapter.Ot
     @Override
     public int getItemCount() {
         return allOthersToMe.size();
+    }
+
+
+    public static Bitmap toRoundCorner(Bitmap bitmap, float ratio) {
+        System.out.println("图片是否变成圆形模式了+++++++++++++");
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        final RectF rectF = new RectF(rect);
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        canvas.drawRoundRect(rectF, bitmap.getWidth() / ratio,
+                bitmap.getHeight() / ratio, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        System.out.println("pixels+++++++" + String.valueOf(ratio));
+
+        return output;
+
     }
 }

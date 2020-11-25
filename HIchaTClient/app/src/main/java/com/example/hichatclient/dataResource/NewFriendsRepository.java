@@ -108,6 +108,9 @@ public class NewFriendsRepository {
                 case SEARCH_USER_RES:
                     Test.People searchUserResult = response.getSearchUserRes().getUser();
                     result = new SearchResult(Integer.toString(searchUserResult.getId()), searchUserResult.getName(), searchUserResult.getHeadpic().toByteArray());
+                    if (searchUserResult.getHeadpic().toByteArray().length < 10){
+                        result.setResultProfile(null);
+                    }
                     break;
                 case ERROR:
                     result = null;

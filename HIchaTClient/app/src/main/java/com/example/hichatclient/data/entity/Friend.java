@@ -16,13 +16,13 @@ public class Friend {
     @ColumnInfo(name = "friend_name")
     private String friendName;
     @ColumnInfo(name = "friend_profile")
-    private String friendProfile;
+    private byte[] friendProfile;
     @ColumnInfo(name = "friend_ip")
     private String friendIP;
     @ColumnInfo(name = "friend_port")
     private String friendPort;
 
-    public Friend(@NonNull String userID, @NonNull String friendID, String friendName, String friendProfile, String friendIP, String friendPort) {
+    public Friend(@NonNull String userID, @NonNull String friendID, String friendName, byte[] friendProfile, String friendIP, String friendPort) {
         this.userID = userID;
         this.friendID = friendID;
         this.friendName = friendName;
@@ -55,11 +55,11 @@ public class Friend {
         this.friendName = friendName;
     }
 
-    public String getFriendProfile() {
+    public byte[] getFriendProfile() {
         return friendProfile;
     }
 
-    public void setFriendProfile(String friendProfile) {
+    public void setFriendProfile(byte[] friendProfile) {
         this.friendProfile = friendProfile;
     }
 

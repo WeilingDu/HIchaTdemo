@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class ApplicationUtil extends Application {
+
     private Socket socketDynamic;
     private Socket socketStatic;
     private String userShortToken;

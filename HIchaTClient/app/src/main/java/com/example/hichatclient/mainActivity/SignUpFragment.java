@@ -4,6 +4,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -100,7 +106,7 @@ public class SignUpFragment extends Fragment {
     final int CROP_REQUEST_CODE = 3;//裁剪返回码
     //调用照相机返回图片文件
     File tempFile;
-    Bitmap image;
+    Bitmap image = null;
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
 //        super.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, intent);
@@ -130,7 +136,9 @@ public class SignUpFragment extends Fragment {
                     //在这里获得了剪裁后的Bitmap对象，可以用于上传
                     image = bundle.getParcelable("data");
                     //设置到ImageView上
-                    imageButtonHeadPortrait.setImageBitmap(image);
+                    if (image != null){
+                        imageButtonHeadPortrait.setImageBitmap(toRoundCorner(image, 2));
+                    }
 //                    pic.setImageBitmap(image);
                     Log.e("TAG","Bit=="+image.toString());
                     //也可以进行一些保存、压缩等操作后上传
@@ -209,11 +217,12 @@ public class SignUpFragment extends Fragment {
                 String userPassword = editTextUserPassword.getText().toString().trim();
                 String userPasswordCheck = editTextUserPasswordCheck.getText().toString().trim();
                 String userID;
+                Bitmap bitmapImage = image;
                 if (!userPassword.equals(userPasswordCheck)){
                     Toast.makeText(getActivity(), "两次输入的密码不一致！", Toast.LENGTH_SHORT).show();
                 } else {
                     try {
-                        userID = signUpViewModel.signUp(userName, userPassword, socket);
+                        userID = signUpViewModel.signUp(userName, userPassword, bitmapImage, socket);
                         AlertDialog.Builder builder= new AlertDialog.Builder(activity, R.style.Theme_AppCompat_Light_Dialog_Alert);
                         builder.setTitle("注册成功！您的ID为：" + userID);
                         builder.setPositiveButton("返回登录界面", new DialogInterface.OnClickListener() {
@@ -248,6 +257,29 @@ public class SignUpFragment extends Fragment {
             }
         });
 
+
+    }
+
+    public static Bitmap toRoundCorner(Bitmap bitmap, float ratio) {
+        System.out.println("图片是否变成圆形模式了+++++++++++++");
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        final RectF rectF = new RectF(rect);
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        canvas.drawRoundRect(rectF, bitmap.getWidth() / ratio,
+                bitmap.getHeight() / ratio, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        System.out.println("pixels+++++++" + String.valueOf(ratio));
+
+        return output;
 
     }
 }

@@ -15,11 +15,11 @@ public class OthersToMe {
     @ColumnInfo(name = "object_name")
     private String objectName;
     @ColumnInfo(name = "object_profile")
-    private String objectProfile;
+    private byte[] objectProfile;
     @ColumnInfo(name = "user_response")
     private String userResponse;
 
-    public OthersToMe(String userID, String objectID, String objectName, String objectProfile, String userResponse) {
+    public OthersToMe(String userID, String objectID, String objectName, byte[] objectProfile, String userResponse) {
         this.userID = userID;
         this.objectID = objectID;
         this.objectName = objectName;
@@ -52,11 +52,11 @@ public class OthersToMe {
         this.objectName = objectName;
     }
 
-    public String getObjectProfile() {
+    public byte[] getObjectProfile() {
         return objectProfile;
     }
 
-    public void setObjectProfile(String objectProfile) {
+    public void setObjectProfile(byte[] objectProfile) {
         this.objectProfile = objectProfile;
     }
 

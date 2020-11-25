@@ -107,7 +107,7 @@ public class NewFriendsRepository {
             switch (type){
                 case SEARCH_USER_RES:
                     Test.People searchUserResult = response.getSearchUserRes().getUser();
-                    result = new SearchResult(Integer.toString(searchUserResult.getId()), searchUserResult.getName());
+                    result = new SearchResult(Integer.toString(searchUserResult.getId()), searchUserResult.getName(), searchUserResult.getHeadpic().toByteArray());
                     break;
                 case ERROR:
                     result = null;

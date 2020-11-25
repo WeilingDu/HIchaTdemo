@@ -106,6 +106,7 @@ public class SearchFriendActivity extends AppCompatActivity {
                         intent.setClass(SearchFriendActivity.this, AddNewFriendActivity.class);
                         intent.putExtra("resultID", searchResult.getResultID());
                         intent.putExtra("resultName", searchResult.getResultName());
+                        intent.putExtra("resultProfile", searchResult.getResultProfile());
                         startActivity(intent);
                     }
                 } catch (InterruptedException e) {

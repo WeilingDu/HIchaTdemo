@@ -16,11 +16,11 @@ public class MeToOthers {
     @ColumnInfo(name = "object_name")
     private String objectName;
     @ColumnInfo(name = "object_profile")
-    private String objectProfile;
+    private byte[] objectProfile;
     @ColumnInfo(name = "object_response")
     private String objectResponse;
 
-    public MeToOthers(String userID, String objectID, String objectName, String objectProfile, String objectResponse) {
+    public MeToOthers(String userID, String objectID, String objectName, byte[] objectProfile, String objectResponse) {
         this.userID = userID;
         this.objectID = objectID;
         this.objectName = objectName;
@@ -54,11 +54,11 @@ public class MeToOthers {
         this.objectName = objectName;
     }
 
-    public String getObjectProfile() {
+    public byte[] getObjectProfile() {
         return objectProfile;
     }
 
-    public void setObjectProfile(String objectProfile) {
+    public void setObjectProfile(byte[] objectProfile) {
         this.objectProfile = objectProfile;
     }
 

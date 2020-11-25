@@ -1,6 +1,7 @@
 package com.example.hichatclient.viewModel;
 
 import android.app.Application;
+import android.graphics.Bitmap;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -19,7 +20,7 @@ public class SignUpViewModel extends AndroidViewModel {
         userRepository = new UserRepository(application);
     }
 
-    public String signUp(String userName, String userPassword, Socket socket) throws InterruptedException {
-        return userRepository.signUp(userName, userPassword, socket);
+    public String signUp(String userName, String userPassword, Bitmap bitmapImage, Socket socket) throws InterruptedException {
+        return userRepository.signUp(userName, userPassword, bitmapImage, socket);
     }
 }

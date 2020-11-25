@@ -118,14 +118,14 @@
 
         <ImageButton
             android:id="@+id/imageButtonHeadPortrait"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@drawable/head"
             android:contentDescription="@string/head_portrait"
             app:layout_constraintBottom_toTopOf="@+id/guideline13"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline12"
-            tools:src="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="@+id/guideline12" />
 
         <Button
             android:id="@+id/buttonSignUp"

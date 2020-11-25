@@ -16,14 +16,14 @@ public class ChattingFriend {
     @ColumnInfo(name = "friend_name")
     private String friendName;
     @ColumnInfo(name = "friend_profile")
-    private String friendProfile;
+    private byte[] friendProfile;
     @ColumnInfo(name = "the_last_msg")
     private String theLastMsg;
     @ColumnInfo(name = "time")
     private long time;
 
 
-    public ChattingFriend(@NonNull String userID, @NonNull String friendID, String friendName, String friendProfile, String theLastMsg, long time) {
+    public ChattingFriend(@NonNull String userID, @NonNull String friendID, String friendName, byte[] friendProfile, String theLastMsg, long time) {
         this.userID = userID;
         this.friendID = friendID;
         this.theLastMsg = theLastMsg;
@@ -40,11 +40,11 @@ public class ChattingFriend {
         this.friendName = friendName;
     }
 
-    public String getFriendProfile() {
+    public byte[] getFriendProfile() {
         return friendProfile;
     }
 
-    public void setFriendProfile(String friendProfile) {
+    public void setFriendProfile(byte[] friendProfile) {
         this.friendProfile = friendProfile;
     }
 

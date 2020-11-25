@@ -1,6 +1,7 @@
 package com.example.hichatclient.dataResource;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import com.example.hichatclient.Test;
 import com.example.hichatclient.data.ChatDatabase;
@@ -17,6 +18,7 @@ import com.example.hichatclient.data.dao.UserDao;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -74,15 +76,15 @@ public class UserRepository {
     }
 
     // 登录（用于本地测试）
-    public User sendIDAndLogInTest(String userID, String userPassword){
-        int isLogIn = 1;
-        if (isLogIn == 1){
-            User user = new User(userID, userPassword, "jane", "111", "123", "123");
-            return user;
-        }else {
-            return null;
-        }
-    }
+//    public User sendIDAndLogInTest(String userID, String userPassword){
+//        int isLogIn = 1;
+//        if (isLogIn == 1){
+////            User user = new User(userID, userPassword, "jane", "111", "123", "123");
+//            return user;
+//        }else {
+//            return null;
+//        }
+//    }
     // 登录
     public Map<Integer,User> sendIDAndLogIn(String userID, String userPassword, Socket socket) throws InterruptedException {
         Map<Integer, User> map = new HashMap<>();
@@ -122,7 +124,7 @@ public class UserRepository {
             super.run();
             int isLogIn = 1;
             String userName = null;
-//        byte[] picBytes = null;
+            byte[] userProfile = null;
 //        Bitmap userHeadPic = null;
             String shortToken = null;
             String longToken = null;
@@ -255,6 +257,7 @@ public class UserRepository {
                         isLogIn = 2;
                         errorFlag++;
                         userName = response.getLoginRes().getName();
+                        userProfile = response.getLoginRes().getHeadpic().toByteArray();
 //                picBytes = response.getLoginRes().getHeadpic().toByteArray();
 //                if (picBytes.length != 0) {
 //                    userHeadPic = BitmapFactory.decodeByteArray(picBytes, 0, b.length);
@@ -268,7 +271,7 @@ public class UserRepository {
                         num = response.getAddFriendFromOtherRsp().getUserCount();
                         for(int i = 0;i < num; i++){
                             Test.People reqOtheri = response.getAddFriendFromOtherRsp().getUser(i);
-                            OthersToMe othersToMe = new OthersToMe(userID,Integer.toString(reqOtheri.getId()),reqOtheri.getName(),"reqi.getHeadpic()","wait");
+                            OthersToMe othersToMe = new OthersToMe(userID,Integer.toString(reqOtheri.getId()),reqOtheri.getName(),reqOtheri.getHeadpic().toByteArray(),"wait");
                             othersToMes.add(othersToMe);
                         }
                         break;
@@ -277,15 +280,15 @@ public class UserRepository {
                         for(int i = 0; i < num; i++){
                             Test.AddFriendFromSelf.Rsp.RequestFromSelf reqMei = response.getAddFriendFromSelfRsp().getRequests(i);
                             if(reqMei.getStatus().toString().equals("00")){
-                                MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),"reqi.getObjUser().getHeadpic()","wait");
+                                MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),reqMei.getObjUser().getHeadpic().toByteArray(),"wait");
                                 meToOthers.add(meToOther);
                             }
                             else if((reqMei.getStatus().toString().equals("01"))){
-                                MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),"reqi.getObjUser().getHeadpic()","agree");
+                                MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),reqMei.getObjUser().getHeadpic().toByteArray(),"agree");
                                 meToOthers.add(meToOther);
                             }
                             else if((reqMei.getStatus().toString().equals("10"))){
-                                MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),"reqi.getObjUser().getHeadpic()","refuse");
+                                MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),reqMei.getObjUser().getHeadpic().toByteArray(),"refuse");
                                 meToOthers.add(meToOther);
                             }
                         }
@@ -321,7 +324,7 @@ public class UserRepository {
                         for(int i = 0; i < num; i++)
                         {
                             Test.People friendi = response.getFriendlistRes().getFriendList(i);
-                            Friend friend = new Friend(userID, Integer.toString(friendi.getId()), friendi.getName(), "123", "123", "123");
+                            Friend friend = new Friend(userID, Integer.toString(friendi.getId()), friendi.getName(), friendi.getHeadpic().toByteArray(), "123", "123");
                             friends.add(friend);
                         }
                         break;
@@ -345,7 +348,7 @@ public class UserRepository {
             }
 
             if (isLogIn == 1){
-                User user = new User(userID, userPassword, userName, "111", shortToken, longToken);
+                User user = new User(userID, userPassword, userName, userProfile, shortToken, longToken);
 //                User user = new User(userID, userPassword, "123", "111", "123", "123");
                 this.user = user;
             } else {
@@ -431,8 +434,8 @@ public class UserRepository {
 
 
     // 注册
-    public String signUp(String userName, String userPassword, Socket socket) throws InterruptedException {
-        SignUpThread signUpThread = new SignUpThread(userName, userPassword, socket);
+    public String signUp(String userName, String userPassword, Bitmap bitmapImage, Socket socket) throws InterruptedException {
+        SignUpThread signUpThread = new SignUpThread(userName, userPassword, bitmapImage, socket);
 //        System.out.println("repository");
         signUpThread.start();
         signUpThread.join();
@@ -443,12 +446,14 @@ public class UserRepository {
         private String userPassword;
         private String userID;
         private Socket socket;
+        private Bitmap bitmapImage;
 
 
-        public SignUpThread(String userName, String userPassword, Socket socket){
+        public SignUpThread(String userName, String userPassword, Bitmap bitmapImage, Socket socket){
             this.userName = userName;
             this.userPassword = userPassword;
             this.socket = socket;
+            this.bitmapImage = bitmapImage;
         }
 
 
@@ -463,12 +468,16 @@ public class UserRepository {
             Test.Register.Req.Builder registerRequest = Test.Register.Req.newBuilder();
             registerRequest.setName(userName);
             registerRequest.setPassword(userPassword);
-//        int imageBytes = userHeadPic.getByteCount();
-//        ByteBuffer buffer = ByteBuffer.allocate(imageBytes);
-//        userHeadPic.copyPixelsToBuffer(buffer); //Move the byte data to the buffer
-//        registerRequest.setHeadpic(ByteString.copyFrom(buffer.array()));
-            String headpic = "111";
-            registerRequest.setHeadpic(ByteString.copyFrom(headpic.getBytes()));
+            if(bitmapImage != null){
+                ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
+                bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, imageBytes);
+                registerRequest.setHeadpic(ByteString.copyFrom(imageBytes.toByteArray()));
+            }
+            else{
+                String headpic = "null";
+                registerRequest.setHeadpic(ByteString.copyFrom(headpic.getBytes()));
+            }
+
             Test.ReqToServer.Builder reqToServer = Test.ReqToServer.newBuilder();
             reqToServer.setRegisterReq(registerRequest);
             byte[] request = reqToServer.build().toByteArray();

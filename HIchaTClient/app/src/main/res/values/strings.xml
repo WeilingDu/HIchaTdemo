@@ -54,4 +54,6 @@
     <string name="name9">昵称</string>
     <string name="sendM">发消息</string>
     <string name="deleteFriend">删除好友</string>
+    <string name="left_head">left_head</string>
+    <string name="right_head">right_head</string>
 </resources>

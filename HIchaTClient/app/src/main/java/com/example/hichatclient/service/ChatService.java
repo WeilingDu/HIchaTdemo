@@ -384,7 +384,7 @@ public class ChatService extends LifecycleService {
         int num = addFriendFromOtherRsp.getUserCount();
         for(int i = 0;i < num; i++){
             Test.People reqi = addFriendFromOtherRsp.getUser(i);
-            OthersToMe othersToMe = new OthersToMe(userID,Integer.toString(reqi.getId()),reqi.getName(),"reqi.getHeadpic()","wait");
+            OthersToMe othersToMe = new OthersToMe(userID,Integer.toString(reqi.getId()),reqi.getName(),reqi.getHeadpic().toByteArray(),"wait");
             System.out.println(reqi.getId() + reqi.getName());
 
             othersToMeDao.insertOthersToMe(othersToMe);
@@ -400,19 +400,19 @@ public class ChatService extends LifecycleService {
         for(int i = 0; i < num; i++){
             Test.AddFriendFromSelf.Rsp.RequestFromSelf reqi = addFriendFromSelfRsp.getRequests(i);
             if(reqi.getStatus().toString().equals("00")){
-                MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),"reqi.getObjUser().getHeadpic()","wait");
+                MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),reqi.getObjUser().getHeadpic().toByteArray(),"wait");
                 meToOthersDao.insertMeToOthers(meToOthers);
 //                meToOthersNew.add(meToOthers);
             }
             else if((reqi.getStatus().toString().equals("01"))){
-                MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),"reqi.getObjUser().getHeadpic()","agree");
+                MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),reqi.getObjUser().getHeadpic().toByteArray(),"agree");
                 meToOthersDao.insertMeToOthers(meToOthers);
                 ChattingFriend chattingFriend = new ChattingFriend(userID, meToOthers.getObjectID(), meToOthers.getObjectName(),meToOthers.getObjectProfile(), "We are new friends!", System.currentTimeMillis());
                 chattingFriendDao.insertChattingFriend(chattingFriend);
 //                meToOthersNew.add(meToOthers);
             }
             else if((reqi.getStatus().toString().equals("10"))){
-                MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),"reqi.getObjUser().getHeadpic()","refuse");
+                MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),reqi.getObjUser().getHeadpic().toByteArray(),"refuse");
                 meToOthersDao.insertMeToOthers(meToOthers);
 //                meToOthersNew.add(meToOthers);
             }

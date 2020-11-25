@@ -7,9 +7,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +32,7 @@ public class AddNewFriendActivity extends AppCompatActivity {
 
     private TextView textViewResultID;
     private TextView textViewResultName;
+    private ImageView imageViewResultImage;
     private Button buttonAddFriend;
 
     private int flag;
@@ -42,6 +45,7 @@ public class AddNewFriendActivity extends AppCompatActivity {
 
         textViewResultID = findViewById(R.id.textViewSearchID5);
         textViewResultName = findViewById(R.id.textViewSearchName5);
+        imageViewResultImage = findViewById(R.id.imageView5);
         buttonAddFriend = findViewById(R.id.buttonSendAddFriend);
 
         searchFriendViewModel = new ViewModelProvider(this).get(SearchFriendViewModel.class);
@@ -58,14 +62,17 @@ public class AddNewFriendActivity extends AppCompatActivity {
         // 获取SearchFriendActivity传来的参数
         final String resultID = getIntent().getStringExtra("resultID");
         final String resultName = getIntent().getStringExtra("resultName");
+        final byte[] resultProfile = getIntent().getByteArrayExtra("resultProfile");
         textViewResultID.setText(resultID);
         textViewResultName.setText(resultName);
+        assert resultProfile != null;
+        imageViewResultImage.setImageBitmap(BitmapFactory.decodeByteArray(resultProfile, 0, resultProfile.length));
 
         buttonAddFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 System.out.println("AddNewFriendActivity: click");
-                AlertDialog.Builder builder= new AlertDialog.Builder(AddNewFriendActivity.this);
+                AlertDialog.Builder builder= new AlertDialog.Builder(AddNewFriendActivity.this, R.style.Theme_AppCompat_Light_Dialog_Alert);
                 builder.setTitle("您是否要向对方发送好友请求？");
                 builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
                     @Override
@@ -86,7 +93,7 @@ public class AddNewFriendActivity extends AppCompatActivity {
                             if (flag == 1){
                                 Toast.makeText(v.getContext(), "好友请求已发送！", Toast.LENGTH_SHORT).show();
                                 // 当用户发送好友请求时，更新数据库中的MeToOthers信息
-                                MeToOthers meToOthers = new MeToOthers(userID, resultID, resultName, "null", "wait");
+                                MeToOthers meToOthers = new MeToOthers(userID, resultID, resultName, resultProfile, "wait");
                                 searchFriendViewModel.updateMeToOthersSend(meToOthers);
                             }
                         } catch (InterruptedException e) {

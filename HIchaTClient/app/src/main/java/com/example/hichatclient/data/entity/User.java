@@ -15,14 +15,14 @@ public class User {
     @ColumnInfo(name = "user_name")
     private String userName;
     @ColumnInfo(name = "user_profile")
-    private String userProfile;
+    private byte[] userProfile;
     @ColumnInfo(name = "user_short_token")
     private String userShortToken;
     @ColumnInfo(name = "user_long_token")
     private String userLongToken;
 
 
-    public User(String userID, String userPassword, String userName, String userProfile, String userShortToken, String userLongToken) {
+    public User(String userID, String userPassword, String userName, byte[] userProfile, String userShortToken, String userLongToken) {
         this.userID = userID;
         this.userPassword = userPassword;
         this.userName = userName;
@@ -74,11 +74,11 @@ public class User {
         this.userName = userName;
     }
 
-    public String getUserProfile() {
+    public byte[] getUserProfile() {
         return userProfile;
     }
 
-    public void setUserProfile(String userProfile) {
+    public void setUserProfile(byte[] userProfile) {
         this.userProfile = userProfile;
     }
 

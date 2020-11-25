@@ -1,6 +1,14 @@
 package com.example.hichatclient.baseActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +59,12 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
     public void onBindViewHolder(@NonNull final FriendViewHolder holder, int position) {
         final Friend friend = allFriends.get(position);
         holder.textViewFriendName.setText(friend.getFriendName());
-        holder.imageViewFriendImage.setImageResource(R.drawable.profile);;
+        if (friend.getFriendProfile() == null){
+            holder.imageViewFriendImage.setImageResource(R.drawable.head);
+        }else {
+            holder.imageViewFriendImage.setImageBitmap(toRoundCorner(BitmapFactory.decodeByteArray(friend.getFriendProfile(), 0, friend.getFriendProfile().length), 2));
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +82,31 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
     @Override
     public int getItemCount() {
         return allFriends.size();
+    }
+
+
+
+    public static Bitmap toRoundCorner(Bitmap bitmap, float ratio) {
+        System.out.println("图片是否变成圆形模式了+++++++++++++");
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        final RectF rectF = new RectF(rect);
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        canvas.drawRoundRect(rectF, bitmap.getWidth() / ratio,
+                bitmap.getHeight() / ratio, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        System.out.println("pixels+++++++" + String.valueOf(ratio));
+
+        return output;
+
     }
 
 

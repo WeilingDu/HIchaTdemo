@@ -166,7 +166,7 @@ public class ChatActivity extends AppCompatActivity {
                 if(!"".equals(content)){
                     //如果字符串不为空，则创建ChattingContent对象
                     final ChattingContent msg = new ChattingContent(userID, friendID, "send", System.currentTimeMillis(), content, false);
-                    ChattingFriend chattingFriend = new ChattingFriend(userID, friendID, friendChatting.getFriendName(), "123", msg.getMsgContent(), msg.getMsgTime());
+                    ChattingFriend chattingFriend = new ChattingFriend(userID, friendID, friendChatting.getFriendName(), friendChatting.getFriendProfile(), msg.getMsgContent(), msg.getMsgTime());
                     System.out.println("ChatActivity time: " + msg.getMsgTime());
                     String LogTime = newSimpleDateFormat.format(msg.getMsgTime());
                     System.out.println("ChatActivity format time: " + LogTime);

@@ -38,8 +38,8 @@ public class LogInViewModel extends AndroidViewModel {
 
 
     // 用于本地测试
-    public User sendIDAndPasswordTest(String userID, String userPassword) {
-        return userRepository.sendIDAndLogInTest(userID, userPassword);
-    }
+//    public User sendIDAndPasswordTest(String userID, String userPassword) {
+//        return userRepository.sendIDAndLogInTest(userID, userPassword);
+//    }
 
 }

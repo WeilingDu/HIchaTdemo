@@ -24,7 +24,7 @@ public class MeRepository {
         userDao = chatDatabase.getUserDao();
     }
 
-    public LiveData<List<User>> getUserInfo(String userID){
+    public LiveData<User> getUserInfo(String userID){
         return userDao.getUserInfo(userID);
     }
 

@@ -60,9 +60,8 @@ public class MeFragment extends Fragment {
     private Button buttonChangePassword;
     private Button buttonExit;
     private ImageView imageViewProfile;
-    private LiveData<List<User>> users;
-    private User user;
     private SharedPreferences sharedPreferences;
+    private User meUser;
 
 
     public static MeFragment newInstance() {
@@ -137,6 +136,17 @@ public class MeFragment extends Fragment {
                     if (image != null){
                         imageViewProfile.setImageBitmap(toRoundCorner(image, 2));
                     }
+
+                    ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
+                    image.compress(Bitmap.CompressFormat.PNG, 100, imageBytes);
+                    meUser.setUserProfile(imageBytes.toByteArray());
+                    try {
+                        meViewModel.insertUser(meUser);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+
 //                    pic.setImageBitmap(image);
                     Log.e("TAG","Bit=="+image.toString());
                     //也可以进行一些保存、压缩等操作后上传
@@ -176,11 +186,10 @@ public class MeFragment extends Fragment {
         final String userID = sharedPreferences.getString("userID", "fail");
 
         // 从数据库中获取用户信息
-        users = meViewModel.getUserInfo(userID);
-        users.observe(getViewLifecycleOwner(), new Observer<List<User>>() {
+        meViewModel.getUserInfo(userID).observe(activity, new Observer<User>() {
             @Override
-            public void onChanged(List<User> users) {
-                user = users.get(0);
+            public void onChanged(User user) {
+                meUser = user;
                 textViewUserID.setText(user.getUserID());
                 textViewUserName.setText(user.getUserName());
                 if (user.getUserProfile() != null){
@@ -189,6 +198,10 @@ public class MeFragment extends Fragment {
                     imageViewProfile.setImageResource(R.drawable.head);
                 }
             }
+
+
+
+
         });
 
         textViewUserName.setOnClickListener(new View.OnClickListener() {
@@ -196,7 +209,7 @@ public class MeFragment extends Fragment {
             public void onClick(View v) {
                 NavController navController = Navigation.findNavController(v);
                 Bundle bundle = new Bundle();
-                bundle.putString("userName", user.getUserName());
+                bundle.putString("userName", meUser.getUserName());
                 navController.navigate(R.id.action_meFragment_to_changNameFragment, bundle);
             }
         });
@@ -225,25 +238,6 @@ public class MeFragment extends Fragment {
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
                 photoPickerIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
                 startActivityForResult(photoPickerIntent, ALBUM_REQUEST_CODE);
-                ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
-                image.compress(Bitmap.CompressFormat.PNG, 100, imageBytes);
-                user.setUserProfile(imageBytes.toByteArray());
-                Thread t = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            meViewModel.insertUser(user);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-                t.start();
-                try {
-                    t.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
 
             }
         });

@@ -25,7 +25,7 @@ public interface UserDao {
     void updateUser(User... users);
 
     @Query("SELECT * FROM User Where userID LIKE :userID")
-    LiveData<List<User>> getUserInfo(String userID);
+    LiveData<User> getUserInfo(String userID);
 
 
     @Query("SELECT * FROM User Where userID LIKE :userID")

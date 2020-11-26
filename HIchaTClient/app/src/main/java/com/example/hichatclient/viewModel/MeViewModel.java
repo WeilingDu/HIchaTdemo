@@ -33,7 +33,7 @@ public class MeViewModel extends AndroidViewModel {
         this.user = user;
     }
 
-    public LiveData<List<User>> getUserInfo(String userID){
+    public LiveData<User> getUserInfo(String userID){
         return meRepository.getUserInfo(userID);
     }
 

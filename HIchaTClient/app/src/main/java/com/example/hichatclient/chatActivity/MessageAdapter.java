@@ -1,5 +1,13 @@
 package com.example.hichatclient.chatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +20,29 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hichatclient.R;
 import com.example.hichatclient.data.entity.ChattingContent;
+import com.example.hichatclient.data.entity.Friend;
+import com.example.hichatclient.data.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
     private List<ChattingContent> allMsg = new ArrayList<>();
+    private byte[] bytesLeft;
+    private byte[] bytesRight;
+
 
     public void setAllMsg(List<ChattingContent> allMsg) {
         this.allMsg = allMsg;
     }
 
+    public void setBytesLeft(byte[] bytesLeft) {
+        this.bytesLeft = bytesLeft;
+    }
+
+    public void setBytesRight(byte[] bytesRight) {
+        this.bytesRight = bytesRight;
+    }
 
     @NonNull
     @Override
@@ -38,6 +58,18 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
         // position是当前子项在集合中的位置，通过position参数得到当前项的Msg实例
         ChattingContent chattingContent = allMsg.get(position);
+        if (bytesLeft != null){
+            holder.leftImageViewHead.setImageBitmap(toRoundCorner(BitmapFactory.decodeByteArray(bytesLeft, 0, bytesLeft.length), 2));
+        }else {
+            holder.leftImageViewHead.setImageResource(R.drawable.head);
+        }
+
+        if (bytesRight != null){
+            holder.rightImageViewHead.setImageBitmap(toRoundCorner(BitmapFactory.decodeByteArray(bytesRight, 0, bytesRight.length), 2));
+        }else {
+            holder.rightImageViewHead.setImageResource(R.drawable.head);
+        }
+
         if (chattingContent.getMsgType().equals("receive")) {
             //如果是收到的信息，则显示左边的布局信息，将右边的信息隐藏
             holder.rightImageViewHead.setVisibility(View.GONE);
@@ -101,5 +133,29 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             rightImageViewRead = itemView.findViewById(R.id.right_read);
             rightMsg = itemView.findViewById(R.id.right_tv);
         }
+    }
+
+
+    public static Bitmap toRoundCorner(Bitmap bitmap, float ratio) {
+        System.out.println("图片是否变成圆形模式了+++++++++++++");
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        final RectF rectF = new RectF(rect);
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        canvas.drawRoundRect(rectF, bitmap.getWidth() / ratio,
+                bitmap.getHeight() / ratio, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        System.out.println("pixels+++++++" + String.valueOf(ratio));
+
+        return output;
+
     }
 }

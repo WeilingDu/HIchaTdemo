@@ -12,6 +12,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
@@ -104,12 +112,14 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onChanged(Friend friend) {
                 friendChatting = friend;
+                messageAdapter.setBytesLeft(friendChatting.getFriendProfile());
             }
         });
         chatViewModel.getUserInfoByUserID(userID).observe(this, new Observer<User>() {
             @Override
             public void onChanged(User user) {
                 userChatting = user;
+                messageAdapter.setBytesRight(userChatting.getUserProfile());
             }
         });
 
@@ -120,6 +130,9 @@ public class ChatActivity extends AppCompatActivity {
         if (allMessage != null){
             System.out.println("ChatActivity: there are messages!!!");
             messageAdapter.setAllMsg(allMessage);
+            messageAdapter.setBytesLeft(friendChatting.getFriendProfile());
+            messageAdapter.setBytesRight(userChatting.getUserProfile());
+
         }
 
 
@@ -135,6 +148,7 @@ public class ChatActivity extends AppCompatActivity {
 //                    chatViewModel.updateChattingFriendIntoSQL(chattingFriend);
 
                     messageAdapter.setAllMsg(chattingContents);
+
                     messageAdapter.notifyDataSetChanged();
                     recyclerView.scrollToPosition(chattingContents.size()-1);  // 将RecyclerView定位在最后一行
 
@@ -235,8 +249,6 @@ public class ChatActivity extends AppCompatActivity {
 //        allMessage.add(msg4);
 //        allMessage.add(msg5);
 //    }
-
-
 
 
 

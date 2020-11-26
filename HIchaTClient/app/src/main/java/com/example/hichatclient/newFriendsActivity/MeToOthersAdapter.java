@@ -56,7 +56,14 @@ public class MeToOthersAdapter extends RecyclerView.Adapter<MeToOthersAdapter.Me
         MeToOthers meToOthers = allMeToOthers.get(position);
         holder.textViewNewFriendID.setText(meToOthers.getObjectID());
         holder.textViewNewFriendName.setText(meToOthers.getObjectName());
-        holder.textViewNewFriendRep.setText(meToOthers.getObjectResponse());
+        if (meToOthers.getObjectResponse().equals("wait")){
+            holder.textViewNewFriendRep.setText("对方未回应");
+        }else if (meToOthers.getObjectResponse().equals("agree")){
+            holder.textViewNewFriendRep.setText("对方已同意");
+        }else {
+            holder.textViewNewFriendRep.setText("对方已拒绝");
+        }
+
         if (meToOthers.getObjectProfile() != null){
             holder.imageViewFriendProfile.setImageBitmap(toRoundCorner(BitmapFactory.decodeByteArray(meToOthers.getObjectProfile(), 0, meToOthers.getObjectProfile().length), 2));
         }else {

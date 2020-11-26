@@ -15,7 +15,6 @@ import com.example.hichatclient.data.entity.ChattingContent;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
     private List<ChattingContent> allMsg = new ArrayList<>();
@@ -41,23 +40,31 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         ChattingContent chattingContent = allMsg.get(position);
         if (chattingContent.getMsgType().equals("receive")) {
             //如果是收到的信息，则显示左边的布局信息，将右边的信息隐藏
-            holder.rightImageView.setVisibility(View.GONE);
+            holder.rightImageViewHead.setVisibility(View.GONE);
+            holder.rightImageViewRead.setVisibility(View.GONE);
             holder.rightLinearLayout.setVisibility(View.GONE);
             holder.rightMsg.setVisibility(View.GONE);
 
 
-            holder.leftImageView.setVisibility(View.VISIBLE);
+            holder.leftImageViewHead.setVisibility(View.VISIBLE);
+            holder.leftImageViewRead.setVisibility(View.VISIBLE);
             holder.leftLinearLayout.setVisibility(View.VISIBLE);
             holder.leftMsg.setVisibility(View.VISIBLE);
             holder.leftMsg.setText(chattingContent.getMsgContent());
         } else {
             // 若是发出的信息，则显示右边的布局信息，隐藏左边的布局信息
-            holder.leftImageView.setVisibility(View.GONE);
+            holder.leftImageViewHead.setVisibility(View.GONE);
+            holder.leftImageViewRead.setVisibility(View.GONE);
             holder.leftLinearLayout.setVisibility(View.GONE);
             holder.leftMsg.setVisibility(View.GONE);
 
 
-            holder.rightImageView.setVisibility(View.VISIBLE);
+            holder.rightImageViewHead.setVisibility(View.VISIBLE);
+            if (chattingContent.isRead()){
+                holder.rightImageViewRead.setVisibility(View.VISIBLE);
+            }else {
+                holder.rightImageViewRead.setVisibility(View.GONE);
+            }
             holder.rightLinearLayout.setVisibility(View.VISIBLE);
             holder.rightMsg.setVisibility(View.VISIBLE);
             holder.rightMsg.setText(chattingContent.getMsgContent());
@@ -73,8 +80,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
 
     static class MessageViewHolder extends RecyclerView.ViewHolder {
-        ImageView leftImageView;
-        ImageView rightImageView;
+        ImageView leftImageViewHead;
+        ImageView rightImageViewHead;
+        ImageView leftImageViewRead;
+        ImageView rightImageViewRead;
         LinearLayout leftLinearLayout;
         LinearLayout rightLinearLayout;
         TextView leftMsg;
@@ -82,12 +91,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
         public MessageViewHolder(@NonNull View itemView) {
             super(itemView);
-            leftLinearLayout = itemView.findViewById(R.id.left_layout);
-            rightLinearLayout = itemView.findViewById(R.id.right_layout);
-            leftImageView = itemView.findViewById(R.id.left_head);
-            rightImageView = itemView.findViewById(R.id.right_head);
-            leftMsg = itemView.findViewById(R.id.left_msg);
-            rightMsg = itemView.findViewById(R.id.right_msg);
+            leftImageViewHead = itemView.findViewById(R.id.left_head);
+            leftLinearLayout = itemView.findViewById(R.id.left_ll);
+            leftMsg = itemView.findViewById(R.id.left_tv);
+            leftImageViewRead = itemView.findViewById(R.id.left_read);
+
+            rightImageViewHead = itemView.findViewById(R.id.right_head);
+            rightLinearLayout = itemView.findViewById(R.id.right_ll);
+            rightImageViewRead = itemView.findViewById(R.id.right_read);
+            rightMsg = itemView.findViewById(R.id.right_tv);
         }
     }
 }

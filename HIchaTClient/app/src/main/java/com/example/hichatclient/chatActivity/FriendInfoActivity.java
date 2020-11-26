@@ -9,9 +9,19 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hichatclient.ApplicationUtil;
@@ -37,6 +47,7 @@ public class FriendInfoActivity extends AppCompatActivity {
 
 
     // UI控件
+    ImageView imageViewFriendProfile;
     TextView textViewFriendID;
     TextView textViewFriendName;
     Button buttonSendMessage;
@@ -52,6 +63,7 @@ public class FriendInfoActivity extends AppCompatActivity {
         textViewFriendName = findViewById(R.id.textViewFriendName9);
         buttonSendMessage = findViewById(R.id.buttonSendMessageTo);
         buttonDeleteFriend = findViewById(R.id.buttonDeleteFriend);
+        imageViewFriendProfile = findViewById(R.id.imageView4);
 
         friendInfoViewModel = new ViewModelProvider(this).get(FriendInfoViewModel.class);
 
@@ -84,6 +96,11 @@ public class FriendInfoActivity extends AppCompatActivity {
             public void onChanged(Friend friend) {
                 System.out.println("FriendInfoActivity: " + friend.getFriendName());
                 textViewFriendName.setText(friend.getFriendName());
+                if (friend.getFriendProfile() != null){
+                    imageViewFriendProfile.setImageBitmap(toRoundCorner(BitmapFactory.decodeByteArray(friend.getFriendProfile(), 0, friend.getFriendProfile().length), 2));
+                }else {
+                    imageViewFriendProfile.setImageResource(R.drawable.head);
+                }
             }
         });
 
@@ -172,6 +189,29 @@ public class FriendInfoActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static Bitmap toRoundCorner(Bitmap bitmap, float ratio) {
+        System.out.println("图片是否变成圆形模式了+++++++++++++");
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        final RectF rectF = new RectF(rect);
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        canvas.drawRoundRect(rectF, bitmap.getWidth() / ratio,
+                bitmap.getHeight() / ratio, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        System.out.println("pixels+++++++" + String.valueOf(ratio));
+
+        return output;
+
     }
 
 }

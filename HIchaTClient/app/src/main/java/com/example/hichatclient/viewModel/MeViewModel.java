@@ -17,6 +17,7 @@ import java.util.List;
 
 public class MeViewModel extends AndroidViewModel {
     private MeRepository meRepository;
+    private UserRepository userRepository;
     private LiveData<User> user;
 
     public MeViewModel(@NonNull Application application) {
@@ -34,6 +35,10 @@ public class MeViewModel extends AndroidViewModel {
 
     public LiveData<List<User>> getUserInfo(String userID){
         return meRepository.getUserInfo(userID);
+    }
+
+    public void insertUser(User user) throws InterruptedException {
+        userRepository.insertUser(user);
     }
 
 

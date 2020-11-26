@@ -59,7 +59,14 @@ public class OthersToMeAdapter extends RecyclerView.Adapter<OthersToMeAdapter.Ot
         final OthersToMe othersToMe = allOthersToMe.get(position);
         holder.textViewObjectID.setText(othersToMe.getObjectID());
         holder.textViewObjectName.setText(othersToMe.getObjectName());
-        holder.textViewUserResponse.setText(othersToMe.getUserResponse());
+        if (othersToMe.getUserResponse().equals("wait")){
+            holder.textViewUserResponse.setText("您未回应");
+        }else if (othersToMe.getUserResponse().equals("refuse")){
+            holder.textViewUserResponse.setText("您已拒绝");
+        }else {
+            holder.textViewUserResponse.setText("您已同意");
+        }
+
         if (othersToMe.getObjectProfile() != null){
             holder.imageViewObjectProfile.setImageBitmap(toRoundCorner(BitmapFactory.decodeByteArray(othersToMe.getObjectProfile(), 0, othersToMe.getObjectProfile().length), 2));
         }else {

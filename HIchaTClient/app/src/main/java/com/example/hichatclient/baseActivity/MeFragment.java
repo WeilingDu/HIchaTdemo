@@ -38,6 +38,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.mainActivity.LogInFragment;
@@ -47,6 +48,8 @@ import com.example.hichatclient.viewModel.MeViewModel;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 import java.util.List;
 import java.util.Objects;
 
@@ -55,13 +58,20 @@ import static android.app.Activity.RESULT_OK;
 public class MeFragment extends Fragment {
     private MeViewModel meViewModel;
     private FragmentActivity activity;
+    private ApplicationUtil applicationUtil;
+    private Socket socket;
+
     private TextView textViewUserID;
     private TextView textViewUserName;
     private Button buttonChangePassword;
     private Button buttonExit;
     private ImageView imageViewProfile;
     private SharedPreferences sharedPreferences;
+
     private User meUser;
+    private int flag;
+
+
 
 
     public static MeFragment newInstance() {
@@ -137,15 +147,6 @@ public class MeFragment extends Fragment {
                         imageViewProfile.setImageBitmap(toRoundCorner(image, 2));
                     }
 
-                    ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
-                    image.compress(Bitmap.CompressFormat.PNG, 100, imageBytes);
-                    meUser.setUserProfile(imageBytes.toByteArray());
-                    try {
-                        meViewModel.insertUser(meUser);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
 
 //                    pic.setImageBitmap(image);
                     Log.e("TAG","Bit=="+image.toString());
@@ -181,26 +182,45 @@ public class MeFragment extends Fragment {
 //        imageViewProfile.setImageResource(R.drawable.profile);
 
 
+        // 获取applicationUtil中的数据
+        applicationUtil = (ApplicationUtil) activity.getApplication();
+        final String userShortToken = applicationUtil.getUserShortToken();
+        if (!applicationUtil.staticIsConnected()) {
+            try {
+                applicationUtil.initSocketStatic();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        socket = applicationUtil.getSocketStatic();
+
+
         // 获取Share Preferences中的数据
         sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
         final String userID = sharedPreferences.getString("userID", "fail");
 
+
+        meUser = meViewModel.getUserInfo(userID).getValue();
         // 从数据库中获取用户信息
         meViewModel.getUserInfo(userID).observe(activity, new Observer<User>() {
             @Override
-            public void onChanged(User user) {
+            public void onChanged(final User user) {
                 meUser = user;
-                textViewUserID.setText(user.getUserID());
-                textViewUserName.setText(user.getUserName());
-                if (user.getUserProfile() != null){
-                    imageViewProfile.setImageBitmap(toRoundCorner(BitmapFactory.decodeByteArray(user.getUserProfile(), 0, user.getUserProfile().length), 2));
-                }else {
-                    imageViewProfile.setImageResource(R.drawable.head);
-                }
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        textViewUserID.setText(user.getUserID());
+                        textViewUserName.setText(user.getUserName());
+                        System.out.println("MeFragment userName: " + user.getUserName());
+                        if (user.getUserProfile() != null){
+                            imageViewProfile.setImageBitmap(toRoundCorner(BitmapFactory.decodeByteArray(user.getUserProfile(), 0, user.getUserProfile().length), 2));
+                        }else {
+                            imageViewProfile.setImageResource(R.drawable.head);
+                        }
+                    }
+                });
+
             }
-
-
-
 
         });
 
@@ -239,6 +259,34 @@ public class MeFragment extends Fragment {
                 photoPickerIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
                 startActivityForResult(photoPickerIntent, ALBUM_REQUEST_CODE);
 
+                if (image != null){
+                    ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
+                    image.compress(Bitmap.CompressFormat.PNG, 100, imageBytes);
+                    meUser.setUserProfile(imageBytes.toByteArray());
+                    Thread t = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                flag = meViewModel.updateUserProfileToServer(userShortToken, meUser.getUserProfile(), socket);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    t.start();
+                    try {
+                        t.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    if (flag == 1){
+                        try {
+                            meViewModel.insertUser(meUser);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
             }
         });
 

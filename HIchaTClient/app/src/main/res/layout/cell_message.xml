@@ -29,10 +29,10 @@
                 android:id="@+id/left_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="2dp"
                 android:gravity="left"
                 android:textColor="#000000"
                 android:textSize="18sp" />
@@ -42,13 +42,12 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/left_read"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:id="@+id/left_sentiment"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignBottom="@id/left_ll"
         android:layout_marginLeft="10dp"
-        android:layout_toEndOf="@id/left_ll"
-        android:background="@drawable/read" />
+        android:layout_toEndOf="@id/left_ll" />
 
 
     <ImageView
@@ -67,8 +66,7 @@
         android:layout_below="@+id/left_ll"
         android:layout_marginTop="10dp"
         android:layout_toStartOf="@+id/right_head"
-        android:layout_toRightOf="@+id/left_head"
-        android:layout_toEndOf="@+id/left_read">
+        android:layout_toRightOf="@+id/left_head">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -81,10 +79,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="2dp"
                 android:gravity="right"
                 android:textColor="#fefefe"
                 android:textSize="18sp" />
@@ -95,8 +93,8 @@
 
     <ImageView
         android:id="@+id/right_read"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignBottom="@id/right_ll"
         android:layout_marginRight="10dp"
         android:layout_toStartOf="@id/right_ll"

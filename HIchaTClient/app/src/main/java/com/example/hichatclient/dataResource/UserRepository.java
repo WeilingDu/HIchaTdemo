@@ -316,7 +316,7 @@ public class UserRepository {
                         num = response.getUnreceivedMsgRes().getMsgCount();
                         for(int i = 0; i < num; i++){
                             Test.UnreceivedMsg.Res.Msg unreceivedMsgi = response.getUnreceivedMsgRes().getMsg(i);
-                            ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(unreceivedMsgi.getOtherId()),"receive",unreceivedMsgi.getTime(),unreceivedMsgi.getContent(), false);
+                            ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(unreceivedMsgi.getOtherId()),"receive",unreceivedMsgi.getTime(),unreceivedMsgi.getContent(), false, null, null);
                             System.out.println("LogInFragment content: " + chattingContent.getMsgContent());
                             chattingContents.add(chattingContent);
                         }
@@ -629,6 +629,79 @@ public class UserRepository {
             super.run();
             userDao.insertUser(user);
         }
+    }
+
+
+    // 向服务器发送更新用户头像
+    public int updateUserProfileToServer(String userShortToken, byte[] userNewProfile,Socket socket) throws IOException {
+        int flag = 1;
+        Test.ChangeHeadpic.Req.Builder changeHeadpicReq = Test.ChangeHeadpic.Req.newBuilder();
+        changeHeadpicReq.setShortToken(userShortToken);
+        changeHeadpicReq.setNewHeadpic(ByteString.copyFrom(userNewProfile));
+        Test.ReqToServer.Builder reqToServer = Test.ReqToServer.newBuilder();
+        reqToServer.setChangeHeadpicReq(changeHeadpicReq);
+        byte[] request = reqToServer.build().toByteArray();
+        byte[] len = new byte[4];
+        for (int i = 0;  i < 4;  i++)
+        {
+            len[3-i] = (byte)((request.length >> (8 * i)) & 0xFF);
+        }
+        byte[] send_data = new byte[request.length + len.length];
+        System.arraycopy(len, 0, send_data, 0, len.length);
+        System.arraycopy(request, 0, send_data, len.length, request.length);
+
+        OutputStream outputStream = socket.getOutputStream();
+        outputStream.write(send_data);
+        outputStream.flush();
+
+        byte[] bytes = new byte[0];
+        while(socket.isConnected()){
+            InputStream is = socket.getInputStream();
+            if (bytes.length < PACKET_HEAD_LENGTH) {
+                byte[] head = new byte[PACKET_HEAD_LENGTH - bytes.length];
+                int couter = is.read(head);
+                if (couter < 0) {
+                    continue;
+                }
+                bytes = mergebyte(bytes, head, 0, couter);
+                if (couter < PACKET_HEAD_LENGTH) {
+                    continue;
+                }
+            }
+            // 下面这个值请注意，一定要取4长度的字节子数组作为报文长度
+            byte[] temp = new byte[0];
+            temp = mergebyte(temp, bytes, 0, PACKET_HEAD_LENGTH);
+            int bodylength = 0; //包体长度
+            for(int i=0;i<temp.length;i++){
+                bodylength += (temp[i] & 0xff) << ((3-i)*8);
+            }
+            if (bytes.length - PACKET_HEAD_LENGTH < bodylength) {//不够一个包
+                byte[] body = new byte[bodylength + PACKET_HEAD_LENGTH - bytes.length];//剩下应该读的字节(凑一个包)
+                int couter = is.read(body);
+                if (couter < 0) {
+                    continue;
+                }
+                bytes = mergebyte(bytes, body, 0, couter);
+                if (couter < body.length) {
+                    continue;
+                }
+            }
+            byte[] body = new byte[0];
+            body = mergebyte(body, bytes, PACKET_HEAD_LENGTH, bytes.length);
+            bytes = new byte[0];
+            Test.RspToClient response = Test.RspToClient.parseFrom(body);
+            Test.RspToClient.RspCase type = response.getRspCase();
+            switch (type){
+                case CHANGE_HEADPIC_RSP:
+                    flag = 1;
+                    break;
+                case ERROR:
+                    flag = 0;
+                    break;
+            }
+            break;
+        }
+        return flag;
     }
 
 

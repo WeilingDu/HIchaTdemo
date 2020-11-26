@@ -1,9 +1,13 @@
 package com.example.hichatclient.data.entity;
 
+import android.net.http.SslCertificate;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import javax.xml.namespace.QName;
 
 @Entity
 public class ChattingContent {
@@ -23,14 +27,36 @@ public class ChattingContent {
     private String msgContent;
     @ColumnInfo(name = "is_read")
     private boolean isRead;
+    @ColumnInfo(name = "friend_msg_sentiment")
+    private String sentiment;
+    @ColumnInfo(name = "suggest_reply")
+    private String suggestReply;
 
-    public ChattingContent(String userID, String friendID, String msgType, long msgTime, String msgContent, boolean isRead) {
+    public ChattingContent(String userID, String friendID, String msgType, long msgTime, String msgContent, boolean isRead, String sentiment, String suggestReply) {
         this.userID = userID;
         this.friendID = friendID;
         this.msgType = msgType;
         this.msgTime = msgTime;
         this.msgContent = msgContent;
         this.isRead = isRead;
+        this.sentiment = sentiment;
+        this.suggestReply = suggestReply;
+    }
+
+    public String getSuggestReply() {
+        return suggestReply;
+    }
+
+    public void setSuggestReply(String suggestReply) {
+        this.suggestReply = suggestReply;
+    }
+
+    public String getSentiment() {
+        return sentiment;
+    }
+
+    public void setSentiment(String sentiment) {
+        this.sentiment = sentiment;
     }
 
     public boolean isRead() {

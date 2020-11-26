@@ -12,14 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
+
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
@@ -37,8 +30,19 @@ import com.example.hichatclient.newFriendsActivity.AddNewFriendActivity;
 import com.example.hichatclient.service.ChatService;
 import com.example.hichatclient.viewModel.ChatViewModel;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.Socket;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -66,6 +70,9 @@ public class ChatActivity extends AppCompatActivity {
     private boolean flag;
     private String userShortToken;
     private String friendID;
+    private String msgSentiment;  // like喜爱, happy愉快, angry愤怒, disgusting厌恶, fearful恐惧, sad悲伤, neutral中性情绪, thinking无法判断
+    private String msgContent;
+    private String msgReply;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +115,7 @@ public class ChatActivity extends AppCompatActivity {
         messageAdapter = new MessageAdapter();
         recyclerView.setAdapter(messageAdapter);
 
+
         chatViewModel.getFriendInfo(userID, friendID).observe(this, new Observer<Friend>() {
             @Override
             public void onChanged(Friend friend) {
@@ -123,9 +131,6 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         allMessage = chatViewModel.getAllMessageLive(userID, friendID).getValue();
         if (allMessage != null){
             System.out.println("ChatActivity: there are messages!!!");
@@ -136,33 +141,59 @@ public class ChatActivity extends AppCompatActivity {
         }
 
 
+
         // 当数据库中的聊天记录有变化时
         chatViewModel.getAllMessageLive(userID, friendID).observe(this, new Observer<List<ChattingContent>>() {
             @Override
             public void onChanged(List<ChattingContent> chattingContents) {
                 if (chattingContents.size() > 0){
-                    ChattingContent msg = chattingContents.get(chattingContents.size() - 1);
+                    final ChattingContent msg = chattingContents.get(chattingContents.size() - 1);
                     // 更新数据库中的ChattingFriend信息
 //                    assert userID != null;
 //                    ChattingFriend chattingFriend = new ChattingFriend(userID, friend.getFriendID(), friend.getFriendName(), friend.getFriendProfile(), msg.getMsgContent(), msg.getMsgTime());
 //                    chatViewModel.updateChattingFriendIntoSQL(chattingFriend);
 
                     messageAdapter.setAllMsg(chattingContents);
-
                     messageAdapter.notifyDataSetChanged();
                     recyclerView.scrollToPosition(chattingContents.size()-1);  // 将RecyclerView定位在最后一行
 
                     if (msg.getMsgType().equals("receive")){
+                        // 如果该消息没有情感分析，则发送http请求获取
+                        if (msg.getSentiment() == null){
+                            try {
+                                msgContent = msg.getMsgContent();
+                                Thread thread = new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            getSentimentFromBaidu();
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                                thread.start();
+                                thread.join();
+                                msg.setSentiment(msgSentiment);
+                                chatViewModel.updateOneMessageIntoSQL(msg);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
                         final long time = System.currentTimeMillis();
                         Thread t2 = new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                // 当用户打开与某个好友的对话框时，向服务器发送已读提示
-                                try {
-                                    System.out.println("call this function: sendReadMsgToServer2");
-                                    chatViewModel.sendReadMsgToServer(userShortToken, friendID, time, socket);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
+                                // 当用户打开与某个好友的对话框时
+                                // 若对方的最后一条消息没有被已读，则向服务器发送已读消息
+                                if (!msg.isRead()){
+                                    try {
+                                        System.out.println("call this function: sendReadMsgToServer2");
+                                        chatViewModel.sendReadMsgToServer(userShortToken, friendID, time, socket);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                             }
                         });
@@ -179,7 +210,7 @@ public class ChatActivity extends AppCompatActivity {
                 String content = editTextSendMsg.getText().toString();
                 if(!"".equals(content)){
                     //如果字符串不为空，则创建ChattingContent对象
-                    final ChattingContent msg = new ChattingContent(userID, friendID, "send", System.currentTimeMillis(), content, false);
+                    final ChattingContent msg = new ChattingContent(userID, friendID, "send", System.currentTimeMillis(), content, false, null, null);
                     ChattingFriend chattingFriend = new ChattingFriend(userID, friendID, friendChatting.getFriendName(), friendChatting.getFriendProfile(), msg.getMsgContent(), msg.getMsgTime());
                     System.out.println("ChatActivity time: " + msg.getMsgTime());
                     String LogTime = newSimpleDateFormat.format(msg.getMsgTime());
@@ -220,36 +251,111 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        final long time = System.currentTimeMillis();
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // 当用户打开与某个好友的对话框时，向服务器发送已读提示
+//        final long time = System.currentTimeMillis();
+//        Thread t1 = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                // 当用户打开与某个好友的对话框时，向服务器发送已读提示
+//                try {
+//                    System.out.println("call this function: sendReadMsgToServer1");
+//                    chatViewModel.sendReadMsgToServer(userShortToken, friendID, time, socket);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//        t1.start();
+
+    }
+
+    public void getSentimentFromBaidu() throws InterruptedException {
+        String access_token = applicationUtil.getAccessToken();
+        HttpURLConnection connection = null;
+        BufferedReader reader = null;
+        try {
+            // 获取访问地址的url
+            // 注意要有access_token参数
+            // 接口默认支持的是GBK编码，若需要输入的文本为UTF-8编码，要在url上添加参数charset=UTF-8
+            URL url = new URL("https://aip.baidubce.com/rpc/2.0/nlp/v1/emotion?access_token=" + access_token + "&charset=UTF-8");
+            // 创建HttpURLConnection对象
+            connection = (HttpURLConnection) url.openConnection();
+            // 设置请求方法为POST
+            connection.setRequestMethod("POST");
+            // 允许往流中写数据
+            connection.setDoOutput(true);
+            // 允许从流中读数据
+            connection.setDoInput(true);
+            // 设置连接超时时间（毫秒）
+            connection.setConnectTimeout(5000);
+            // 设置读取超时时间（毫秒）
+            connection.setReadTimeout(5000);
+            // 设置header内的参数
+            connection.setRequestProperty("Content-Type", "application/json");
+            // 设置body内的参数
+            JSONObject param = new JSONObject();
+            param.put("scene", "talk");
+            param.put("text", msgContent);
+
+            // 建立实际的连接
+            connection.connect();
+
+            // 得到请求的输出流对象
+            OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream(),"UTF-8");
+            writer.write(param.toString());  // 写入参数
+            writer.flush();
+
+            // 获取服务端响应，通过输入流来读取URL的响应
+            InputStream is = connection.getInputStream();
+            reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            StringBuilder result = new StringBuilder();
+            String strRead = null;
+            while ((strRead = reader.readLine()) != null) {
+                result.append(strRead);
+            }
+            reader.close();
+
+            // 将服务端返回的json数据进行转化
+            JSONObject jsonObject = new JSONObject(result.toString());
+            JSONObject jsonObject1 = new JSONObject(jsonObject.getJSONArray("items").getString(0));
+
+            // 表示情感极性分类结果
+            String sentiment = jsonObject1.getString("label");
+            String sentiment_prob = jsonObject1.getString("prob");
+            if (Float.parseFloat(sentiment_prob) < 0.5){
+                System.out.println("ChatActivity sentiment: thinking");
+                msgSentiment = "thinking";
+            }else {
+                if (sentiment.equals("neutral")){
+                    System.out.println("ChatActivity sentiment: neutral");
+                    msgSentiment = "neutral";
+                }else {
+                    JSONObject jsonObject2 = new JSONObject(jsonObject1.getJSONArray("subitems").getString(0));
+                    String sub_sentiment = jsonObject2.getString("label");
+                    System.out.println("ChatActivity sentiment: " + sub_sentiment);
+                    msgSentiment = sub_sentiment;
+                }
+            }
+
+            // 关闭连接
+            connection.disconnect();
+
+            // 打印读到的响应结果
+            System.out.println("ChatActivity msg content: " + msgContent);
+            System.out.println("ChatActivity msg sentiment: " + msgSentiment);
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
                 try {
-                    System.out.println("call this function: sendReadMsgToServer1");
-                    chatViewModel.sendReadMsgToServer(userShortToken, friendID, time, socket);
+                    reader.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-        });
-        t1.start();
-
+            if (connection != null) {//关闭连接
+                connection.disconnect();
+            }
+        }
     }
-    //    public void initMessage(){
-//        allMessage = new ArrayList<>();
-//        ChattingContent msg1 = new ChattingContent("10048", "10001", "receive", "1", "hello!");
-//        ChattingContent msg2 = new ChattingContent("10048", "10001", "send", "1", "hi");
-//        ChattingContent msg3 = new ChattingContent("10048", "10001", "receive", "1", "Nice to meet u!");
-//        ChattingContent msg4 = new ChattingContent("10048", "10001", "send", "1", "me too!");
-//        ChattingContent msg5 = new ChattingContent("10048", "10001", "receive", "1", "hiahiahia!");
-//        allMessage.add(msg1);
-//        allMessage.add(msg2);
-//        allMessage.add(msg3);
-//        allMessage.add(msg4);
-//        allMessage.add(msg5);
-//    }
-
-
 
 }

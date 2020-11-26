@@ -67,6 +67,13 @@ public class OthersRequestActivity extends AppCompatActivity {
 
         // 获取applicationUtil中的数据
         final String userShortToken = applicationUtil.getUserShortToken();
+        if (!applicationUtil.staticIsConnected()) {
+            try {
+                applicationUtil.initSocketStatic();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         socket = applicationUtil.getSocketStatic();
 
         // 获取NewFriendActivity传来的参数

@@ -22,6 +22,9 @@ public interface ChattingContentDao {
     @Update
     void updateAllContent(List<ChattingContent> chattingContents);
 
+    @Update
+    void updateOneContent(ChattingContent chattingContent);
+
     @Query("SELECT * FROM chattingcontent WHERE user_id LIKE :userID AND friend_id LIKE :friendID")
     LiveData<List<ChattingContent>> findAllContent(String userID, String friendID);
 

@@ -135,4 +135,25 @@ public class MessageRepository {
         }
     }
 
+    // 往数据库更新一条聊天信息
+    public void updateOneMessageIntoSQL(ChattingContent chattingContent){
+        new updateOneMessageIntoSQLThread(chattingContentDao, chattingContent).start();
+    }
+
+    static class updateOneMessageIntoSQLThread extends Thread{
+        ChattingContentDao chattingContentDao;
+        ChattingContent chattingContent;
+
+        public updateOneMessageIntoSQLThread(ChattingContentDao chattingContentDao, ChattingContent chattingContent) {
+            this.chattingContentDao = chattingContentDao;
+            this.chattingContent = chattingContent;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            chattingContentDao.updateOneContent(chattingContent);
+        }
+    }
+
 }

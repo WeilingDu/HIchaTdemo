@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.baseActivity.BaseActivity;
+import com.example.hichatclient.dataResource.AuthService;
 import com.example.hichatclient.service.ChatService;
 import com.example.hichatclient.viewModel.LogInViewModel;
 import com.example.hichatclient.data.entity.User;
@@ -85,7 +86,7 @@ public class LogInFragment extends Fragment {
 
         buttonLogIn.setEnabled(false);
 
-        TextWatcher textWatcher = new TextWatcher() {
+        final TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -155,12 +156,27 @@ public class LogInFragment extends Fragment {
                         applicationUtil.setUserLongToken(user.getUserLongToken());
                         applicationUtil.setUserID(user.getUserID());
 
+                        Thread thread = new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                AuthService authService = new AuthService();
+                                String access_token = authService.getAuth();
+                                System.out.println("LogInFragment access token: " + access_token);
+                                applicationUtil.setAccessToken(access_token);
+                            }
+                        });
+                        thread.start();
+                        thread.join();
+
+
                         // 跳转至BaseActivity的MeFragment
                         Intent intent = new Intent();
                         intent.setClass(activity, BaseActivity.class);
                         intent.putExtra("isLogIn", isLogIn);
                         intent.putExtra("FragmentId", "-1");
                         startActivity(intent);
+
+
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();

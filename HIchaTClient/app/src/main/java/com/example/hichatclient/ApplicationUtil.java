@@ -15,6 +15,15 @@ public class ApplicationUtil extends Application {
     private String userShortToken;
     private String userLongToken;
     private String userID;
+    private String accessToken;  // 百度情感分析api的accessToken
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
 
     public String getUserID() {
         return userID;

@@ -79,14 +79,36 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
 
             holder.leftImageViewHead.setVisibility(View.VISIBLE);
-            holder.leftImageViewRead.setVisibility(View.VISIBLE);
+            holder.leftImageViewSentiment.setVisibility(View.VISIBLE);
+            if (chattingContent.getSentiment() == null){
+                holder.leftImageViewSentiment.setImageResource(R.drawable.thinking);
+            }else {
+                if (chattingContent.getSentiment().equals("sad")){
+                    holder.leftImageViewSentiment.setImageResource(R.drawable.sad);
+                }else if (chattingContent.getSentiment().equals("neutral")){
+                    holder.leftImageViewSentiment.setImageResource(R.drawable.peace);
+                }else if (chattingContent.getSentiment().equals("happy")){
+                    holder.leftImageViewSentiment.setImageResource(R.drawable.happy);
+                }else if (chattingContent.getSentiment().equals("thinking")){
+                    holder.leftImageViewSentiment.setImageResource(R.drawable.thinking);
+                }else if (chattingContent.getSentiment().equals("like")){
+                    holder.leftImageViewSentiment.setImageResource(R.drawable.like);
+                }else if (chattingContent.getSentiment().equals("fearful")){
+                    holder.leftImageViewSentiment.setImageResource(R.drawable.fearful);
+                }else if (chattingContent.getSentiment().equals("angry")){
+                    holder.leftImageViewSentiment.setImageResource(R.drawable.angry);
+                }else if (chattingContent.getSentiment().equals("disgusting")){
+                    holder.leftImageViewSentiment.setImageResource(R.drawable.disgusting);
+                }
+            }
+
             holder.leftLinearLayout.setVisibility(View.VISIBLE);
             holder.leftMsg.setVisibility(View.VISIBLE);
             holder.leftMsg.setText(chattingContent.getMsgContent());
         } else {
             // 若是发出的信息，则显示右边的布局信息，隐藏左边的布局信息
             holder.leftImageViewHead.setVisibility(View.GONE);
-            holder.leftImageViewRead.setVisibility(View.GONE);
+            holder.leftImageViewSentiment.setVisibility(View.GONE);
             holder.leftLinearLayout.setVisibility(View.GONE);
             holder.leftMsg.setVisibility(View.GONE);
 
@@ -114,7 +136,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     static class MessageViewHolder extends RecyclerView.ViewHolder {
         ImageView leftImageViewHead;
         ImageView rightImageViewHead;
-        ImageView leftImageViewRead;
+        ImageView leftImageViewSentiment;
         ImageView rightImageViewRead;
         LinearLayout leftLinearLayout;
         LinearLayout rightLinearLayout;
@@ -126,7 +148,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             leftImageViewHead = itemView.findViewById(R.id.left_head);
             leftLinearLayout = itemView.findViewById(R.id.left_ll);
             leftMsg = itemView.findViewById(R.id.left_tv);
-            leftImageViewRead = itemView.findViewById(R.id.left_read);
+            leftImageViewSentiment = itemView.findViewById(R.id.left_sentiment);
 
             rightImageViewHead = itemView.findViewById(R.id.right_head);
             rightLinearLayout = itemView.findViewById(R.id.right_ll);
@@ -137,7 +159,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
 
     public static Bitmap toRoundCorner(Bitmap bitmap, float ratio) {
-        System.out.println("图片是否变成圆形模式了+++++++++++++");
         Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
                 bitmap.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
@@ -153,7 +174,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, rect, rect, paint);
-        System.out.println("pixels+++++++" + String.valueOf(ratio));
 
         return output;
 

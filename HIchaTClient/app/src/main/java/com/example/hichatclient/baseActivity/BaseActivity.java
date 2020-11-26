@@ -16,6 +16,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
@@ -33,6 +34,7 @@ public class BaseActivity extends AppCompatActivity {
     private ApplicationUtil applicationUtil;
     private Socket socket;
     private ContactsFragment contactsFragment;
+    private NavController navController;
 
 
 
@@ -43,7 +45,7 @@ public class BaseActivity extends AppCompatActivity {
 
         // 设置底部导航栏
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationViewBase);
-        NavController navController = Navigation.findNavController(this, R.id.fragment2);
+        navController = Navigation.findNavController(this, R.id.fragment2);
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
@@ -122,6 +124,18 @@ public class BaseActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        navController.navigateUp();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        navController.navigateUp();
+        return super.onSupportNavigateUp();
     }
 
 }

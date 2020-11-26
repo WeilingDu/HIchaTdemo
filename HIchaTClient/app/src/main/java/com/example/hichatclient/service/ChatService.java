@@ -439,7 +439,7 @@ public class ChatService extends LifecycleService {
         int num = unreceivedMsgList.getMsgCount();
         for(int i = 0; i < num; i++){
             Test.UnreceivedMsg.Res.Msg unreceivedMsg = unreceivedMsgList.getMsg(i);
-            ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(unreceivedMsg.getOtherId()),"receive",unreceivedMsg.getTime(),unreceivedMsg.getContent(), false);
+            ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(unreceivedMsg.getOtherId()),"receive",unreceivedMsg.getTime(),unreceivedMsg.getContent(), false, null, null);
 //            chattingContents.add(chattingContent);
             System.out.println("Chat service chatting content " + chattingContent.getMsgContent());
             chattingContentDao.insertContent(chattingContent);
@@ -455,7 +455,7 @@ public class ChatService extends LifecycleService {
     // 实时接收别人发来的聊天消息
     public void chatMessage(Test.RspToClient response){
         Test.ChatWithServer.Relay chatMsgFromOther = response.getChatWithServerRelay();
-        ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(chatMsgFromOther.getSrcId()),"receive",chatMsgFromOther.getTime(),chatMsgFromOther.getContent(), false);
+        ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(chatMsgFromOther.getSrcId()),"receive",chatMsgFromOther.getTime(),chatMsgFromOther.getContent(), false, null, null);
 //        chattingContents.add(chattingContent);
         System.out.println("ChatService timeFromServer: " + chatMsgFromOther.getTime());
         System.out.println("ChatService time: " + chattingContent.getMsgTime());
@@ -488,14 +488,16 @@ public class ChatService extends LifecycleService {
         }
 
         if (num != 0){
+            System.out.println("ChatService num: " + num);
             for (int i=0; i<num; i++){
                 List<ChattingContent> chattingContents = chattingContentDao.findAllContentNotRead(userID, seenFriendID.get(i), false, seenTime.get(i));
                 List<ChattingContent> chattingContents2 = new ArrayList<>();
                 if (chattingContents.size() != 0 ){
+                    System.out.println("ChatService size: " + chattingContents.size());
                     for (int j=0; j<chattingContents.size(); j++){
                         System.out.println("ChatService j: " + j);
-                        System.out.println("ChatService seenFriendID: " + seenFriendID.get(j));
-                        System.out.println("ChatService seenTime: " + seenTime.get(j));
+                        System.out.println("ChatService seenFriendID: " + seenFriendID.get(i));
+                        System.out.println("ChatService seenTime: " + seenTime.get(i));
                         System.out.println("ChatService isRead: " + chattingContents.get(j).isRead());
                         System.out.println("ChatService msgTime: " + chattingContents.get(j).getMsgTime());
                         chattingContents.get(j).setRead(true);

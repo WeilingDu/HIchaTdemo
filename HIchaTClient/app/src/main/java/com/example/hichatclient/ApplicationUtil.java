@@ -18,6 +18,16 @@ public class ApplicationUtil extends Application {
     private String userLongToken;
     private String userID;
     private String accessToken;  // 百度情感分析api的accessToken
+    private String textAccessToken;  //  百度文本审核api的accessToken
+
+    public String getTextAccessToken() {
+        return textAccessToken;
+    }
+
+    public void setTextAccessToken(String textAccessToken) {
+        System.out.println("*************call this function");
+        this.textAccessToken = textAccessToken;
+    }
 
     public String getAccessToken() {
         return accessToken;

@@ -59,6 +59,13 @@ public class SearchFriendActivity extends AppCompatActivity {
 
         // 获取applicationUtil中的数据
         applicationUtil = (ApplicationUtil) SearchFriendActivity.this.getApplication();
+        if (!applicationUtil.staticIsConnected()) {
+            try {
+                applicationUtil.initSocketStatic();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         socket = applicationUtil.getSocketStatic();
         userShortToken = applicationUtil.getUserShortToken();
 

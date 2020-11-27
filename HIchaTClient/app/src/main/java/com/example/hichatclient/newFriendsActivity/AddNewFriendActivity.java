@@ -59,6 +59,13 @@ public class AddNewFriendActivity extends AppCompatActivity {
 
         // 获取applicationUtil中的数据
         applicationUtil = (ApplicationUtil) AddNewFriendActivity.this.getApplication();
+        if (!applicationUtil.staticIsConnected()) {
+            try {
+                applicationUtil.initSocketStatic();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         socket = applicationUtil.getSocketStatic();
         final String userShortToken = applicationUtil.getUserShortToken();
 

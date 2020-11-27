@@ -93,7 +93,6 @@ public class UserRepository {
         System.out.println("UserRepository userPassword: " + userPassword);
         sendIDAndLogInThread.start();
         sendIDAndLogInThread.join();
-        System.out.println(sendIDAndLogInThread.user);
         map.put(sendIDAndLogInThread.isLogIn, sendIDAndLogInThread.user);
         insertLogInMsg(sendIDAndLogInThread.friends, sendIDAndLogInThread.meToOthers, sendIDAndLogInThread.othersToMes, sendIDAndLogInThread.chattingContents);
         return map;
@@ -122,7 +121,7 @@ public class UserRepository {
         @Override
         public void run() {
             super.run();
-            int isLogIn = 1;
+            int isLogIn = 0;
             String userName = null;
             byte[] userProfile = null;
 //        Bitmap userHeadPic = null;
@@ -193,13 +192,13 @@ public class UserRepository {
                 if (bytes.length < PACKET_HEAD_LENGTH) {
                     byte[] head = new byte[PACKET_HEAD_LENGTH - bytes.length];
                     int couter = 0;
-                    System.out.println(bytes.length);
+//                    System.out.println(bytes.length);
                     try {
                         couter = is.read(head);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    System.out.println(PACKET_HEAD_LENGTH);
+//                    System.out.println(PACKET_HEAD_LENGTH);
                     if (couter <= 0) {
                         errorFlag++;
                         break;//continue;
@@ -282,7 +281,7 @@ public class UserRepository {
                         }
                         break;
                     case ADD_FRIEND_FROM_SELF_RSP:
-                        System.out.println("add_friend_from_rsp");
+//                        System.out.println("add_friend_from_rsp");
                         num = response.getAddFriendFromSelfRsp().getRequestsCount();
                         for(int i = 0; i < num; i++){
                             Test.AddFriendFromSelf.Rsp.RequestFromSelf reqMei = response.getAddFriendFromSelfRsp().getRequests(i);
@@ -312,7 +311,7 @@ public class UserRepository {
                         }
                         break;
                     case UNRECEIVED_MSG_RES:
-                        System.out.println("LogInFragment unreceived_msg_res");
+//                        System.out.println("LogInFragment unreceived_msg_res");
                         num = response.getUnreceivedMsgRes().getMsgCount();
                         for(int i = 0; i < num; i++){
                             Test.UnreceivedMsg.Res.Msg unreceivedMsgi = response.getUnreceivedMsgRes().getMsg(i);
@@ -330,7 +329,7 @@ public class UserRepository {
                         }
                         break;
                     case DELETE_FRIEND_SERVER_TO_B:
-                        System.out.println("LogInFragment delete_friend_server_to_b");
+//                        System.out.println("LogInFragment delete_friend_server_to_b");
                         num = response.getDeleteFriendServerToB().getSrcIdCount();
                         for(int i = 0; i < num; i++){
                             deleteFriends.add(Integer.toString(response.getDeleteFriendServerToB().getSrcId(i)));

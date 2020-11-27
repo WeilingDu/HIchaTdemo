@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
@@ -26,6 +30,7 @@ import com.example.hichatclient.data.entity.ChattingContent;
 import com.example.hichatclient.data.entity.ChattingFriend;
 import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.data.entity.User;
+import com.example.hichatclient.dataResource.TextToken;
 import com.example.hichatclient.newFriendsActivity.AddNewFriendActivity;
 import com.example.hichatclient.service.ChatService;
 import com.example.hichatclient.viewModel.ChatViewModel;
@@ -43,6 +48,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.Socket;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -72,7 +78,7 @@ public class ChatActivity extends AppCompatActivity {
     private String friendID;
     private String msgSentiment;  // like喜爱, happy愉快, angry愤怒, disgusting厌恶, fearful恐惧, sad悲伤, neutral中性情绪, thinking无法判断
     private String msgContent;
-    private String msgReply;
+    private String msgLegal = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -216,34 +222,66 @@ public class ChatActivity extends AppCompatActivity {
                     String LogTime = newSimpleDateFormat.format(msg.getMsgTime());
                     System.out.println("ChatActivity format time: " + LogTime);
                     System.out.println("ChatActivity content: " + content);
-                    Thread t = new Thread(new Runnable() {
+
+                    // 对用户发出的信息进行敏感词检测
+                    Thread thread = new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            try {
-                                System.out.println("ChatActivity call this function");
-                                flag = chatViewModel.sendMessageToServer(msg, userShortToken, socket);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                            getLegalFromBaidu();
                         }
                     });
-                    t.start();
+                    thread.start();
                     try {
-                        t.join();
+                        thread.join();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    if (flag){
-                        chatViewModel.insertOneMessageIntoSQL(msg); // 将该消息插入数据库中
-                        chatViewModel.updateChattingFriendIntoSQL(chattingFriend);
-                        editTextSendMsg.setText("");  // 清空输入框的内容
-                        editTextSendMsg.requestFocus();  // 输入光标回到输入框中
-                    } else {
-                        Toast.makeText(v.getContext().getApplicationContext(), "发送失败！", Toast.LENGTH_SHORT).show();
+
+                    if (msgLegal.equals("1")){
+                        // 若用户信息合法
+                        Thread t = new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    flag = chatViewModel.sendMessageToServer(msg, userShortToken, socket);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                        t.start();
+                        try {
+                            t.join();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if (flag){
+                            chatViewModel.insertOneMessageIntoSQL(msg); // 将该消息插入数据库中
+                            chatViewModel.updateChattingFriendIntoSQL(chattingFriend);
+                            editTextSendMsg.setText("");  // 清空输入框的内容
+                            editTextSendMsg.requestFocus();  // 输入光标回到输入框中
+                        } else {
+                            Toast.makeText(v.getContext().getApplicationContext(), "发送失败！", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        // 若用户信息不合法
+                        AlertDialog.Builder builder= new AlertDialog.Builder(v.getContext(), R.style.Theme_AppCompat_Light_Dialog_Alert);
+                        builder.setTitle("您的消息包含敏感词，不允许发送！");
+                        builder.setNeutralButton("知道了", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        builder.create();
+                        builder.show();
+
                     }
                 }
             }
         });
+
+
 
 
     }
@@ -342,6 +380,70 @@ public class ChatActivity extends AppCompatActivity {
             // 打印读到的响应结果
             System.out.println("ChatActivity msg content: " + msgContent);
             System.out.println("ChatActivity msg sentiment: " + msgSentiment);
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {//关闭连接
+                connection.disconnect();
+            }
+        }
+    }
+
+
+    public void getLegalFromBaidu(){
+        String access_token = applicationUtil.getTextAccessToken();
+        HttpURLConnection connection = null;
+        BufferedReader reader = null;
+        try {
+            // 获取访问地址的url
+            // 注意要有access_token参数
+            // 接口默认支持的是GBK编码，若需要输入的文本为UTF-8编码，要在url上添加参数charset=UTF-8
+            // 注意：urlencode格式化请求体
+            URL url = new URL("https://aip.baidubce.com/rest/2.0/solution/v1/text_censor/v2/user_defined?access_token=" + access_token + "&charset=UTF-8" + "&text=" + msgContent);
+            // 创建HttpURLConnection对象
+            connection = (HttpURLConnection) url.openConnection();
+            // 设置请求方法为POST
+            connection.setRequestMethod("POST");
+            // 允许从流中读数据
+            connection.setDoInput(true);
+            // 设置连接超时时间（毫秒）
+            connection.setConnectTimeout(5000);
+            // 设置读取超时时间（毫秒）
+            connection.setReadTimeout(5000);
+            // 设置header内的参数
+            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+
+            // 建立实际的连接
+            connection.connect();
+
+            // 获取服务端响应，通过输入流来读取URL的响应
+            InputStream is = connection.getInputStream();
+            reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            StringBuilder result = new StringBuilder();
+            String strRead = null;
+            while ((strRead = reader.readLine()) != null) {
+                result.append(strRead);
+            }
+            reader.close();
+
+            // 将服务端返回的json数据进行转化
+            JSONObject jsonObject = new JSONObject(result.toString());
+            String isLegal = jsonObject.getString("conclusionType");
+            msgLegal = isLegal;
+
+            // 关闭连接
+            connection.disconnect();
+
+            // 打印读到的响应结果
+            System.out.println("ChatActivity msg content: " + msgContent);
+            System.out.println("ChatActivity msg conclusionType: " + isLegal);
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         } finally {

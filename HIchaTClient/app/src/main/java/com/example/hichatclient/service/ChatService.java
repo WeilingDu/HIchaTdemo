@@ -24,10 +24,12 @@ import com.example.hichatclient.data.entity.ChattingFriend;
 import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.data.entity.MeToOthers;
 import com.example.hichatclient.data.entity.OthersToMe;
+import com.google.protobuf.ByteString;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -287,8 +289,11 @@ public class ChatService extends LifecycleService {
             byte[] body = new byte[0];
             body = mergebyte(body, bytes, PACKET_HEAD_LENGTH, bytes.length);
             bytes = new byte[0];
+            System.out.println("ChatService before get data");
             Test.RspToClient response = Test.RspToClient.parseFrom(body);
+            System.out.println("ChatService after get data");
             Test.RspToClient.RspCase type = response.getRspCase();
+            System.out.println(response.getRspCase());
             switch (type) {
                 case ADD_FRIEND_FROM_OTHER_RSP:
                     System.out.println("ChatService: add_friend_from_other");
@@ -396,14 +401,21 @@ public class ChatService extends LifecycleService {
     }
 
     //监听自己给别人发送的好友请求的状态
-    public void addFriendReqSelf(Test.RspToClient response){
+    public void addFriendReqSelf(Test.RspToClient response) throws UnsupportedEncodingException {
         System.out.println("add_friend_req_self");
         Test.AddFriendFromSelf.Rsp addFriendFromSelfRsp = response.getAddFriendFromSelfRsp();
         int num = addFriendFromSelfRsp.getRequestsCount();
         for(int i = 0; i < num; i++){
             Test.AddFriendFromSelf.Rsp.RequestFromSelf reqi = addFriendFromSelfRsp.getRequests(i);
-            System.out.println("Chat service addFriendReqSelf: " + reqi.getStatus().toString());
-            if(reqi.getStatus().toString().equals("00")){
+            System.out.println("Chat service addFriendReqSelf: " + reqi.getStatus());
+            byte[] status = reqi.getStatus().toByteArray();
+//            String isoString = new String(status, "ISO-8859-1");
+//            System.out.println("ChatService AddfriendStatus" + isoString);
+            int a = 0;
+            for(int j = status.length-1;j>=0;j--){
+                a+=status[j] * Math.pow(0xFF, status.length - j - 1);
+            }
+            if(a==0){
                 MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),reqi.getObjUser().getHeadpic().toByteArray(),"wait");
                 if (reqi.getObjUser().getHeadpic().toByteArray().length < 10){
                     meToOthers.setObjectProfile(null);
@@ -411,17 +423,17 @@ public class ChatService extends LifecycleService {
                 meToOthersDao.insertMeToOthers(meToOthers);
 //                meToOthersNew.add(meToOthers);
             }
-            else if((reqi.getStatus().toString().equals("01"))){
+            else if(a==1){
                 MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),reqi.getObjUser().getHeadpic().toByteArray(),"agree");
                 if (reqi.getObjUser().getHeadpic().toByteArray().length < 10){
                     meToOthers.setObjectProfile(null);
                 }
                 meToOthersDao.insertMeToOthers(meToOthers);
-                ChattingFriend chattingFriend = new ChattingFriend(userID, meToOthers.getObjectID(), meToOthers.getObjectName(),meToOthers.getObjectProfile(), "We are new friends!", System.currentTimeMillis());
-                chattingFriendDao.insertChattingFriend(chattingFriend);
+//                ChattingFriend chattingFriend = new ChattingFriend(userID, meToOthers.getObjectID(), meToOthers.getObjectName(),meToOthers.getObjectProfile(), "We are new friends!", System.currentTimeMillis());
+//                chattingFriendDao.insertChattingFriend(chattingFriend);
 //                meToOthersNew.add(meToOthers);
             }
-            else if((reqi.getStatus().toString().equals("10"))){
+            else if(a==2){
                 MeToOthers meToOthers = new MeToOthers(userID,Integer.toString(reqi.getObjUser().getId()),reqi.getObjUser().getName(),reqi.getObjUser().getHeadpic().toByteArray(),"refuse");
                 if (reqi.getObjUser().getHeadpic().toByteArray().length < 10){
                     meToOthers.setObjectProfile(null);

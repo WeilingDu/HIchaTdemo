@@ -1,6 +1,5 @@
 package com.example.hichatclient.dataResource;
 
-
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -13,7 +12,7 @@ import java.util.Map;
 /**
  * 获取token类
  */
-public class AuthService {
+public class TextToken {
 
     /**
      * 获取权限token
@@ -25,9 +24,9 @@ public class AuthService {
      */
     public String getAuth() {
         // 官网获取的 API Key 更新为你注册的
-        String clientId = "qfQ13vRgainAM990HkSdWWZY";
+        String clientId = "oNZqH6B3GMvvTXY3dxfhOaLy";
         // 官网获取的 Secret Key 更新为你注册的
-        String clientSecret = "bf3HVHjYuSUmq82T68mQW0aEu2z3DO7P";
+        String clientSecret = "IRKDrxs8FQiXYzP2L8AhF898BxxSf92F";
         return getAuth(clientId, clientSecret);
     }
 
@@ -75,7 +74,7 @@ public class AuthService {
             String access_token = jsonObject.getString("access_token");
             return access_token;
         } catch (Exception e) {
-            System.err.printf("获取sentiment token失败！");
+            System.err.printf("获取text token失败！");
             e.printStackTrace(System.err);
         }
         return null;

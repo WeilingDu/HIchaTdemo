@@ -38,16 +38,27 @@ import android.widget.Toast;
 
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
+import com.example.hichatclient.dataResource.AuthService;
 import com.example.hichatclient.viewModel.SignUpViewModel;
 import com.mordred.wordcloud.CountMap;
 import com.mordred.wordcloud.WordCloud;
 import com.mordred.wordcloud.WordFrequency;
 
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
 import java.net.Socket;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -270,27 +281,26 @@ public class SignUpFragment extends Fragment {
             }
         });
 
-        String query = "我我我我我要去五道口吃肯德基，吃肯德基，吃肯德基，吃肯德基";
-        ArrayList<String> result = JiebaSegmenter.getJiebaSegmenterSingleton().getDividedString(query);
-        System.out.println("result" + result);
-        StringBuilder sentence = new StringBuilder();
-        for (int i=0; i<result.size(); i++){
-            sentence.append(result.get(i));
-            sentence.append(" ");
-        }
-        System.out.println("sentence: " + sentence.toString());
-
-
-        WordFrequency wordFrequency = new WordFrequency();
-        wordFrequency.insertWordNonNormalized(sentence.toString());
-        Map<String, Integer> wordMap  = wordFrequency.generate();
-        System.out.println("wordMap: "+ wordMap.toString());
-
-        WordCloud wd = new WordCloud(wordMap, 250, 250, 0xFF1F6ED4,Color.WHITE);
-        wd.setWordColorOpacityAuto(true);
-        Bitmap generatedWordCloudBmp = wd.generate();
-        imageButtonHeadPortrait.setImageBitmap(generatedWordCloudBmp);
-
+//        String query = "我我我我我要去五道口吃肯德基，吃肯德基，吃肯德基，吃肯德基";
+//        ArrayList<String> result = JiebaSegmenter.getJiebaSegmenterSingleton().getDividedString(query);
+//        System.out.println("result" + result);
+//        StringBuilder sentence = new StringBuilder();
+//        for (int i=0; i<result.size(); i++){
+//            sentence.append(result.get(i));
+//            sentence.append(" ");
+//        }
+//        System.out.println("sentence: " + sentence.toString());
+//
+//
+//        WordFrequency wordFrequency = new WordFrequency();
+//        wordFrequency.insertWordNonNormalized(sentence.toString());
+//        Map<String, Integer> wordMap  = wordFrequency.generate();
+//        System.out.println("wordMap: "+ wordMap.toString());
+//
+//        WordCloud wd = new WordCloud(wordMap, 250, 250, 0xFF1F6ED4,Color.WHITE);
+//        wd.setWordColorOpacityAuto(true);
+//        Bitmap generatedWordCloudBmp = wd.generate();
+//        imageButtonHeadPortrait.setImageBitmap(generatedWordCloudBmp);
 
 
 

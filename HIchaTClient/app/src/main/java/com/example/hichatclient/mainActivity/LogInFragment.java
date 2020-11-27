@@ -28,6 +28,7 @@ import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.baseActivity.BaseActivity;
 import com.example.hichatclient.dataResource.AuthService;
+import com.example.hichatclient.dataResource.TextToken;
 import com.example.hichatclient.service.ChatService;
 import com.example.hichatclient.viewModel.LogInViewModel;
 import com.example.hichatclient.data.entity.User;
@@ -156,17 +157,38 @@ public class LogInFragment extends Fragment {
                         applicationUtil.setUserLongToken(user.getUserLongToken());
                         applicationUtil.setUserID(user.getUserID());
 
-                        Thread thread = new Thread(new Runnable() {
+                        Thread thread1 = new Thread(new Runnable() {
                             @Override
                             public void run() {
                                 AuthService authService = new AuthService();
                                 String access_token = authService.getAuth();
-                                System.out.println("LogInFragment access token: " + access_token);
+                                System.out.println("LogInFragment sentiment access token: " + access_token);
                                 applicationUtil.setAccessToken(access_token);
                             }
                         });
-                        thread.start();
-                        thread.join();
+                        thread1.start();
+                        try {
+                            thread1.join();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        Thread thread2 = new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                TextToken textToken = new TextToken();
+                                String text_access_token = textToken.getAuth();
+                                System.out.println("LogInFragment text access token: " + text_access_token);
+                                applicationUtil.setTextAccessToken(text_access_token);
+                            }
+                        });
+                        thread2.start();
+                        try {
+                            thread2.join();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
 
 
                         // 跳转至BaseActivity的MeFragment
@@ -191,6 +213,8 @@ public class LogInFragment extends Fragment {
                 controller.navigate(R.id.action_logInFragment_to_signUpFragment);
             }
         });
+
+
     }
 
 }

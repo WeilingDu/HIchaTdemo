@@ -8,6 +8,8 @@ import androidx.lifecycle.LiveData;
 import java.io.IOException;
 import java.net.Socket;
 
+import jackmego.com.jieba_android.JiebaSegmenter;
+
 public class ApplicationUtil extends Application {
 
     private Socket socketDynamic;
@@ -95,6 +97,9 @@ public class ApplicationUtil extends Application {
         }
         this.socketDynamic = connectThread.socketDynamic;
         this.socketStatic = connectThread.socketStatic;
+
+        // 异步初始化
+        JiebaSegmenter.init(getApplicationContext());
     }
 
     static class ConnectThread extends Thread {

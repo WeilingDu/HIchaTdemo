@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
@@ -38,12 +39,24 @@ import android.widget.Toast;
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.viewModel.SignUpViewModel;
+import com.mordred.wordcloud.CountMap;
+import com.mordred.wordcloud.WordCloud;
+import com.mordred.wordcloud.WordFrequency;
+
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Random;
+
+import jackmego.com.jieba_android.JiebaSegmenter;
+
 import static android.app.Activity.RESULT_OK;
 
 
@@ -257,6 +270,29 @@ public class SignUpFragment extends Fragment {
             }
         });
 
+        String query = "我我我我我要去五道口吃肯德基，吃肯德基，吃肯德基，吃肯德基";
+        ArrayList<String> result = JiebaSegmenter.getJiebaSegmenterSingleton().getDividedString(query);
+        System.out.println("result" + result);
+        StringBuilder sentence = new StringBuilder();
+        for (int i=0; i<result.size(); i++){
+            sentence.append(result.get(i));
+            sentence.append(" ");
+        }
+        System.out.println("sentence: " + sentence.toString());
+
+
+        WordFrequency wordFrequency = new WordFrequency();
+        wordFrequency.insertWordNonNormalized(sentence.toString());
+        Map<String, Integer> wordMap  = wordFrequency.generate();
+        System.out.println("wordMap: "+ wordMap.toString());
+
+        WordCloud wd = new WordCloud(wordMap, 250, 250, 0xFF1F6ED4,Color.WHITE);
+        wd.setWordColorOpacityAuto(true);
+        Bitmap generatedWordCloudBmp = wd.generate();
+        imageButtonHeadPortrait.setImageBitmap(generatedWordCloudBmp);
+
+
+
 
     }
 
@@ -280,6 +316,7 @@ public class SignUpFragment extends Fragment {
         System.out.println("pixels+++++++" + String.valueOf(ratio));
 
         return output;
-
     }
+
+
 }

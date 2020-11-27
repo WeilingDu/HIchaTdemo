@@ -49,6 +49,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.google.protobuf:protobuf-lite:3.0.1'
+    implementation 'com.mordred.wordcloud:Wordcloud:2.6'
+    implementation 'jackmego.com.jieba_android:jieba_android-release:0.1.0'
 
 
 

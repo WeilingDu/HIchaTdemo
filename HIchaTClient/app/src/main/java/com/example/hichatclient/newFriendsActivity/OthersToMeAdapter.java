@@ -63,7 +63,7 @@ public class OthersToMeAdapter extends RecyclerView.Adapter<OthersToMeAdapter.Ot
             holder.textViewUserResponse.setText("您未回应");
         }else if (othersToMe.getUserResponse().equals("refuse")){
             holder.textViewUserResponse.setText("您已拒绝");
-        }else {
+        }else if (othersToMe.getUserResponse().equals("agree")){
             holder.textViewUserResponse.setText("您已同意");
         }
 

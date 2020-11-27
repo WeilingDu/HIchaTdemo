@@ -60,7 +60,7 @@ public class MeToOthersAdapter extends RecyclerView.Adapter<MeToOthersAdapter.Me
             holder.textViewNewFriendRep.setText("对方未回应");
         }else if (meToOthers.getObjectResponse().equals("agree")){
             holder.textViewNewFriendRep.setText("对方已同意");
-        }else {
+        }else if (meToOthers.getObjectResponse().equals("refuse")){
             holder.textViewNewFriendRep.setText("对方已拒绝");
         }
 

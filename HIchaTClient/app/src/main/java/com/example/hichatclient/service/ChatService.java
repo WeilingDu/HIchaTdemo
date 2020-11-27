@@ -290,6 +290,7 @@ public class ChatService extends LifecycleService {
             body = mergebyte(body, bytes, PACKET_HEAD_LENGTH, bytes.length);
             bytes = new byte[0];
             System.out.println("ChatService before get data");
+            System.out.println("ChatService receiveBody" + body);
             Test.RspToClient response = Test.RspToClient.parseFrom(body);
             System.out.println("ChatService after get data");
             Test.RspToClient.RspCase type = response.getRspCase();
@@ -429,6 +430,8 @@ public class ChatService extends LifecycleService {
                     meToOthers.setObjectProfile(null);
                 }
                 meToOthersDao.insertMeToOthers(meToOthers);
+                Friend friend = new Friend(userID, meToOthers.getObjectID(), meToOthers.getObjectName(), meToOthers.getObjectProfile(), "123", "111");
+                friendDao.insertFriend(friend);
 //                ChattingFriend chattingFriend = new ChattingFriend(userID, meToOthers.getObjectID(), meToOthers.getObjectName(),meToOthers.getObjectProfile(), "We are new friends!", System.currentTimeMillis());
 //                chattingFriendDao.insertChattingFriend(chattingFriend);
 //                meToOthersNew.add(meToOthers);

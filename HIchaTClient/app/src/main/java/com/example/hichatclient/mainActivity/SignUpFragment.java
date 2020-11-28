@@ -281,27 +281,6 @@ public class SignUpFragment extends Fragment {
             }
         });
 
-//        String query = "我我我我我要去五道口吃肯德基，吃肯德基，吃肯德基，吃肯德基";
-//        ArrayList<String> result = JiebaSegmenter.getJiebaSegmenterSingleton().getDividedString(query);
-//        System.out.println("result" + result);
-//        StringBuilder sentence = new StringBuilder();
-//        for (int i=0; i<result.size(); i++){
-//            sentence.append(result.get(i));
-//            sentence.append(" ");
-//        }
-//        System.out.println("sentence: " + sentence.toString());
-//
-//
-//        WordFrequency wordFrequency = new WordFrequency();
-//        wordFrequency.insertWordNonNormalized(sentence.toString());
-//        Map<String, Integer> wordMap  = wordFrequency.generate();
-//        System.out.println("wordMap: "+ wordMap.toString());
-//
-//        WordCloud wd = new WordCloud(wordMap, 250, 250, 0xFF1F6ED4,Color.WHITE);
-//        wd.setWordColorOpacityAuto(true);
-//        Bitmap generatedWordCloudBmp = wd.generate();
-//        imageButtonHeadPortrait.setImageBitmap(generatedWordCloudBmp);
-
 
 
     }

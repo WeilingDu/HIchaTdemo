@@ -43,6 +43,7 @@ public class FriendInfoActivity extends AppCompatActivity {
     private String friendID;
     private String userID;
     private String flag;
+    private String friendName;
 
 
 
@@ -96,6 +97,7 @@ public class FriendInfoActivity extends AppCompatActivity {
             public void onChanged(Friend friend) {
                 System.out.println("FriendInfoActivity: " + friend.getFriendName());
                 textViewFriendName.setText(friend.getFriendName());
+                friendName = friend.getFriendName();
                 if (friend.getFriendProfile() != null){
                     imageViewFriendProfile.setImageBitmap(toRoundCorner(BitmapFactory.decodeByteArray(friend.getFriendProfile(), 0, friend.getFriendProfile().length), 2));
                 }else {
@@ -111,6 +113,7 @@ public class FriendInfoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ChatActivity.class);
                 intent.putExtra("friendID", friendID);
+                intent.putExtra("friendName", friendName);
                 startActivity(intent);
             }
         });

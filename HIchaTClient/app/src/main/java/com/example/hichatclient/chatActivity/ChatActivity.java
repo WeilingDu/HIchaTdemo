@@ -22,8 +22,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hichatclient.ApplicationUtil;
@@ -36,6 +40,9 @@ import com.example.hichatclient.dataResource.TextToken;
 import com.example.hichatclient.newFriendsActivity.AddNewFriendActivity;
 import com.example.hichatclient.service.ChatService;
 import com.example.hichatclient.viewModel.ChatViewModel;
+import com.hjq.bar.OnTitleBarListener;
+import com.hjq.bar.TitleBar;
+import com.mordred.wordcloud.WordCloud;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -68,9 +75,11 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
     // UI控件
     private Button buttonSend;
     private EditText editTextSendMsg;
+    private TextView textViewFriendTitle;
     private RecyclerView recyclerView;
     private MessageAdapter messageAdapter;
     private SwipeRefreshLayout swipeRefreshLayout = null;
+    private TitleBar titleBar;
 
     // 用户和某好友的聊天信息
     private List<ChattingContent> allMessage = new ArrayList<>();
@@ -79,6 +88,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
     private boolean flag;
     private String userShortToken;
     private String friendID;
+    private String friendName;
     private String msgSentiment;  // like喜爱, happy愉快, angry愤怒, disgusting厌恶, fearful恐惧, sad悲伤, neutral中性情绪, thinking无法判断
     private String msgContent;
     private String msgLegal = "1";
@@ -86,11 +96,23 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // 设置软键盘弹出时把布局顶上去
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
         setContentView(R.layout.activity_chat);
+
+        // 隐藏标题栏
+        if (getSupportActionBar() != null){
+            getSupportActionBar().hide();
+        }
 
         buttonSend = findViewById(R.id.buttonSend2);
         editTextSendMsg = findViewById(R.id.editTextSendContent);
         swipeRefreshLayout = findViewById(R.id.chatSwipeRefreshLayout);
+        textViewFriendTitle = findViewById(R.id.textViewTitle);
+        titleBar = findViewById(R.id.titleBar);
+
 
         // 获取applicationUtil中的数据
         applicationUtil = (ApplicationUtil) ChatActivity.this.getApplication();
@@ -119,6 +141,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         // 接收FriendInfoActivity传来的参数
         friendID = getIntent().getStringExtra("friendID");
+        friendName = getIntent().getStringExtra("friendName");
 
         chatViewModel = new ViewModelProvider(this).get(ChatViewModel.class);
         recyclerView = findViewById(R.id.recyclerViewChatContent);
@@ -127,6 +150,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
         messageAdapter = new MessageAdapter();
         recyclerView.setAdapter(messageAdapter);
 
+        // 以下为历史记录功能的UI实现
         // 设置下拉进度的背景颜色，默认白色
         swipeRefreshLayout.setProgressBackgroundColorSchemeColor(getResources().getColor(R.color.white));
         // 设置下拉进度的主题颜色
@@ -138,11 +162,34 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
         // 下拉时触发下拉动画，动画完毕之后回调该方法
         swipeRefreshLayout.setOnRefreshListener(this);
 
+        // 标题栏设置
+        if (friendName != null){
+            titleBar.setTitle(friendName);
+        }
+        titleBar.setOnTitleBarListener(new OnTitleBarListener() {
+            @Override
+            public void onLeftClick(View v) {
+
+            }
+
+            @Override
+            public void onTitleClick(View v) {
+
+            }
+
+            @Override
+            public void onRightClick(View v) {
+                Intent intent = new Intent(v.getContext(), WordCloudActivity.class);
+                intent.putExtra("friendID", friendID);
+                startActivity(intent);
+            }
+        });
 
         chatViewModel.getFriendInfo(userID, friendID).observe(this, new Observer<Friend>() {
             @Override
             public void onChanged(Friend friend) {
                 friendChatting = friend;
+                friendName = friend.getFriendName();
                 messageAdapter.setBytesLeft(friendChatting.getFriendProfile());
             }
         });
@@ -162,8 +209,6 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
             messageAdapter.setBytesRight(userChatting.getUserProfile());
 
         }
-
-
 
         // 当数据库中的聊天记录有变化时
         chatViewModel.getAllMessageLive(userID, friendID).observe(this, new Observer<List<ChattingContent>>() {
@@ -239,7 +284,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
                 String content = editTextSendMsg.getText().toString();
                 if(!"".equals(content)){
                     //如果字符串不为空，则创建ChattingContent对象
-                    final ChattingContent msg = new ChattingContent(userID, friendID, "send", System.currentTimeMillis(), content, false, null, null);
+                    final ChattingContent msg = new ChattingContent(userID, friendID, "send", System.currentTimeMillis(), content, false, null);
                     ChattingFriend chattingFriend = new ChattingFriend(userID, friendID, friendChatting.getFriendName(), friendChatting.getFriendProfile(), msg.getMsgContent(), msg.getMsgTime());
                     String LogTime = newSimpleDateFormat.format(msg.getMsgTime());
                     System.out.println("ChatActivity format time: " + LogTime);

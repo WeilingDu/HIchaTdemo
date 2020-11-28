@@ -315,7 +315,7 @@ public class UserRepository {
                         num = response.getUnreceivedMsgRes().getMsgCount();
                         for(int i = 0; i < num; i++){
                             Test.UnreceivedMsg.Res.Msg unreceivedMsgi = response.getUnreceivedMsgRes().getMsg(i);
-                            ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(unreceivedMsgi.getOtherId()),"receive",unreceivedMsgi.getTime(),unreceivedMsgi.getContent(), false, null, null);
+                            ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(unreceivedMsgi.getOtherId()),"receive",unreceivedMsgi.getTime(),unreceivedMsgi.getContent(), false, null);
                             System.out.println("LogInFragment content: " + chattingContent.getMsgContent());
                             chattingContents.add(chattingContent);
                         }
@@ -359,8 +359,13 @@ public class UserRepository {
                 }
                 if(type == Test.RspToClient.RspCase.FRIENDLIST_RES){
                     isLogIn = 1;
+                    errorFlag = 0;
                     break;
                 }
+            }
+
+            if(errorFlag == 1){
+                isLogIn = 0;
             }
 
             if(errorFlag == 2){

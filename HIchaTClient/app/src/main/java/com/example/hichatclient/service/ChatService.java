@@ -455,7 +455,7 @@ public class ChatService extends LifecycleService {
         int num = unreceivedMsgList.getMsgCount();
         for(int i = 0; i < num; i++){
             Test.UnreceivedMsg.Res.Msg unreceivedMsg = unreceivedMsgList.getMsg(i);
-            ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(unreceivedMsg.getOtherId()),"receive",unreceivedMsg.getTime(),unreceivedMsg.getContent(), false, null, null);
+            ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(unreceivedMsg.getOtherId()),"receive",unreceivedMsg.getTime(),unreceivedMsg.getContent(), false, null);
 //            chattingContents.add(chattingContent);
             System.out.println("Chat service chatting content " + chattingContent.getMsgContent());
             chattingContentDao.insertContent(chattingContent);
@@ -471,7 +471,7 @@ public class ChatService extends LifecycleService {
     // 实时接收别人发来的聊天消息
     public void chatMessage(Test.RspToClient response){
         Test.ChatWithServer.Relay chatMsgFromOther = response.getChatWithServerRelay();
-        ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(chatMsgFromOther.getSrcId()),"receive",chatMsgFromOther.getTime(),chatMsgFromOther.getContent(), false, null, null);
+        ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(chatMsgFromOther.getSrcId()),"receive",chatMsgFromOther.getTime(),chatMsgFromOther.getContent(), false, null);
 //        chattingContents.add(chattingContent);
         System.out.println("ChatService timeFromServer: " + chatMsgFromOther.getTime());
         System.out.println("ChatService time: " + chattingContent.getMsgTime());

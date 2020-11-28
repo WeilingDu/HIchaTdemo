@@ -28,33 +28,40 @@ public class MessageRepository {
         chattingFriendDao = chatDatabase.getChattingFriendDao();
     }
 
+
+
     // 通过服务器发给好友消息
     public boolean sendMessageToServer(ChattingContent chattingContent, String userShortToken, Socket socket) throws IOException {
         boolean flag = true;
         System.out.println("MessageRepository userShortToken: " + userShortToken);
         System.out.println("MessageRepository content: " + chattingContent.getMsgTime() + chattingContent.getMsgType() + chattingContent.getMsgContent());
-        Test.ChatWithServer.Req.Builder chatWithServerReq = Test.ChatWithServer.Req.newBuilder();
-        chatWithServerReq.setShortToken(userShortToken);
-        chatWithServerReq.setObjId(Integer.parseInt(chattingContent.getFriendID()));
-        chatWithServerReq.setTime(chattingContent.getMsgTime());
+        if(socket.isConnected()){
+            Test.ChatWithServer.Req.Builder chatWithServerReq = Test.ChatWithServer.Req.newBuilder();
+            chatWithServerReq.setShortToken(userShortToken);
+            chatWithServerReq.setObjId(Integer.parseInt(chattingContent.getFriendID()));
+            chatWithServerReq.setTime(chattingContent.getMsgTime());
 
-        chatWithServerReq.setContent(chattingContent.getMsgContent());
 
-        Test.ReqToServer.Builder reqToServer = Test.ReqToServer.newBuilder();
-        reqToServer.setChatWithServerReq(chatWithServerReq);
-        byte[] request = reqToServer.build().toByteArray();
-        byte[] len = new byte[4];
-        for (int i = 0;  i < 4;  i++)
-        {
-            len[3-i] = (byte)((request.length >> (8 * i)) & 0xFF);
+            chatWithServerReq.setContent(chattingContent.getMsgContent());
+
+            Test.ReqToServer.Builder reqToServer = Test.ReqToServer.newBuilder();
+            reqToServer.setChatWithServerReq(chatWithServerReq);
+            byte[] request = reqToServer.build().toByteArray();
+            byte[] len = new byte[4];
+            for (int i = 0;  i < 4;  i++)
+            {
+                len[3-i] = (byte)((request.length >> (8 * i)) & 0xFF);
+            }
+            byte[] send_data = new byte[request.length + len.length];
+            System.arraycopy(len, 0, send_data, 0, len.length);
+            System.arraycopy(request, 0, send_data, len.length, request.length);
+
+            OutputStream outputStream = socket.getOutputStream();
+            outputStream.write(send_data);
+            outputStream.flush();
+            System.out.println("MessageRepository senddatalen:" +send_data.length);
         }
-        byte[] send_data = new byte[request.length + len.length];
-        System.arraycopy(len, 0, send_data, 0, len.length);
-        System.arraycopy(request, 0, send_data, len.length, request.length);
 
-        OutputStream outputStream = socket.getOutputStream();
-        outputStream.write(send_data);
-        outputStream.flush();
         return flag;
     }
 

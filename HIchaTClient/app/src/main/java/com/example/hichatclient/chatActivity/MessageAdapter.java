@@ -116,7 +116,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             holder.rightImageViewHead.setVisibility(View.VISIBLE);
             if (chattingContent.isRead()){
                 holder.rightImageViewRead.setVisibility(View.VISIBLE);
-            }else {
+            }else if (!chattingContent.isRead()){
                 holder.rightImageViewRead.setVisibility(View.GONE);
             }
             holder.rightLinearLayout.setVisibility(View.VISIBLE);

@@ -6,8 +6,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.AlertDialog;
 import android.content.ComponentName;
@@ -57,7 +59,7 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class ChatActivity extends AppCompatActivity {
+public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
     private SharedPreferences sharedPreferences;
     private ApplicationUtil applicationUtil;
     private Socket socket;
@@ -68,6 +70,7 @@ public class ChatActivity extends AppCompatActivity {
     private EditText editTextSendMsg;
     private RecyclerView recyclerView;
     private MessageAdapter messageAdapter;
+    private SwipeRefreshLayout swipeRefreshLayout = null;
 
     // 用户和某好友的聊天信息
     private List<ChattingContent> allMessage = new ArrayList<>();
@@ -87,10 +90,12 @@ public class ChatActivity extends AppCompatActivity {
 
         buttonSend = findViewById(R.id.buttonSend2);
         editTextSendMsg = findViewById(R.id.editTextSendContent);
+        swipeRefreshLayout = findViewById(R.id.chatSwipeRefreshLayout);
 
         // 获取applicationUtil中的数据
         applicationUtil = (ApplicationUtil) ChatActivity.this.getApplication();
         if (!applicationUtil.staticIsConnected()) {
+            System.out.println("ChatActivity init socket");
             try {
                 applicationUtil.initSocketStatic();
             } catch (IOException e) {
@@ -118,8 +123,20 @@ public class ChatActivity extends AppCompatActivity {
         chatViewModel = new ViewModelProvider(this).get(ChatViewModel.class);
         recyclerView = findViewById(R.id.recyclerViewChatContent);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
         messageAdapter = new MessageAdapter();
         recyclerView.setAdapter(messageAdapter);
+
+        // 设置下拉进度的背景颜色，默认白色
+        swipeRefreshLayout.setProgressBackgroundColorSchemeColor(getResources().getColor(R.color.white));
+        // 设置下拉进度的主题颜色
+        swipeRefreshLayout.setColorSchemeColors(
+                getResources().getColor(R.color.top1),
+                getResources().getColor(R.color.top2),
+                getResources().getColor(R.color.top3)
+        );
+        // 下拉时触发下拉动画，动画完毕之后回调该方法
+        swipeRefreshLayout.setOnRefreshListener(this);
 
 
         chatViewModel.getFriendInfo(userID, friendID).observe(this, new Observer<Friend>() {
@@ -187,7 +204,7 @@ public class ChatActivity extends AppCompatActivity {
                             }
                         }
 
-                        final long time = System.currentTimeMillis();
+
                         Thread t2 = new Thread(new Runnable() {
                             @Override
                             public void run() {
@@ -195,6 +212,7 @@ public class ChatActivity extends AppCompatActivity {
                                 // 若对方的最后一条消息没有被已读，则向服务器发送已读消息
                                 if (!msg.isRead()){
                                     try {
+                                        final long time = System.currentTimeMillis();
                                         System.out.println("call this function: sendReadMsgToServer2");
                                         chatViewModel.sendReadMsgToServer(userShortToken, friendID, time, socket);
                                     } catch (IOException e) {
@@ -204,6 +222,11 @@ public class ChatActivity extends AppCompatActivity {
                             }
                         });
                         t2.start();
+                        try {
+                            t2.join();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                 }
@@ -218,24 +241,23 @@ public class ChatActivity extends AppCompatActivity {
                     //如果字符串不为空，则创建ChattingContent对象
                     final ChattingContent msg = new ChattingContent(userID, friendID, "send", System.currentTimeMillis(), content, false, null, null);
                     ChattingFriend chattingFriend = new ChattingFriend(userID, friendID, friendChatting.getFriendName(), friendChatting.getFriendProfile(), msg.getMsgContent(), msg.getMsgTime());
-                    System.out.println("ChatActivity time: " + msg.getMsgTime());
                     String LogTime = newSimpleDateFormat.format(msg.getMsgTime());
                     System.out.println("ChatActivity format time: " + LogTime);
                     System.out.println("ChatActivity content: " + content);
 
                     // 对用户发出的信息进行敏感词检测
-                    Thread thread = new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            getLegalFromBaidu();
-                        }
-                    });
-                    thread.start();
-                    try {
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+//                    Thread thread = new Thread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            getLegalFromBaidu();
+//                        }
+//                    });
+//                    thread.start();
+//                    try {
+//                        thread.join();
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
 
                     if (msgLegal.equals("1")){
                         // 若用户信息合法
@@ -397,7 +419,8 @@ public class ChatActivity extends AppCompatActivity {
     }
 
 
-    public void getLegalFromBaidu(){
+    public String getLegalFromBaidu(){
+        String isLegal = null;
         String access_token = applicationUtil.getTextAccessToken();
         HttpURLConnection connection = null;
         BufferedReader reader = null;
@@ -435,8 +458,8 @@ public class ChatActivity extends AppCompatActivity {
 
             // 将服务端返回的json数据进行转化
             JSONObject jsonObject = new JSONObject(result.toString());
-            String isLegal = jsonObject.getString("conclusionType");
-            msgLegal = isLegal;
+            isLegal = jsonObject.getString("conclusionType");
+
 
             // 关闭连接
             connection.disconnect();
@@ -458,6 +481,14 @@ public class ChatActivity extends AppCompatActivity {
                 connection.disconnect();
             }
         }
+
+        return isLegal;
     }
 
+
+    @Override
+    public void onRefresh() {
+        System.out.println("********************");
+        swipeRefreshLayout.setRefreshing(false);
+    }
 }

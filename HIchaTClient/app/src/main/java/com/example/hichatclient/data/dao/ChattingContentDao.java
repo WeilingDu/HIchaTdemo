@@ -25,10 +25,10 @@ public interface ChattingContentDao {
     @Update
     void updateOneContent(ChattingContent chattingContent);
 
-    @Query("SELECT * FROM chattingcontent WHERE user_id LIKE :userID AND friend_id LIKE :friendID")
+    @Query("SELECT * FROM chattingcontent WHERE user_id LIKE :userID AND friend_id LIKE :friendID ORDER BY msg_time DESC")
     LiveData<List<ChattingContent>> findAllContent(String userID, String friendID);
 
-    @Query("SELECT * FROM chattingcontent WHERE user_id LIKE :userID AND friend_id LIKE :friendID AND is_read LIKE :isRead AND msg_time <= :time")
+    @Query("SELECT * FROM chattingcontent WHERE user_id LIKE :userID AND friend_id LIKE :friendID AND is_read LIKE :isRead AND msg_time <= :time ORDER BY msg_time DESC")
     List<ChattingContent> findAllContentNotRead(String userID, String friendID, boolean isRead, long time);
 
 

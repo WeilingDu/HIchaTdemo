@@ -231,7 +231,7 @@ public class ChatService extends LifecycleService {
             @Override
             public void run() {
                 try {
-                    System.out.println("hello world 2!");
+//                    System.out.println("hello world 2!");
                     if (userShortToken != null){
                         if(updateShortTokenFlag == 1){
                             getNewShortToken();
@@ -269,6 +269,7 @@ public class ChatService extends LifecycleService {
             for(int i=0;i<temp.length;i++){
                 bodylength += (temp[i] & 0xff) << ((3-i)*8);
             }
+            System.out.println("ChatService bodylength:" + bodylength);
             if (bytes.length - PACKET_HEAD_LENGTH < bodylength) {//不够一个包
                 byte[] body;
                 if((bodylength + PACKET_HEAD_LENGTH - bytes.length) > 2530686){
@@ -294,10 +295,10 @@ public class ChatService extends LifecycleService {
             Test.RspToClient response = Test.RspToClient.parseFrom(body);
             System.out.println("ChatService after get data");
             Test.RspToClient.RspCase type = response.getRspCase();
-            System.out.println(response.getRspCase());
+            System.out.println("ChatService type: " + response.getRspCase());
             switch (type) {
                 case ADD_FRIEND_FROM_OTHER_RSP:
-                    System.out.println("ChatService: add_friend_from_other");
+//                    System.out.println("ChatService: add_friend_from_other");
                     addFriendReqOther(response);
                     break;
                 case ADD_FRIEND_FROM_SELF_RSP:
@@ -310,14 +311,15 @@ public class ChatService extends LifecycleService {
                     updateShortToken(response);
                     break;
                 case CHAT_WITH_SERVER_RELAY:
+//                    System.out.println("ChatService: chat_with_server_relay");
                     chatMessage(response);
                     break;
                 case DELETE_FRIEND_SERVER_TO_B:
-                    System.out.println("ChatService: delete_friend_server_to_b");
+//                    System.out.println("ChatService: delete_friend_server_to_b");
                     beDeleted(response);
                     break;
                 case SEEN_SERVER_TO_B:
-                    System.out.println("ChatService: seen_server_to_b");
+//                    System.out.println("ChatService: seen_server_to_b");
                     messageRead(response);
                     break;
                 case ERROR:
@@ -403,7 +405,6 @@ public class ChatService extends LifecycleService {
 
     //监听自己给别人发送的好友请求的状态
     public void addFriendReqSelf(Test.RspToClient response) throws UnsupportedEncodingException {
-        System.out.println("add_friend_req_self");
         Test.AddFriendFromSelf.Rsp addFriendFromSelfRsp = response.getAddFriendFromSelfRsp();
         int num = addFriendFromSelfRsp.getRequestsCount();
         for(int i = 0; i < num; i++){
@@ -502,13 +503,13 @@ public class ChatService extends LifecycleService {
             seenTime.add(seenInfoi.getTime());
         }
 
+        System.out.println("ChatService num: " + num);
         if (num != 0){
-            System.out.println("ChatService num: " + num);
             for (int i=0; i<num; i++){
                 List<ChattingContent> chattingContents = chattingContentDao.findAllContentNotRead(userID, seenFriendID.get(i), false, seenTime.get(i));
                 List<ChattingContent> chattingContents2 = new ArrayList<>();
+                System.out.println("ChatService size: " + chattingContents.size());
                 if (chattingContents.size() != 0 ){
-                    System.out.println("ChatService size: " + chattingContents.size());
                     for (int j=0; j<chattingContents.size(); j++){
                         System.out.println("ChatService j: " + j);
                         System.out.println("ChatService seenFriendID: " + seenFriendID.get(i));

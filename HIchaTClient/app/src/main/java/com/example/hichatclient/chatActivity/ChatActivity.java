@@ -26,8 +26,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,7 +70,12 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+import io.github.rockerhieu.emojicon.EmojiconEditText;
+import io.github.rockerhieu.emojicon.EmojiconGridFragment;
+import io.github.rockerhieu.emojicon.EmojiconsFragment;
+import io.github.rockerhieu.emojicon.emoji.Emojicon;
+
+public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, EmojiconGridFragment.OnEmojiconClickedListener, EmojiconsFragment.OnEmojiconBackspaceClickedListener{
     private SharedPreferences sharedPreferences;
     private ApplicationUtil applicationUtil;
     private Socket socket;
@@ -75,12 +83,18 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     // UI控件
     private Button buttonSend;
-    private EditText editTextSendMsg;
     private TextView textViewFriendTitle;
     private RecyclerView recyclerView;
     private MessageAdapter messageAdapter;
     private SwipeRefreshLayout swipeRefreshLayout = null;
     private TitleBar titleBar;
+
+    private FrameLayout frameLayout;
+    private EmojiconEditText editTextSendMsg;  // a EditText which can render emojis
+    private ImageButton imageButtonFindEmoji;
+    private boolean hasClick;
+
+
 
     // 用户和某好友的聊天信息
     private List<ChattingContent> allMessage = new ArrayList<>();
@@ -116,6 +130,8 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
         swipeRefreshLayout = findViewById(R.id.chatSwipeRefreshLayout);
         textViewFriendTitle = findViewById(R.id.textViewTitle);
         titleBar = findViewById(R.id.titleBar);
+        frameLayout = findViewById(R.id.emojicons);
+        imageButtonFindEmoji = findViewById(R.id.imageButtonFindEmoji);
 
 
         // 获取applicationUtil中的数据
@@ -131,6 +147,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
         socket = applicationUtil.getSocketStatic();
         userShortToken = applicationUtil.getUserShortToken();
 
+        setEmojiconFragment(false);
 
 
         // 获取Share Preferences中的数据
@@ -283,6 +300,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
             }
         });
 
+        // 当用户按下发送按钮时
         buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -354,29 +372,59 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
         });
 
 
+        // 当按下表情按钮时
+        imageButtonFindEmoji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (hasClick){
+                    frameLayout.setVisibility(View.GONE);
+                }else {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0); //强制隐藏键盘
+                    frameLayout.setVisibility(View.VISIBLE);
+                }
+                hasClick = !hasClick;
+            }
+        });
 
+        // 点输入框时：隐藏emoji frame layout
+        editTextSendMsg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                frameLayout.setVisibility(View.GONE);
+                hasClick = !hasClick;
+            }
+        });
 
+    }
+
+    private void setEmojiconFragment(boolean useSystemDefault) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.emojicons, EmojiconsFragment.newInstance(useSystemDefault))
+                .commit();
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-//        final long time = System.currentTimeMillis();
-//        Thread t1 = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                // 当用户打开与某个好友的对话框时，向服务器发送已读提示
-//                try {
-//                    System.out.println("call this function: sendReadMsgToServer1");
-//                    chatViewModel.sendReadMsgToServer(userShortToken, friendID, time, socket);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//        t1.start();
-
+    public void onEmojiconClicked(Emojicon emojicon) {
+        EmojiconsFragment.input(editTextSendMsg, emojicon);
     }
+
+    @Override
+    public void onEmojiconBackspaceClicked(View v) {
+        EmojiconsFragment.backspace(editTextSendMsg);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(hasClick){
+            findViewById(R.id.emojicons).setVisibility(View.GONE);
+            hasClick = !hasClick;
+        }else {
+            super.onBackPressed();
+        }
+    }
+
 
     public void getSentimentFromBaidu() throws InterruptedException {
         String access_token = applicationUtil.getAccessToken();

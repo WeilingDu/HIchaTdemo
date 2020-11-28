@@ -5,8 +5,8 @@
 
     <ImageView
         android:id="@+id/left_head"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_margin="10dp"
         android:background="@drawable/head"
@@ -43,8 +43,8 @@
 
     <ImageView
         android:id="@+id/left_sentiment"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignBottom="@id/left_ll"
         android:layout_marginLeft="10dp"
         android:layout_toEndOf="@id/left_ll" />
@@ -52,8 +52,8 @@
 
     <ImageView
         android:id="@+id/right_head"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_below="@+id/left_ll"
         android:layout_alignParentRight="true"
         android:layout_margin="10dp"

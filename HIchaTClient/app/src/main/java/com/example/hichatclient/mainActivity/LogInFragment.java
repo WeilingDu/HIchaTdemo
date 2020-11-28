@@ -148,7 +148,7 @@ public class LogInFragment extends Fragment {
                         // 将用户的ID存到share preferences里面
                         sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("userID", user.getUserID());
+                        editor.putString("userID", userID);
                         editor.putString("deleteFlag", "false");
                         editor.apply();
 

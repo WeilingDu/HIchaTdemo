@@ -68,6 +68,7 @@ public class WordCloudActivity extends AppCompatActivity {
                         StringBuilder query = new StringBuilder();
                         if (chattingContents != null){
                             for (int i=0; i<chattingContents.size(); i++){
+                                query.append(" ");
                                 query.append(chattingContents.get(i).getMsgContent());
                             }
                             // 分词

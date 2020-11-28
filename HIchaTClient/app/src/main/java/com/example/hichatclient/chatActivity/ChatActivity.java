@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 
+import android.net.sip.SipSession;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
@@ -92,6 +93,9 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
     private String msgSentiment;  // like喜爱, happy愉快, angry愤怒, disgusting厌恶, fearful恐惧, sad悲伤, neutral中性情绪, thinking无法判断
     private String msgContent;
     private String msgLegal = "1";
+    private String userID;
+    private long time;
+    private boolean getRecordFlag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,7 +135,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         // 获取Share Preferences中的数据
         sharedPreferences = getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
-        final String userID = sharedPreferences.getString("userID", "fail");
+        userID = sharedPreferences.getString("userID", "fail");
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("deleteFlag", "false");
         editor.apply();
@@ -216,6 +220,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
             public void onChanged(List<ChattingContent> chattingContents) {
                 if (chattingContents.size() > 0){
                     final ChattingContent msg = chattingContents.get(chattingContents.size() - 1);
+                    time = msg.getMsgTime();
                     // 更新数据库中的ChattingFriend信息
 //                    assert userID != null;
 //                    ChattingFriend chattingFriend = new ChattingFriend(userID, friend.getFriendID(), friend.getFriendName(), friend.getFriendProfile(), msg.getMsgContent(), msg.getMsgTime());
@@ -533,7 +538,24 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @Override
     public void onRefresh() {
-        System.out.println("********************");
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    System.out.println("ChatActivity call this function: getChatRecord");
+                    getRecordFlag = chatViewModel.getChatRecord(userID, friendID, userShortToken, socket, time);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        t.start();
+        try {
+            t.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         swipeRefreshLayout.setRefreshing(false);
     }
 }

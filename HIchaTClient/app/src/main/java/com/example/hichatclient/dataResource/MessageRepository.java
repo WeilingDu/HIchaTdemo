@@ -14,8 +14,10 @@ import com.example.hichatclient.data.entity.ChattingFriend;
 import com.example.hichatclient.data.entity.Friend;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MessageRepository {
@@ -28,6 +30,118 @@ public class MessageRepository {
         chattingFriendDao = chatDatabase.getChattingFriendDao();
     }
 
+    public static final int PACKET_HEAD_LENGTH = 4;//从服务器接收的数据包头长度
+    //处理粘包、半包问题使用的数组合并函数
+    public static byte[] mergebyte(byte[] a, byte[] b, int begin, int end) {
+        byte[] add = new byte[a.length + end - begin];
+        int i = 0;
+        for (i = 0; i < a.length; i++) {
+            add[i] = a[i];
+        }
+        for (int k = begin; k < end; k++, i++) {
+            add[i] = b[k];
+        }
+        return add;
+    }
+
+    // 向服务器请求该用户与某个好友历史记录
+    public boolean getChatRecord (String userID, String friendID, String userShortToken, Socket socket, Long chatRecordTime) throws IOException {
+        List<ChattingContent> chatRecords = new ArrayList<>();
+        int flag = 0;
+        Test.ChatRecord.Req.Builder chatRecordReq = Test.ChatRecord.Req.newBuilder();
+        chatRecordReq.setObjId(Integer.parseInt(friendID));
+        chatRecordReq.setShortToken(userShortToken);
+        chatRecordReq.setTime(chatRecordTime);
+        Test.ReqToServer.Builder reqToServer = Test.ReqToServer.newBuilder();
+        reqToServer.setChatRecordReq(chatRecordReq);
+        byte[] request = reqToServer.build().toByteArray();
+        byte[] len = new byte[4];
+        for (int i = 0;  i < 4;  i++)
+        {
+            len[3-i] = (byte)((request.length >> (8 * i)) & 0xFF);
+        }
+        byte[] send_data = new byte[request.length + len.length];
+        System.arraycopy(len, 0, send_data, 0, len.length);
+        System.arraycopy(request, 0, send_data, len.length, request.length);
+
+        OutputStream outputStream = socket.getOutputStream();
+        outputStream.write(send_data);
+        outputStream.flush();
+
+        byte[] bytes = new byte[0];
+        while(socket.isConnected()) {
+            InputStream is = socket.getInputStream();
+            assert bytes != null;
+            if (bytes.length < PACKET_HEAD_LENGTH) {
+                byte[] head = new byte[PACKET_HEAD_LENGTH - bytes.length];
+                int couter = is.read(head);
+                if (couter < 0) {
+                    continue;
+                }
+                bytes = mergebyte(bytes, head, 0, couter);
+                if (couter < PACKET_HEAD_LENGTH) {
+                    continue;
+                }
+            }
+            // 下面这个值请注意，一定要取4长度的字节子数组作为报文长度
+            byte[] temp = new byte[0];
+            temp = mergebyte(temp, bytes, 0, PACKET_HEAD_LENGTH);
+            int bodylength = 0; //包体长度
+            for (int i = 0; i < temp.length; i++) {
+                bodylength += (temp[i] & 0xff) << ((3 - i) * 8);
+            }
+            if (bytes.length - PACKET_HEAD_LENGTH < bodylength) {//不够一个包
+                byte[] body;
+                if ((bodylength + PACKET_HEAD_LENGTH - bytes.length) > 2530686) {
+                    body = new byte[2530686];
+                } else {
+                    body = new byte[bodylength + PACKET_HEAD_LENGTH - bytes.length];//剩下应该读的字节(凑一个包)
+                }
+                int couter = is.read(body);
+                if (couter < 0) {
+                    continue;
+                }
+                bytes = mergebyte(bytes, body, 0, couter);
+                if (couter < bodylength + PACKET_HEAD_LENGTH - bytes.length) {
+                    continue;
+                }
+            }
+            byte[] body = new byte[0];
+            body = mergebyte(body, bytes, PACKET_HEAD_LENGTH, bytes.length);
+            bytes = new byte[0];
+            Test.RspToClient response = Test.RspToClient.parseFrom(body);
+            Test.RspToClient.RspCase type = response.getRspCase();
+            switch (type) {
+                case CHAT_RECORD_RSP:
+                    int num = response.getChatRecordRsp().getMsgCount();
+
+                    for(int i = 0;i < num; i++){
+                        Test.ChatRecord.Rsp.Msg chattingRecord = response.getChatRecordRsp().getMsg(i);
+                        if(Integer.toString(chattingRecord.getSender()).equals(friendID)){
+                            ChattingContent chattingContent = new ChattingContent(userID,friendID,"receive",chattingRecord.getTime(),chattingRecord.getContent(),true,null);
+                            chatRecords.add(chattingContent);
+                        }
+                        else{
+                            ChattingContent chattingContent = new ChattingContent(userID,friendID,"send",chattingRecord.getTime(),chattingRecord.getContent(),true,null);
+                            chatRecords.add(chattingContent);
+                        }
+                    }
+                    flag = 1;
+                    break;
+                case ERROR:
+                    System.out.println("Fail!!!!");
+                    break;
+            }
+            break;
+        }
+        if (flag == 1){
+            // 插入数据库
+            new UserRepository.insertMessageThread(chattingContentDao, chatRecords).start();
+            return true;
+        }else {
+            return false;
+        }
+    }
 
 
     // 通过服务器发给好友消息
@@ -120,6 +234,23 @@ public class MessageRepository {
         }
     }
 
+
+    // 往数据库添加很多条聊天信息
+    static class insertMessageThread extends Thread{
+        ChattingContentDao chattingContentDao;
+        List<ChattingContent> chattingContent;
+
+        public insertMessageThread(ChattingContentDao chattingContentDao, List<ChattingContent> chattingContent) {
+            this.chattingContentDao = chattingContentDao;
+            this.chattingContent = chattingContent;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            chattingContentDao.insertAllContent(chattingContent);
+        }
+    }
 
     // 往数据库添加一条聊天信息
     public void insertOneMessageIntoSQL(ChattingContent chattingContent){

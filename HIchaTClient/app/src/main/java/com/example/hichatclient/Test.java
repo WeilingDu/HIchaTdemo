@@ -6,6 +6,2529 @@ public final class Test {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
+  public interface PToPOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PToP)
+      com.google.protobuf.MessageLiteOrBuilder {
+  }
+  /**
+   * Protobuf type {@code PToP}
+   */
+  public  static final class PToP extends
+      com.google.protobuf.GeneratedMessageLite<
+          PToP, PToP.Builder> implements
+      // @@protoc_insertion_point(message_implements:PToP)
+      PToPOrBuilder {
+    private PToP() {
+    }
+    public interface S1RspOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:PToP.S1Rsp)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional uint32 ip = 1;</code>
+       */
+      int getIp();
+
+      /**
+       * <code>optional uint32 port = 2;</code>
+       */
+      int getPort();
+    }
+    /**
+     * Protobuf type {@code PToP.S1Rsp}
+     */
+    public  static final class S1Rsp extends
+        com.google.protobuf.GeneratedMessageLite<
+            S1Rsp, S1Rsp.Builder> implements
+        // @@protoc_insertion_point(message_implements:PToP.S1Rsp)
+        S1RspOrBuilder {
+      private S1Rsp() {
+      }
+      public static final int IP_FIELD_NUMBER = 1;
+      private int ip_;
+      /**
+       * <code>optional uint32 ip = 1;</code>
+       */
+      public int getIp() {
+        return ip_;
+      }
+      /**
+       * <code>optional uint32 ip = 1;</code>
+       */
+      private void setIp(int value) {
+        
+        ip_ = value;
+      }
+      /**
+       * <code>optional uint32 ip = 1;</code>
+       */
+      private void clearIp() {
+        
+        ip_ = 0;
+      }
+
+      public static final int PORT_FIELD_NUMBER = 2;
+      private int port_;
+      /**
+       * <code>optional uint32 port = 2;</code>
+       */
+      public int getPort() {
+        return port_;
+      }
+      /**
+       * <code>optional uint32 port = 2;</code>
+       */
+      private void setPort(int value) {
+        
+        port_ = value;
+      }
+      /**
+       * <code>optional uint32 port = 2;</code>
+       */
+      private void clearPort() {
+        
+        port_ = 0;
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (ip_ != 0) {
+          output.writeUInt32(1, ip_);
+        }
+        if (port_ != 0) {
+          output.writeUInt32(2, port_);
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (ip_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(1, ip_);
+        }
+        if (port_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(2, port_);
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static S1Rsp parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static S1Rsp parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static S1Rsp parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static S1Rsp parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static S1Rsp parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static S1Rsp parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static S1Rsp parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static S1Rsp parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static S1Rsp parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static S1Rsp parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(S1Rsp prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code PToP.S1Rsp}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            S1Rsp, Builder> implements
+          // @@protoc_insertion_point(builder_implements:PToP.S1Rsp)
+          S1RspOrBuilder {
+        // Construct using Test.PToP.S1Rsp.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional uint32 ip = 1;</code>
+         */
+        public int getIp() {
+          return instance.getIp();
+        }
+        /**
+         * <code>optional uint32 ip = 1;</code>
+         */
+        public Builder setIp(int value) {
+          copyOnWrite();
+          instance.setIp(value);
+          return this;
+        }
+        /**
+         * <code>optional uint32 ip = 1;</code>
+         */
+        public Builder clearIp() {
+          copyOnWrite();
+          instance.clearIp();
+          return this;
+        }
+
+        /**
+         * <code>optional uint32 port = 2;</code>
+         */
+        public int getPort() {
+          return instance.getPort();
+        }
+        /**
+         * <code>optional uint32 port = 2;</code>
+         */
+        public Builder setPort(int value) {
+          copyOnWrite();
+          instance.setPort(value);
+          return this;
+        }
+        /**
+         * <code>optional uint32 port = 2;</code>
+         */
+        public Builder clearPort() {
+          copyOnWrite();
+          instance.clearPort();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:PToP.S1Rsp)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new S1Rsp();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            S1Rsp other = (S1Rsp) arg1;
+            ip_ = visitor.visitInt(ip_ != 0, ip_,
+                other.ip_ != 0, other.ip_);
+            port_ = visitor.visitInt(port_ != 0, port_,
+                other.port_ != 0, other.port_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 8: {
+
+                    ip_ = input.readUInt32();
+                    break;
+                  }
+                  case 16: {
+
+                    port_ = input.readUInt32();
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (S1Rsp.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:PToP.S1Rsp)
+      private static final S1Rsp DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new S1Rsp();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static S1Rsp getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<S1Rsp> PARSER;
+
+      public static com.google.protobuf.Parser<S1Rsp> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public interface AS2ReqOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:PToP.AS2Req)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional uint32 bid = 1;</code>
+       */
+      int getBid();
+
+      /**
+       * <code>optional string token = 2;</code>
+       */
+      String getToken();
+      /**
+       * <code>optional string token = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getTokenBytes();
+    }
+    /**
+     * Protobuf type {@code PToP.AS2Req}
+     */
+    public  static final class AS2Req extends
+        com.google.protobuf.GeneratedMessageLite<
+            AS2Req, AS2Req.Builder> implements
+        // @@protoc_insertion_point(message_implements:PToP.AS2Req)
+        AS2ReqOrBuilder {
+      private AS2Req() {
+        token_ = "";
+      }
+      public static final int BID_FIELD_NUMBER = 1;
+      private int bid_;
+      /**
+       * <code>optional uint32 bid = 1;</code>
+       */
+      public int getBid() {
+        return bid_;
+      }
+      /**
+       * <code>optional uint32 bid = 1;</code>
+       */
+      private void setBid(int value) {
+        
+        bid_ = value;
+      }
+      /**
+       * <code>optional uint32 bid = 1;</code>
+       */
+      private void clearBid() {
+        
+        bid_ = 0;
+      }
+
+      public static final int TOKEN_FIELD_NUMBER = 2;
+      private String token_;
+      /**
+       * <code>optional string token = 2;</code>
+       */
+      public String getToken() {
+        return token_;
+      }
+      /**
+       * <code>optional string token = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTokenBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(token_);
+      }
+      /**
+       * <code>optional string token = 2;</code>
+       */
+      private void setToken(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        token_ = value;
+      }
+      /**
+       * <code>optional string token = 2;</code>
+       */
+      private void clearToken() {
+        
+        token_ = getDefaultInstance().getToken();
+      }
+      /**
+       * <code>optional string token = 2;</code>
+       */
+      private void setTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        token_ = value.toStringUtf8();
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (bid_ != 0) {
+          output.writeUInt32(1, bid_);
+        }
+        if (!token_.isEmpty()) {
+          output.writeString(2, getToken());
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (bid_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(1, bid_);
+        }
+        if (!token_.isEmpty()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(2, getToken());
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static AS2Req parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static AS2Req parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static AS2Req parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static AS2Req parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static AS2Req parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static AS2Req parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static AS2Req parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static AS2Req parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static AS2Req parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static AS2Req parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(AS2Req prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code PToP.AS2Req}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            AS2Req, Builder> implements
+          // @@protoc_insertion_point(builder_implements:PToP.AS2Req)
+          AS2ReqOrBuilder {
+        // Construct using Test.PToP.AS2Req.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional uint32 bid = 1;</code>
+         */
+        public int getBid() {
+          return instance.getBid();
+        }
+        /**
+         * <code>optional uint32 bid = 1;</code>
+         */
+        public Builder setBid(int value) {
+          copyOnWrite();
+          instance.setBid(value);
+          return this;
+        }
+        /**
+         * <code>optional uint32 bid = 1;</code>
+         */
+        public Builder clearBid() {
+          copyOnWrite();
+          instance.clearBid();
+          return this;
+        }
+
+        /**
+         * <code>optional string token = 2;</code>
+         */
+        public String getToken() {
+          return instance.getToken();
+        }
+        /**
+         * <code>optional string token = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getTokenBytes() {
+          return instance.getTokenBytes();
+        }
+        /**
+         * <code>optional string token = 2;</code>
+         */
+        public Builder setToken(
+            String value) {
+          copyOnWrite();
+          instance.setToken(value);
+          return this;
+        }
+        /**
+         * <code>optional string token = 2;</code>
+         */
+        public Builder clearToken() {
+          copyOnWrite();
+          instance.clearToken();
+          return this;
+        }
+        /**
+         * <code>optional string token = 2;</code>
+         */
+        public Builder setTokenBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setTokenBytes(value);
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:PToP.AS2Req)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new AS2Req();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            AS2Req other = (AS2Req) arg1;
+            bid_ = visitor.visitInt(bid_ != 0, bid_,
+                other.bid_ != 0, other.bid_);
+            token_ = visitor.visitString(!token_.isEmpty(), token_,
+                !other.token_.isEmpty(), other.token_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 8: {
+
+                    bid_ = input.readUInt32();
+                    break;
+                  }
+                  case 18: {
+                    String s = input.readStringRequireUtf8();
+
+                    token_ = s;
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (AS2Req.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:PToP.AS2Req)
+      private static final AS2Req DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new AS2Req();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static AS2Req getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<AS2Req> PARSER;
+
+      public static com.google.protobuf.Parser<AS2Req> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public interface S2ARspOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:PToP.S2ARsp)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional bool offline = 1;</code>
+       */
+      boolean getOffline();
+
+      /**
+       * <code>optional uint32 id = 2;</code>
+       */
+      int getId();
+    }
+    /**
+     * Protobuf type {@code PToP.S2ARsp}
+     */
+    public  static final class S2ARsp extends
+        com.google.protobuf.GeneratedMessageLite<
+            S2ARsp, S2ARsp.Builder> implements
+        // @@protoc_insertion_point(message_implements:PToP.S2ARsp)
+        S2ARspOrBuilder {
+      private S2ARsp() {
+      }
+      public static final int OFFLINE_FIELD_NUMBER = 1;
+      private boolean offline_;
+      /**
+       * <code>optional bool offline = 1;</code>
+       */
+      public boolean getOffline() {
+        return offline_;
+      }
+      /**
+       * <code>optional bool offline = 1;</code>
+       */
+      private void setOffline(boolean value) {
+        
+        offline_ = value;
+      }
+      /**
+       * <code>optional bool offline = 1;</code>
+       */
+      private void clearOffline() {
+        
+        offline_ = false;
+      }
+
+      public static final int ID_FIELD_NUMBER = 2;
+      private int id_;
+      /**
+       * <code>optional uint32 id = 2;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>optional uint32 id = 2;</code>
+       */
+      private void setId(int value) {
+        
+        id_ = value;
+      }
+      /**
+       * <code>optional uint32 id = 2;</code>
+       */
+      private void clearId() {
+        
+        id_ = 0;
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (offline_ != false) {
+          output.writeBool(1, offline_);
+        }
+        if (id_ != 0) {
+          output.writeUInt32(2, id_);
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (offline_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(1, offline_);
+        }
+        if (id_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(2, id_);
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static S2ARsp parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static S2ARsp parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static S2ARsp parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static S2ARsp parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static S2ARsp parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static S2ARsp parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static S2ARsp parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static S2ARsp parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static S2ARsp parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static S2ARsp parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(S2ARsp prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code PToP.S2ARsp}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            S2ARsp, Builder> implements
+          // @@protoc_insertion_point(builder_implements:PToP.S2ARsp)
+          S2ARspOrBuilder {
+        // Construct using Test.PToP.S2ARsp.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional bool offline = 1;</code>
+         */
+        public boolean getOffline() {
+          return instance.getOffline();
+        }
+        /**
+         * <code>optional bool offline = 1;</code>
+         */
+        public Builder setOffline(boolean value) {
+          copyOnWrite();
+          instance.setOffline(value);
+          return this;
+        }
+        /**
+         * <code>optional bool offline = 1;</code>
+         */
+        public Builder clearOffline() {
+          copyOnWrite();
+          instance.clearOffline();
+          return this;
+        }
+
+        /**
+         * <code>optional uint32 id = 2;</code>
+         */
+        public int getId() {
+          return instance.getId();
+        }
+        /**
+         * <code>optional uint32 id = 2;</code>
+         */
+        public Builder setId(int value) {
+          copyOnWrite();
+          instance.setId(value);
+          return this;
+        }
+        /**
+         * <code>optional uint32 id = 2;</code>
+         */
+        public Builder clearId() {
+          copyOnWrite();
+          instance.clearId();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:PToP.S2ARsp)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new S2ARsp();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            S2ARsp other = (S2ARsp) arg1;
+            offline_ = visitor.visitBoolean(offline_ != false, offline_,
+                other.offline_ != false, other.offline_);
+            id_ = visitor.visitInt(id_ != 0, id_,
+                other.id_ != 0, other.id_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 8: {
+
+                    offline_ = input.readBool();
+                    break;
+                  }
+                  case 16: {
+
+                    id_ = input.readUInt32();
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (S2ARsp.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:PToP.S2ARsp)
+      private static final S2ARsp DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new S2ARsp();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static S2ARsp getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<S2ARsp> PARSER;
+
+      public static com.google.protobuf.Parser<S2ARsp> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public interface S2BRelayOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:PToP.S2BRelay)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional uint32 aid = 1;</code>
+       */
+      int getAid();
+    }
+    /**
+     * Protobuf type {@code PToP.S2BRelay}
+     */
+    public  static final class S2BRelay extends
+        com.google.protobuf.GeneratedMessageLite<
+            S2BRelay, S2BRelay.Builder> implements
+        // @@protoc_insertion_point(message_implements:PToP.S2BRelay)
+        S2BRelayOrBuilder {
+      private S2BRelay() {
+      }
+      public static final int AID_FIELD_NUMBER = 1;
+      private int aid_;
+      /**
+       * <code>optional uint32 aid = 1;</code>
+       */
+      public int getAid() {
+        return aid_;
+      }
+      /**
+       * <code>optional uint32 aid = 1;</code>
+       */
+      private void setAid(int value) {
+        
+        aid_ = value;
+      }
+      /**
+       * <code>optional uint32 aid = 1;</code>
+       */
+      private void clearAid() {
+        
+        aid_ = 0;
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (aid_ != 0) {
+          output.writeUInt32(1, aid_);
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (aid_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(1, aid_);
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static S2BRelay parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static S2BRelay parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static S2BRelay parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static S2BRelay parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static S2BRelay parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static S2BRelay parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static S2BRelay parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static S2BRelay parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static S2BRelay parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static S2BRelay parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(S2BRelay prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code PToP.S2BRelay}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            S2BRelay, Builder> implements
+          // @@protoc_insertion_point(builder_implements:PToP.S2BRelay)
+          S2BRelayOrBuilder {
+        // Construct using Test.PToP.S2BRelay.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional uint32 aid = 1;</code>
+         */
+        public int getAid() {
+          return instance.getAid();
+        }
+        /**
+         * <code>optional uint32 aid = 1;</code>
+         */
+        public Builder setAid(int value) {
+          copyOnWrite();
+          instance.setAid(value);
+          return this;
+        }
+        /**
+         * <code>optional uint32 aid = 1;</code>
+         */
+        public Builder clearAid() {
+          copyOnWrite();
+          instance.clearAid();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:PToP.S2BRelay)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new S2BRelay();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            S2BRelay other = (S2BRelay) arg1;
+            aid_ = visitor.visitInt(aid_ != 0, aid_,
+                other.aid_ != 0, other.aid_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 8: {
+
+                    aid_ = input.readUInt32();
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (S2BRelay.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:PToP.S2BRelay)
+      private static final S2BRelay DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new S2BRelay();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static S2BRelay getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<S2BRelay> PARSER;
+
+      public static com.google.protobuf.Parser<S2BRelay> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public interface S2InfoReqOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:PToP.S2InfoReq)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      int getId();
+
+      /**
+       * <code>optional uint32 s1ip = 2;</code>
+       */
+      int getS1Ip();
+
+      /**
+       * <code>optional uint32 s1port = 3;</code>
+       */
+      int getS1Port();
+
+      /**
+       * <code>optional string token = 4;</code>
+       */
+      String getToken();
+      /**
+       * <code>optional string token = 4;</code>
+       */
+      com.google.protobuf.ByteString
+          getTokenBytes();
+    }
+    /**
+     * Protobuf type {@code PToP.S2InfoReq}
+     */
+    public  static final class S2InfoReq extends
+        com.google.protobuf.GeneratedMessageLite<
+            S2InfoReq, S2InfoReq.Builder> implements
+        // @@protoc_insertion_point(message_implements:PToP.S2InfoReq)
+        S2InfoReqOrBuilder {
+      private S2InfoReq() {
+        token_ = "";
+      }
+      public static final int ID_FIELD_NUMBER = 1;
+      private int id_;
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      private void setId(int value) {
+        
+        id_ = value;
+      }
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      private void clearId() {
+        
+        id_ = 0;
+      }
+
+      public static final int S1IP_FIELD_NUMBER = 2;
+      private int s1Ip_;
+      /**
+       * <code>optional uint32 s1ip = 2;</code>
+       */
+      public int getS1Ip() {
+        return s1Ip_;
+      }
+      /**
+       * <code>optional uint32 s1ip = 2;</code>
+       */
+      private void setS1Ip(int value) {
+        
+        s1Ip_ = value;
+      }
+      /**
+       * <code>optional uint32 s1ip = 2;</code>
+       */
+      private void clearS1Ip() {
+        
+        s1Ip_ = 0;
+      }
+
+      public static final int S1PORT_FIELD_NUMBER = 3;
+      private int s1Port_;
+      /**
+       * <code>optional uint32 s1port = 3;</code>
+       */
+      public int getS1Port() {
+        return s1Port_;
+      }
+      /**
+       * <code>optional uint32 s1port = 3;</code>
+       */
+      private void setS1Port(int value) {
+        
+        s1Port_ = value;
+      }
+      /**
+       * <code>optional uint32 s1port = 3;</code>
+       */
+      private void clearS1Port() {
+        
+        s1Port_ = 0;
+      }
+
+      public static final int TOKEN_FIELD_NUMBER = 4;
+      private String token_;
+      /**
+       * <code>optional string token = 4;</code>
+       */
+      public String getToken() {
+        return token_;
+      }
+      /**
+       * <code>optional string token = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTokenBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(token_);
+      }
+      /**
+       * <code>optional string token = 4;</code>
+       */
+      private void setToken(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        token_ = value;
+      }
+      /**
+       * <code>optional string token = 4;</code>
+       */
+      private void clearToken() {
+        
+        token_ = getDefaultInstance().getToken();
+      }
+      /**
+       * <code>optional string token = 4;</code>
+       */
+      private void setTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        token_ = value.toStringUtf8();
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (id_ != 0) {
+          output.writeUInt32(1, id_);
+        }
+        if (s1Ip_ != 0) {
+          output.writeUInt32(2, s1Ip_);
+        }
+        if (s1Port_ != 0) {
+          output.writeUInt32(3, s1Port_);
+        }
+        if (!token_.isEmpty()) {
+          output.writeString(4, getToken());
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (id_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(1, id_);
+        }
+        if (s1Ip_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(2, s1Ip_);
+        }
+        if (s1Port_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(3, s1Port_);
+        }
+        if (!token_.isEmpty()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(4, getToken());
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static S2InfoReq parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static S2InfoReq parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static S2InfoReq parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static S2InfoReq parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static S2InfoReq parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static S2InfoReq parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static S2InfoReq parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static S2InfoReq parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static S2InfoReq parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static S2InfoReq parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(S2InfoReq prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code PToP.S2InfoReq}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            S2InfoReq, Builder> implements
+          // @@protoc_insertion_point(builder_implements:PToP.S2InfoReq)
+          S2InfoReqOrBuilder {
+        // Construct using Test.PToP.S2InfoReq.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional uint32 id = 1;</code>
+         */
+        public int getId() {
+          return instance.getId();
+        }
+        /**
+         * <code>optional uint32 id = 1;</code>
+         */
+        public Builder setId(int value) {
+          copyOnWrite();
+          instance.setId(value);
+          return this;
+        }
+        /**
+         * <code>optional uint32 id = 1;</code>
+         */
+        public Builder clearId() {
+          copyOnWrite();
+          instance.clearId();
+          return this;
+        }
+
+        /**
+         * <code>optional uint32 s1ip = 2;</code>
+         */
+        public int getS1Ip() {
+          return instance.getS1Ip();
+        }
+        /**
+         * <code>optional uint32 s1ip = 2;</code>
+         */
+        public Builder setS1Ip(int value) {
+          copyOnWrite();
+          instance.setS1Ip(value);
+          return this;
+        }
+        /**
+         * <code>optional uint32 s1ip = 2;</code>
+         */
+        public Builder clearS1Ip() {
+          copyOnWrite();
+          instance.clearS1Ip();
+          return this;
+        }
+
+        /**
+         * <code>optional uint32 s1port = 3;</code>
+         */
+        public int getS1Port() {
+          return instance.getS1Port();
+        }
+        /**
+         * <code>optional uint32 s1port = 3;</code>
+         */
+        public Builder setS1Port(int value) {
+          copyOnWrite();
+          instance.setS1Port(value);
+          return this;
+        }
+        /**
+         * <code>optional uint32 s1port = 3;</code>
+         */
+        public Builder clearS1Port() {
+          copyOnWrite();
+          instance.clearS1Port();
+          return this;
+        }
+
+        /**
+         * <code>optional string token = 4;</code>
+         */
+        public String getToken() {
+          return instance.getToken();
+        }
+        /**
+         * <code>optional string token = 4;</code>
+         */
+        public com.google.protobuf.ByteString
+            getTokenBytes() {
+          return instance.getTokenBytes();
+        }
+        /**
+         * <code>optional string token = 4;</code>
+         */
+        public Builder setToken(
+            String value) {
+          copyOnWrite();
+          instance.setToken(value);
+          return this;
+        }
+        /**
+         * <code>optional string token = 4;</code>
+         */
+        public Builder clearToken() {
+          copyOnWrite();
+          instance.clearToken();
+          return this;
+        }
+        /**
+         * <code>optional string token = 4;</code>
+         */
+        public Builder setTokenBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setTokenBytes(value);
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:PToP.S2InfoReq)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new S2InfoReq();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            S2InfoReq other = (S2InfoReq) arg1;
+            id_ = visitor.visitInt(id_ != 0, id_,
+                other.id_ != 0, other.id_);
+            s1Ip_ = visitor.visitInt(s1Ip_ != 0, s1Ip_,
+                other.s1Ip_ != 0, other.s1Ip_);
+            s1Port_ = visitor.visitInt(s1Port_ != 0, s1Port_,
+                other.s1Port_ != 0, other.s1Port_);
+            token_ = visitor.visitString(!token_.isEmpty(), token_,
+                !other.token_.isEmpty(), other.token_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 8: {
+
+                    id_ = input.readUInt32();
+                    break;
+                  }
+                  case 16: {
+
+                    s1Ip_ = input.readUInt32();
+                    break;
+                  }
+                  case 24: {
+
+                    s1Port_ = input.readUInt32();
+                    break;
+                  }
+                  case 34: {
+                    String s = input.readStringRequireUtf8();
+
+                    token_ = s;
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (S2InfoReq.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:PToP.S2InfoReq)
+      private static final S2InfoReq DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new S2InfoReq();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static S2InfoReq getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<S2InfoReq> PARSER;
+
+      public static com.google.protobuf.Parser<S2InfoReq> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public interface S2InfoRelayOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:PToP.S2InfoRelay)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      int getId();
+
+      /**
+       * <code>optional uint32 ip = 2;</code>
+       */
+      int getIp();
+
+      /**
+       * <code>optional uint32 port = 3;</code>
+       */
+      int getPort();
+
+      /**
+       * <pre>
+       *ip port 不变 0
+       *增加 1 
+       *减少 2 
+       * </pre>
+       *
+       * <code>optional uint32 mode = 4;</code>
+       */
+      int getMode();
+    }
+    /**
+     * <pre>
+     * message S2InfoRsp{
+     *     uint32 id = 1;
+     * }
+     * </pre>
+     *
+     * Protobuf type {@code PToP.S2InfoRelay}
+     */
+    public  static final class S2InfoRelay extends
+        com.google.protobuf.GeneratedMessageLite<
+            S2InfoRelay, S2InfoRelay.Builder> implements
+        // @@protoc_insertion_point(message_implements:PToP.S2InfoRelay)
+        S2InfoRelayOrBuilder {
+      private S2InfoRelay() {
+      }
+      public static final int ID_FIELD_NUMBER = 1;
+      private int id_;
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      private void setId(int value) {
+        
+        id_ = value;
+      }
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      private void clearId() {
+        
+        id_ = 0;
+      }
+
+      public static final int IP_FIELD_NUMBER = 2;
+      private int ip_;
+      /**
+       * <code>optional uint32 ip = 2;</code>
+       */
+      public int getIp() {
+        return ip_;
+      }
+      /**
+       * <code>optional uint32 ip = 2;</code>
+       */
+      private void setIp(int value) {
+        
+        ip_ = value;
+      }
+      /**
+       * <code>optional uint32 ip = 2;</code>
+       */
+      private void clearIp() {
+        
+        ip_ = 0;
+      }
+
+      public static final int PORT_FIELD_NUMBER = 3;
+      private int port_;
+      /**
+       * <code>optional uint32 port = 3;</code>
+       */
+      public int getPort() {
+        return port_;
+      }
+      /**
+       * <code>optional uint32 port = 3;</code>
+       */
+      private void setPort(int value) {
+        
+        port_ = value;
+      }
+      /**
+       * <code>optional uint32 port = 3;</code>
+       */
+      private void clearPort() {
+        
+        port_ = 0;
+      }
+
+      public static final int MODE_FIELD_NUMBER = 4;
+      private int mode_;
+      /**
+       * <pre>
+       *ip port 不变 0
+       *增加 1 
+       *减少 2 
+       * </pre>
+       *
+       * <code>optional uint32 mode = 4;</code>
+       */
+      public int getMode() {
+        return mode_;
+      }
+      /**
+       * <pre>
+       *ip port 不变 0
+       *增加 1 
+       *减少 2 
+       * </pre>
+       *
+       * <code>optional uint32 mode = 4;</code>
+       */
+      private void setMode(int value) {
+        
+        mode_ = value;
+      }
+      /**
+       * <pre>
+       *ip port 不变 0
+       *增加 1 
+       *减少 2 
+       * </pre>
+       *
+       * <code>optional uint32 mode = 4;</code>
+       */
+      private void clearMode() {
+        
+        mode_ = 0;
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (id_ != 0) {
+          output.writeUInt32(1, id_);
+        }
+        if (ip_ != 0) {
+          output.writeUInt32(2, ip_);
+        }
+        if (port_ != 0) {
+          output.writeUInt32(3, port_);
+        }
+        if (mode_ != 0) {
+          output.writeUInt32(4, mode_);
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (id_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(1, id_);
+        }
+        if (ip_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(2, ip_);
+        }
+        if (port_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(3, port_);
+        }
+        if (mode_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(4, mode_);
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static S2InfoRelay parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static S2InfoRelay parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static S2InfoRelay parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static S2InfoRelay parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static S2InfoRelay parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static S2InfoRelay parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static S2InfoRelay parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static S2InfoRelay parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static S2InfoRelay parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static S2InfoRelay parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(S2InfoRelay prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * <pre>
+       * message S2InfoRsp{
+       *     uint32 id = 1;
+       * }
+       * </pre>
+       *
+       * Protobuf type {@code PToP.S2InfoRelay}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            S2InfoRelay, Builder> implements
+          // @@protoc_insertion_point(builder_implements:PToP.S2InfoRelay)
+          S2InfoRelayOrBuilder {
+        // Construct using Test.PToP.S2InfoRelay.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional uint32 id = 1;</code>
+         */
+        public int getId() {
+          return instance.getId();
+        }
+        /**
+         * <code>optional uint32 id = 1;</code>
+         */
+        public Builder setId(int value) {
+          copyOnWrite();
+          instance.setId(value);
+          return this;
+        }
+        /**
+         * <code>optional uint32 id = 1;</code>
+         */
+        public Builder clearId() {
+          copyOnWrite();
+          instance.clearId();
+          return this;
+        }
+
+        /**
+         * <code>optional uint32 ip = 2;</code>
+         */
+        public int getIp() {
+          return instance.getIp();
+        }
+        /**
+         * <code>optional uint32 ip = 2;</code>
+         */
+        public Builder setIp(int value) {
+          copyOnWrite();
+          instance.setIp(value);
+          return this;
+        }
+        /**
+         * <code>optional uint32 ip = 2;</code>
+         */
+        public Builder clearIp() {
+          copyOnWrite();
+          instance.clearIp();
+          return this;
+        }
+
+        /**
+         * <code>optional uint32 port = 3;</code>
+         */
+        public int getPort() {
+          return instance.getPort();
+        }
+        /**
+         * <code>optional uint32 port = 3;</code>
+         */
+        public Builder setPort(int value) {
+          copyOnWrite();
+          instance.setPort(value);
+          return this;
+        }
+        /**
+         * <code>optional uint32 port = 3;</code>
+         */
+        public Builder clearPort() {
+          copyOnWrite();
+          instance.clearPort();
+          return this;
+        }
+
+        /**
+         * <pre>
+         *ip port 不变 0
+         *增加 1 
+         *减少 2 
+         * </pre>
+         *
+         * <code>optional uint32 mode = 4;</code>
+         */
+        public int getMode() {
+          return instance.getMode();
+        }
+        /**
+         * <pre>
+         *ip port 不变 0
+         *增加 1 
+         *减少 2 
+         * </pre>
+         *
+         * <code>optional uint32 mode = 4;</code>
+         */
+        public Builder setMode(int value) {
+          copyOnWrite();
+          instance.setMode(value);
+          return this;
+        }
+        /**
+         * <pre>
+         *ip port 不变 0
+         *增加 1 
+         *减少 2 
+         * </pre>
+         *
+         * <code>optional uint32 mode = 4;</code>
+         */
+        public Builder clearMode() {
+          copyOnWrite();
+          instance.clearMode();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:PToP.S2InfoRelay)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new S2InfoRelay();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            S2InfoRelay other = (S2InfoRelay) arg1;
+            id_ = visitor.visitInt(id_ != 0, id_,
+                other.id_ != 0, other.id_);
+            ip_ = visitor.visitInt(ip_ != 0, ip_,
+                other.ip_ != 0, other.ip_);
+            port_ = visitor.visitInt(port_ != 0, port_,
+                other.port_ != 0, other.port_);
+            mode_ = visitor.visitInt(mode_ != 0, mode_,
+                other.mode_ != 0, other.mode_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 8: {
+
+                    id_ = input.readUInt32();
+                    break;
+                  }
+                  case 16: {
+
+                    ip_ = input.readUInt32();
+                    break;
+                  }
+                  case 24: {
+
+                    port_ = input.readUInt32();
+                    break;
+                  }
+                  case 32: {
+
+                    mode_ = input.readUInt32();
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (S2InfoRelay.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:PToP.S2InfoRelay)
+      private static final S2InfoRelay DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new S2InfoRelay();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static S2InfoRelay getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<S2InfoRelay> PARSER;
+
+      public static com.google.protobuf.Parser<S2InfoRelay> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static PToP parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static PToP parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static PToP parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static PToP parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static PToP parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static PToP parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static PToP parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static PToP parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static PToP parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static PToP parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(PToP prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code PToP}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          PToP, Builder> implements
+        // @@protoc_insertion_point(builder_implements:PToP)
+        PToPOrBuilder {
+      // Construct using Test.PToP.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:PToP)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new PToP();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          PToP other = (PToP) arg1;
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (PToP.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:PToP)
+    private static final PToP DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new PToP();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static PToP getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<PToP> PARSER;
+
+    public static com.google.protobuf.Parser<PToP> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface PeopleOrBuilder extends
       // @@protoc_insertion_point(interface_extends:People)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -13412,6 +15935,383 @@ public final class Test {
       }
     }
 
+    public interface RelayToFriendOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ChangeName.RelayToFriend)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      int getId();
+
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      String getName();
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getNameBytes();
+    }
+    /**
+     * Protobuf type {@code ChangeName.RelayToFriend}
+     */
+    public  static final class RelayToFriend extends
+        com.google.protobuf.GeneratedMessageLite<
+            RelayToFriend, RelayToFriend.Builder> implements
+        // @@protoc_insertion_point(message_implements:ChangeName.RelayToFriend)
+        RelayToFriendOrBuilder {
+      private RelayToFriend() {
+        name_ = "";
+      }
+      public static final int ID_FIELD_NUMBER = 1;
+      private int id_;
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      private void setId(int value) {
+        
+        id_ = value;
+      }
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      private void clearId() {
+        
+        id_ = 0;
+      }
+
+      public static final int NAME_FIELD_NUMBER = 2;
+      private String name_;
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public String getName() {
+        return name_;
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(name_);
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      private void setName(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      private void clearName() {
+        
+        name_ = getDefaultInstance().getName();
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      private void setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value.toStringUtf8();
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (id_ != 0) {
+          output.writeUInt32(1, id_);
+        }
+        if (!name_.isEmpty()) {
+          output.writeString(2, getName());
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (id_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(1, id_);
+        }
+        if (!name_.isEmpty()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(2, getName());
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static RelayToFriend parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static RelayToFriend parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static RelayToFriend parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static RelayToFriend parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static RelayToFriend parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static RelayToFriend parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static RelayToFriend parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static RelayToFriend parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static RelayToFriend parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static RelayToFriend parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(RelayToFriend prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code ChangeName.RelayToFriend}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            RelayToFriend, Builder> implements
+          // @@protoc_insertion_point(builder_implements:ChangeName.RelayToFriend)
+          RelayToFriendOrBuilder {
+        // Construct using Test.ChangeName.RelayToFriend.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional uint32 id = 1;</code>
+         */
+        public int getId() {
+          return instance.getId();
+        }
+        /**
+         * <code>optional uint32 id = 1;</code>
+         */
+        public Builder setId(int value) {
+          copyOnWrite();
+          instance.setId(value);
+          return this;
+        }
+        /**
+         * <code>optional uint32 id = 1;</code>
+         */
+        public Builder clearId() {
+          copyOnWrite();
+          instance.clearId();
+          return this;
+        }
+
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public String getName() {
+          return instance.getName();
+        }
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getNameBytes() {
+          return instance.getNameBytes();
+        }
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public Builder setName(
+            String value) {
+          copyOnWrite();
+          instance.setName(value);
+          return this;
+        }
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public Builder clearName() {
+          copyOnWrite();
+          instance.clearName();
+          return this;
+        }
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public Builder setNameBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setNameBytes(value);
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:ChangeName.RelayToFriend)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new RelayToFriend();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            RelayToFriend other = (RelayToFriend) arg1;
+            id_ = visitor.visitInt(id_ != 0, id_,
+                other.id_ != 0, other.id_);
+            name_ = visitor.visitString(!name_.isEmpty(), name_,
+                !other.name_.isEmpty(), other.name_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 8: {
+
+                    id_ = input.readUInt32();
+                    break;
+                  }
+                  case 18: {
+                    String s = input.readStringRequireUtf8();
+
+                    name_ = s;
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (RelayToFriend.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:ChangeName.RelayToFriend)
+      private static final RelayToFriend DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new RelayToFriend();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static RelayToFriend getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<RelayToFriend> PARSER;
+
+      public static com.google.protobuf.Parser<RelayToFriend> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
     }
@@ -14262,6 +17162,340 @@ public final class Test {
       private static volatile com.google.protobuf.Parser<Rsp> PARSER;
 
       public static com.google.protobuf.Parser<Rsp> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public interface RelayToFriendOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ChangeHeadpic.RelayToFriend)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      int getId();
+
+      /**
+       * <code>optional bytes headpic = 2;</code>
+       */
+      com.google.protobuf.ByteString getHeadpic();
+    }
+    /**
+     * Protobuf type {@code ChangeHeadpic.RelayToFriend}
+     */
+    public  static final class RelayToFriend extends
+        com.google.protobuf.GeneratedMessageLite<
+            RelayToFriend, RelayToFriend.Builder> implements
+        // @@protoc_insertion_point(message_implements:ChangeHeadpic.RelayToFriend)
+        RelayToFriendOrBuilder {
+      private RelayToFriend() {
+        headpic_ = com.google.protobuf.ByteString.EMPTY;
+      }
+      public static final int ID_FIELD_NUMBER = 1;
+      private int id_;
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      private void setId(int value) {
+        
+        id_ = value;
+      }
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      private void clearId() {
+        
+        id_ = 0;
+      }
+
+      public static final int HEADPIC_FIELD_NUMBER = 2;
+      private com.google.protobuf.ByteString headpic_;
+      /**
+       * <code>optional bytes headpic = 2;</code>
+       */
+      public com.google.protobuf.ByteString getHeadpic() {
+        return headpic_;
+      }
+      /**
+       * <code>optional bytes headpic = 2;</code>
+       */
+      private void setHeadpic(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        headpic_ = value;
+      }
+      /**
+       * <code>optional bytes headpic = 2;</code>
+       */
+      private void clearHeadpic() {
+        
+        headpic_ = getDefaultInstance().getHeadpic();
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (id_ != 0) {
+          output.writeUInt32(1, id_);
+        }
+        if (!headpic_.isEmpty()) {
+          output.writeBytes(2, headpic_);
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (id_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(1, id_);
+        }
+        if (!headpic_.isEmpty()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBytesSize(2, headpic_);
+        }
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      public static RelayToFriend parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static RelayToFriend parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static RelayToFriend parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static RelayToFriend parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static RelayToFriend parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static RelayToFriend parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static RelayToFriend parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static RelayToFriend parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static RelayToFriend parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static RelayToFriend parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(RelayToFriend prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+
+      /**
+       * Protobuf type {@code ChangeHeadpic.RelayToFriend}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            RelayToFriend, Builder> implements
+          // @@protoc_insertion_point(builder_implements:ChangeHeadpic.RelayToFriend)
+          RelayToFriendOrBuilder {
+        // Construct using Test.ChangeHeadpic.RelayToFriend.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional uint32 id = 1;</code>
+         */
+        public int getId() {
+          return instance.getId();
+        }
+        /**
+         * <code>optional uint32 id = 1;</code>
+         */
+        public Builder setId(int value) {
+          copyOnWrite();
+          instance.setId(value);
+          return this;
+        }
+        /**
+         * <code>optional uint32 id = 1;</code>
+         */
+        public Builder clearId() {
+          copyOnWrite();
+          instance.clearId();
+          return this;
+        }
+
+        /**
+         * <code>optional bytes headpic = 2;</code>
+         */
+        public com.google.protobuf.ByteString getHeadpic() {
+          return instance.getHeadpic();
+        }
+        /**
+         * <code>optional bytes headpic = 2;</code>
+         */
+        public Builder setHeadpic(com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setHeadpic(value);
+          return this;
+        }
+        /**
+         * <code>optional bytes headpic = 2;</code>
+         */
+        public Builder clearHeadpic() {
+          copyOnWrite();
+          instance.clearHeadpic();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:ChangeHeadpic.RelayToFriend)
+      }
+      protected final Object dynamicMethod(
+          MethodToInvoke method,
+          Object arg0, Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new RelayToFriend();
+          }
+          case IS_INITIALIZED: {
+            return DEFAULT_INSTANCE;
+          }
+          case MAKE_IMMUTABLE: {
+            return null;
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case VISIT: {
+            Visitor visitor = (Visitor) arg0;
+            RelayToFriend other = (RelayToFriend) arg1;
+            id_ = visitor.visitInt(id_ != 0, id_,
+                other.id_ != 0, other.id_);
+            headpic_ = visitor.visitByteString(headpic_ != com.google.protobuf.ByteString.EMPTY, headpic_,
+                other.headpic_ != com.google.protobuf.ByteString.EMPTY, other.headpic_);
+            if (visitor == MergeFromVisitor
+                .INSTANCE) {
+            }
+            return this;
+          }
+          case MERGE_FROM_STREAM: {
+            com.google.protobuf.CodedInputStream input =
+                (com.google.protobuf.CodedInputStream) arg0;
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                (com.google.protobuf.ExtensionRegistryLite) arg1;
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  default: {
+                    if (!input.skipField(tag)) {
+                      done = true;
+                    }
+                    break;
+                  }
+                  case 8: {
+
+                    id_ = input.readUInt32();
+                    break;
+                  }
+                  case 18: {
+
+                    headpic_ = input.readBytes();
+                    break;
+                  }
+                }
+              }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw new RuntimeException(e.setUnfinishedMessage(this));
+            } catch (java.io.IOException e) {
+              throw new RuntimeException(
+                  new com.google.protobuf.InvalidProtocolBufferException(
+                      e.getMessage()).setUnfinishedMessage(this));
+            } finally {
+            }
+          }
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            if (PARSER == null) {    synchronized (RelayToFriend.class) {
+                if (PARSER == null) {
+                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                }
+              }
+            }
+            return PARSER;
+          }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:ChangeHeadpic.RelayToFriend)
+      private static final RelayToFriend DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new RelayToFriend();
+        DEFAULT_INSTANCE.makeImmutable();
+      }
+
+      public static RelayToFriend getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<RelayToFriend> PARSER;
+
+      public static com.google.protobuf.Parser<RelayToFriend> parser() {
         return DEFAULT_INSTANCE.getParserForType();
       }
     }
@@ -15932,6 +19166,15 @@ public final class Test {
          * <code>optional uint64 time = 2;</code>
          */
         long getTime();
+
+        /**
+         * <pre>
+         *对应于本条消息的发起者
+         * </pre>
+         *
+         * <code>optional uint32 sender = 3;</code>
+         */
+        int getSender();
       }
       /**
        * Protobuf type {@code ChatRecord.Rsp.Msg}
@@ -16013,6 +19256,41 @@ public final class Test {
           time_ = 0L;
         }
 
+        public static final int SENDER_FIELD_NUMBER = 3;
+        private int sender_;
+        /**
+         * <pre>
+         *对应于本条消息的发起者
+         * </pre>
+         *
+         * <code>optional uint32 sender = 3;</code>
+         */
+        public int getSender() {
+          return sender_;
+        }
+        /**
+         * <pre>
+         *对应于本条消息的发起者
+         * </pre>
+         *
+         * <code>optional uint32 sender = 3;</code>
+         */
+        private void setSender(int value) {
+          
+          sender_ = value;
+        }
+        /**
+         * <pre>
+         *对应于本条消息的发起者
+         * </pre>
+         *
+         * <code>optional uint32 sender = 3;</code>
+         */
+        private void clearSender() {
+          
+          sender_ = 0;
+        }
+
         public void writeTo(com.google.protobuf.CodedOutputStream output)
                             throws java.io.IOException {
           if (!content_.isEmpty()) {
@@ -16020,6 +19298,9 @@ public final class Test {
           }
           if (time_ != 0L) {
             output.writeUInt64(2, time_);
+          }
+          if (sender_ != 0) {
+            output.writeUInt32(3, sender_);
           }
         }
 
@@ -16035,6 +19316,10 @@ public final class Test {
           if (time_ != 0L) {
             size += com.google.protobuf.CodedOutputStream
               .computeUInt64Size(2, time_);
+          }
+          if (sender_ != 0) {
+            size += com.google.protobuf.CodedOutputStream
+              .computeUInt32Size(3, sender_);
           }
           memoizedSerializedSize = size;
           return size;
@@ -16185,6 +19470,41 @@ public final class Test {
             return this;
           }
 
+          /**
+           * <pre>
+           *对应于本条消息的发起者
+           * </pre>
+           *
+           * <code>optional uint32 sender = 3;</code>
+           */
+          public int getSender() {
+            return instance.getSender();
+          }
+          /**
+           * <pre>
+           *对应于本条消息的发起者
+           * </pre>
+           *
+           * <code>optional uint32 sender = 3;</code>
+           */
+          public Builder setSender(int value) {
+            copyOnWrite();
+            instance.setSender(value);
+            return this;
+          }
+          /**
+           * <pre>
+           *对应于本条消息的发起者
+           * </pre>
+           *
+           * <code>optional uint32 sender = 3;</code>
+           */
+          public Builder clearSender() {
+            copyOnWrite();
+            instance.clearSender();
+            return this;
+          }
+
           // @@protoc_insertion_point(builder_scope:ChatRecord.Rsp.Msg)
         }
         protected final Object dynamicMethod(
@@ -16210,6 +19530,8 @@ public final class Test {
                   !other.content_.isEmpty(), other.content_);
               time_ = visitor.visitLong(time_ != 0L, time_,
                   other.time_ != 0L, other.time_);
+              sender_ = visitor.visitInt(sender_ != 0, sender_,
+                  other.sender_ != 0, other.sender_);
               if (visitor == MergeFromVisitor
                   .INSTANCE) {
               }
@@ -16243,6 +19565,11 @@ public final class Test {
                     case 16: {
 
                       time_ = input.readUInt64();
+                      break;
+                    }
+                    case 24: {
+
+                      sender_ = input.readUInt32();
                       break;
                     }
                   }
@@ -19005,6 +22332,16 @@ public final class Test {
      */
     Seen.AToServer getSeenAToServer();
 
+    /**
+     * <code>optional .PToP.AS2Req a_s2_req = 16;</code>
+     */
+    PToP.AS2Req getAS2Req();
+
+    /**
+     * <code>optional .PToP.S2InfoReq s2_info_req = 17;</code>
+     */
+    PToP.S2InfoReq getS2InfoReq();
+
     public ReqToServer.ReqCase getReqCase();
   }
   /**
@@ -19036,6 +22373,8 @@ public final class Test {
       CHANGE_HEADPIC_REQ(13),
       DELETE_FRIEND_A_TO_SERVER(14),
       SEEN_A_TO_SERVER(15),
+      A_S2_REQ(16),
+      S2_INFO_REQ(17),
       REQ_NOT_SET(0);
       private final int value;
       private ReqCase(int value) {
@@ -19066,6 +22405,8 @@ public final class Test {
           case 13: return CHANGE_HEADPIC_REQ;
           case 14: return DELETE_FRIEND_A_TO_SERVER;
           case 15: return SEEN_A_TO_SERVER;
+          case 16: return A_S2_REQ;
+          case 17: return S2_INFO_REQ;
           case 0: return REQ_NOT_SET;
           default: return null;
         }
@@ -19876,6 +23217,108 @@ public final class Test {
       }
     }
 
+    public static final int A_S2_REQ_FIELD_NUMBER = 16;
+    /**
+     * <code>optional .PToP.AS2Req a_s2_req = 16;</code>
+     */
+    public PToP.AS2Req getAS2Req() {
+      if (reqCase_ == 16) {
+         return (PToP.AS2Req) req_;
+      }
+      return PToP.AS2Req.getDefaultInstance();
+    }
+    /**
+     * <code>optional .PToP.AS2Req a_s2_req = 16;</code>
+     */
+    private void setAS2Req(PToP.AS2Req value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      req_ = value;
+      reqCase_ = 16;
+    }
+    /**
+     * <code>optional .PToP.AS2Req a_s2_req = 16;</code>
+     */
+    private void setAS2Req(
+        PToP.AS2Req.Builder builderForValue) {
+      req_ = builderForValue.build();
+      reqCase_ = 16;
+    }
+    /**
+     * <code>optional .PToP.AS2Req a_s2_req = 16;</code>
+     */
+    private void mergeAS2Req(PToP.AS2Req value) {
+      if (reqCase_ == 16 &&
+          req_ != PToP.AS2Req.getDefaultInstance()) {
+        req_ = PToP.AS2Req.newBuilder((PToP.AS2Req) req_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        req_ = value;
+      }
+      reqCase_ = 16;
+    }
+    /**
+     * <code>optional .PToP.AS2Req a_s2_req = 16;</code>
+     */
+    private void clearAS2Req() {
+      if (reqCase_ == 16) {
+        reqCase_ = 0;
+        req_ = null;
+      }
+    }
+
+    public static final int S2_INFO_REQ_FIELD_NUMBER = 17;
+    /**
+     * <code>optional .PToP.S2InfoReq s2_info_req = 17;</code>
+     */
+    public PToP.S2InfoReq getS2InfoReq() {
+      if (reqCase_ == 17) {
+         return (PToP.S2InfoReq) req_;
+      }
+      return PToP.S2InfoReq.getDefaultInstance();
+    }
+    /**
+     * <code>optional .PToP.S2InfoReq s2_info_req = 17;</code>
+     */
+    private void setS2InfoReq(PToP.S2InfoReq value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      req_ = value;
+      reqCase_ = 17;
+    }
+    /**
+     * <code>optional .PToP.S2InfoReq s2_info_req = 17;</code>
+     */
+    private void setS2InfoReq(
+        PToP.S2InfoReq.Builder builderForValue) {
+      req_ = builderForValue.build();
+      reqCase_ = 17;
+    }
+    /**
+     * <code>optional .PToP.S2InfoReq s2_info_req = 17;</code>
+     */
+    private void mergeS2InfoReq(PToP.S2InfoReq value) {
+      if (reqCase_ == 17 &&
+          req_ != PToP.S2InfoReq.getDefaultInstance()) {
+        req_ = PToP.S2InfoReq.newBuilder((PToP.S2InfoReq) req_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        req_ = value;
+      }
+      reqCase_ = 17;
+    }
+    /**
+     * <code>optional .PToP.S2InfoReq s2_info_req = 17;</code>
+     */
+    private void clearS2InfoReq() {
+      if (reqCase_ == 17) {
+        reqCase_ = 0;
+        req_ = null;
+      }
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (reqCase_ == 1) {
@@ -19922,6 +23365,12 @@ public final class Test {
       }
       if (reqCase_ == 15) {
         output.writeMessage(15, (Seen.AToServer) req_);
+      }
+      if (reqCase_ == 16) {
+        output.writeMessage(16, (PToP.AS2Req) req_);
+      }
+      if (reqCase_ == 17) {
+        output.writeMessage(17, (PToP.S2InfoReq) req_);
       }
     }
 
@@ -19989,6 +23438,14 @@ public final class Test {
       if (reqCase_ == 15) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(15, (Seen.AToServer) req_);
+      }
+      if (reqCase_ == 16) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, (PToP.AS2Req) req_);
+      }
+      if (reqCase_ == 17) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(17, (PToP.S2InfoReq) req_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -20712,6 +24169,86 @@ public final class Test {
         return this;
       }
 
+      /**
+       * <code>optional .PToP.AS2Req a_s2_req = 16;</code>
+       */
+      public PToP.AS2Req getAS2Req() {
+        return instance.getAS2Req();
+      }
+      /**
+       * <code>optional .PToP.AS2Req a_s2_req = 16;</code>
+       */
+      public Builder setAS2Req(PToP.AS2Req value) {
+        copyOnWrite();
+        instance.setAS2Req(value);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.AS2Req a_s2_req = 16;</code>
+       */
+      public Builder setAS2Req(
+          PToP.AS2Req.Builder builderForValue) {
+        copyOnWrite();
+        instance.setAS2Req(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.AS2Req a_s2_req = 16;</code>
+       */
+      public Builder mergeAS2Req(PToP.AS2Req value) {
+        copyOnWrite();
+        instance.mergeAS2Req(value);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.AS2Req a_s2_req = 16;</code>
+       */
+      public Builder clearAS2Req() {
+        copyOnWrite();
+        instance.clearAS2Req();
+        return this;
+      }
+
+      /**
+       * <code>optional .PToP.S2InfoReq s2_info_req = 17;</code>
+       */
+      public PToP.S2InfoReq getS2InfoReq() {
+        return instance.getS2InfoReq();
+      }
+      /**
+       * <code>optional .PToP.S2InfoReq s2_info_req = 17;</code>
+       */
+      public Builder setS2InfoReq(PToP.S2InfoReq value) {
+        copyOnWrite();
+        instance.setS2InfoReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.S2InfoReq s2_info_req = 17;</code>
+       */
+      public Builder setS2InfoReq(
+          PToP.S2InfoReq.Builder builderForValue) {
+        copyOnWrite();
+        instance.setS2InfoReq(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.S2InfoReq s2_info_req = 17;</code>
+       */
+      public Builder mergeS2InfoReq(PToP.S2InfoReq value) {
+        copyOnWrite();
+        instance.mergeS2InfoReq(value);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.S2InfoReq s2_info_req = 17;</code>
+       */
+      public Builder clearS2InfoReq() {
+        copyOnWrite();
+        instance.clearS2InfoReq();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ReqToServer)
     }
     protected final Object dynamicMethod(
@@ -20835,6 +24372,20 @@ public final class Test {
             case SEEN_A_TO_SERVER: {
               req_ = visitor.visitOneofMessage(
                   reqCase_ == 15,
+                  req_,
+                  other.req_);
+              break;
+            }
+            case A_S2_REQ: {
+              req_ = visitor.visitOneofMessage(
+                  reqCase_ == 16,
+                  req_,
+                  other.req_);
+              break;
+            }
+            case S2_INFO_REQ: {
+              req_ = visitor.visitOneofMessage(
+                  reqCase_ == 17,
                   req_,
                   other.req_);
               break;
@@ -21081,6 +24632,34 @@ public final class Test {
                   reqCase_ = 15;
                   break;
                 }
+                case 130: {
+                  PToP.AS2Req.Builder subBuilder = null;
+                  if (reqCase_ == 16) {
+                    subBuilder = ((PToP.AS2Req) req_).toBuilder();
+                  }
+                  req_ =
+                       input.readMessage(PToP.AS2Req.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((PToP.AS2Req) req_);
+                    req_ = subBuilder.buildPartial();
+                  }
+                  reqCase_ = 16;
+                  break;
+                }
+                case 138: {
+                  PToP.S2InfoReq.Builder subBuilder = null;
+                  if (reqCase_ == 17) {
+                    subBuilder = ((PToP.S2InfoReq) req_).toBuilder();
+                  }
+                  req_ =
+                       input.readMessage(PToP.S2InfoReq.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((PToP.S2InfoReq) req_);
+                    req_ = subBuilder.buildPartial();
+                  }
+                  reqCase_ = 17;
+                  break;
+                }
               }
             }
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -21221,6 +24800,36 @@ public final class Test {
      */
     Seen.ServerToB getSeenServerToB();
 
+    /**
+     * <code>optional .ChangeName.RelayToFriend change_name_relay = 20;</code>
+     */
+    ChangeName.RelayToFriend getChangeNameRelay();
+
+    /**
+     * <code>optional .ChangeHeadpic.RelayToFriend change_headpic_relay = 21;</code>
+     */
+    ChangeHeadpic.RelayToFriend getChangeHeadpicRelay();
+
+    /**
+     * <code>optional .PToP.S1Rsp s1_rsp = 22;</code>
+     */
+    PToP.S1Rsp getS1Rsp();
+
+    /**
+     * <code>optional .PToP.S2ARsp s2_rsp = 23;</code>
+     */
+    PToP.S2ARsp getS2Rsp();
+
+    /**
+     * <code>optional .PToP.S2BRelay s2_b_relay = 24;</code>
+     */
+    PToP.S2BRelay getS2BRelay();
+
+    /**
+     * <code>optional .PToP.S2InfoRelay s2_info_rsp = 25;</code>
+     */
+    PToP.S2InfoRelay getS2InfoRsp();
+
     public RspToClient.RspCase getRspCase();
   }
   /**
@@ -21254,6 +24863,12 @@ public final class Test {
       CHANGE_HEADPIC_RSP(17),
       DELETE_FRIEND_SERVER_TO_B(18),
       SEEN_SERVER_TO_B(19),
+      CHANGE_NAME_RELAY(20),
+      CHANGE_HEADPIC_RELAY(21),
+      S1_RSP(22),
+      S2_RSP(23),
+      S2_B_RELAY(24),
+      S2_INFO_RSP(25),
       RSP_NOT_SET(0);
       private final int value;
       private RspCase(int value) {
@@ -21286,6 +24901,12 @@ public final class Test {
           case 17: return CHANGE_HEADPIC_RSP;
           case 18: return DELETE_FRIEND_SERVER_TO_B;
           case 19: return SEEN_SERVER_TO_B;
+          case 20: return CHANGE_NAME_RELAY;
+          case 21: return CHANGE_HEADPIC_RELAY;
+          case 22: return S1_RSP;
+          case 23: return S2_RSP;
+          case 24: return S2_B_RELAY;
+          case 25: return S2_INFO_RSP;
           case 0: return RSP_NOT_SET;
           default: return null;
         }
@@ -22198,6 +25819,312 @@ public final class Test {
       }
     }
 
+    public static final int CHANGE_NAME_RELAY_FIELD_NUMBER = 20;
+    /**
+     * <code>optional .ChangeName.RelayToFriend change_name_relay = 20;</code>
+     */
+    public ChangeName.RelayToFriend getChangeNameRelay() {
+      if (rspCase_ == 20) {
+         return (ChangeName.RelayToFriend) rsp_;
+      }
+      return ChangeName.RelayToFriend.getDefaultInstance();
+    }
+    /**
+     * <code>optional .ChangeName.RelayToFriend change_name_relay = 20;</code>
+     */
+    private void setChangeNameRelay(ChangeName.RelayToFriend value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      rsp_ = value;
+      rspCase_ = 20;
+    }
+    /**
+     * <code>optional .ChangeName.RelayToFriend change_name_relay = 20;</code>
+     */
+    private void setChangeNameRelay(
+        ChangeName.RelayToFriend.Builder builderForValue) {
+      rsp_ = builderForValue.build();
+      rspCase_ = 20;
+    }
+    /**
+     * <code>optional .ChangeName.RelayToFriend change_name_relay = 20;</code>
+     */
+    private void mergeChangeNameRelay(ChangeName.RelayToFriend value) {
+      if (rspCase_ == 20 &&
+          rsp_ != ChangeName.RelayToFriend.getDefaultInstance()) {
+        rsp_ = ChangeName.RelayToFriend.newBuilder((ChangeName.RelayToFriend) rsp_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        rsp_ = value;
+      }
+      rspCase_ = 20;
+    }
+    /**
+     * <code>optional .ChangeName.RelayToFriend change_name_relay = 20;</code>
+     */
+    private void clearChangeNameRelay() {
+      if (rspCase_ == 20) {
+        rspCase_ = 0;
+        rsp_ = null;
+      }
+    }
+
+    public static final int CHANGE_HEADPIC_RELAY_FIELD_NUMBER = 21;
+    /**
+     * <code>optional .ChangeHeadpic.RelayToFriend change_headpic_relay = 21;</code>
+     */
+    public ChangeHeadpic.RelayToFriend getChangeHeadpicRelay() {
+      if (rspCase_ == 21) {
+         return (ChangeHeadpic.RelayToFriend) rsp_;
+      }
+      return ChangeHeadpic.RelayToFriend.getDefaultInstance();
+    }
+    /**
+     * <code>optional .ChangeHeadpic.RelayToFriend change_headpic_relay = 21;</code>
+     */
+    private void setChangeHeadpicRelay(ChangeHeadpic.RelayToFriend value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      rsp_ = value;
+      rspCase_ = 21;
+    }
+    /**
+     * <code>optional .ChangeHeadpic.RelayToFriend change_headpic_relay = 21;</code>
+     */
+    private void setChangeHeadpicRelay(
+        ChangeHeadpic.RelayToFriend.Builder builderForValue) {
+      rsp_ = builderForValue.build();
+      rspCase_ = 21;
+    }
+    /**
+     * <code>optional .ChangeHeadpic.RelayToFriend change_headpic_relay = 21;</code>
+     */
+    private void mergeChangeHeadpicRelay(ChangeHeadpic.RelayToFriend value) {
+      if (rspCase_ == 21 &&
+          rsp_ != ChangeHeadpic.RelayToFriend.getDefaultInstance()) {
+        rsp_ = ChangeHeadpic.RelayToFriend.newBuilder((ChangeHeadpic.RelayToFriend) rsp_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        rsp_ = value;
+      }
+      rspCase_ = 21;
+    }
+    /**
+     * <code>optional .ChangeHeadpic.RelayToFriend change_headpic_relay = 21;</code>
+     */
+    private void clearChangeHeadpicRelay() {
+      if (rspCase_ == 21) {
+        rspCase_ = 0;
+        rsp_ = null;
+      }
+    }
+
+    public static final int S1_RSP_FIELD_NUMBER = 22;
+    /**
+     * <code>optional .PToP.S1Rsp s1_rsp = 22;</code>
+     */
+    public PToP.S1Rsp getS1Rsp() {
+      if (rspCase_ == 22) {
+         return (PToP.S1Rsp) rsp_;
+      }
+      return PToP.S1Rsp.getDefaultInstance();
+    }
+    /**
+     * <code>optional .PToP.S1Rsp s1_rsp = 22;</code>
+     */
+    private void setS1Rsp(PToP.S1Rsp value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      rsp_ = value;
+      rspCase_ = 22;
+    }
+    /**
+     * <code>optional .PToP.S1Rsp s1_rsp = 22;</code>
+     */
+    private void setS1Rsp(
+        PToP.S1Rsp.Builder builderForValue) {
+      rsp_ = builderForValue.build();
+      rspCase_ = 22;
+    }
+    /**
+     * <code>optional .PToP.S1Rsp s1_rsp = 22;</code>
+     */
+    private void mergeS1Rsp(PToP.S1Rsp value) {
+      if (rspCase_ == 22 &&
+          rsp_ != PToP.S1Rsp.getDefaultInstance()) {
+        rsp_ = PToP.S1Rsp.newBuilder((PToP.S1Rsp) rsp_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        rsp_ = value;
+      }
+      rspCase_ = 22;
+    }
+    /**
+     * <code>optional .PToP.S1Rsp s1_rsp = 22;</code>
+     */
+    private void clearS1Rsp() {
+      if (rspCase_ == 22) {
+        rspCase_ = 0;
+        rsp_ = null;
+      }
+    }
+
+    public static final int S2_RSP_FIELD_NUMBER = 23;
+    /**
+     * <code>optional .PToP.S2ARsp s2_rsp = 23;</code>
+     */
+    public PToP.S2ARsp getS2Rsp() {
+      if (rspCase_ == 23) {
+         return (PToP.S2ARsp) rsp_;
+      }
+      return PToP.S2ARsp.getDefaultInstance();
+    }
+    /**
+     * <code>optional .PToP.S2ARsp s2_rsp = 23;</code>
+     */
+    private void setS2Rsp(PToP.S2ARsp value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      rsp_ = value;
+      rspCase_ = 23;
+    }
+    /**
+     * <code>optional .PToP.S2ARsp s2_rsp = 23;</code>
+     */
+    private void setS2Rsp(
+        PToP.S2ARsp.Builder builderForValue) {
+      rsp_ = builderForValue.build();
+      rspCase_ = 23;
+    }
+    /**
+     * <code>optional .PToP.S2ARsp s2_rsp = 23;</code>
+     */
+    private void mergeS2Rsp(PToP.S2ARsp value) {
+      if (rspCase_ == 23 &&
+          rsp_ != PToP.S2ARsp.getDefaultInstance()) {
+        rsp_ = PToP.S2ARsp.newBuilder((PToP.S2ARsp) rsp_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        rsp_ = value;
+      }
+      rspCase_ = 23;
+    }
+    /**
+     * <code>optional .PToP.S2ARsp s2_rsp = 23;</code>
+     */
+    private void clearS2Rsp() {
+      if (rspCase_ == 23) {
+        rspCase_ = 0;
+        rsp_ = null;
+      }
+    }
+
+    public static final int S2_B_RELAY_FIELD_NUMBER = 24;
+    /**
+     * <code>optional .PToP.S2BRelay s2_b_relay = 24;</code>
+     */
+    public PToP.S2BRelay getS2BRelay() {
+      if (rspCase_ == 24) {
+         return (PToP.S2BRelay) rsp_;
+      }
+      return PToP.S2BRelay.getDefaultInstance();
+    }
+    /**
+     * <code>optional .PToP.S2BRelay s2_b_relay = 24;</code>
+     */
+    private void setS2BRelay(PToP.S2BRelay value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      rsp_ = value;
+      rspCase_ = 24;
+    }
+    /**
+     * <code>optional .PToP.S2BRelay s2_b_relay = 24;</code>
+     */
+    private void setS2BRelay(
+        PToP.S2BRelay.Builder builderForValue) {
+      rsp_ = builderForValue.build();
+      rspCase_ = 24;
+    }
+    /**
+     * <code>optional .PToP.S2BRelay s2_b_relay = 24;</code>
+     */
+    private void mergeS2BRelay(PToP.S2BRelay value) {
+      if (rspCase_ == 24 &&
+          rsp_ != PToP.S2BRelay.getDefaultInstance()) {
+        rsp_ = PToP.S2BRelay.newBuilder((PToP.S2BRelay) rsp_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        rsp_ = value;
+      }
+      rspCase_ = 24;
+    }
+    /**
+     * <code>optional .PToP.S2BRelay s2_b_relay = 24;</code>
+     */
+    private void clearS2BRelay() {
+      if (rspCase_ == 24) {
+        rspCase_ = 0;
+        rsp_ = null;
+      }
+    }
+
+    public static final int S2_INFO_RSP_FIELD_NUMBER = 25;
+    /**
+     * <code>optional .PToP.S2InfoRelay s2_info_rsp = 25;</code>
+     */
+    public PToP.S2InfoRelay getS2InfoRsp() {
+      if (rspCase_ == 25) {
+         return (PToP.S2InfoRelay) rsp_;
+      }
+      return PToP.S2InfoRelay.getDefaultInstance();
+    }
+    /**
+     * <code>optional .PToP.S2InfoRelay s2_info_rsp = 25;</code>
+     */
+    private void setS2InfoRsp(PToP.S2InfoRelay value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      rsp_ = value;
+      rspCase_ = 25;
+    }
+    /**
+     * <code>optional .PToP.S2InfoRelay s2_info_rsp = 25;</code>
+     */
+    private void setS2InfoRsp(
+        PToP.S2InfoRelay.Builder builderForValue) {
+      rsp_ = builderForValue.build();
+      rspCase_ = 25;
+    }
+    /**
+     * <code>optional .PToP.S2InfoRelay s2_info_rsp = 25;</code>
+     */
+    private void mergeS2InfoRsp(PToP.S2InfoRelay value) {
+      if (rspCase_ == 25 &&
+          rsp_ != PToP.S2InfoRelay.getDefaultInstance()) {
+        rsp_ = PToP.S2InfoRelay.newBuilder((PToP.S2InfoRelay) rsp_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        rsp_ = value;
+      }
+      rspCase_ = 25;
+    }
+    /**
+     * <code>optional .PToP.S2InfoRelay s2_info_rsp = 25;</code>
+     */
+    private void clearS2InfoRsp() {
+      if (rspCase_ == 25) {
+        rspCase_ = 0;
+        rsp_ = null;
+      }
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (rspCase_ == 3) {
@@ -22250,6 +26177,24 @@ public final class Test {
       }
       if (rspCase_ == 19) {
         output.writeMessage(19, (Seen.ServerToB) rsp_);
+      }
+      if (rspCase_ == 20) {
+        output.writeMessage(20, (ChangeName.RelayToFriend) rsp_);
+      }
+      if (rspCase_ == 21) {
+        output.writeMessage(21, (ChangeHeadpic.RelayToFriend) rsp_);
+      }
+      if (rspCase_ == 22) {
+        output.writeMessage(22, (PToP.S1Rsp) rsp_);
+      }
+      if (rspCase_ == 23) {
+        output.writeMessage(23, (PToP.S2ARsp) rsp_);
+      }
+      if (rspCase_ == 24) {
+        output.writeMessage(24, (PToP.S2BRelay) rsp_);
+      }
+      if (rspCase_ == 25) {
+        output.writeMessage(25, (PToP.S2InfoRelay) rsp_);
       }
     }
 
@@ -22325,6 +26270,30 @@ public final class Test {
       if (rspCase_ == 19) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(19, (Seen.ServerToB) rsp_);
+      }
+      if (rspCase_ == 20) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(20, (ChangeName.RelayToFriend) rsp_);
+      }
+      if (rspCase_ == 21) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(21, (ChangeHeadpic.RelayToFriend) rsp_);
+      }
+      if (rspCase_ == 22) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(22, (PToP.S1Rsp) rsp_);
+      }
+      if (rspCase_ == 23) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(23, (PToP.S2ARsp) rsp_);
+      }
+      if (rspCase_ == 24) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(24, (PToP.S2BRelay) rsp_);
+      }
+      if (rspCase_ == 25) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(25, (PToP.S2InfoRelay) rsp_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -23128,6 +27097,246 @@ public final class Test {
         return this;
       }
 
+      /**
+       * <code>optional .ChangeName.RelayToFriend change_name_relay = 20;</code>
+       */
+      public ChangeName.RelayToFriend getChangeNameRelay() {
+        return instance.getChangeNameRelay();
+      }
+      /**
+       * <code>optional .ChangeName.RelayToFriend change_name_relay = 20;</code>
+       */
+      public Builder setChangeNameRelay(ChangeName.RelayToFriend value) {
+        copyOnWrite();
+        instance.setChangeNameRelay(value);
+        return this;
+      }
+      /**
+       * <code>optional .ChangeName.RelayToFriend change_name_relay = 20;</code>
+       */
+      public Builder setChangeNameRelay(
+          ChangeName.RelayToFriend.Builder builderForValue) {
+        copyOnWrite();
+        instance.setChangeNameRelay(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .ChangeName.RelayToFriend change_name_relay = 20;</code>
+       */
+      public Builder mergeChangeNameRelay(ChangeName.RelayToFriend value) {
+        copyOnWrite();
+        instance.mergeChangeNameRelay(value);
+        return this;
+      }
+      /**
+       * <code>optional .ChangeName.RelayToFriend change_name_relay = 20;</code>
+       */
+      public Builder clearChangeNameRelay() {
+        copyOnWrite();
+        instance.clearChangeNameRelay();
+        return this;
+      }
+
+      /**
+       * <code>optional .ChangeHeadpic.RelayToFriend change_headpic_relay = 21;</code>
+       */
+      public ChangeHeadpic.RelayToFriend getChangeHeadpicRelay() {
+        return instance.getChangeHeadpicRelay();
+      }
+      /**
+       * <code>optional .ChangeHeadpic.RelayToFriend change_headpic_relay = 21;</code>
+       */
+      public Builder setChangeHeadpicRelay(ChangeHeadpic.RelayToFriend value) {
+        copyOnWrite();
+        instance.setChangeHeadpicRelay(value);
+        return this;
+      }
+      /**
+       * <code>optional .ChangeHeadpic.RelayToFriend change_headpic_relay = 21;</code>
+       */
+      public Builder setChangeHeadpicRelay(
+          ChangeHeadpic.RelayToFriend.Builder builderForValue) {
+        copyOnWrite();
+        instance.setChangeHeadpicRelay(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .ChangeHeadpic.RelayToFriend change_headpic_relay = 21;</code>
+       */
+      public Builder mergeChangeHeadpicRelay(ChangeHeadpic.RelayToFriend value) {
+        copyOnWrite();
+        instance.mergeChangeHeadpicRelay(value);
+        return this;
+      }
+      /**
+       * <code>optional .ChangeHeadpic.RelayToFriend change_headpic_relay = 21;</code>
+       */
+      public Builder clearChangeHeadpicRelay() {
+        copyOnWrite();
+        instance.clearChangeHeadpicRelay();
+        return this;
+      }
+
+      /**
+       * <code>optional .PToP.S1Rsp s1_rsp = 22;</code>
+       */
+      public PToP.S1Rsp getS1Rsp() {
+        return instance.getS1Rsp();
+      }
+      /**
+       * <code>optional .PToP.S1Rsp s1_rsp = 22;</code>
+       */
+      public Builder setS1Rsp(PToP.S1Rsp value) {
+        copyOnWrite();
+        instance.setS1Rsp(value);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.S1Rsp s1_rsp = 22;</code>
+       */
+      public Builder setS1Rsp(
+          PToP.S1Rsp.Builder builderForValue) {
+        copyOnWrite();
+        instance.setS1Rsp(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.S1Rsp s1_rsp = 22;</code>
+       */
+      public Builder mergeS1Rsp(PToP.S1Rsp value) {
+        copyOnWrite();
+        instance.mergeS1Rsp(value);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.S1Rsp s1_rsp = 22;</code>
+       */
+      public Builder clearS1Rsp() {
+        copyOnWrite();
+        instance.clearS1Rsp();
+        return this;
+      }
+
+      /**
+       * <code>optional .PToP.S2ARsp s2_rsp = 23;</code>
+       */
+      public PToP.S2ARsp getS2Rsp() {
+        return instance.getS2Rsp();
+      }
+      /**
+       * <code>optional .PToP.S2ARsp s2_rsp = 23;</code>
+       */
+      public Builder setS2Rsp(PToP.S2ARsp value) {
+        copyOnWrite();
+        instance.setS2Rsp(value);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.S2ARsp s2_rsp = 23;</code>
+       */
+      public Builder setS2Rsp(
+          PToP.S2ARsp.Builder builderForValue) {
+        copyOnWrite();
+        instance.setS2Rsp(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.S2ARsp s2_rsp = 23;</code>
+       */
+      public Builder mergeS2Rsp(PToP.S2ARsp value) {
+        copyOnWrite();
+        instance.mergeS2Rsp(value);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.S2ARsp s2_rsp = 23;</code>
+       */
+      public Builder clearS2Rsp() {
+        copyOnWrite();
+        instance.clearS2Rsp();
+        return this;
+      }
+
+      /**
+       * <code>optional .PToP.S2BRelay s2_b_relay = 24;</code>
+       */
+      public PToP.S2BRelay getS2BRelay() {
+        return instance.getS2BRelay();
+      }
+      /**
+       * <code>optional .PToP.S2BRelay s2_b_relay = 24;</code>
+       */
+      public Builder setS2BRelay(PToP.S2BRelay value) {
+        copyOnWrite();
+        instance.setS2BRelay(value);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.S2BRelay s2_b_relay = 24;</code>
+       */
+      public Builder setS2BRelay(
+          PToP.S2BRelay.Builder builderForValue) {
+        copyOnWrite();
+        instance.setS2BRelay(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.S2BRelay s2_b_relay = 24;</code>
+       */
+      public Builder mergeS2BRelay(PToP.S2BRelay value) {
+        copyOnWrite();
+        instance.mergeS2BRelay(value);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.S2BRelay s2_b_relay = 24;</code>
+       */
+      public Builder clearS2BRelay() {
+        copyOnWrite();
+        instance.clearS2BRelay();
+        return this;
+      }
+
+      /**
+       * <code>optional .PToP.S2InfoRelay s2_info_rsp = 25;</code>
+       */
+      public PToP.S2InfoRelay getS2InfoRsp() {
+        return instance.getS2InfoRsp();
+      }
+      /**
+       * <code>optional .PToP.S2InfoRelay s2_info_rsp = 25;</code>
+       */
+      public Builder setS2InfoRsp(PToP.S2InfoRelay value) {
+        copyOnWrite();
+        instance.setS2InfoRsp(value);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.S2InfoRelay s2_info_rsp = 25;</code>
+       */
+      public Builder setS2InfoRsp(
+          PToP.S2InfoRelay.Builder builderForValue) {
+        copyOnWrite();
+        instance.setS2InfoRsp(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.S2InfoRelay s2_info_rsp = 25;</code>
+       */
+      public Builder mergeS2InfoRsp(PToP.S2InfoRelay value) {
+        copyOnWrite();
+        instance.mergeS2InfoRsp(value);
+        return this;
+      }
+      /**
+       * <code>optional .PToP.S2InfoRelay s2_info_rsp = 25;</code>
+       */
+      public Builder clearS2InfoRsp() {
+        copyOnWrite();
+        instance.clearS2InfoRsp();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:RspToClient)
     }
     protected final Object dynamicMethod(
@@ -23265,6 +27474,48 @@ public final class Test {
             case SEEN_SERVER_TO_B: {
               rsp_ = visitor.visitOneofMessage(
                   rspCase_ == 19,
+                  rsp_,
+                  other.rsp_);
+              break;
+            }
+            case CHANGE_NAME_RELAY: {
+              rsp_ = visitor.visitOneofMessage(
+                  rspCase_ == 20,
+                  rsp_,
+                  other.rsp_);
+              break;
+            }
+            case CHANGE_HEADPIC_RELAY: {
+              rsp_ = visitor.visitOneofMessage(
+                  rspCase_ == 21,
+                  rsp_,
+                  other.rsp_);
+              break;
+            }
+            case S1_RSP: {
+              rsp_ = visitor.visitOneofMessage(
+                  rspCase_ == 22,
+                  rsp_,
+                  other.rsp_);
+              break;
+            }
+            case S2_RSP: {
+              rsp_ = visitor.visitOneofMessage(
+                  rspCase_ == 23,
+                  rsp_,
+                  other.rsp_);
+              break;
+            }
+            case S2_B_RELAY: {
+              rsp_ = visitor.visitOneofMessage(
+                  rspCase_ == 24,
+                  rsp_,
+                  other.rsp_);
+              break;
+            }
+            case S2_INFO_RSP: {
+              rsp_ = visitor.visitOneofMessage(
+                  rspCase_ == 25,
                   rsp_,
                   other.rsp_);
               break;
@@ -23537,6 +27788,90 @@ public final class Test {
                     rsp_ = subBuilder.buildPartial();
                   }
                   rspCase_ = 19;
+                  break;
+                }
+                case 162: {
+                  ChangeName.RelayToFriend.Builder subBuilder = null;
+                  if (rspCase_ == 20) {
+                    subBuilder = ((ChangeName.RelayToFriend) rsp_).toBuilder();
+                  }
+                  rsp_ =
+                       input.readMessage(ChangeName.RelayToFriend.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((ChangeName.RelayToFriend) rsp_);
+                    rsp_ = subBuilder.buildPartial();
+                  }
+                  rspCase_ = 20;
+                  break;
+                }
+                case 170: {
+                  ChangeHeadpic.RelayToFriend.Builder subBuilder = null;
+                  if (rspCase_ == 21) {
+                    subBuilder = ((ChangeHeadpic.RelayToFriend) rsp_).toBuilder();
+                  }
+                  rsp_ =
+                       input.readMessage(ChangeHeadpic.RelayToFriend.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((ChangeHeadpic.RelayToFriend) rsp_);
+                    rsp_ = subBuilder.buildPartial();
+                  }
+                  rspCase_ = 21;
+                  break;
+                }
+                case 178: {
+                  PToP.S1Rsp.Builder subBuilder = null;
+                  if (rspCase_ == 22) {
+                    subBuilder = ((PToP.S1Rsp) rsp_).toBuilder();
+                  }
+                  rsp_ =
+                       input.readMessage(PToP.S1Rsp.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((PToP.S1Rsp) rsp_);
+                    rsp_ = subBuilder.buildPartial();
+                  }
+                  rspCase_ = 22;
+                  break;
+                }
+                case 186: {
+                  PToP.S2ARsp.Builder subBuilder = null;
+                  if (rspCase_ == 23) {
+                    subBuilder = ((PToP.S2ARsp) rsp_).toBuilder();
+                  }
+                  rsp_ =
+                       input.readMessage(PToP.S2ARsp.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((PToP.S2ARsp) rsp_);
+                    rsp_ = subBuilder.buildPartial();
+                  }
+                  rspCase_ = 23;
+                  break;
+                }
+                case 194: {
+                  PToP.S2BRelay.Builder subBuilder = null;
+                  if (rspCase_ == 24) {
+                    subBuilder = ((PToP.S2BRelay) rsp_).toBuilder();
+                  }
+                  rsp_ =
+                       input.readMessage(PToP.S2BRelay.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((PToP.S2BRelay) rsp_);
+                    rsp_ = subBuilder.buildPartial();
+                  }
+                  rspCase_ = 24;
+                  break;
+                }
+                case 202: {
+                  PToP.S2InfoRelay.Builder subBuilder = null;
+                  if (rspCase_ == 25) {
+                    subBuilder = ((PToP.S2InfoRelay) rsp_).toBuilder();
+                  }
+                  rsp_ =
+                       input.readMessage(PToP.S2InfoRelay.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((PToP.S2InfoRelay) rsp_);
+                    rsp_ = subBuilder.buildPartial();
+                  }
+                  rspCase_ = 25;
                   break;
                 }
               }

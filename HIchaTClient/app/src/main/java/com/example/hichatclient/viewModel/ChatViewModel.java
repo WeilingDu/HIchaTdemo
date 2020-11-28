@@ -54,36 +54,39 @@ public class ChatViewModel extends AndroidViewModel {
         return messageRepository.sendMessageToServer(chattingContent, userShortToken, socket);
     }
 
-    public LiveData<List<ChattingContent>> getAllMessageLive(String userID, String friendID){
+    public LiveData<List<ChattingContent>> getAllMessageLive(String userID, String friendID) {
         return messageRepository.getChattingContentFromSQL(userID, friendID);
     }
 
 
-    public void insertOneMessageIntoSQL(ChattingContent chattingContent){
+    public void insertOneMessageIntoSQL(ChattingContent chattingContent) {
         messageRepository.insertOneMessageIntoSQL(chattingContent);
     }
 
-    public void updateOneMessageIntoSQL(ChattingContent chattingContent){
+    public void updateOneMessageIntoSQL(ChattingContent chattingContent) {
         messageRepository.updateOneMessageIntoSQL(chattingContent);
     }
 
-    public void updateChattingFriendIntoSQL(ChattingFriend chattingFriend){
+    public void updateChattingFriendIntoSQL(ChattingFriend chattingFriend) {
         messageRepository.updateChattingFriendIntoSQL(chattingFriend);
     }
-
 
 
     public void sendReadMsgToServer(String userShortToken, String friendID, long time, Socket socket) throws IOException {
         messageRepository.sendReadMsgToServer(userShortToken, friendID, time, socket);
     }
 
-    public LiveData<Friend> getFriendInfo(String userID, String friendID){
+    public LiveData<Friend> getFriendInfo(String userID, String friendID) {
         return friendsRepository.getFriendInfo(userID, friendID);
     }
 
-    public LiveData<User> getUserInfoByUserID(String userID){
+    public LiveData<User> getUserInfoByUserID(String userID) {
         return meRepository.getLiveUserInfoByUserID(userID);
     }
 
 
+    public boolean getChatRecord(String userID, String friendID, String userShortToken, Socket socket, Long chatRecordTime) throws IOException {
+        return messageRepository.getChatRecord(userID, friendID, userShortToken, socket, chatRecordTime);
+    }
 }
+

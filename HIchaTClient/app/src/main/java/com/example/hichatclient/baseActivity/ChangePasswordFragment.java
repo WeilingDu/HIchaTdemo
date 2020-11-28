@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -137,6 +138,10 @@ public class ChangePasswordFragment extends Fragment {
                                 }
                             });
 
+                        } else if(!isPasswordLengthRight(userNewPassword)){
+                            Toast.makeText(getActivity(), "输入的密码长度不在6到20之间！", Toast.LENGTH_SHORT).show();
+                        } else if(!isContainAll(userNewPassword)){
+                            Toast.makeText(getActivity(), "输入的密码没有同时包括大小写字母和数字！", Toast.LENGTH_SHORT).show();
                         } else {
                             Thread t = new Thread(new Runnable() {
                                 @Override
@@ -177,5 +182,35 @@ public class ChangePasswordFragment extends Fragment {
         });
 
     }
+
+    //检测密码是否同时含有大小写字母和数字
+    public static boolean isContainAll(String str) {
+        boolean isDigit = false;//定义一个boolean值，用来表示是否包含数字
+        boolean isLowerCase = false;//定义一个boolean值，用来表示是否包含字母
+        boolean isUpperCase = false;
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isDigit(str.charAt(i))) {   //用char包装类中的判断数字的方法判断每一个字符
+                isDigit = true;
+            } else if (Character.isLowerCase(str.charAt(i))) {  //用char包装类中的判断字母的方法判断每一个字符
+                isLowerCase = true;
+            } else if (Character.isUpperCase(str.charAt(i))) {
+                isUpperCase = true;
+            }
+        }
+        String regex = "^[a-zA-Z0-9]+$";
+        boolean isRight = isDigit && isLowerCase && isUpperCase && str.matches(regex);
+        return isRight;
+    }
+
+    //检测密码长度是否在6至20之间
+    public boolean isPasswordLengthRight(String str){
+        if(6<=str.length() && str.length()<=20){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 
 }

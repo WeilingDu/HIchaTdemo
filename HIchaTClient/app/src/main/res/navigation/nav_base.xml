@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_meFragment_to_changePasswordFragment"
             app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_meFragment_to_changeProfileFragment"
+            app:destination="@id/changeProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFriendFragment"
@@ -56,6 +59,15 @@
         tools:layout="@layout/change_password_fragment" >
         <action
             android:id="@+id/action_changePasswordFragment_to_meFragment"
+            app:destination="@id/meFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeProfileFragment"
+        android:name="com.example.hichatclient.baseActivity.ChangeProfileFragment"
+        android:label="fragment_change_profile"
+        tools:layout="@layout/fragment_change_profile" >
+        <action
+            android:id="@+id/action_changeProfileFragment_to_meFragment"
             app:destination="@id/meFragment" />
     </fragment>
 </navigation>

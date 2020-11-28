@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".chatActivity.WordCloudActivity"></activity>
+        <activity android:name=".baseActivity.ChangeProfileActivity"></activity>
+        <activity android:name=".chatActivity.WordCloudActivity" />
         <activity android:name=".newFriendsActivity.AddNewFriendActivity" />
         <activity android:name=".newFriendsActivity.SearchFriendActivity" />
         <activity android:name=".newFriendsActivity.OthersRequestActivity" />

@@ -37,6 +37,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
@@ -69,7 +70,6 @@ public class MeFragment extends Fragment {
     private SharedPreferences sharedPreferences;
 
     private User meUser;
-    private int flag;
 
 
 
@@ -78,86 +78,7 @@ public class MeFragment extends Fragment {
         return new MeFragment();
     }
 
-    public void saveImage(Bitmap bitmap) {
-        String state = Environment.getExternalStorageState();
-        if (!state.equals(Environment.MEDIA_MOUNTED)){
-            return;
-        }
-        FileOutputStream stream = null;
-        try {
-            stream = new FileOutputStream(Environment.getExternalStorageDirectory() + "/hear.jpg");
-            bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
-            stream.flush();
-            stream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-    public void cropPhoto(Uri uri) {
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uri, "image/*");
-        intent.putExtra("crop", "true");
-        // aspectX aspectY 是宽高的比例
-        intent.putExtra("aspectX", 1);
-        intent.putExtra("aspectY", 1);
-        // outputX outputY 是裁剪图片宽高
-        intent.putExtra("outputX", 330);
-        intent.putExtra("outputY", 330);
-        intent.putExtra("return-data", true);
-        startActivityForResult(intent, 3);
-    }
-
-    final int CAMEAR_REQUEST_CODE = 1;//拍照返回码
-    final int ALBUM_REQUEST_CODE = 2;//相册返回码
-    final int CROP_REQUEST_CODE = 3;//裁剪返回码
-    //调用照相机返回图片文件
-    File tempFile;
-    Bitmap image = null;
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
-//        super.onActivityResult(requestCode, resultCode, data);
-        super.onActivityResult(requestCode, resultCode, intent);
-        switch (requestCode) {
-            case CAMEAR_REQUEST_CODE:
-                //调用系统相机后返回
-                if (resultCode == RESULT_OK) {
-                    //用相机返回的照片去调用剪裁也需要对Uri进行处理
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        Uri contentUri = FileProvider.getUriForFile(Objects.requireNonNull(this.getContext()), "com.bw.movie", tempFile);
-                        cropPhoto(contentUri);
-                    } else {
-                        cropPhoto(Uri.fromFile(tempFile));
-                    }
-                }
-                break;
-            case ALBUM_REQUEST_CODE:
-                //调用系统相册后返回
-                if (resultCode == RESULT_OK) {
-                    Uri uri = intent.getData();
-                    cropPhoto(uri);
-                }
-                break;
-            case CROP_REQUEST_CODE:
-                Bundle bundle = intent.getExtras();
-                if (bundle != null) {
-                    //在这里获得了剪裁后的Bitmap对象，可以用于上传
-                    image = bundle.getParcelable("data");
-                    //设置到ImageView上
-                    if (image != null){
-                        imageViewProfile.setImageBitmap(toRoundCorner(image, 2));
-                    }
-
-
-//                    pic.setImageBitmap(image);
-                    Log.e("TAG","Bit=="+image.toString());
-                    //也可以进行一些保存、压缩等操作后上传
-                    saveImage(image);
-                    File file = new File(Environment.getExternalStorageDirectory() + "/hear.jpg");
-//                    getPresenter().headpic(file);
-                }
-                break;
-        }
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -219,9 +140,7 @@ public class MeFragment extends Fragment {
                         }
                     }
                 });
-
             }
-
         });
 
         textViewUserName.setOnClickListener(new View.OnClickListener() {
@@ -251,46 +170,16 @@ public class MeFragment extends Fragment {
             }
         });
 
-
         imageViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-                photoPickerIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
-                startActivityForResult(photoPickerIntent, ALBUM_REQUEST_CODE);
-
-                if (image != null){
-                    ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
-                    image.compress(Bitmap.CompressFormat.PNG, 100, imageBytes);
-                    meUser.setUserProfile(imageBytes.toByteArray());
-                    Thread t = new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                flag = meViewModel.updateUserProfileToServer(userShortToken, meUser.getUserProfile(), socket);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                    t.start();
-                    try {
-                        t.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    if (flag == 1){
-                        try {
-                            meViewModel.insertUser(meUser);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
+                Intent intent = new Intent();
+                intent.setClass(activity, ChangeProfileActivity.class);
+                intent.putExtra("userName", meUser.getUserName());
+                intent.putExtra("userProfile", meUser.getUserProfile());
+                startActivity(intent);
             }
         });
-
-
 
 
 

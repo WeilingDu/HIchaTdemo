@@ -94,8 +94,10 @@ public class UserRepository {
         SendIDAndLogInThread sendIDAndLogInThread = new SendIDAndLogInThread(userID, userPassword, oldSocket);
         System.out.println("UserRepository userID: " + userID);
         System.out.println("UserRepository userPassword: " + userPassword);
+
         sendIDAndLogInThread.start();
         sendIDAndLogInThread.join();
+//        System.out.println("UserRepository userShortToken: " + sendIDAndLogInThread.user.getUserShortToken());
         map.put(sendIDAndLogInThread.isLogIn, sendIDAndLogInThread.user);
         insertLogInMsg(sendIDAndLogInThread.friends, sendIDAndLogInThread.meToOthers, sendIDAndLogInThread.othersToMes, sendIDAndLogInThread.chattingContents);
         return map;
@@ -152,22 +154,22 @@ public class UserRepository {
             loginRequest.setId(Integer.parseInt(userID));
             // 求id加password的Md5
             String idPassword = userID+userPassword;
-            loginRequest.setPassword(userPassword);
-//            MessageDigest md = null;
-//            try {
-//                md = MessageDigest.getInstance("MD5");
-//            } catch (NoSuchAlgorithmException e) {
-//                e.printStackTrace();
-//            }
-//            md.update(idPassword.getBytes());
-//            byte[] digest = md.digest();
-//            BigInteger bi = new BigInteger(1, digest);
-//            String hashText = bi.toString(16);
-//            while(hashText.length() < 32){
-//                hashText = "0" + hashText;
-//            }
-//            loginRequest.setPassword(hashText);
-//            System.out.println("UserRepository hashText: " + hashText);
+//            loginRequest.setPassword(userPassword);
+            MessageDigest md = null;
+            try {
+                md = MessageDigest.getInstance("MD5");
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+            md.update(idPassword.getBytes());
+            byte[] digest = md.digest();
+            BigInteger bi = new BigInteger(1, digest);
+            String hashText = bi.toString(16);
+            while(hashText.length() < 32){
+                hashText = "0" + hashText;
+            }
+            loginRequest.setPassword(hashText);
+            System.out.println("UserRepository hashText: " + hashText);
             port = socket.getLocalPort();
             loginRequest.setInPort(port);
             ip = 1234567;
@@ -290,6 +292,7 @@ public class UserRepository {
 //                    return null;
 //                }
                         shortToken = response.getLoginRes().getShortToken();
+                        System.out.println("UserRepository userShortToken into: " + shortToken);
                         longToken = response.getLoginRes().getLongToken();
                         break;
                     case ADD_FRIEND_FROM_OTHER_RSP:
@@ -372,8 +375,11 @@ public class UserRepository {
                         }
                         break;
                     case ERROR:
+                        System.out.println(response.getError().getErrorType());
                         if (response.getError().getErrorType() == Test.Error.Error_type.ID_OR_PSW_WRONG) {
                             isLogIn = 0;
+                        } else if(response.getError().getErrorType() == Test.Error.Error_type.UNKNOWN_LOGIN_ERR){
+                            isLogIn = 3;
                         } else {
                             isLogIn = 2;
                         }
@@ -387,7 +393,7 @@ public class UserRepository {
                 }
             }
 
-            if(errorFlag == 1){
+            if(errorFlag == 1 && isLogIn != 3){
                 isLogIn = 0;
             }
 
@@ -395,7 +401,7 @@ public class UserRepository {
                 isLogIn = 2;
             }
 
-            if (isLogIn == 1){
+            if (isLogIn == 1 || isLogIn == 2){
                 User user = new User(userID, userPassword, userName, userProfile, shortToken, longToken);
 //                User user = new User(userID, userPassword, "123", "111", "123", "123");
                 this.user = user;

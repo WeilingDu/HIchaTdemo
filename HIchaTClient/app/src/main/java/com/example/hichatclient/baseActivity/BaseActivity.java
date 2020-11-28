@@ -111,16 +111,16 @@ public class BaseActivity extends AppCompatActivity {
 
         if (isLogIn.equals("2")){
              // 从服务器获取好友列表并存入数据库中
-                        new Thread(new Runnable(){
-                            @Override
-                            public void run() {
-                                try {
-                                    baseActivityViewModel.getUserFriendsFromServer(userID, userShortToken, socket);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }).start();
+            new Thread(new Runnable(){
+                @Override
+                public void run() {
+                    try {
+                        baseActivityViewModel.getUserFriendsFromServer(userID, userShortToken, socket);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
         }
 
 

@@ -133,6 +133,13 @@ public class LogInFragment extends Fragment {
                                 Toast.makeText(getActivity(), "登录失败！", Toast.LENGTH_SHORT).show();
                             }
                         });
+                    } else if (isLogIn.equals("3")){
+                        activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getActivity(), "您的账号已被别人登录！", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     } else {
                         logInViewModel.insertUser(user);
                         activity.runOnUiThread(new Runnable() {

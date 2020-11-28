@@ -45,9 +45,10 @@ public class MessageRepository {
     }
 
     // 向服务器请求该用户与某个好友历史记录
-    public boolean getChatRecord (String userID, String friendID, String userShortToken, Socket socket, Long chatRecordTime) throws IOException {
+    public boolean getChatRecord (String userID, String friendID, String userShortToken, Socket oldSocket, Long chatRecordTime) throws IOException {
         List<ChattingContent> chatRecords = new ArrayList<>();
         int flag = 0;
+        Socket socket = new Socket("49.234.105.69", 20001);
         Test.ChatRecord.Req.Builder chatRecordReq = Test.ChatRecord.Req.newBuilder();
         chatRecordReq.setObjId(Integer.parseInt(friendID));
         chatRecordReq.setShortToken(userShortToken);
@@ -145,8 +146,9 @@ public class MessageRepository {
 
 
     // 通过服务器发给好友消息
-    public boolean sendMessageToServer(ChattingContent chattingContent, String userShortToken, Socket socket) throws IOException {
+    public boolean sendMessageToServer(ChattingContent chattingContent, String userShortToken, Socket oldSocket) throws IOException {
         boolean flag = true;
+        Socket socket = new Socket("49.234.105.69", 20001);
         System.out.println("MessageRepository userShortToken: " + userShortToken);
         System.out.println("MessageRepository content: " + chattingContent.getMsgTime() + chattingContent.getMsgType() + chattingContent.getMsgContent());
         if(socket.isConnected()){
@@ -180,7 +182,8 @@ public class MessageRepository {
     }
 
     // 给服务器发送已读消息
-    public void sendReadMsgToServer(String userShortToken, String friendID, long time, Socket socket) throws IOException {
+    public void sendReadMsgToServer(String userShortToken, String friendID, long time, Socket oldSocket) throws IOException {
+        Socket socket = new Socket("49.234.105.69", 20001);
         Test.Seen.AToServer.Builder seenAToServer = Test.Seen.AToServer.newBuilder();
         seenAToServer.setShortToken(userShortToken);
         seenAToServer.setObjId(Integer.parseInt(friendID));

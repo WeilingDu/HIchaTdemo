@@ -45,8 +45,9 @@ public class NewFriendsRepository {
     }
 
     // 用户发送ID，服务器返回搜索结果
-    public SearchResult searchPeopleFromID (String personID, String userShortToken, Socket socket) throws IOException {
+    public SearchResult searchPeopleFromID (String personID, String userShortToken, Socket oldSocket) throws IOException {
         SearchResult result = null;
+        Socket socket = new Socket("49.234.105.69", 20001);
         Test.SearchUser.Req.Builder searchUserReq = Test.SearchUser.Req.newBuilder();
         searchUserReq.setShortToken(userShortToken);
         searchUserReq.setObjId(Integer.parseInt(personID));
@@ -126,8 +127,9 @@ public class NewFriendsRepository {
 
 
     // 向服务器提交对别人好友请求的回应
-    public void othersToMeResponseToServer(String userShortToken, String objectID, boolean refuse, Socket socket) throws IOException {
+    public void othersToMeResponseToServer(String userShortToken, String objectID, boolean refuse, Socket oldSocket) throws IOException {
         System.out.println("NewFriendRepository");
+        Socket socket = new Socket("49.234.105.69", 20001);
         Test.AddFriend.BToServer.Builder othersToMeRsp = Test.AddFriend.BToServer.newBuilder();
         othersToMeRsp.setAId(Integer.parseInt(objectID));
         othersToMeRsp.setBShortToken(userShortToken);
@@ -150,8 +152,9 @@ public class NewFriendsRepository {
     }
 
     // 向服务器发送好友请求，1表示发送成功
-    public int addFriend (String personID, String userShortToken, Socket socket) throws IOException {
+    public int addFriend (String personID, String userShortToken, Socket oldSocket) throws IOException {
         Test.AddFriend.AToServer.Builder addFriendReq = Test.AddFriend.AToServer.newBuilder();
+        Socket socket = new Socket("49.234.105.69", 20001);
         addFriendReq.setBId(Integer.parseInt(personID));
         addFriendReq.setAShortToken(userShortToken);
         Test.ReqToServer.Builder reqToServer = Test.ReqToServer.newBuilder();

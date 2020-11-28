@@ -43,8 +43,9 @@ public class MeRepository {
     }
 
     // 向服务器发送更新用户昵称的请求
-    public int updateUserNameToServer(String userShortToken, String userNewName,Socket socket) throws IOException {
+    public int updateUserNameToServer(String userShortToken, String userNewName,Socket oldSocket) throws IOException {
         int flag = 1;
+        Socket socket = new Socket("49.234.105.69", 20001);
         Test.ChangeName.Req.Builder changeNameReq = Test.ChangeName.Req.newBuilder();
         changeNameReq.setShortToken(userShortToken);
         changeNameReq.setNewName(userNewName);
@@ -117,8 +118,9 @@ public class MeRepository {
 
 
     // 向服务器发送更新用户密码的请求
-    public int updateUserPasswordToServer(String userShortToken, String userNewPassword,Socket socket) throws IOException {
+    public int updateUserPasswordToServer(String userShortToken, String userNewPassword,Socket oldSocket) throws IOException {
         int flag = 1;
+        Socket socket = new Socket("49.234.105.69", 20001);
         Test.ChangePassword.Req.Builder changePasswordReq = Test.ChangePassword.Req.newBuilder();
         changePasswordReq.setShortToken(userShortToken);
         changePasswordReq.setNewPassword(userNewPassword);

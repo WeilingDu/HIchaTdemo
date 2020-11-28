@@ -664,8 +664,9 @@ public class UserRepository {
 
 
     // 向服务器发送更新用户头像
-    public int updateUserProfileToServer(String userShortToken, byte[] userNewProfile,Socket socket) throws IOException {
+    public int updateUserProfileToServer(String userShortToken, byte[] userNewProfile,Socket oldSocket) throws IOException {
         int flag = 1;
+        Socket socket = new Socket("49.234.105.69", 20001);
         Test.ChangeHeadpic.Req.Builder changeHeadpicReq = Test.ChangeHeadpic.Req.newBuilder();
         changeHeadpicReq.setShortToken(userShortToken);
         changeHeadpicReq.setNewHeadpic(ByteString.copyFrom(userNewProfile));

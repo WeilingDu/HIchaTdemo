@@ -68,14 +68,21 @@
                 android:id="@+id/editTextSendContent"
                 android:layout_width="280dp"
                 android:layout_height="45dp"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="8dp"
                 android:autofillHints=""
                 android:background="@drawable/edit_text_shape"
                 android:ems="10"
                 android:hint="@string/plzinput"
                 android:inputType="textPersonName"
-                android:textColor="@android:color/black"
-                android:layout_gravity="center_vertical"/>
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/emoji" />
 
             <Button
                 android:id="@+id/buttonSend2"

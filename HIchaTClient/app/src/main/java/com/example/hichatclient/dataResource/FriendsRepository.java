@@ -39,7 +39,8 @@ public class FriendsRepository {
     }
 
     // 向服务器发送删好友请求
-    public void deleteFriendToServer(String friendID, String userShortToken, Socket socket) throws IOException {
+    public void deleteFriendToServer(String friendID, String userShortToken, Socket oldSocket) throws IOException {
+        Socket socket = new Socket("49.234.105.69", 20001);
         Test.DeleteFriend.AToServer.Builder deleteFriendAToServer = Test.DeleteFriend.AToServer.newBuilder();
         deleteFriendAToServer.setObjId(Integer.parseInt(friendID));
         deleteFriendAToServer.setShortToken(userShortToken);
@@ -63,8 +64,9 @@ public class FriendsRepository {
 
 
     // 从服务器获取好友列表，在Base Activity中执行
-    public List<Friend> getUserFriendsFromServer(String userID, String userShortToken, Socket socket) throws IOException {
+    public List<Friend> getUserFriendsFromServer(String userID, String userShortToken, Socket oldSocket) throws IOException {
         List<Friend> friends = new ArrayList<>();
+        Socket socket = new Socket("49.234.105.69", 20001);
         System.out.println(socket.isConnected());
         //发送好友列表请求
         Test.FriendList.Req.Builder friendListReq = Test.FriendList.Req.newBuilder();
@@ -148,7 +150,7 @@ public class FriendsRepository {
 
     // 将从服务器获取的好友列表存入到数据库中
     public void insertFriends (List<Friend> friends){
-        new FriendsRepository.insertFriendsTread(friendDao, friends).start();
+        new insertFriendsTread(friendDao, friends).start();
     }
 
     static class insertFriendsTread extends Thread {

@@ -53,6 +53,7 @@ dependencies {
     implementation 'jackmego.com.jieba_android:jieba_android-release:0.1.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'com.hjq:titlebar:8.2'
+    implementation 'io.github.rockerhieu:emojicon:1.4.1'
 
 
 

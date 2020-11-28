@@ -322,6 +322,12 @@ public class ChatService extends LifecycleService {
 //                    System.out.println("ChatService: seen_server_to_b");
                     messageRead(response);
                     break;
+                case CHANGE_NAME_RELAY:
+                    friendChangeName(response);
+                    break;
+                case CHANGE_HEADPIC_RELAY:
+                    friendChangeHeadpic(response);
+                    break;
                 case ERROR:
                     switch(response.getError().getErrorType()){
                         case UNRECOGNIZE_SHORT_TOKEN:
@@ -526,5 +532,26 @@ public class ChatService extends LifecycleService {
         }
     }
 
+    //接收好友更新后的名字
+    public void friendChangeName(Test.RspToClient response){
+        Test.ChangeName.RelayToFriend changeNameRelayToFriend = response.getChangeNameRelay();
+        String friendID = Integer.toString(changeNameRelayToFriend.getId());
+        String friendNewName = changeNameRelayToFriend.getName();
+        Friend friend = friendDao.getFriendInfo(userID, friendID).getValue();
+        assert friend != null;
+        friend.setFriendName(friendNewName);
+        friendDao.insertFriend(friend);
+    }
+
+    //接收好友更新后的头像
+    public void friendChangeHeadpic(Test.RspToClient response){
+        Test.ChangeHeadpic.RelayToFriend changeHeadpicRelayToFriend = response.getChangeHeadpicRelay();
+        String friendID = Integer.toString(changeHeadpicRelayToFriend.getId());
+        byte[] friendNewProfile = changeHeadpicRelayToFriend.getHeadpic().toByteArray();
+        Friend friend = friendDao.getFriendInfo(userID, friendID).getValue();
+        assert friend != null;
+        friend.setFriendProfile(friendNewProfile);
+        friendDao.insertFriend(friend);
+    }
 }
 

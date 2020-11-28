@@ -244,6 +244,12 @@ public class SignUpFragment extends Fragment {
                 Bitmap bitmapImage = image;
                 if (!userPassword.equals(userPasswordCheck)){
                     Toast.makeText(getActivity(), "两次输入的密码不一致！", Toast.LENGTH_SHORT).show();
+                } else if(!isBitmapSizeRight(image)){
+                    Toast.makeText(getActivity(), "上传的头像太大！", Toast.LENGTH_SHORT).show();
+                } else if(!isPasswordLengthRight(userPassword)){
+                    Toast.makeText(getActivity(), "输入的密码长度不在6到20之间！", Toast.LENGTH_SHORT).show();
+                } else if(!isContainAll(userPassword)){
+                    Toast.makeText(getActivity(), "输入的密码没有同时包括大小写字母和数字！", Toast.LENGTH_SHORT).show();
                 } else {
                     try {
                         userID = signUpViewModel.signUp(userName, userPassword, bitmapImage, socket);
@@ -305,6 +311,48 @@ public class SignUpFragment extends Fragment {
         System.out.println("pixels+++++++" + String.valueOf(ratio));
 
         return output;
+    }
+
+    //检测密码是否同时含有大小写字母和数字
+    public static boolean isContainAll(String str) {
+        boolean isDigit = false;//定义一个boolean值，用来表示是否包含数字
+        boolean isLowerCase = false;//定义一个boolean值，用来表示是否包含字母
+        boolean isUpperCase = false;
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isDigit(str.charAt(i))) {   //用char包装类中的判断数字的方法判断每一个字符
+                isDigit = true;
+            } else if (Character.isLowerCase(str.charAt(i))) {  //用char包装类中的判断字母的方法判断每一个字符
+                isLowerCase = true;
+            } else if (Character.isUpperCase(str.charAt(i))) {
+                isUpperCase = true;
+            }
+        }
+        String regex = "^[a-zA-Z0-9]+$";
+        boolean isRight = isDigit && isLowerCase && isUpperCase && str.matches(regex);
+        return isRight;
+    }
+
+    //检测密码长度是否在6至20之间
+    public boolean isPasswordLengthRight(String str){
+        if(6<=str.length() && str.length()<=20){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    //检测头像大小
+    public boolean isBitmapSizeRight(Bitmap bitmap){
+        if(bitmap == null){
+            return true;
+        }
+        else if(bitmap.getAllocationByteCount() <= 2097152){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 

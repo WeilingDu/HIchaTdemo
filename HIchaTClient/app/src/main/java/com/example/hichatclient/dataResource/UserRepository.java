@@ -22,7 +22,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.math.BigInteger;
 import java.net.Socket;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -86,9 +89,9 @@ public class UserRepository {
 //        }
 //    }
     // 登录
-    public Map<Integer,User> sendIDAndLogIn(String userID, String userPassword, Socket socket) throws InterruptedException {
+    public Map<Integer,User> sendIDAndLogIn(String userID, String userPassword, Socket oldSocket) throws InterruptedException {
         Map<Integer, User> map = new HashMap<>();
-        SendIDAndLogInThread sendIDAndLogInThread = new SendIDAndLogInThread(userID, userPassword, socket);
+        SendIDAndLogInThread sendIDAndLogInThread = new SendIDAndLogInThread(userID, userPassword, oldSocket);
         System.out.println("UserRepository userID: " + userID);
         System.out.println("UserRepository userPassword: " + userPassword);
         sendIDAndLogInThread.start();
@@ -100,7 +103,6 @@ public class UserRepository {
     static class SendIDAndLogInThread extends Thread {
         private String userID;
         private String userPassword;
-        private Socket socket;
         private List<OthersToMe> othersToMes;
         private List<MeToOthers> meToOthers;
         private List<ChattingContent> chattingContents;
@@ -112,10 +114,9 @@ public class UserRepository {
         private Integer isLogIn;  // 0: 登录失败；1: 登录成功且获取了全部信息；2: 登录成功但是没有获取FriendList
 
 
-        public SendIDAndLogInThread(String userID, String userPassword, Socket socket){
+        public SendIDAndLogInThread(String userID, String userPassword, Socket oldSocket){
             this.userID = userID;
             this.userPassword = userPassword;
-            this.socket = socket;
         }
 
         @Override
@@ -139,12 +140,34 @@ public class UserRepository {
             List <String> seenTime = new ArrayList<>();
             List<Friend> friends = new ArrayList<>();
 
-
+            Socket socket = null;
+            try {
+                socket = new Socket("49.234.105.69", 20001);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             System.out.println(socket.isConnected());
             // **********发送"用户名和密码"***********cc
             Test.Login.Req.Builder loginRequest = Test.Login.Req.newBuilder();
             loginRequest.setId(Integer.parseInt(userID));
+            // 求id加password的Md5
+            String idPassword = userID+userPassword;
             loginRequest.setPassword(userPassword);
+//            MessageDigest md = null;
+//            try {
+//                md = MessageDigest.getInstance("MD5");
+//            } catch (NoSuchAlgorithmException e) {
+//                e.printStackTrace();
+//            }
+//            md.update(idPassword.getBytes());
+//            byte[] digest = md.digest();
+//            BigInteger bi = new BigInteger(1, digest);
+//            String hashText = bi.toString(16);
+//            while(hashText.length() < 32){
+//                hashText = "0" + hashText;
+//            }
+//            loginRequest.setPassword(hashText);
+//            System.out.println("UserRepository hashText: " + hashText);
             port = socket.getLocalPort();
             loginRequest.setInPort(port);
             ip = 1234567;
@@ -459,8 +482,8 @@ public class UserRepository {
 
 
     // 注册
-    public String signUp(String userName, String userPassword, Bitmap bitmapImage, Socket socket) throws InterruptedException {
-        SignUpThread signUpThread = new SignUpThread(userName, userPassword, bitmapImage, socket);
+    public String signUp(String userName, String userPassword, Bitmap bitmapImage, Socket oldSocket) throws InterruptedException {
+        SignUpThread signUpThread = new SignUpThread(userName, userPassword, bitmapImage, oldSocket);
 //        System.out.println("repository");
         signUpThread.start();
         signUpThread.join();
@@ -470,14 +493,12 @@ public class UserRepository {
         private String userName;
         private String userPassword;
         private String userID;
-        private Socket socket;
         private Bitmap bitmapImage;
 
 
-        public SignUpThread(String userName, String userPassword, Bitmap bitmapImage, Socket socket){
+        public SignUpThread(String userName, String userPassword, Bitmap bitmapImage, Socket oldSocket){
             this.userName = userName;
             this.userPassword = userPassword;
-            this.socket = socket;
             this.bitmapImage = bitmapImage;
         }
 
@@ -487,6 +508,12 @@ public class UserRepository {
         public void run() {
             super.run();
             System.out.println("Thread-run");
+            Socket socket = null;
+            try {
+                socket = new Socket("49.234.105.69", 20001);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             String userID = null;
             System.out.println(socket.isConnected());
             // **********发送"昵称和密码"***********

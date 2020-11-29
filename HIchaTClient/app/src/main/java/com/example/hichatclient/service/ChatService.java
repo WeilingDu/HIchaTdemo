@@ -31,8 +31,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -46,6 +48,8 @@ public class ChatService extends LifecycleService {
     private OthersToMeDao othersToMeDao;
     private MeToOthersDao meToOthersDao;
     private ChattingFriendDao chattingFriendDao;
+    private SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat(
+            "yyyy年MM月dd日HH时mm分", Locale.getDefault());
 
     public ApplicationUtil getApplicationUtil() {
         return applicationUtil;
@@ -238,6 +242,7 @@ public class ChatService extends LifecycleService {
                         }
                         sendHeartbeat();
                         if ((System.currentTimeMillis()-applicationUtil.getReceive()) > 20000){
+
                             applicationUtil.initSocketDynamic();
                             socket = applicationUtil.getSocketDynamic();
                         }
@@ -498,8 +503,8 @@ public class ChatService extends LifecycleService {
         ChattingContent chattingContent = new ChattingContent(userID,Integer.toString(chatMsgFromOther.getSrcId()),"receive",chatMsgFromOther.getTime(),chatMsgFromOther.getContent(), false, null);
 //        chattingContents.add(chattingContent);
         System.out.println("ChatService timeFromServer: " + chatMsgFromOther.getTime());
-        System.out.println("ChatService time: " + chattingContent.getMsgTime());
-        System.out.println("ChatService content: " + chattingContent.getMsgContent());
+        System.out.println("别人发来的消息的时间是: " + newSimpleDateFormat.format(chattingContent.getMsgTime()));
+        System.out.println("别人发来的消息的内容是: " + chattingContent.getMsgContent());
         chattingContentDao.insertContent(chattingContent);
     }
 
@@ -530,16 +535,18 @@ public class ChatService extends LifecycleService {
         System.out.println("ChatService num: " + num);
         if (num != 0){
             for (int i=0; i<num; i++){
-                List<ChattingContent> chattingContents = chattingContentDao.findAllContentNotRead(userID, seenFriendID.get(i), false, seenTime.get(i));
+                // 提取用户发出的消息中未被已读的消息
+                List<ChattingContent> chattingContents = chattingContentDao.findAllContentNotRead(userID, seenFriendID.get(i), false, seenTime.get(i), "send").getValue();
                 List<ChattingContent> chattingContents2 = new ArrayList<>();
                 System.out.println("ChatService size: " + chattingContents.size());
                 if (chattingContents.size() != 0 ){
                     for (int j=0; j<chattingContents.size(); j++){
                         System.out.println("ChatService j: " + j);
                         System.out.println("ChatService seenFriendID: " + seenFriendID.get(i));
-                        System.out.println("ChatService seenTime: " + seenTime.get(i));
+                        System.out.println("对方已读的时间是: " + newSimpleDateFormat.format(seenTime.get(i)));
                         System.out.println("ChatService isRead: " + chattingContents.get(j).isRead());
-                        System.out.println("ChatService msgTime: " + chattingContents.get(j).getMsgTime());
+                        System.out.println("对方已读的消息的时间是: " + newSimpleDateFormat.format(chattingContents.get(j).getMsgTime()));
+                        System.out.println("对方已读的内容的是：" + chattingContents.get(j).getMsgContent());
                         chattingContents.get(j).setRead(true);
                         System.out.println("ChatService isRead: " + chattingContents.get(j).isRead());
                         chattingContents2.add(chattingContents.get(j));

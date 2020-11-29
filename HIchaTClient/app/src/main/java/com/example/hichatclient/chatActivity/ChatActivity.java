@@ -99,6 +99,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
     // 用户和某好友的聊天信息
     private List<ChattingContent> allMessage = new ArrayList<>();
     private LiveData<List<ChattingContent>> allMessageLive;
+    private LiveData<List<ChattingContent>> allReceiveMsgLive;
     private Friend friendChatting;
     private User userChatting;
     private boolean flag;
@@ -161,7 +162,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
         editor.apply();
 
         final SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat(
-                "yyyy年MM月dd日HH时mm分", Locale.getDefault());
+                "yyyy年MM月dd日HH时mm分ss秒", Locale.getDefault());
 
         // 接收FriendInfoActivity传来的参数
         friendID = getIntent().getStringExtra("friendID");
@@ -185,6 +186,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
         );
         // 下拉时触发下拉动画，动画完毕之后回调该方法
         swipeRefreshLayout.setOnRefreshListener(this);
+
 
         // 标题栏设置
         if (friendName != null){
@@ -229,6 +231,8 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         allMessage = chatViewModel.getAllMessageLive(userID, friendID).getValue();
         allMessageLive = chatViewModel.getAllMessageLive(userID, friendID);
+        allReceiveMsgLive = chatViewModel.getAllReceiveMsgLive(userID, friendID, "receive");
+
         if (allMessage != null){
             System.out.println("ChatActivity: there are messages!!!");
             messageAdapter.setAllMsg(allMessage);
@@ -242,7 +246,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
             @Override
             public void onChanged(List<ChattingContent> chattingContents) {
                 if (chattingContents.size() > 0){
-                    final ChattingContent msg = chattingContents.get(chattingContents.size() - 1);
+//                    final ChattingContent msg = chattingContents.get(chattingContents.size() - 1);
                     time = chattingContents.get(0).getMsgTime(); // 获取数据库中最早的聊天信息
                     // 更新数据库中的ChattingFriend信息
 //                    assert userID != null;
@@ -251,6 +255,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
 
                     messageAdapter.setAllMsg(chattingContents);
                     messageAdapter.notifyDataSetChanged();
+
                     if (getRecordFlag){ // 如果用户刚刚拉取历史记录
                         System.out.println("scrolltoPosition");
                         recyclerView.scrollToPosition(0);  // 将RecyclerView定位第一行
@@ -264,63 +269,108 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
                         }
                     }else {
                         recyclerView.scrollToPosition(chattingContents.size()-1);  // 将RecyclerView定位在最后一行
-
                     }
 
-                    if (msg.getMsgType().equals("receive")){
-                        // 如果该消息没有情感分析，则发送http请求获取
-                        if (msg.getSentiment() == null){
-                            try {
-                                msgContent = msg.getMsgContent();
-                                Thread thread = new Thread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        try {
-                                            getSentimentFromBaidu();
-                                        } catch (InterruptedException e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
-                                });
-                                thread.start();
-                                thread.join();
-                                msg.setSentiment(msgSentiment);
-                                chatViewModel.updateOneMessageIntoSQL(msg);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
 
-
-                        Thread t2 = new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                // 当用户打开与某个好友的对话框时
-                                // 若对方的最后一条消息没有被已读，则向服务器发送已读消息
-                                if (!msg.isRead()){
-                                    try {
-                                        final long time = System.currentTimeMillis();
-                                        System.out.println("call this function: sendReadMsgToServer2");
-                                        chatViewModel.sendReadMsgToServer(userShortToken, friendID, time, socket);
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            }
-                        });
-                        t2.start();
-                        try {
-                            t2.join();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
+//                    if (msg.getMsgType().equals("receive")){
+//                        Thread t2 = new Thread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                // 当用户打开与某个好友的对话框时
+//                                // 若对方的最后一条消息没有被已读，则向服务器发送已读消息
+//                                if (!msg.isRead()){
+//                                    try {
+//                                        System.out.println("call this function: sendReadMsgToServer2");
+//                                        chatViewModel.sendReadMsgToServer(userShortToken, friendID, msg.getMsgTime(), socket);
+//                                        System.out.println("用户发送已读消息的时间是：" + newSimpleDateFormat.format(msg.getMsgTime()));
+//                                    } catch (IOException e) {
+//                                        e.printStackTrace();
+//                                    }
+//                                }
+//                            }
+//                        });
+//                        t2.start();
+//                        try {
+//                            t2.join();
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
 
                 } else {
                     time = System.currentTimeMillis();
                 }
             }
         });
+
+        allReceiveMsgLive.observe(this, new Observer<List<ChattingContent>>() {
+            @Override
+            public void onChanged(List<ChattingContent> chattingContents) {
+                if (chattingContents.size() > 0) {
+                    final ChattingContent msg = chattingContents.get(chattingContents.size() - 1);
+
+                    // 如果该消息没有情感分析，则发送http请求获取
+                    if (msg.getSentiment() == null){
+                        try {
+                            msgContent = msg.getMsgContent();
+                            Thread thread = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        getSentimentFromBaidu();
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                            thread.start();
+                            thread.join();
+                            msg.setSentiment(msgSentiment);
+                            chatViewModel.updateOneMessageIntoSQL(msg);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                    Thread t2 = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            // 当用户打开与某个好友的对话框时
+                            if (!msg.isRead()){ // 若对方的最后一条消息没有被已读
+                                try {
+                                    // 向服务器发送已读消息
+                                    System.out.println("call this function: sendReadMsgToServer2");
+                                    chatViewModel.sendReadMsgToServer(userShortToken, friendID, msg.getMsgTime(), socket);
+                                    System.out.println("用户发送已读消息的时间是：" + newSimpleDateFormat.format(msg.getMsgTime()));
+                                    // 将本地收到的对方的消息设置为已读
+                                    List<ChattingContent> chattingContents1 = chatViewModel.findAllContentNotRead(userID, friendID, false, msg.getMsgTime(), "receive").getValue();
+                                    List<ChattingContent> chattingContents2 = new ArrayList<>();
+                                    if (chattingContents1 != null ){
+                                        for (int j=0; j<chattingContents1.size(); j++){
+                                            System.out.println("ChatActivity j: " + j);
+                                            chattingContents1.get(j).setRead(true);
+                                            chattingContents2.add(chattingContents1.get(j));
+                                        }
+                                    }
+                                    chatViewModel.updateAllMessageIntoSQL(chattingContents2);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    });
+                    t2.start();
+                    try {
+                        t2.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+
 
         // 当用户按下发送按钮时
         buttonSend.setOnClickListener(new View.OnClickListener() {
@@ -332,8 +382,8 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
                     final ChattingContent msg = new ChattingContent(userID, friendID, "send", System.currentTimeMillis(), content, false, null);
                     ChattingFriend chattingFriend = new ChattingFriend(userID, friendID, friendChatting.getFriendName(), friendChatting.getFriendProfile(), msg.getMsgContent(), msg.getMsgTime());
                     String LogTime = newSimpleDateFormat.format(msg.getMsgTime());
-                    System.out.println("ChatActivity format time: " + LogTime);
-                    System.out.println("ChatActivity content: " + content);
+                    System.out.println("用户发送消息的时间是: " + LogTime);
+                    System.out.println("用户发送消息的内容是: " + content);
 
                     // 对用户发出的信息进行敏感词检测
 //                    Thread thread = new Thread(new Runnable() {

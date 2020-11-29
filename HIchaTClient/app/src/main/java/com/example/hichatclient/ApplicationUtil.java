@@ -138,4 +138,10 @@ public class ApplicationUtil extends Application {
             }
         }
     }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        System.out.println("Application terminate!!!!!!!!!!!!!!!!!!!!!!");
+    }
 }

@@ -198,7 +198,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
 //                    final ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
 //                    image.compress(Bitmap.CompressFormat.PNG, 100, imageBytes);
 //                    userNewProfile = imageBytes.toByteArray();
-                    String temp = "1111111111111111";
+                    String temp = "1";
                     userNewProfile = temp.getBytes();
                     Thread t = new Thread(new Runnable() {
                         @Override

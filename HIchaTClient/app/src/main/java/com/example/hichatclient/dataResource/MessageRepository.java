@@ -1,6 +1,7 @@
 package com.example.hichatclient.dataResource;
 
 import android.content.Context;
+import android.icu.text.SimpleDateFormat;
 
 import androidx.lifecycle.LiveData;
 
@@ -218,6 +219,16 @@ public class MessageRepository {
         return chattingContentDao.findAllContent(userID, friendID);
     }
 
+    public LiveData<List<ChattingContent>> getAllReceiveMsgLive(String userID, String friendID, String type) {
+        return chattingContentDao.getAllReceiveMsgLive(userID, friendID, type);
+    }
+
+    // 从数据库获取用户和某好友的未读的聊天记录
+    public LiveData<List<ChattingContent>> findAllContentNotRead(String userID, String friendID, boolean isRead, long time, String type){
+        return  chattingContentDao.findAllContentNotRead(userID, friendID, isRead, time, type);
+    }
+
+
     // 从数据库获取用户正在聊天的好友列表
     public LiveData<List<ChattingFriend>> getAllChattingFriendFromSQL(String userID){
         return chattingFriendDao.findAllChattingFriend(userID);
@@ -244,20 +255,24 @@ public class MessageRepository {
     }
 
 
-    // 往数据库添加很多条聊天信息
-    static class insertMessageThread extends Thread{
-        ChattingContentDao chattingContentDao;
-        List<ChattingContent> chattingContent;
+    // 往数据库更新很多条聊天信息
+    public void updateAllMessageIntoSQL(List<ChattingContent> chattingContents){
+        new updateAllMessageThread(chattingContentDao, chattingContents);
+    }
 
-        public insertMessageThread(ChattingContentDao chattingContentDao, List<ChattingContent> chattingContent) {
+    static class updateAllMessageThread extends Thread{
+        ChattingContentDao chattingContentDao;
+        List<ChattingContent> chattingContents;
+
+        public updateAllMessageThread(ChattingContentDao chattingContentDao, List<ChattingContent> chattingContents) {
             this.chattingContentDao = chattingContentDao;
-            this.chattingContent = chattingContent;
+            this.chattingContents = chattingContents;
         }
 
         @Override
         public void run() {
             super.run();
-            chattingContentDao.insertAllContent(chattingContent);
+            chattingContentDao.updateAllContent(chattingContents);
         }
     }
 

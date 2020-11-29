@@ -58,6 +58,10 @@ public class ChatViewModel extends AndroidViewModel {
         return messageRepository.getChattingContentFromSQL(userID, friendID);
     }
 
+    public LiveData<List<ChattingContent>> getAllReceiveMsgLive(String userID, String friendID, String type) {
+        return messageRepository.getAllReceiveMsgLive(userID, friendID, type);
+    }
+
 
     public void insertOneMessageIntoSQL(ChattingContent chattingContent) {
         messageRepository.insertOneMessageIntoSQL(chattingContent);
@@ -67,10 +71,13 @@ public class ChatViewModel extends AndroidViewModel {
         messageRepository.updateOneMessageIntoSQL(chattingContent);
     }
 
+    public void updateAllMessageIntoSQL(List<ChattingContent> chattingContents){
+        messageRepository.updateAllMessageIntoSQL(chattingContents);
+    }
+
     public void updateChattingFriendIntoSQL(ChattingFriend chattingFriend) {
         messageRepository.updateChattingFriendIntoSQL(chattingFriend);
     }
-
 
     public void sendReadMsgToServer(String userShortToken, String friendID, long time, Socket socket) throws IOException {
         messageRepository.sendReadMsgToServer(userShortToken, friendID, time, socket);
@@ -87,6 +94,10 @@ public class ChatViewModel extends AndroidViewModel {
 
     public int getChatRecord(String userID, String friendID, String userShortToken, Socket socket, Long chatRecordTime) throws IOException {
         return messageRepository.getChatRecord(userID, friendID, userShortToken, socket, chatRecordTime);
+    }
+
+    public LiveData<List<ChattingContent>> findAllContentNotRead(String userID, String friendID, boolean isRead, long time, String type){
+        return messageRepository.findAllContentNotRead(userID, friendID, isRead, time, type);
     }
 }
 

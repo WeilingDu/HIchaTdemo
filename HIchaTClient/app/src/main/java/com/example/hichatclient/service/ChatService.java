@@ -237,6 +237,9 @@ public class ChatService extends LifecycleService {
                             getNewShortToken();
                         }
                         sendHeartbeat();
+                        if ((System.currentTimeMillis()-applicationUtil.getReceive()) > 20000){
+                            applicationUtil.initSocketDynamic();
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -296,6 +299,7 @@ public class ChatService extends LifecycleService {
             System.out.println("ChatService after get data");
             Test.RspToClient.RspCase type = response.getRspCase();
             System.out.println("ChatService type: " + response.getRspCase());
+            applicationUtil.setReceive(System.currentTimeMillis());
             switch (type) {
                 case ADD_FRIEND_FROM_OTHER_RSP:
 //                    System.out.println("ChatService: add_friend_from_other");

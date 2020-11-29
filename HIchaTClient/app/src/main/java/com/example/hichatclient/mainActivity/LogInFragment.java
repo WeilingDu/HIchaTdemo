@@ -163,6 +163,7 @@ public class LogInFragment extends Fragment {
                         applicationUtil.setUserShortToken(user.getUserShortToken());
                         applicationUtil.setUserLongToken(user.getUserLongToken());
                         applicationUtil.setUserID(user.getUserID());
+                        applicationUtil.setReceive(System.currentTimeMillis());
 
                         Thread thread1 = new Thread(new Runnable() {
                             @Override

@@ -51,6 +51,9 @@ public class ChangeProfileActivity extends AppCompatActivity {
     private ImageView imageViewProfile;
     private Button buttonChangeProfile;
     private byte[] userNewProfile;
+    //调用照相机返回图片文件
+    File tempFile;
+    Bitmap image = null;
 
     private int flag = 0;
 
@@ -58,9 +61,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
     final int CAMEAR_REQUEST_CODE = 1;//拍照返回码
     final int ALBUM_REQUEST_CODE = 2;//相册返回码
     final int CROP_REQUEST_CODE = 3;//裁剪返回码
-    //调用照相机返回图片文件
-    File tempFile;
-    Bitmap image = null;
+
 
     public void saveImage(Bitmap bitmap) {
         String state = Environment.getExternalStorageState();
@@ -151,8 +152,8 @@ public class ChangeProfileActivity extends AppCompatActivity {
         buttonChangeProfile = findViewById(R.id.buttonChangeProfile1);
 
 
+        final byte[] userProfile = getIntent().getByteArrayExtra("userProfile");
 
-        byte[] userProfile = getIntent().getByteArrayExtra("userProfile");
 
         // 获取applicationUtil中的数据
         applicationUtil = (ApplicationUtil)this.getApplication();
@@ -185,7 +186,6 @@ public class ChangeProfileActivity extends AppCompatActivity {
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
                 photoPickerIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                 startActivityForResult(photoPickerIntent, ALBUM_REQUEST_CODE);
-
             }
         });
 
@@ -193,10 +193,13 @@ public class ChangeProfileActivity extends AppCompatActivity {
         buttonChangeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (image != null) {
-                    final ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
-                    image.compress(Bitmap.CompressFormat.PNG, 100, imageBytes);
-                    userNewProfile = imageBytes.toByteArray();
+//                if (image != null) {
+
+//                    final ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
+//                    image.compress(Bitmap.CompressFormat.PNG, 100, imageBytes);
+//                    userNewProfile = imageBytes.toByteArray();
+                    String temp = "1111111111111111";
+                    userNewProfile = temp.getBytes();
                     Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
@@ -214,16 +217,15 @@ public class ChangeProfileActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     if (flag == 1) {
-                        try {
-                            User meUser = changeProfileViewModel.getUserInfoByUserID(userID);
-                            changeProfileViewModel.insertUser(meUser);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                        //                            User meUser;
+//                            meUser = changeProfileViewModel.getUserInfoByUserID(userID);
+//                            meUser.setUserProfile(userProfile);
+//                            changeProfileViewModel.insertUser(meUser);
+                        System.out.println("*******************Success");
                     } else {
                             Toast.makeText(v.getContext(), "修改头像失败！", Toast.LENGTH_SHORT).show();
                     }
-                }
+//                }
             }
         });
 

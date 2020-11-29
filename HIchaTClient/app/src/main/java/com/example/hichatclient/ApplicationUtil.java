@@ -20,6 +20,17 @@ public class ApplicationUtil extends Application {
     private String accessToken;  // 百度情感分析api的accessToken
     private String textAccessToken;  //  百度文本审核api的accessToken
 
+    private long receive;
+
+    public long getReceive() {
+        return receive;
+    }
+
+    public void setReceive(long receive) {
+        this.receive = receive;
+    }
+
+
     public String getTextAccessToken() {
         return textAccessToken;
     }

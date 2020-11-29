@@ -54,6 +54,8 @@ public class ContactsFragment extends Fragment {
     private Button buttonAddFriend;
     private Button buttonNewFriends;
 
+    private LiveData<List<Friend>> friendsLive;
+
 
     public ContactsFragment() {
         setHasOptionsMenu(true);  // 强制顶部工具条显示
@@ -102,7 +104,9 @@ public class ContactsFragment extends Fragment {
         recyclerView.setAdapter(friendAdapter);
 
 
-        contactsViewModel.getUserFriendsFromSQL(userID).observe(activity, new Observer<List<Friend>>() {
+        friendsLive = contactsViewModel.getUserFriendsFromSQL(userID);
+
+        friendsLive.observe(activity, new Observer<List<Friend>>() {
             @Override
             public void onChanged(List<Friend> friends) {
                 friendAdapter.setAllFriends(friends);

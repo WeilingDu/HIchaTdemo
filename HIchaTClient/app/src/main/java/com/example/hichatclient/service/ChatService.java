@@ -241,14 +241,25 @@ public class ChatService extends LifecycleService {
                             getNewShortToken();
                         }
                         sendHeartbeat();
-                        if ((System.currentTimeMillis()-applicationUtil.getReceive()) > 20000){
-
-                            applicationUtil.initSocketDynamic();
-                            socket = applicationUtil.getSocketDynamic();
-                        }
+//                        if ((System.currentTimeMillis()-applicationUtil.getReceive()) > 20000){
+//
+//                            applicationUtil.initSocketDynamic();
+//                            socket = applicationUtil.getSocketDynamic();
+//                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
+                    try {
+                        applicationUtil.closeSocketDynamic();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    try {
+                        applicationUtil.initSocketDynamic();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    socket = applicationUtil.getSocketDynamic();
                 }
             }
         }, 10000, 10000);

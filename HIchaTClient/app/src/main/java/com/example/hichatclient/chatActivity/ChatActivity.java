@@ -344,7 +344,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
                                     chatViewModel.sendReadMsgToServer(userShortToken, friendID, msg.getMsgTime(), socket);
                                     System.out.println("用户发送已读消息的时间是：" + newSimpleDateFormat.format(msg.getMsgTime()));
                                     // 将本地收到的对方的消息设置为已读
-                                    List<ChattingContent> chattingContents1 = chatViewModel.findAllContentNotRead(userID, friendID, false, msg.getMsgTime(), "receive").getValue();
+                                    List<ChattingContent> chattingContents1 = chatViewModel.findAllContentNotRead(userID, friendID, false, msg.getMsgTime(), "receive");
                                     List<ChattingContent> chattingContents2 = new ArrayList<>();
                                     if (chattingContents1 != null ){
                                         for (int j=0; j<chattingContents1.size(); j++){
@@ -354,7 +354,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
                                         }
                                     }
                                     chatViewModel.updateAllMessageIntoSQL(chattingContents2);
-                                } catch (IOException e) {
+                                } catch (IOException | InterruptedException e) {
                                     e.printStackTrace();
                                 }
                             }

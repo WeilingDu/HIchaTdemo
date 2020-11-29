@@ -223,10 +223,40 @@ public class MessageRepository {
         return chattingContentDao.getAllReceiveMsgLive(userID, friendID, type);
     }
 
-    // 从数据库获取用户和某好友的未读的聊天记录
-    public LiveData<List<ChattingContent>> findAllContentNotRead(String userID, String friendID, boolean isRead, long time, String type){
-        return  chattingContentDao.findAllContentNotRead(userID, friendID, isRead, time, type);
+    // 从数据库获取用户和某好友的某个时间之前的未读的聊天记录
+    public List<ChattingContent> findAllContentNotRead(String userID, String friendID, boolean isRead, long time, String type) throws InterruptedException {
+        FindAllContentNotReadThread thread = new FindAllContentNotReadThread(chattingContentDao, userID, friendID, isRead, time, type);
+        thread.start();
+        thread.join();
+        return thread.chattingContents;
     }
+    static class FindAllContentNotReadThread extends Thread{
+        ChattingContentDao chattingContentDao;
+        String userID;
+        String friendID;
+        boolean isRead;
+        long time;
+        String type;
+
+        List<ChattingContent> chattingContents;
+
+
+        public FindAllContentNotReadThread(ChattingContentDao chattingContentDao, String userID, String friendID, boolean isRead, long time, String type) {
+            this.chattingContentDao = chattingContentDao;
+            this.userID = userID;
+            this.friendID = friendID;
+            this.isRead = isRead;
+            this.time = time;
+            this.type = type;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            chattingContents = chattingContentDao.findAllContentNotRead(userID, friendID, isRead, time, type);
+        }
+    }
+
 
 
     // 从数据库获取用户正在聊天的好友列表

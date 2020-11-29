@@ -96,7 +96,7 @@ public class ChatViewModel extends AndroidViewModel {
         return messageRepository.getChatRecord(userID, friendID, userShortToken, socket, chatRecordTime);
     }
 
-    public LiveData<List<ChattingContent>> findAllContentNotRead(String userID, String friendID, boolean isRead, long time, String type){
+    public List<ChattingContent> findAllContentNotRead(String userID, String friendID, boolean isRead, long time, String type) throws InterruptedException {
         return messageRepository.findAllContentNotRead(userID, friendID, isRead, time, type);
     }
 }

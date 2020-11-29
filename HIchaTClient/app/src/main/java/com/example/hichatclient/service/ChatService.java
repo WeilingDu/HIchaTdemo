@@ -536,10 +536,12 @@ public class ChatService extends LifecycleService {
         if (num != 0){
             for (int i=0; i<num; i++){
                 // 提取用户发出的消息中未被已读的消息
-                List<ChattingContent> chattingContents = chattingContentDao.findAllContentNotRead(userID, seenFriendID.get(i), false, seenTime.get(i), "send").getValue();
+                System.out.println("ChatService seenFriend" + seenFriendID.get(0));
+                System.out.println("ChatService seenTime" + seenTime.get(0));
+                List<ChattingContent> chattingContents = chattingContentDao.findAllContentNotRead(userID, seenFriendID.get(i), false, seenTime.get(i), "send");
                 List<ChattingContent> chattingContents2 = new ArrayList<>();
-                System.out.println("ChatService size: " + chattingContents.size());
-                if (chattingContents.size() != 0 ){
+//                System.out.println("ChatService size: " + chattingContents.size());
+                if (chattingContents != null ){
                     for (int j=0; j<chattingContents.size(); j++){
                         System.out.println("ChatService j: " + j);
                         System.out.println("ChatService seenFriendID: " + seenFriendID.get(i));

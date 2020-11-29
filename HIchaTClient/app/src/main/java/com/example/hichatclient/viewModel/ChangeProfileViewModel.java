@@ -20,6 +20,7 @@ public class ChangeProfileViewModel extends AndroidViewModel {
     public ChangeProfileViewModel(@NonNull Application application) {
         super(application);
         userRepository = new UserRepository(application);
+        meRepository = new MeRepository(application);
     }
 
 
@@ -27,9 +28,6 @@ public class ChangeProfileViewModel extends AndroidViewModel {
         return userRepository.updateUserProfileToServer(userShortToken, userNewProfile, socket);
     }
 
-    public LiveData<User> getUserInfo(String userID){
-        return meRepository.getUserInfo(userID);
-    }
 
     public void insertUser(User user) throws InterruptedException {
         userRepository.insertUser(user);

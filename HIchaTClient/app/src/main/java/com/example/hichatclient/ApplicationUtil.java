@@ -2,7 +2,9 @@ package com.example.hichatclient;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Configuration;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
 import java.io.IOException;
@@ -11,7 +13,6 @@ import java.net.Socket;
 import jackmego.com.jieba_android.JiebaSegmenter;
 
 public class ApplicationUtil extends Application {
-
     private Socket socketDynamic;
     private Socket socketStatic;
     private String userShortToken;
@@ -85,11 +86,12 @@ public class ApplicationUtil extends Application {
     }
 
     public void initSocketDynamic() throws IOException {
-        System.out.println("***************init dynamic socket****************");
         this.socketDynamic = new Socket("49.234.105.69", 20001);
+        System.out.println("***************init dynamic socket****************" + socketDynamic);
     }
 
     public void closeSocketDynamic() throws IOException {
+        System.out.println("***************close dynamic socket****************");
         this.socketDynamic.close();
     }
     // ******** methods for socketStatic ********
@@ -112,6 +114,7 @@ public class ApplicationUtil extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        System.out.println("Application create!!!!!!!!!!!!!!!!!!!!!!");
         ConnectThread connectThread = new ConnectThread();
         connectThread.start();
         try {
@@ -133,9 +136,9 @@ public class ApplicationUtil extends Application {
         public void run() {
             super.run();
             try {
-                System.out.println("************************* init socket ***********************");
                 this.socketDynamic = new Socket("49.234.105.69", 20001);
                 this.socketStatic = new Socket("49.234.105.69", 20001);
+                System.out.println("************************* init socket ***********************" + socketDynamic);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -147,4 +150,13 @@ public class ApplicationUtil extends Application {
         super.onTerminate();
         System.out.println("Application terminate!!!!!!!!!!!!!!!!!!!!!!");
     }
+
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        System.out.println("Application configuration!!!!!!!!!!!!!!!!!!!!!!");
+    }
+
+
 }

@@ -44,6 +44,7 @@ import com.example.hichatclient.R;
 import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.mainActivity.LogInFragment;
 import com.example.hichatclient.mainActivity.MainActivity;
+import com.example.hichatclient.service.ChatService;
 import com.example.hichatclient.viewModel.MeViewModel;
 
 import java.io.ByteArrayOutputStream;
@@ -167,6 +168,14 @@ public class MeFragment extends Fragment {
                 Intent intent = new Intent();
                 intent.setClass(activity, MainActivity.class);
                 startActivity(intent);
+                try {
+                    applicationUtil.closeSocketDynamic();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Intent service_intent = new Intent(activity, ChatService.class);
+                activity.stopService(service_intent);
             }
         });
 

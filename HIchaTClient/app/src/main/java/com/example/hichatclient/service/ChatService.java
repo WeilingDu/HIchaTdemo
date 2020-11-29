@@ -51,6 +51,8 @@ public class ChatService extends LifecycleService {
     private SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat(
             "yyyy年MM月dd日HH时mm分", Locale.getDefault());
 
+    Timer t = new Timer();
+
     public ApplicationUtil getApplicationUtil() {
         return applicationUtil;
     }
@@ -163,7 +165,8 @@ public class ChatService extends LifecycleService {
         this.friendDao = chatDatabase.getFriendDao();
 
         System.out.println("hello world 1!");
-        setSocket(applicationUtil.getSocketDynamic());
+        socket = applicationUtil.getSocketDynamic();
+        System.out.println("****************Service create*********************" + socket);
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -180,7 +183,9 @@ public class ChatService extends LifecycleService {
                 // ******* 服务器 ******
                 try {
 //                    testInsert();
+                    System.out.println("******************* senHeartbeatToServer *******");
                     senHeartbeatToServer();
+                    System.out.println("******************* afterSenHeartbeatToServer *******");
                     getMessagesFromServer();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -199,6 +204,15 @@ public class ChatService extends LifecycleService {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        System.out.println("****************Service destroy**********");
+        try {
+            System.out.println("*********ChatService close socket********" + socket);
+            socket.close();
+            System.out.println("*********ChatService close timer********");
+            t.cancel();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static final int PACKET_HEAD_LENGTH = 4;//从服务器接收的数据包头长度
@@ -217,25 +231,14 @@ public class ChatService extends LifecycleService {
 
     private int updateShortTokenFlag = 0;
 
-    public void testInsert(){
-//        ChattingContent chattingContent = new ChattingContent("123", "123", "send", "111", "hello");
-//        chattingContentDao.insertContent(chattingContent);
-//        Friend friend1 = new Friend("10012", "123", "jane", "111", "111", "2", "hello", true);
-//        Friend friend2 = new Friend("10012", "124", "jane2", "111", "111", "2", "hello", true);
-//        friendDao.insertFriend(friend1);
-//        friendDao.insertFriend(friend2);
-    }
-
-
 
     //发送心跳
     public void senHeartbeatToServer(){
-        Timer t = new Timer();
         t.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 try {
-//                    System.out.println("hello world 2!");
+                    System.out.println("send Heartbeat hello world 2!");
                     if (userShortToken != null){
                         if(updateShortTokenFlag == 1){
                             getNewShortToken();
@@ -250,7 +253,8 @@ public class ChatService extends LifecycleService {
                 } catch (IOException e) {
                     e.printStackTrace();
                     try {
-                        applicationUtil.closeSocketDynamic();
+                        socket.close();
+//                        applicationUtil.closeSocketDynamic();
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
@@ -260,6 +264,7 @@ public class ChatService extends LifecycleService {
                         ex.printStackTrace();
                     }
                     socket = applicationUtil.getSocketDynamic();
+                    System.out.println("chat service get socket after init" + socket);
                 }
             }
         }, 10000, 10000);
@@ -267,8 +272,15 @@ public class ChatService extends LifecycleService {
 
     //监听服务器发来的所有消息
     public void getMessagesFromServer() throws IOException {
+        System.out.println("getmessage socket" + socket);
         byte[] bytes = new byte[0];
-        while(socket.isConnected()){
+        while(true){
+            System.out.println("getmessage socket inside" + socket);
+            if(socket.isClosed()){
+                socket = applicationUtil.getSocketDynamic();
+//                System.out.println("getmessage socket inside new" + socket);
+                continue;
+            }
             InputStream is = socket.getInputStream();
             assert bytes != null;
             if (bytes.length < PACKET_HEAD_LENGTH) {
@@ -420,6 +432,7 @@ public class ChatService extends LifecycleService {
         byte[] send_data = new byte[request.length + len.length];
         System.arraycopy(len, 0, send_data, 0, len.length);
         System.arraycopy(request, 0, send_data, len.length, request.length);
+        System.out.println("send heartbeat socket" + socket);
 
         OutputStream outputStream = socket.getOutputStream();
         outputStream.write(send_data);
@@ -591,5 +604,7 @@ public class ChatService extends LifecycleService {
         friend.setFriendProfile(friendNewProfile);
         friendDao.insertFriend(friend);
     }
+
+
 }
 

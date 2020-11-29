@@ -51,6 +51,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
     private ImageView imageViewProfile;
     private Button buttonChangeProfile;
     private byte[] userNewProfile;
+
     //调用照相机返回图片文件
     File tempFile;
     Bitmap image = null;
@@ -194,12 +195,12 @@ public class ChangeProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (image != null) {
+                    flag = 0;
 
                     final ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
                     image.compress(Bitmap.CompressFormat.PNG, 100, imageBytes);
                     userNewProfile = imageBytes.toByteArray();
-                    String temp = "1";
-                    userNewProfile = temp.getBytes();
+
                     Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
@@ -217,24 +218,21 @@ public class ChangeProfileActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     if (flag == 1) {
-                        User meUser = null;
                         try {
+                            User meUser;
                             meUser = changeProfileViewModel.getUserInfoByUserID(userID);
+                            meUser.setUserProfile(userNewProfile);
+                            changeProfileViewModel.insertUser(meUser);
+                            Toast.makeText(v.getContext(), "修改成功！", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent();
+                            intent.setClass(v.getContext(), BaseActivity.class);
+                            startActivity(intent);
+
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        if (meUser != null){
-                            meUser.setUserProfile(userProfile);
-                            try {
-                                changeProfileViewModel.insertUser(meUser);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            System.out.println("*******************Success");
-                        }
-
                     } else {
-                            Toast.makeText(v.getContext(), "修改头像失败！", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(v.getContext(), "修改失败！", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

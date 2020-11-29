@@ -193,11 +193,11 @@ public class ChangeProfileActivity extends AppCompatActivity {
         buttonChangeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (image != null) {
+                if (image != null) {
 
-//                    final ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
-//                    image.compress(Bitmap.CompressFormat.PNG, 100, imageBytes);
-//                    userNewProfile = imageBytes.toByteArray();
+                    final ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
+                    image.compress(Bitmap.CompressFormat.PNG, 100, imageBytes);
+                    userNewProfile = imageBytes.toByteArray();
                     String temp = "1";
                     userNewProfile = temp.getBytes();
                     Thread t = new Thread(new Runnable() {
@@ -217,15 +217,26 @@ public class ChangeProfileActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     if (flag == 1) {
-                        //                            User meUser;
-//                            meUser = changeProfileViewModel.getUserInfoByUserID(userID);
-//                            meUser.setUserProfile(userProfile);
-//                            changeProfileViewModel.insertUser(meUser);
-                        System.out.println("*******************Success");
+                        User meUser = null;
+                        try {
+                            meUser = changeProfileViewModel.getUserInfoByUserID(userID);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if (meUser != null){
+                            meUser.setUserProfile(userProfile);
+                            try {
+                                changeProfileViewModel.insertUser(meUser);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            System.out.println("*******************Success");
+                        }
+
                     } else {
                             Toast.makeText(v.getContext(), "修改头像失败！", Toast.LENGTH_SHORT).show();
                     }
-//                }
+                }
             }
         });
 

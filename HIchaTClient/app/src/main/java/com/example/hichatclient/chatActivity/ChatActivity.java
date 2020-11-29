@@ -386,18 +386,18 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
                     System.out.println("用户发送消息的内容是: " + content);
 
                     // 对用户发出的信息进行敏感词检测
-//                    Thread thread = new Thread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            getLegalFromBaidu();
-//                        }
-//                    });
-//                    thread.start();
-//                    try {
-//                        thread.join();
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
+                    Thread thread = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            getLegalFromBaidu();
+                        }
+                    });
+                    thread.start();
+                    try {
+                        thread.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
                     if (msgLegal.equals("1")){
                         // 若用户信息合法
@@ -589,7 +589,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
     }
 
 
-    public String getLegalFromBaidu(){
+    public void getLegalFromBaidu(){
         String isLegal = null;
         String access_token = applicationUtil.getTextAccessToken();
         HttpURLConnection connection = null;
@@ -651,8 +651,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
                 connection.disconnect();
             }
         }
-
-        return isLegal;
+        msgLegal = isLegal;
     }
 
 

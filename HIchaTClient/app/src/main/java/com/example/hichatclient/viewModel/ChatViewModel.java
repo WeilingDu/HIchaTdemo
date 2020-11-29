@@ -85,7 +85,7 @@ public class ChatViewModel extends AndroidViewModel {
     }
 
 
-    public boolean getChatRecord(String userID, String friendID, String userShortToken, Socket socket, Long chatRecordTime) throws IOException {
+    public int getChatRecord(String userID, String friendID, String userShortToken, Socket socket, Long chatRecordTime) throws IOException {
         return messageRepository.getChatRecord(userID, friendID, userShortToken, socket, chatRecordTime);
     }
 }

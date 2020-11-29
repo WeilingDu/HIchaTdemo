@@ -110,7 +110,9 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
     private String msgLegal = "1";
     private String userID;
     private long time;
-    private boolean getRecordFlag;
+    private boolean getRecordFlag;  // true: 用户刚刚拉取了历史聊天记录
+    private int getRecordSize;  // 0:历史记录为空；1：拉取成功且有历史记录；2：拉取失败
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -250,8 +252,16 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
                     messageAdapter.setAllMsg(chattingContents);
                     messageAdapter.notifyDataSetChanged();
                     if (getRecordFlag){ // 如果用户刚刚拉取历史记录
+                        System.out.println("scrolltoPosition");
                         recyclerView.scrollToPosition(0);  // 将RecyclerView定位第一行
-                        getRecordFlag = false;
+
+                        getRecordFlag = false;  // 初始化
+
+                        if (getRecordSize == 0){
+                            Toast.makeText(ChatActivity.this, "没有更多消息了！", Toast.LENGTH_SHORT).show();
+                        }else if (getRecordSize == 2){
+                            Toast.makeText(ChatActivity.this, "拉取失败！", Toast.LENGTH_SHORT).show();
+                        }
                     }else {
                         recyclerView.scrollToPosition(chattingContents.size()-1);  // 将RecyclerView定位在最后一行
 
@@ -604,7 +614,9 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
                 try {
                     System.out.println("ChatActivity call this function: getChatRecord");
                     System.out.println("ChatActivity time: " + time);
-                    getRecordFlag = chatViewModel.getChatRecord(userID, friendID, userShortToken, socket, time);
+                    getRecordSize = chatViewModel.getChatRecord(userID, friendID, userShortToken, socket, time);
+                    getRecordFlag = true;
+                    System.out.println("ChatActivity getRecordSize: " + getRecordSize);
                     System.out.println("ChatActivity getRecordFlag: " + getRecordFlag);
                 } catch (IOException e) {
                     e.printStackTrace();

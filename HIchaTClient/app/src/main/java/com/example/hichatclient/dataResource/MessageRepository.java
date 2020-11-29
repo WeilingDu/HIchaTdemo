@@ -45,7 +45,7 @@ public class MessageRepository {
     }
 
     // 向服务器请求该用户与某个好友历史记录
-    public boolean getChatRecord (String userID, String friendID, String userShortToken, Socket oldSocket, Long chatRecordTime) throws IOException {
+    public int getChatRecord (String userID, String friendID, String userShortToken, Socket oldSocket, Long chatRecordTime) throws IOException {
         List<ChattingContent> chatRecords = new ArrayList<>();
         int flag = 0;
         Socket socket = new Socket("49.234.105.69", 20001);
@@ -128,23 +128,26 @@ public class MessageRepository {
                             chatRecords.add(chattingContent);
                         }
                     }
-                    flag = 1;
+                    if(num == 0){
+                        flag = 0;  // 没有更早的历史记录了，返回0
+                    }else{
+                        flag = 1;  // 拉取成功且有历史记录，返回1
+                    }
                     break;
                 case ERROR:
+                    flag = 2;  // 拉取失败，返回2
                     System.out.println("Fail!!!!");
                     break;
             }
             break;
         }
-        if (flag == 1){
+        if (flag == 1){ // 拉取成功且有历史记录
             System.out.println("Message Repository flag: "+flag);
             System.out.println("Message Repository chatRecords size: " + chatRecords.size());
             // 插入数据库
             new UserRepository.insertMessageThread(chattingContentDao, chatRecords).start();
-            return true;
-        }else {
-            return false;
         }
+        return flag;
     }
 
 

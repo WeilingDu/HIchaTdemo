@@ -93,7 +93,7 @@ public class MeRepository {
                     continue;
                 }
                 bytes = mergebyte(bytes, body, 0, couter);
-                if (couter < body.length) {
+                if (couter < bodylength + PACKET_HEAD_LENGTH) {
                     continue;
                 }
             }
@@ -168,7 +168,7 @@ public class MeRepository {
                     continue;
                 }
                 bytes = mergebyte(bytes, body, 0, couter);
-                if (couter < body.length) {
+                if (couter < bodylength + PACKET_HEAD_LENGTH) {
                     continue;
                 }
             }

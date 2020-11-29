@@ -36,7 +36,6 @@ public class ApplicationUtil extends Application {
     }
 
     public void setTextAccessToken(String textAccessToken) {
-        System.out.println("*************call this function");
         this.textAccessToken = textAccessToken;
     }
 
@@ -86,6 +85,7 @@ public class ApplicationUtil extends Application {
     }
 
     public void initSocketDynamic() throws IOException {
+        System.out.println("***************init dynamic socket****************");
         this.socketDynamic = new Socket("49.234.105.69", 20001);
     }
 

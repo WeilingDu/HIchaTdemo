@@ -98,6 +98,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     // 用户和某好友的聊天信息
     private List<ChattingContent> allMessage = new ArrayList<>();
+    private LiveData<List<ChattingContent>> allMessageLive;
     private Friend friendChatting;
     private User userChatting;
     private boolean flag;
@@ -206,6 +207,8 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
             }
         });
 
+
+
         chatViewModel.getFriendInfo(userID, friendID).observe(this, new Observer<Friend>() {
             @Override
             public void onChanged(Friend friend) {
@@ -223,6 +226,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
         });
 
         allMessage = chatViewModel.getAllMessageLive(userID, friendID).getValue();
+        allMessageLive = chatViewModel.getAllMessageLive(userID, friendID);
         if (allMessage != null){
             System.out.println("ChatActivity: there are messages!!!");
             messageAdapter.setAllMsg(allMessage);
@@ -232,12 +236,12 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
         }
 
         // 当数据库中的聊天记录有变化时
-        chatViewModel.getAllMessageLive(userID, friendID).observe(this, new Observer<List<ChattingContent>>() {
+        allMessageLive.observe(this, new Observer<List<ChattingContent>>() {
             @Override
             public void onChanged(List<ChattingContent> chattingContents) {
                 if (chattingContents.size() > 0){
                     final ChattingContent msg = chattingContents.get(chattingContents.size() - 1);
-                    time = msg.getMsgTime();
+                    time = chattingContents.get(0).getMsgTime(); // 获取数据库中最早的聊天信息
                     // 更新数据库中的ChattingFriend信息
 //                    assert userID != null;
 //                    ChattingFriend chattingFriend = new ChattingFriend(userID, friend.getFriendID(), friend.getFriendName(), friend.getFriendProfile(), msg.getMsgContent(), msg.getMsgTime());
@@ -245,7 +249,13 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
 
                     messageAdapter.setAllMsg(chattingContents);
                     messageAdapter.notifyDataSetChanged();
-                    recyclerView.scrollToPosition(chattingContents.size()-1);  // 将RecyclerView定位在最后一行
+                    if (getRecordFlag){ // 如果用户刚刚拉取历史记录
+                        recyclerView.scrollToPosition(0);  // 将RecyclerView定位第一行
+                        getRecordFlag = false;
+                    }else {
+                        recyclerView.scrollToPosition(chattingContents.size()-1);  // 将RecyclerView定位在最后一行
+
+                    }
 
                     if (msg.getMsgType().equals("receive")){
                         // 如果该消息没有情感分析，则发送http请求获取
@@ -296,6 +306,8 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
                         }
                     }
 
+                } else {
+                    time = System.currentTimeMillis();
                 }
             }
         });
@@ -591,7 +603,9 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
             public void run() {
                 try {
                     System.out.println("ChatActivity call this function: getChatRecord");
+                    System.out.println("ChatActivity time: " + time);
                     getRecordFlag = chatViewModel.getChatRecord(userID, friendID, userShortToken, socket, time);
+                    System.out.println("ChatActivity getRecordFlag: " + getRecordFlag);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -616,7 +616,7 @@ public class UserRepository {
                         continue;
                     }
                     bytes = mergebyte(bytes, body, 0, couter);
-                    if (couter < bodylength + PACKET_HEAD_LENGTH - bytes.length) {
+                    if (couter < bodylength + PACKET_HEAD_LENGTH) {
                         continue;
                     }
                 }
@@ -720,7 +720,7 @@ public class UserRepository {
                     continue;
                 }
                 bytes = mergebyte(bytes, body, 0, couter);
-                if (couter < body.length) {
+                if (couter < bodylength + PACKET_HEAD_LENGTH) {
                     continue;
                 }
             }

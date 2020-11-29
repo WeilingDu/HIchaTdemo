@@ -239,6 +239,7 @@ public class ChatService extends LifecycleService {
                         sendHeartbeat();
                         if ((System.currentTimeMillis()-applicationUtil.getReceive()) > 20000){
                             applicationUtil.initSocketDynamic();
+                            socket = applicationUtil.getSocketDynamic();
                         }
                     }
                 } catch (IOException e) {
@@ -286,53 +287,66 @@ public class ChatService extends LifecycleService {
                     continue;
                 }
                 bytes = mergebyte(bytes, body, 0, couter);
-                if (couter < bodylength + PACKET_HEAD_LENGTH - bytes.length) {
+                if (couter < bodylength + PACKET_HEAD_LENGTH) {
                     continue;
                 }
             }
             byte[] body = new byte[0];
             body = mergebyte(body, bytes, PACKET_HEAD_LENGTH, bytes.length);
             bytes = new byte[0];
+            System.out.println("ChatService receiveBodyLength:"+body.length);
             System.out.println("ChatService before get data");
             System.out.println("ChatService receiveBody" + body);
             Test.RspToClient response = Test.RspToClient.parseFrom(body);
             System.out.println("ChatService after get data");
             Test.RspToClient.RspCase type = response.getRspCase();
             System.out.println("ChatService type: " + response.getRspCase());
-            applicationUtil.setReceive(System.currentTimeMillis());
             switch (type) {
+                case HEART_BEAT_RES:
+                    applicationUtil.setReceive(System.currentTimeMillis());
+                    break;
                 case ADD_FRIEND_FROM_OTHER_RSP:
+                    applicationUtil.setReceive(System.currentTimeMillis());
 //                    System.out.println("ChatService: add_friend_from_other");
                     addFriendReqOther(response);
                     break;
                 case ADD_FRIEND_FROM_SELF_RSP:
+                    applicationUtil.setReceive(System.currentTimeMillis());
                     addFriendReqSelf(response);
                     break;
                 case UNRECEIVED_MSG_RES:
+                    applicationUtil.setReceive(System.currentTimeMillis());
                     unreceivedMessage(response);
                     break;
                 case GET_TOKEN_RES:
+                    applicationUtil.setReceive(System.currentTimeMillis());
                     updateShortToken(response);
                     break;
                 case CHAT_WITH_SERVER_RELAY:
+                    applicationUtil.setReceive(System.currentTimeMillis());
 //                    System.out.println("ChatService: chat_with_server_relay");
                     chatMessage(response);
                     break;
                 case DELETE_FRIEND_SERVER_TO_B:
+                    applicationUtil.setReceive(System.currentTimeMillis());
 //                    System.out.println("ChatService: delete_friend_server_to_b");
                     beDeleted(response);
                     break;
                 case SEEN_SERVER_TO_B:
+                    applicationUtil.setReceive(System.currentTimeMillis());
 //                    System.out.println("ChatService: seen_server_to_b");
                     messageRead(response);
                     break;
                 case CHANGE_NAME_RELAY:
+                    applicationUtil.setReceive(System.currentTimeMillis());
                     friendChangeName(response);
                     break;
                 case CHANGE_HEADPIC_RELAY:
+                    applicationUtil.setReceive(System.currentTimeMillis());
                     friendChangeHeadpic(response);
                     break;
                 case ERROR:
+                    applicationUtil.setReceive(System.currentTimeMillis());
                     switch(response.getError().getErrorType()){
                         case UNRECOGNIZE_SHORT_TOKEN:
                             updateShortTokenFlag = 1;

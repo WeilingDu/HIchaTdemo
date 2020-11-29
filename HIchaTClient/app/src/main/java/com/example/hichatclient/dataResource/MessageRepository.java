@@ -103,7 +103,7 @@ public class MessageRepository {
                     continue;
                 }
                 bytes = mergebyte(bytes, body, 0, couter);
-                if (couter < bodylength + PACKET_HEAD_LENGTH - bytes.length) {
+                if (couter < bodylength + PACKET_HEAD_LENGTH) {
                     continue;
                 }
             }
@@ -112,6 +112,7 @@ public class MessageRepository {
             bytes = new byte[0];
             Test.RspToClient response = Test.RspToClient.parseFrom(body);
             Test.RspToClient.RspCase type = response.getRspCase();
+            System.out.println("Message Repository type: " + type);
             switch (type) {
                 case CHAT_RECORD_RSP:
                     int num = response.getChatRecordRsp().getMsgCount();
@@ -136,6 +137,8 @@ public class MessageRepository {
             break;
         }
         if (flag == 1){
+            System.out.println("Message Repository flag: "+flag);
+            System.out.println("Message Repository chatRecords size: " + chatRecords.size());
             // 插入数据库
             new UserRepository.insertMessageThread(chattingContentDao, chatRecords).start();
             return true;

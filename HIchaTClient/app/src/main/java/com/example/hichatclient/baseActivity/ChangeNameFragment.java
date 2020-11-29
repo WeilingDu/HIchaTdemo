@@ -112,54 +112,70 @@ public class ChangeNameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 userNewName = editTextUserNewName.getText().toString().trim();
-                flag = 0;  // 向服务器发送修改昵称请求
-                Thread t = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            flag = changeNameViewModel.updateUserNameToServer(userShortToken, userNewName, socket);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-                t.start();
-                try {
-                    t.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("flag: " + flag);
-                if(flag == 1){
-                    try {
-                        User user;
-                        user = changeNameViewModel.getUserInfoByUserID(userID);
-                        user.setUserName(userNewName);
-                        changeNameViewModel.updateUserInfoInSQL(user);
-                        activity.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getActivity(), "修改成功！", Toast.LENGTH_SHORT).show();
+                if(!isNameLengthRight(userNewName)){
+                    Toast.makeText(getActivity(), "输入的昵称长度不在0到7之间！", Toast.LENGTH_SHORT).show();
+                }else {
+                    flag = 0;  // 向服务器发送修改昵称请求
+                    Thread t = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                flag = changeNameViewModel.updateUserNameToServer(userShortToken, userNewName, socket);
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
-                        });
-                        NavController navController = Navigation.findNavController(v);
-                        navController.navigate(R.id.action_changeNameFragment_to_meFragment);
+                        }
+                    });
+                    t.start();
+                    try {
+                        t.join();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-
-                } else {
-                    activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getActivity(), "修改失败！", Toast.LENGTH_SHORT).show();
+                    System.out.println("flag: " + flag);
+                    if(flag == 1){
+                        try {
+                            User user;
+                            user = changeNameViewModel.getUserInfoByUserID(userID);
+                            user.setUserName(userNewName);
+                            changeNameViewModel.updateUserInfoInSQL(user);
+                            activity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getActivity(), "修改成功！", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            NavController navController = Navigation.findNavController(v);
+                            navController.navigate(R.id.action_changeNameFragment_to_meFragment);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
-                    });
+
+                    } else {
+                        activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getActivity(), "修改失败！", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }
+
 
             }
         });
 
+    }
+
+
+    //检测密码长度是否在6至20之间
+    public boolean isNameLengthRight(String str){
+        if(0<=str.length() && str.length()<=7){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }

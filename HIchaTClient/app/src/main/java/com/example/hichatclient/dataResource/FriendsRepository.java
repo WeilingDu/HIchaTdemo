@@ -172,6 +172,34 @@ public class FriendsRepository {
     }
 
 
+    // 从数据库中获取好友列表，在SearchFriendActivity中执行
+    public List<Friend> getUserFriendsInfoFromSQL(String userID) throws InterruptedException {
+        GetUserFriendsInfoFromSQLThread thread = new GetUserFriendsInfoFromSQLThread(friendDao, userID);
+        thread.start();
+        thread.join();
+        return thread.friends;
+    }
+
+    static class GetUserFriendsInfoFromSQLThread extends Thread {
+        FriendDao friendDao;
+        String userID;
+        List<Friend> friends;
+
+        public GetUserFriendsInfoFromSQLThread(FriendDao friendDao, String userID){
+            this.friendDao = friendDao;
+            this.userID = userID;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            friends = friendDao.getUserFriendsInfoFromSQL(userID);
+        }
+    }
+
+
+
+
     // 从数据库中获取好友列表，在ContactsFragments中执行
     public LiveData<List<Friend>> getUserFriendsFromSQL (String userID){
         // 当返回值是LiveData的时候，系统自动放在副线程执行，不用另外写副线程类

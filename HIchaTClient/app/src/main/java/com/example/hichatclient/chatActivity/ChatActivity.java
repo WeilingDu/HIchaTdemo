@@ -551,7 +551,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
             // 表示情感极性分类结果
             String sentiment = jsonObject1.getString("label");
             String sentiment_prob = jsonObject1.getString("prob");
-            if (Float.parseFloat(sentiment_prob) < 0.5){
+            if (Float.parseFloat(sentiment_prob) < 0.3){
                 System.out.println("ChatActivity sentiment: thinking");
                 msgSentiment = "thinking";
             }else {

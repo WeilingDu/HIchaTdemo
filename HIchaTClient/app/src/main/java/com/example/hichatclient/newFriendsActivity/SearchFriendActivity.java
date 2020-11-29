@@ -24,11 +24,13 @@ import android.widget.Toast;
 
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
+import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.data.entity.SearchResult;
 import com.example.hichatclient.viewModel.SearchFriendViewModel;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.List;
 
 public class SearchFriendActivity extends AppCompatActivity {
     private ApplicationUtil applicationUtil;
@@ -99,29 +101,37 @@ public class SearchFriendActivity extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 try {
-                    Thread t = new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                System.out.println("SearchFriendActivity searchID: " + searchID);
-                                searchResult = searchFriendViewModel.searchPeopleFromID(searchID, userShortToken, socket);
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                    if (isMyFriend(userID, searchID)){
+                        Toast.makeText(v.getContext(), "该用户已经是您的好友", Toast.LENGTH_SHORT).show();
+                    }else {
+                        try {
+                            Thread t = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        System.out.println("SearchFriendActivity searchID: " + searchID);
+                                        searchResult = searchFriendViewModel.searchPeopleFromID(searchID, userShortToken, socket);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                            t.start();
+                            t.join();
+                            if (searchResult == null){
+                                textViewSearchResult.setText(R.string.searchResultChinese);
+                            } else {
+                                // 跳转至新的界面，显示搜索结果的信息
+                                Intent intent = new Intent();
+                                intent.setClass(SearchFriendActivity.this, AddNewFriendActivity.class);
+                                intent.putExtra("resultID", searchResult.getResultID());
+                                intent.putExtra("resultName", searchResult.getResultName());
+                                intent.putExtra("resultProfile", searchResult.getResultProfile());
+                                startActivity(intent);
                             }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
-                    });
-                    t.start();
-                    t.join();
-                    if (searchResult == null){
-                        textViewSearchResult.setText(R.string.searchResultChinese);
-                    } else {
-                        // 跳转至新的界面，显示搜索结果的信息
-                        Intent intent = new Intent();
-                        intent.setClass(SearchFriendActivity.this, AddNewFriendActivity.class);
-                        intent.putExtra("resultID", searchResult.getResultID());
-                        intent.putExtra("resultName", searchResult.getResultName());
-                        intent.putExtra("resultProfile", searchResult.getResultProfile());
-                        startActivity(intent);
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -131,5 +141,21 @@ public class SearchFriendActivity extends AppCompatActivity {
 
 
     }
+
+
+    //
+    public boolean isMyFriend(String userID, String searchID) throws InterruptedException {
+        List<Friend> friends = searchFriendViewModel.getUserFriendsInfoFromSQL(userID);
+        // 不是我的好友
+        if (friends != null){
+            for (int i=0; i<friends.size(); i++){
+                if (friends.get(i).getFriendID().equals(searchID)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
 }

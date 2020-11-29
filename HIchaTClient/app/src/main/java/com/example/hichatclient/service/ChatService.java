@@ -564,7 +564,7 @@ public class ChatService extends LifecycleService {
         Test.ChangeName.RelayToFriend changeNameRelayToFriend = response.getChangeNameRelay();
         String friendID = Integer.toString(changeNameRelayToFriend.getId());
         String friendNewName = changeNameRelayToFriend.getName();
-        Friend friend = friendDao.getFriendInfo(userID, friendID).getValue();
+        Friend friend = friendDao.getFriendInfo2(userID, friendID);
         assert friend != null;
         friend.setFriendName(friendNewName);
         friendDao.insertFriend(friend);
@@ -575,7 +575,7 @@ public class ChatService extends LifecycleService {
         Test.ChangeHeadpic.RelayToFriend changeHeadpicRelayToFriend = response.getChangeHeadpicRelay();
         String friendID = Integer.toString(changeHeadpicRelayToFriend.getId());
         byte[] friendNewProfile = changeHeadpicRelayToFriend.getHeadpic().toByteArray();
-        Friend friend = friendDao.getFriendInfo(userID, friendID).getValue();
+        Friend friend = friendDao.getFriendInfo2(userID, friendID);
         assert friend != null;
         friend.setFriendProfile(friendNewProfile);
         friendDao.insertFriend(friend);

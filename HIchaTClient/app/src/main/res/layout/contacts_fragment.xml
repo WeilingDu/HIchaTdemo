@@ -33,7 +33,7 @@
 
     <Button
         android:id="@+id/buttonAddFriend"
-        android:layout_width="300dp"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/button_circle_shape_enable"
@@ -41,7 +41,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline49"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintHorizontal_bias="0.71"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,7 +54,7 @@
 
     <Button
         android:id="@+id/buttonNewFriends"
-        android:layout_width="300dp"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/button_circle_shape_enable"
@@ -62,7 +62,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.922"
+        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline49" />
 

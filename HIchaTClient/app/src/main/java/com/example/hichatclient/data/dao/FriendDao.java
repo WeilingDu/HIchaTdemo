@@ -39,4 +39,10 @@ public interface FriendDao {
 
     @Query("DELETE FROM Friend Where userID LIKE :userID AND friendID LIKE :friendID")
     void deleteOneFriend(String userID, String friendID);
+
+    @Query("SELECT * FROM Friend Where userID LIKE :userID AND friendID LIKE :friendID")
+    Friend getFriendInfo2(String userID, String friendID);
+
+    @Query("SELECT * FROM Friend Where userID LIKE :userID")
+    List<Friend> getUserFriendsInfoFromSQL(String userID);
 }

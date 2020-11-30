@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.hichatclient.ApplicationUtil;
@@ -32,6 +33,8 @@ import com.example.hichatclient.dataResource.TextToken;
 import com.example.hichatclient.service.ChatService;
 import com.example.hichatclient.viewModel.LogInViewModel;
 import com.example.hichatclient.data.entity.User;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.DoubleBounce;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -51,6 +54,8 @@ public class LogInFragment extends Fragment {
     private String isLogIn;
     private User user;
 
+    ProgressBar progressBar;
+    Sprite doubleBounce;
 
 
 
@@ -79,6 +84,10 @@ public class LogInFragment extends Fragment {
             }
         }
         socket = applicationUtil.getSocketStatic();
+
+//        progressBar = activity.findViewById(R.id.spin_kit);
+//        doubleBounce = new DoubleBounce();
+//
 
         buttonLogIn = activity.findViewById(R.id.buttonLogIn);
         buttonToSignUp = activity.findViewById(R.id.buttonToSignUp);
@@ -109,15 +118,29 @@ public class LogInFragment extends Fragment {
         editTextUserID.addTextChangedListener(textWatcher);
         editTextUserPassword.addTextChangedListener(textWatcher);
 
+//        progressBar.setVisibility(View.GONE);
+
         buttonLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String userID = editTextUserID.getText().toString().trim();
                 String userPassword = editTextUserPassword.getText().toString().trim();
+
                 try {
+//                    activity.runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            // 增加动画效果
+//                            progressBar.setVisibility(View.VISIBLE);
+//                            progressBar.setIndeterminateDrawable(doubleBounce);
+//                        }
+//                    });
+
+
                     System.out.println("LogInFragment userID: " + userID);
                     System.out.println("LogInFragment userPassword: " + userPassword);
                     Map<Integer, User> map = logInViewModel.sendIDAndPassword(userID, userPassword, socket);
+
 
                     for(Integer key:map.keySet()){
                         isLogIn = key.toString();

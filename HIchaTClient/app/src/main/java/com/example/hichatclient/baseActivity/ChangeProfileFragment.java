@@ -1,11 +1,6 @@
 package com.example.hichatclient.baseActivity;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
-import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,10 +16,19 @@ import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -33,24 +37,31 @@ import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.data.entity.User;
 import com.example.hichatclient.viewModel.ChangeProfileViewModel;
-import com.example.hichatclient.viewModel.MeViewModel;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Objects;
 
-public class ChangeProfileActivity extends AppCompatActivity {
+import static android.app.Activity.RESULT_OK;
+
+public class ChangeProfileFragment extends Fragment {
     private ChangeProfileViewModel changeProfileViewModel;
     private ApplicationUtil applicationUtil;
     private SharedPreferences sharedPreferences;
     private Socket socket;
+    private FragmentActivity activity;
 
     private ImageView imageViewProfile;
     private Button buttonChangeProfile;
     private byte[] userNewProfile;
+
+
+
+    public static ChangeProfileFragment newInstance() {
+        return new ChangeProfileFragment();
+    }
 
     //调用照相机返回图片文件
     File tempFile;
@@ -62,6 +73,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
     final int CAMEAR_REQUEST_CODE = 1;//拍照返回码
     final int ALBUM_REQUEST_CODE = 2;//相册返回码
     final int CROP_REQUEST_CODE = 3;//裁剪返回码
+
 
 
     public void saveImage(Bitmap bitmap) {
@@ -103,7 +115,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     //用相机返回的照片去调用剪裁也需要对Uri进行处理
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        Uri contentUri = FileProvider.getUriForFile(this, "com.bw.movie", tempFile);
+                        Uri contentUri = FileProvider.getUriForFile(activity, "com.bw.movie", tempFile);
                         cropPhoto(contentUri);
                     } else {
                         cropPhoto(Uri.fromFile(tempFile));
@@ -140,24 +152,28 @@ public class ChangeProfileActivity extends AppCompatActivity {
     }
 
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_profile);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.change_profile_fragment, container, false);
+    }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-
+        activity = requireActivity();
         changeProfileViewModel = new ViewModelProvider(this).get(ChangeProfileViewModel.class);
 
-        imageViewProfile = findViewById(R.id.imageView11);
-        buttonChangeProfile = findViewById(R.id.buttonChangeProfile1);
+        imageViewProfile = activity.findViewById(R.id.imageView10);
+        buttonChangeProfile = activity.findViewById(R.id.button);
 
-
-        final byte[] userProfile = getIntent().getByteArrayExtra("userProfile");
-
+        assert getArguments() != null;
+        final byte[] userProfile = getArguments().getByteArray("userProfile");
 
         // 获取applicationUtil中的数据
-        applicationUtil = (ApplicationUtil)this.getApplication();
+        applicationUtil = (ApplicationUtil)activity.getApplication();
         final String userShortToken = applicationUtil.getUserShortToken();
         if (!applicationUtil.staticIsConnected()) {
             try {
@@ -169,9 +185,8 @@ public class ChangeProfileActivity extends AppCompatActivity {
         socket = applicationUtil.getSocketStatic();
 
         // 获取Share Preferences中的数据
-        sharedPreferences = getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
+        sharedPreferences = activity.getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
         final String userID = sharedPreferences.getString("userID", "fail");
-
 
         if (userProfile != null) {
             System.out.println("ChangeProfileFragment userProfile: " + userProfile.length);
@@ -179,7 +194,6 @@ public class ChangeProfileActivity extends AppCompatActivity {
         } else {
             imageViewProfile.setImageResource(R.drawable.head);
         }
-
 
         imageViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -189,7 +203,6 @@ public class ChangeProfileActivity extends AppCompatActivity {
                 startActivityForResult(photoPickerIntent, ALBUM_REQUEST_CODE);
             }
         });
-
 
         buttonChangeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -232,13 +245,15 @@ public class ChangeProfileActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     } else {
-                            Toast.makeText(v.getContext(), "修改失败！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), "修改失败！", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         });
 
+
     }
+
 
 
     public static Bitmap toRoundCorner(Bitmap bitmap, float ratio) {

@@ -182,11 +182,10 @@ public class MeFragment extends Fragment {
         imageViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(activity, ChangeProfileActivity.class);
-                intent.putExtra("userName", meUser.getUserName());
-                intent.putExtra("userProfile", meUser.getUserProfile());
-                startActivity(intent);
+                NavController navController = Navigation.findNavController(v);
+                Bundle bundle = new Bundle();
+                bundle.putByteArray("userProfile", meUser.getUserProfile());
+                navController.navigate(R.id.action_meFragment_to_changeProfileFragment, bundle);
             }
         });
 

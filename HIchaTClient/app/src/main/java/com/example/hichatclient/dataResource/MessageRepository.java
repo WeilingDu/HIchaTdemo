@@ -25,6 +25,7 @@ public class MessageRepository {
     private ChattingContentDao chattingContentDao;
     private ChattingFriendDao chattingFriendDao;
 
+
     public MessageRepository(Context context) {
         ChatDatabase chatDatabase = ChatDatabase.getDatabase(context.getApplicationContext());
         chattingContentDao = chatDatabase.getChattingContentDao();
@@ -258,6 +259,32 @@ public class MessageRepository {
     }
 
 
+    public ChattingFriend findOneChattingFriend(String userID, String friendID) throws InterruptedException {
+        FindOneChattingFriendThread thread = new FindOneChattingFriendThread(chattingFriendDao, userID, friendID);
+        thread.start();
+        thread.join();
+        return thread.chattingFriend;
+    }
+    static class FindOneChattingFriendThread extends Thread{
+        ChattingFriendDao chattingFriendDao;
+        ChattingFriend chattingFriend;
+        String userID;
+        String friendID;
+
+
+        public FindOneChattingFriendThread(ChattingFriendDao chattingFriendDao, String userID, String friendID) {
+            this.chattingFriendDao = chattingFriendDao;
+            this.userID = userID;
+            this.friendID = friendID;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            chattingFriend = chattingFriendDao.findOneChattingFriend(userID, friendID);
+        }
+    }
+
 
     // 从数据库获取用户正在聊天的好友列表
     public LiveData<List<ChattingFriend>> getAllChattingFriendFromSQL(String userID){
@@ -305,6 +332,31 @@ public class MessageRepository {
             chattingContentDao.updateAllContent(chattingContents);
         }
     }
+
+
+    // 删除数据库中聊天的好友
+    public void deleteChattingFriend(ChattingFriend chattingFriend){
+        new deleteChattingFriendThread(chattingFriend, chattingFriendDao).start();
+    }
+
+    static class deleteChattingFriendThread extends Thread{
+        ChattingFriend chattingFriend;
+        ChattingFriendDao chattingFriendDao;
+
+
+        public deleteChattingFriendThread(ChattingFriend chattingFriend, ChattingFriendDao chattingFriendDao) {
+            this.chattingFriend = chattingFriend;
+            this.chattingFriendDao = chattingFriendDao;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            chattingFriendDao.deleteChattingFriend(chattingFriend);
+        }
+    }
+
+
 
     // 往数据库添加一条聊天信息
     public void insertOneMessageIntoSQL(ChattingContent chattingContent){

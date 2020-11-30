@@ -161,6 +161,7 @@ public class ChatService extends LifecycleService {
         ChatDatabase chatDatabase = ChatDatabase.getDatabase(this.getApplicationContext());
         this.othersToMeDao = chatDatabase.getOthersToMeDao();
         this.meToOthersDao = chatDatabase.getMeToOthersDao();
+        this.chattingFriendDao = chatDatabase.getChattingFriendDao();
         this.chattingContentDao = chatDatabase.getChattingContentDao();
         this.friendDao = chatDatabase.getFriendDao();
 
@@ -486,8 +487,8 @@ public class ChatService extends LifecycleService {
                 meToOthersDao.insertMeToOthers(meToOthers);
                 Friend friend = new Friend(userID, meToOthers.getObjectID(), meToOthers.getObjectName(), meToOthers.getObjectProfile(), "123", "111");
                 friendDao.insertFriend(friend);
-//                ChattingFriend chattingFriend = new ChattingFriend(userID, meToOthers.getObjectID(), meToOthers.getObjectName(),meToOthers.getObjectProfile(), "We are new friends!", System.currentTimeMillis());
-//                chattingFriendDao.insertChattingFriend(chattingFriend);
+                ChattingFriend chattingFriend = new ChattingFriend(userID, meToOthers.getObjectID(), meToOthers.getObjectName(),meToOthers.getObjectProfile(), "We are new friends!", System.currentTimeMillis());
+                chattingFriendDao.insertChattingFriend(chattingFriend);
 //                meToOthersNew.add(meToOthers);
             }
             else if(a==2){
@@ -530,6 +531,20 @@ public class ChatService extends LifecycleService {
         System.out.println("别人发来的消息的时间是: " + newSimpleDateFormat.format(chattingContent.getMsgTime()));
         System.out.println("别人发来的消息的内容是: " + chattingContent.getMsgContent());
         chattingContentDao.insertContent(chattingContent);
+
+
+        ChattingFriend chattingFriend = chattingFriendDao.findOneChattingFriend(userID, chattingContent.getFriendID());
+        if (chattingFriend != null){
+            // 如果该好友已经有聊天记录
+            chattingFriend.setTheLastMsg(chattingContent.getMsgContent());
+            chattingFriendDao.insertChattingFriend(chattingFriend);
+        }else {
+            // 如果该好友还没有聊天记录
+            Friend friend = friendDao.getFriendInfo2(userID, chattingContent.getFriendID());
+            ChattingFriend chattingFriend1 = new ChattingFriend(userID, friend.getFriendID(), friend.getFriendName(), friend.getFriendProfile(), chattingContent.getMsgContent(), chattingContent.getMsgTime());
+            chattingFriendDao.insertChattingFriend(chattingFriend1);
+        }
+
     }
 
     // 接收被好友删除的通知
@@ -541,7 +556,15 @@ public class ChatService extends LifecycleService {
             System.out.println("ChatService deleteMeId: " + deleteMeId);
 //            deleteMe.add(deleteMeId);
             friendDao.deleteOneFriend(userID, deleteMeId);
+
+            ChattingFriend chattingFriend = chattingFriendDao.findOneChattingFriend(userID, deleteMeId);
+            if (chattingFriend != null){
+                ChattingFriend chattingFriend1 = new ChattingFriend(userID, deleteMeId, "Unknown", null, "You are deleted!", 0);
+                chattingFriendDao.insertChattingFriend(chattingFriend1);
+            }
         }
+
+
     }
 
     //发出的消息已被好友阅读
@@ -592,6 +615,11 @@ public class ChatService extends LifecycleService {
         assert friend != null;
         friend.setFriendName(friendNewName);
         friendDao.insertFriend(friend);
+
+
+        ChattingFriend chattingFriend = chattingFriendDao.findOneChattingFriend(userID, friendID);
+        chattingFriend.setFriendName(friendNewName);
+        chattingFriendDao.insertChattingFriend(chattingFriend);
     }
 
     //接收好友更新后的头像
@@ -600,9 +628,14 @@ public class ChatService extends LifecycleService {
         String friendID = Integer.toString(changeHeadpicRelayToFriend.getId());
         byte[] friendNewProfile = changeHeadpicRelayToFriend.getHeadpic().toByteArray();
         Friend friend = friendDao.getFriendInfo2(userID, friendID);
-        assert friend != null;
-        friend.setFriendProfile(friendNewProfile);
-        friendDao.insertFriend(friend);
+        if (friend != null) {
+            friend.setFriendProfile(friendNewProfile);
+            friendDao.insertFriend(friend);
+
+        }
+        ChattingFriend chattingFriend = chattingFriendDao.findOneChattingFriend(userID, friendID);
+        chattingFriend.setFriendProfile(friendNewProfile);
+        chattingFriendDao.insertChattingFriend(chattingFriend);
     }
 
 

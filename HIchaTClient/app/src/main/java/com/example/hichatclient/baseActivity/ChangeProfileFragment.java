@@ -22,6 +22,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -237,9 +239,8 @@ public class ChangeProfileFragment extends Fragment {
                             meUser.setUserProfile(userNewProfile);
                             changeProfileViewModel.insertUser(meUser);
                             Toast.makeText(v.getContext(), "修改成功！", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent();
-                            intent.setClass(v.getContext(), BaseActivity.class);
-                            startActivity(intent);
+                            NavController navController = Navigation.findNavController(v);
+                            navController.navigate(R.id.action_changeProfileFragment_to_meFragment);
 
                         } catch (InterruptedException e) {
                             e.printStackTrace();

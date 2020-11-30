@@ -54,11 +54,16 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
         holder.textViewChatFriendName.setText(chattingFriend.getFriendName());
         holder.textViewChatNewContent.setText(chattingFriend.getTheLastMsg());
+
+        if (chattingFriend.getTime() == 0){
+            holder.itemView.setEnabled(false);
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(), ChatActivity.class);
                 intent.putExtra("friendID", chattingFriend.getFriendID());
+                intent.putExtra("friendName", chattingFriend.getFriendName());
                 holder.itemView.getContext().startActivity(intent);
 
             }

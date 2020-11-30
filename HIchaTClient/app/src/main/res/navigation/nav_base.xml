@@ -64,8 +64,8 @@
     <fragment
         android:id="@+id/changeProfileFragment"
         android:name="com.example.hichatclient.baseActivity.ChangeProfileFragment"
-        android:label="fragment_change_profile"
-        tools:layout="@layout/fragment_change_profile" >
+        android:label="修改头像"
+        tools:layout="@layout/fragment_change_profile">
         <action
             android:id="@+id/action_changeProfileFragment_to_meFragment"
             app:destination="@id/meFragment" />

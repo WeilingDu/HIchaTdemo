@@ -27,6 +27,7 @@ import android.widget.TextView;
 import com.example.hichatclient.ApplicationUtil;
 import com.example.hichatclient.R;
 import com.example.hichatclient.baseActivity.BaseActivity;
+import com.example.hichatclient.data.entity.ChattingFriend;
 import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.newFriendsActivity.AddNewFriendActivity;
 import com.example.hichatclient.viewModel.FriendInfoViewModel;
@@ -135,6 +136,8 @@ public class FriendInfoActivity extends AppCompatActivity {
                                     friendInfoViewModel.deleteFriendToServer(friendID, userShortToken, socket);
 
 
+
+
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -183,6 +186,17 @@ public class FriendInfoActivity extends AppCompatActivity {
                 public void run() {
                     // 从本地数据库中删掉该好友
                     friendInfoViewModel.deleteFriendInSQL(userID, friendID);
+
+                    // 从本地数据库中删掉聊天的好友
+                    try {
+                        ChattingFriend chattingFriend = friendInfoViewModel.findOneChattingFriend(userID, friendID);
+                        if (chattingFriend != null){
+                            friendInfoViewModel.deleteChattingFriend(chattingFriend);
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
                 }
             });
             thread.start();

@@ -23,13 +23,17 @@ import com.example.hichatclient.data.entity.ChattingContent;
 import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.data.entity.User;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
     private List<ChattingContent> allMsg = new ArrayList<>();
     private byte[] bytesLeft;
     private byte[] bytesRight;
+    private SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat(
+            "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
 
 
     public void setAllMsg(List<ChattingContent> allMsg) {
@@ -55,6 +59,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     @Override
     public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
+
+
 
         // position是当前子项在集合中的位置，通过position参数得到当前项的Msg实例
         ChattingContent chattingContent = allMsg.get(position);
@@ -124,6 +130,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             holder.rightMsg.setText(chattingContent.getMsgContent());
         }
 
+
+        holder.msgTime.setText(newSimpleDateFormat.format(chattingContent.getMsgTime()));
+
     }
 
     @Override
@@ -142,6 +151,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         LinearLayout rightLinearLayout;
         TextView leftMsg;
         TextView rightMsg;
+        TextView msgTime;
 
         public MessageViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -154,6 +164,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             rightLinearLayout = itemView.findViewById(R.id.right_ll);
             rightImageViewRead = itemView.findViewById(R.id.right_read);
             rightMsg = itemView.findViewById(R.id.right_tv);
+
+            msgTime = itemView.findViewById(R.id.textViewMsgTime);
         }
     }
 

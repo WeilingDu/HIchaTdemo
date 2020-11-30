@@ -250,7 +250,9 @@ public class SignUpFragment extends Fragment {
                     Toast.makeText(getActivity(), "输入的密码长度不在6到20之间！", Toast.LENGTH_SHORT).show();
                 } else if(!isContainAll(userPassword)){
                     Toast.makeText(getActivity(), "输入的密码没有同时包括大小写字母和数字！", Toast.LENGTH_SHORT).show();
-                } else {
+                } else if(!isNameLengthRight(userName)) {
+                    Toast.makeText(getActivity(), "输入的昵称长度不在0到7之间！", Toast.LENGTH_SHORT).show();
+                }else {
                     try {
                         userID = signUpViewModel.signUp(userName, userPassword, bitmapImage, socket);
                         AlertDialog.Builder builder= new AlertDialog.Builder(activity, R.style.Theme_AppCompat_Light_Dialog_Alert);
@@ -348,6 +350,17 @@ public class SignUpFragment extends Fragment {
             return true;
         }
         else if(bitmap.getAllocationByteCount() <= 2097152){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+    //检测昵称长度是否在6至20之间
+    public boolean isNameLengthRight(String str){
+        if(0<=str.length() && str.length()<=7){
             return true;
         }
         else{

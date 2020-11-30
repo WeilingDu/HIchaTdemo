@@ -23,6 +23,7 @@ public class SearchFriendViewModel extends AndroidViewModel {
     public SearchFriendViewModel(@NonNull Application application) {
         super(application);
         newFriendsRepository = new NewFriendsRepository(application);
+        friendsRepository = new FriendsRepository(application);
     }
 
     public SearchResult searchPeopleFromID (String personID, String userShortToken, Socket socket) throws IOException {

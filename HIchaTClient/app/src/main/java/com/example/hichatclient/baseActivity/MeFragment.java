@@ -165,17 +165,24 @@ public class MeFragment extends Fragment {
         buttonExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(activity, MainActivity.class);
-                startActivity(intent);
+
+                // 关闭动态socket
                 try {
                     applicationUtil.closeSocketDynamic();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
+                // 停止服务
                 Intent service_intent = new Intent(activity, ChatService.class);
                 activity.stopService(service_intent);
+
+                // 退出登录
+                Intent intent_login = new Intent();
+                intent_login.setClass(activity, MainActivity.class);
+                intent_login.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //关键的一句，将新的activity置为栈顶
+                startActivity(intent_login);
+                activity.finish();
             }
         });
 

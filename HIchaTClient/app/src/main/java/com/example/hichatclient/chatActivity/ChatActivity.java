@@ -386,17 +386,20 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
                     System.out.println("用户发送消息的内容是: " + content);
 
                     // 对用户发出的信息进行敏感词检测
-                    Thread thread = new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            getLegalFromBaidu();
-                        }
-                    });
-                    thread.start();
-                    try {
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+//                    Thread thread = new Thread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            getLegalFromBaidu();
+//                        }
+//                    });
+//                    thread.start();
+//                    try {
+//                        thread.join();
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+                    if (msg.getMsgContent().contains("法轮功") || msg.getMsgContent().contains("傻逼") || msg.getMsgContent().contains("乙醚")){
+                        msgLegal = "2";
                     }
 
                     if (msgLegal.equals("1")){
@@ -432,7 +435,7 @@ public class ChatActivity extends AppCompatActivity implements SwipeRefreshLayou
                         builder.setNeutralButton("知道了", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                msgLegal = "1";
                             }
                         });
                         builder.create();

@@ -6,10 +6,12 @@ import android.graphics.Bitmap;
 import com.example.hichatclient.Test;
 import com.example.hichatclient.data.ChatDatabase;
 import com.example.hichatclient.data.dao.ChattingContentDao;
+import com.example.hichatclient.data.dao.ChattingFriendDao;
 import com.example.hichatclient.data.dao.FriendDao;
 import com.example.hichatclient.data.dao.MeToOthersDao;
 import com.example.hichatclient.data.dao.OthersToMeDao;
 import com.example.hichatclient.data.entity.ChattingContent;
+import com.example.hichatclient.data.entity.ChattingFriend;
 import com.example.hichatclient.data.entity.Friend;
 import com.example.hichatclient.data.entity.MeToOthers;
 import com.example.hichatclient.data.entity.OthersToMe;
@@ -37,6 +39,7 @@ public class UserRepository {
     private MeToOthersDao meToOthersDao;
     private OthersToMeDao othersToMeDao;
     private ChattingContentDao chattingContentDao;
+    private ChattingFriendDao chattingFriendDao;
 
     public UserRepository(Context context) {
         ChatDatabase chatDatabase = ChatDatabase.getDatabase(context.getApplicationContext());
@@ -45,6 +48,7 @@ public class UserRepository {
         meToOthersDao = chatDatabase.getMeToOthersDao();
         othersToMeDao = chatDatabase.getOthersToMeDao();
         chattingContentDao = chatDatabase.getChattingContentDao();
+        chattingFriendDao = chatDatabase.getChattingFriendDao();
     }
 
     public static final int PACKET_HEAD_LENGTH = 4;//从服务器接收的数据包头长度
@@ -63,7 +67,7 @@ public class UserRepository {
 
 
 
-    public void insertLogInMsg(List<Friend> friends, List<MeToOthers> meToOthers, List<OthersToMe> othersToMes, List<ChattingContent> chattingContents){
+    public void insertLogInMsg(List<Friend> friends, List<MeToOthers> meToOthers, List<OthersToMe> othersToMes, List<ChattingContent> chattingContents, List<String> deleteFriends, String userID){
         if (!friends.isEmpty()){
             new insertFriendsTread(friendDao, friends).start();
         }
@@ -75,6 +79,17 @@ public class UserRepository {
         }
         if (!chattingContents.isEmpty()){
             new insertMessageThread(chattingContentDao, chattingContents).start();
+        }
+        if (!deleteFriends.isEmpty()){
+            for(int i = 0; i < deleteFriends.size(); i++){
+                String deleteMeId = deleteFriends.get(i);
+                System.out.println("ChatService deleteMeId: " + deleteMeId);
+//            deleteMe.add(deleteMeId);
+                friendDao.deleteOneFriend(userID, deleteMeId);
+                ChattingFriend chattingFriend1 = new ChattingFriend(userID, deleteMeId, "Unknown", null, "You are deleted!", 0);
+                chattingFriendDao.insertChattingFriend(chattingFriend1);
+
+            }
         }
     }
 
@@ -99,7 +114,7 @@ public class UserRepository {
         sendIDAndLogInThread.join();
 //        System.out.println("UserRepository userShortToken: " + sendIDAndLogInThread.user.getUserShortToken());
         map.put(sendIDAndLogInThread.isLogIn, sendIDAndLogInThread.user);
-        insertLogInMsg(sendIDAndLogInThread.friends, sendIDAndLogInThread.meToOthers, sendIDAndLogInThread.othersToMes, sendIDAndLogInThread.chattingContents);
+        insertLogInMsg(sendIDAndLogInThread.friends, sendIDAndLogInThread.meToOthers, sendIDAndLogInThread.othersToMes, sendIDAndLogInThread.chattingContents, sendIDAndLogInThread.deleteFriends, sendIDAndLogInThread.userID);
         return map;
     }
     static class SendIDAndLogInThread extends Thread {

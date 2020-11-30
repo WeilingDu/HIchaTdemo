@@ -33,8 +33,6 @@ import com.example.hichatclient.dataResource.TextToken;
 import com.example.hichatclient.service.ChatService;
 import com.example.hichatclient.viewModel.LogInViewModel;
 import com.example.hichatclient.data.entity.User;
-import com.github.ybq.android.spinkit.sprite.Sprite;
-import com.github.ybq.android.spinkit.style.DoubleBounce;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -53,10 +51,6 @@ public class LogInFragment extends Fragment {
     private Socket socket;
     private String isLogIn;
     private User user;
-
-    ProgressBar progressBar;
-    Sprite doubleBounce;
-
 
 
     public LogInFragment() {

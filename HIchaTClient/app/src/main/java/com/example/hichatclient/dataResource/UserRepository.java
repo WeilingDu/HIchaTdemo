@@ -85,9 +85,9 @@ public class UserRepository {
                 String deleteMeId = deleteFriends.get(i);
                 System.out.println("ChatService deleteMeId: " + deleteMeId);
 //            deleteMe.add(deleteMeId);
-                friendDao.deleteOneFriend(userID, deleteMeId);
+                deleteFriendInSQL(userID, deleteMeId);
                 ChattingFriend chattingFriend1 = new ChattingFriend(userID, deleteMeId, "Unknown", null, "You are deleted!", 0);
-                chattingFriendDao.insertChattingFriend(chattingFriend1);
+                updateChattingFriendIntoSQL(chattingFriend1);
 
             }
         }
@@ -449,7 +449,6 @@ public class UserRepository {
         public void run() {
             super.run();
             friendDao.insertAllFriend(friends);
-
         }
     }
 
@@ -757,5 +756,48 @@ public class UserRepository {
         return flag;
     }
 
+    // 删掉数据库中的某好友
+    public void deleteFriendInSQL(String userID, String friendID){
+        new FriendsRepository.deleteFriendInSQLThread(friendDao, userID, friendID).start();
+    }
+
+    static class deleteFriendInSQLThread extends Thread{
+        FriendDao friendDao;
+        String userID;
+        String friendID;
+
+
+        public deleteFriendInSQLThread(FriendDao friendDao, String userID, String friendID) {
+            this.friendDao = friendDao;
+            this.userID = userID;
+            this.friendID = friendID;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            friendDao.deleteOneFriend(userID, friendID);
+        }
+    }
+
+    // 更新数据库中的聊天框
+    public void updateChattingFriendIntoSQL(ChattingFriend chattingFriend){
+        new MessageRepository.updateChattingFriendIntoSQLThread(chattingFriendDao, chattingFriend).start();
+    }
+    static class updateChattingFriendIntoSQLThread extends Thread{
+        ChattingFriendDao chattingFriendDao;
+        ChattingFriend chattingFriend;
+
+        public updateChattingFriendIntoSQLThread(ChattingFriendDao chattingFriendDao, ChattingFriend chattingFriend) {
+            this.chattingFriendDao = chattingFriendDao;
+            this.chattingFriend = chattingFriend;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            chattingFriendDao.insertChattingFriend(chattingFriend);
+        }
+    }
 
 }

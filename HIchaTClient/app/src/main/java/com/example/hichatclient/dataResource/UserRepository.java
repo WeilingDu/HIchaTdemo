@@ -327,21 +327,26 @@ public class UserRepository {
                         for(int i = 0; i < num; i++){
                             Test.AddFriendFromSelf.Rsp.RequestFromSelf reqMei = response.getAddFriendFromSelfRsp().getRequests(i);
                             System.out.println("UserRepository addFriendFromSelfRsp: " + reqMei.getStatus().toString());
-                            if(reqMei.getStatus().toString().equals("00")){
+                            byte[] status = reqMei.getStatus().toByteArray();
+                            int a = 0;
+                            for(int j = status.length-1;j>=0;j--){
+                                a+=status[j] * Math.pow(0xFF, status.length - j - 1);
+                            }
+                            if(a == 0){
                                 MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),reqMei.getObjUser().getHeadpic().toByteArray(),"wait");
                                 if (reqMei.getObjUser().getHeadpic().toByteArray().length  < 10){
                                     meToOther.setObjectProfile(null);
                                 }
                                 meToOthers.add(meToOther);
                             }
-                            else if((reqMei.getStatus().toString().equals("01"))){
+                            else if(a == 1){
                                 MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),reqMei.getObjUser().getHeadpic().toByteArray(),"agree");
                                 if (reqMei.getObjUser().getHeadpic().toByteArray().length  < 10){
                                     meToOther.setObjectProfile(null);
                                 }
                                 meToOthers.add(meToOther);
                             }
-                            else if((reqMei.getStatus().toString().equals("10"))){
+                            else if(a == 2){
                                 MeToOthers meToOther = new MeToOthers(userID,Integer.toString(reqMei.getObjUser().getId()),reqMei.getObjUser().getName(),reqMei.getObjUser().getHeadpic().toByteArray(),"refuse");
                                 if (reqMei.getObjUser().getHeadpic().toByteArray().length  < 10){
                                     meToOther.setObjectProfile(null);

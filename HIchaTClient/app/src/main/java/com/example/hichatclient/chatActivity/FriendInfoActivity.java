@@ -135,9 +135,6 @@ public class FriendInfoActivity extends AppCompatActivity {
                                     flag = "true";
                                     friendInfoViewModel.deleteFriendToServer(friendID, userShortToken, socket);
 
-
-
-
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }

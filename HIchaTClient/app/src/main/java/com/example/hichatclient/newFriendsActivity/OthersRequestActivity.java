@@ -154,6 +154,9 @@ public class OthersRequestActivity extends AppCompatActivity {
                 ChattingFriend chattingFriend = new ChattingFriend(userID, friend.getFriendID(), friend.getFriendName(), friend.getFriendProfile(), "We are new friends", System.currentTimeMillis());
                 othersRequestViewModel.updateChattingFriendIntoSQL(chattingFriend);  // 更新数据库中的ChattingFriend信息
 
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("deleteFlag", "false");
+                editor.apply();
 
                 Intent intent = new Intent();
                 intent.setClass(v.getContext(), NewFriendsActivity.class);
